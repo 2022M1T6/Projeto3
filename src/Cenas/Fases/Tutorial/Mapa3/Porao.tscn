@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Personagens/Jose/Jose.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Public/backgroundTutorial3.jpeg" type="Texture" id=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="BackgroundTutorial3" type="Sprite" parent="."]
+position = Vector2( 653, 412.5 )
+scale = Vector2( 2.72917, 2.57187 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="BackgroundTutorial3"]
+position = Vector2( -239.267, -160.389 )
+scale = Vector2( 0.366412, 0.388821 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BackgroundTutorial3/StaticBody2D"]
+position = Vector2( 275, 211 )
+polygon = PoolVector2Array( -275, 402, -241, 400, -237, 388, -189, 386, -189, 400, -154, 399, -153, 384, 29, 388, 34, 401, 64, 401, 67, 385, 249, 388, 255, 402, 294, 394, 287, 242, 230, 241, 228, 156, 283, 152, 286, 141, 417, 139, 425, 275, 506, 277, 512, 155, 582, 157, 597, 141, 637, 139, 651, 163, 676, 161, 686, 243, 685, 296, 688, 528, 860, 531, 861, 520, 861, 367, 858, 199, 857, 81, 901, 79, 898, -125, 989, -125, 994, 78, 1033, 76, 1035, 612, 516, 616, 503, 307, 426, 306, 420, 528, 201, 528, -36, 528, -81, 528, -274, 526, -273, 411, -544, 397, -496, 849, 1169, 759, 1173, -449, -484, -321, -435, 398 )
+
+[node name="Jose" parent="." instance=ExtResource( 1 )]
+position = Vector2( 41, 626 )
+
+[node name="Camera2D" type="Camera2D" parent="Jose"]
+position = Vector2( 153.658, 1.6129 )
+scale = Vector2( 0.203252, 0.268816 )
+current = true
+limit_left = -4
+limit_top = 0
+limit_right = 1306
+limit_bottom = 820
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true

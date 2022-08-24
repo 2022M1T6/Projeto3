@@ -10,7 +10,7 @@ height = 150.0
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 68, 183 )
 
-[node name="KinematicBody2D" type="KinematicBody2D"]
+[node name="BonecoTeste" type="KinematicBody2D"]
 position = Vector2( 200, -52 )
 scale = Vector2( 0.473539, 0.325655 )
 script = ExtResource( 2 )

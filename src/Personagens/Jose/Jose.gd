@@ -3,7 +3,7 @@ extends KinematicBody2D
 export(float) var moveSpeed = 10
 var canTel = true
 var velocity = Vector2.ZERO
-var radius = 150
+var radius = 50
 var attacking = false
 
 onready var animation: AnimationPlayer = get_node("AnimationPlayer")

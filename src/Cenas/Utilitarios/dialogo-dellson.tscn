@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Public/barra-de-dialogo-dellson.png" type="Texture" id=1]
+[ext_resource path="res://Public/Fonts/Kenney Pixel.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Cenas/Utilitarios/dialogo-dellson.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 92
+font_data = ExtResource( 2 )
+
+[node name="PopupDialog" type="PopupDialog"]
+self_modulate = Color( 0, 0, 0, 0.223529 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="Barra-de-dialogo-dellson" type="Sprite" parent="."]
+position = Vector2( 512, 501 )
+scale = Vector2( 0.307066, 0.250159 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Barra-de-dialogo-dellson"]
+margin_left = -670.0
+margin_top = -129.0
+margin_right = 1046.0
+margin_bottom = 71.0
+custom_fonts/font = SubResource( 1 )
+text = "Olá Teste423424"
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
