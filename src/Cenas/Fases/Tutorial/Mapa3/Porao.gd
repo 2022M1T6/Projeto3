@@ -1,4 +1,4 @@
 extends Node2D
 
 func _on_Area2D_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
-	get_tree().change_scene("res://Cenas/Fases/Tutorial/Mapa2/Labirinto.tscn")
+	get_tree().change_scene("res://Cenas/Fases/Fase1/Fase1.tscn")

@@ -5,6 +5,7 @@
 [ext_resource path="res://Personagens/BonecoTeste/BonecoTeste.tscn" type="PackedScene" id=3]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource( 4 )
 
 [node name="BackgroundTutorial3" type="Sprite" parent="."]
 position = Vector2( 653, 412.5 )

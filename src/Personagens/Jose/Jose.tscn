@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Personagens/Jose/Jose.gd" type="Script" id=1]
 [ext_resource path="res://Personagens/Jose/Hitbox.gd" type="Script" id=2]
@@ -102,13 +102,13 @@ tracks/0/keys = {
 "values": [ true, false, true ]
 }
 
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 1.98679, 0.954307 )
+
 [node name="Jose" type="KinematicBody2D"]
-position = Vector2( 434, 130 )
+position = Vector2( 420, 167 )
 scale = Vector2( 4.92001, 3.72001 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -3.8147e-06, 5.64515 )
@@ -144,3 +144,9 @@ disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Hitbox"]
 anims/Attack = SubResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -0.157524, 14.7849 )
+shape = SubResource( 8 )
