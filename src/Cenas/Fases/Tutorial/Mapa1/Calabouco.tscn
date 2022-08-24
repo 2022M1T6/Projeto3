@@ -8,10 +8,10 @@
 [ext_resource path="res://Cenas/Fases/Tutorial/Mapa1/Calabouco.gd" type="Script" id=6]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 137.762, 23.22 )
+extents = Vector2( 134.876, 6.53037 )
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 137.6, 84.0901 )
+extents = Vector2( 93.1705, 56.5295 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 6 )
@@ -60,25 +60,8 @@ polygon = PoolVector2Array( -237.384, 250.703, -246.043, 249.977, -244.6, 243.44
 [node name="Area2D" type="Area2D" parent="BackgroundTutorial1"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BackgroundTutorial1/Area2D"]
-position = Vector2( 331.234, -484.356 )
+position = Vector2( 328.348, -467.666 )
 shape = SubResource( 2 )
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 1277, 133 )
-current = true
-limit_left = 3
-limit_top = 4
-limit_right = 1770
-limit_bottom = 1320
-drag_margin_h_enabled = true
-drag_margin_v_enabled = true
-drag_margin_left = 0.4
-drag_margin_right = 0.28
-editor_draw_limits = true
-editor_draw_drag_margin = true
-
-[node name="Jose" parent="Camera2D" instance=ExtResource( 3 )]
-position = Vector2( 147, 122 )
 
 [node name="Icon" type="Sprite" parent="."]
 position = Vector2( 1346.67, 124.233 )
@@ -88,16 +71,31 @@ texture = ExtResource( 4 )
 [node name="Area2D" type="Area2D" parent="Icon"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Icon/Area2D"]
-position = Vector2( -2.00555, 19.9296 )
+position = Vector2( -885.526, 158.136 )
 shape = SubResource( 1 )
 
-[node name="PopupPause" parent="." instance=ExtResource( 2 )]
+[node name="Jose" parent="." instance=ExtResource( 3 )]
+position = Vector2( 133, 256 )
 
-[node name="PopupDialog" parent="." instance=ExtResource( 5 )]
-margin_left = 738.0
-margin_top = 8.0
-margin_right = 738.0
-margin_bottom = 8.0
+[node name="Camera2D" type="Camera2D" parent="Jose"]
+scale = Vector2( 0.203252, 0.268816 )
+current = true
+limit_left = 5
+limit_top = 0
+limit_right = 1771
+limit_bottom = 1313
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+drag_margin_left = 0.4
+drag_margin_right = 0.28
+editor_draw_limits = true
+editor_draw_drag_margin = true
 
-[connection signal="area_entered" from="BackgroundTutorial1/Area2D" to="." method="_on_Area2D_area_entered"]
-[connection signal="area_entered" from="Icon/Area2D" to="PopupDialog" method="_on_Area2D_area_entered"]
+[node name="CanvasLayer" type="CanvasLayer" parent="Jose/Camera2D"]
+
+[node name="PopupDialog" parent="Jose/Camera2D/CanvasLayer" instance=ExtResource( 5 )]
+
+[node name="PopupPause" parent="Jose/Camera2D/CanvasLayer" instance=ExtResource( 2 )]
+
+[connection signal="area_shape_entered" from="BackgroundTutorial1/Area2D" to="." method="_on_Area2D_area_shape_entered"]
+[connection signal="area_shape_entered" from="Icon/Area2D" to="Jose/Camera2D/CanvasLayer/PopupDialog" method="_on_Area2D_area_shape_entered"]
