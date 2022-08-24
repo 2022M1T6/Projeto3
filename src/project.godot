@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Jogo Grupo 3"
-run/main_scene="res://Cenas/Fases/Tutorial/Mapa3/Porao.tscn"
+run/main_scene="res://Cenas/Fases/Tutorial/Mapa1/Calabouco.tscn"
 config/icon="res://Public/icon.png"
 
 [editor_plugins]

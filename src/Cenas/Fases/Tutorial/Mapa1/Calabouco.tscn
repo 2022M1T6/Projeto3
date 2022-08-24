@@ -1,17 +1,20 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Public/backgroundTutorial1.jpeg" type="Texture" id=1]
 [ext_resource path="res://Cenas/Utilitarios/PopupPause.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Personagens/Jose/Jose.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Public/icon.png" type="Texture" id=4]
+[ext_resource path="res://Public/dellson1.png" type="Texture" id=4]
 [ext_resource path="res://Cenas/Utilitarios/popupDialogo.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Cenas/Fases/Tutorial/Mapa1/Calabouco.gd" type="Script" id=6]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 134.876, 6.53037 )
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 93.1705, 56.5295 )
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 109.438, 58 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 34.5, 42 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 6 )
@@ -20,12 +23,27 @@ script = ExtResource( 6 )
 position = Vector2( 886, 662.5 )
 scale = Vector2( 1.38594, 1.37812 )
 texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Area2D" type="Area2D" parent="BackgroundTutorial1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BackgroundTutorial1/Area2D"]
+position = Vector2( 328.348, -467.666 )
+shape = SubResource( 2 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="BackgroundTutorial1"]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BackgroundTutorial1/StaticBody2D"]
 scale = Vector2( 0.86469, 1.07786 )
 polygon = PoolVector2Array( -772.692, -279.717, -660.877, -280.39, -657.54, -277.024, -638.347, -277.024, -635.01, -281.064, -513.181, -281.064, -509.843, -277.698, -492.32, -277.024, -485.645, -281.064, -476.466, -281.064, -474.797, -270.965, -414.717, -271.639, -413.883, -280.39, -402.201, -280.39, -397.194, -277.024, -380.505, -278.371, -375.498, -282.41, -328.77, -282.41, -318.757, -268.273, -307.074, -268.946, -294.558, -281.064, -252.836, -281.737, -248.663, -276.351, -232.809, -277.024, -226.134, -283.083, -197.763, -282.41, -197.763, -63.618, -155.206, -62.9448, -142.689, -59.5788, -116.822, -60.252, -112.65, -41.4022, -102.636, -31.3041, -66.7553, -29.9577, -42.5565, -29.9577, -40.8876, -73.0429, -15.02, -73.0429, -12.5167, -16.4936, -55.9076, -17.1668, -55.9076, 28.6112, -13.3511, 28.6112, -12.5167, 66.984, -20.861, 66.3108, -25.8677, 73.0428, -26.7021, 79.7749, -18.3577, 85.8338, 27.5365, 86.507, 12.5166, 91.8926, 5.00659, 110.742, 14.1855, 118.148, 26.7021, 116.128, 27.5365, 92.5659, 30.8743, 75.0625, 40.0532, 75.7357, 40.0532, 83.8141, 52.5698, 89.1998, 62.5831, 87.8534, 72.5963, 78.4285, 85.113, 81.7946, 86.7819, 86.507, 99.2985, 87.8534, 146.027, 87.1802, 146.027, 101.991, 78.4374, 104.684, 76.7686, 207.684, 146.027, 207.011, 295.392, 207.011, 297.895, 75.0625, 330.439, 74.3893, 328.77, -64.2912, 261.18, -53.5199, 146.862, -53.5199, 126.001, -57.5591, 109.312, -444.653, 183.577, -445.326, 542.387, -444.653, 541.552, -385.411, 529.87, -386.084, 508.174, -404.934, 492.32, -404.26, 490.651, -329.534, 527.367, -299.24, 546.559, -297.894, 556.572, -301.933, 583.274, -300.587, 632.506, -296.547, 662.546, -297.894, 735.143, -297.221, 735.977, -207.011, 716.785, -207.684, 716.785, -247.403, 544.055, -247.403, 544.89, -151.135, 529.036, -143.056, 526.532, -126.226, 535.711, -118.148, 562.413, -117.474, 562.413, -93.9123, 575.764, -88.5266, 585.778, -92.5659, 587.446, -119.494, 649.195, -117.474, 651.698, -58.9055, 619.99, -57.5591, 558.241, -54.8663, 499.83, -58.2323, 447.26, -59.5788, 445.591, 72.3696, 481.472, 73.7161, 481.472, 208.357, 634.175, 207.684, 703.434, 208.357, 698.427, 103.337, 633.341, 103.337, 631.672, 84.4874, 665.049, 87.8534, 735.143, 78.4285, 736.811, 441.287, 639.182, 439.267, 640.851, 387.43, 700.096, 385.411, 700.93, 338.959, 697.593, 280.39, 635.01, 281.064, 633.341, 318.763, 469.79, 317.417, 469.79, 441.287, 294.558, 440.613, 297.061, 324.149, 145.193, 322.129, 141.021, 281.064, 78.4374, 281.064, 75.0997, 382.044, 142.689, 382.044, 145.193, 435.901, -418.055, 437.921, -397.194, 430.515, -393.022, 231.919, -359.644, 231.919, -353.803, 162.579, -403.035, 165.272, -397.194, 143.056, -309.578, 144.403, -312.081, 110.069, -407.207, 104.684, -408.042, 80.4481, -425.565, 76.4089, -423.062, 96.6051, -655.036, 89.873, -651.698, -124.207, -672.559, -131.612, -670.056, -186.815, -683.407, -186.815, -683.407, -177.39, -735.143, -180.083, -990.482, -182.775, -1007.17, 598.817, 952.097, 623.726, 957.938, -628.438, -976.296, -601.51, -992.985, -202.298, -734.308, -188.834, -735.977, -270.965 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="BackgroundTutorial1/StaticBody2D"]
 polygon = PoolVector2Array( 158.016, -67.8458, 155.851, -160.726, 132.041, -159.274, 129.154, -67.8458 )
@@ -57,33 +75,17 @@ polygon = PoolVector2Array( 22.3676, 255.057, 9.37994, 255.782, 11.5446, 246.349
 [node name="CollisionPolygon2D11" type="CollisionPolygon2D" parent="BackgroundTutorial1/StaticBody2D"]
 polygon = PoolVector2Array( -237.384, 250.703, -246.043, 249.977, -244.6, 243.447, -235.22, 247.075 )
 
-[node name="Area2D" type="Area2D" parent="BackgroundTutorial1"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BackgroundTutorial1/Area2D"]
-position = Vector2( 328.348, -467.666 )
-shape = SubResource( 2 )
-
-[node name="Icon" type="Sprite" parent="."]
-position = Vector2( 1346.67, 124.233 )
-scale = Vector2( 1.33358, 1.24271 )
-texture = ExtResource( 4 )
-
-[node name="Area2D" type="Area2D" parent="Icon"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Icon/Area2D"]
-position = Vector2( -885.526, 158.136 )
-shape = SubResource( 1 )
-
 [node name="Jose" parent="." instance=ExtResource( 3 )]
-position = Vector2( 133, 256 )
+position = Vector2( 1329, 247 )
 
 [node name="Camera2D" type="Camera2D" parent="Jose"]
+position = Vector2( 76.6259, 4.8387 )
 scale = Vector2( 0.203252, 0.268816 )
 current = true
-limit_left = 5
+limit_left = -4
 limit_top = 0
-limit_right = 1771
-limit_bottom = 1313
+limit_right = 1765
+limit_bottom = 1311
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 drag_margin_left = 0.4
@@ -93,9 +95,34 @@ editor_draw_drag_margin = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Jose/Camera2D"]
 
-[node name="PopupDialog" parent="Jose/Camera2D/CanvasLayer" instance=ExtResource( 5 )]
-
 [node name="PopupPause" parent="Jose/Camera2D/CanvasLayer" instance=ExtResource( 2 )]
 
+[node name="PopupDialog" parent="Jose/Camera2D/CanvasLayer" instance=ExtResource( 5 )]
+
+[node name="TutoraiMapa1Fala1" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutoraiMapa1Fala1"]
+position = Vector2( 133, 315 )
+shape = SubResource( 3 )
+
+[node name="TutoraiMapa1Fala2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutoraiMapa1Fala2"]
+position = Vector2( 1343.56, 208 )
+shape = SubResource( 3 )
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+position = Vector2( 1339, 207 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
+position = Vector2( 14.5, 19 )
+shape = SubResource( 4 )
+
+[node name="Dellson1" type="Sprite" parent="KinematicBody2D"]
+position = Vector2( 14, 0 )
+scale = Vector2( 0.527778, 0.507895 )
+texture = ExtResource( 4 )
+
 [connection signal="area_shape_entered" from="BackgroundTutorial1/Area2D" to="." method="_on_Area2D_area_shape_entered"]
-[connection signal="area_shape_entered" from="Icon/Area2D" to="Jose/Camera2D/CanvasLayer/PopupDialog" method="_on_Area2D_area_shape_entered"]
+[connection signal="area_shape_entered" from="TutoraiMapa1Fala1" to="Jose/Camera2D/CanvasLayer/PopupDialog" method="_on_TutoraiMapa1Fala1_area_shape_entered"]
+[connection signal="area_shape_entered" from="TutoraiMapa1Fala2" to="Jose/Camera2D/CanvasLayer/PopupDialog" method="_on_TutoraiMapa1Fala2_area_shape_entered"]

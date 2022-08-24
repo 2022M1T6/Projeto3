@@ -61,8 +61,7 @@ func _on_Timer_timeout():
 				
 			dialogBoxLabel.percent_visible += percentVisible
 
-
-func _on_Area2D_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
+func _on_TutoraiMapa1Fala1_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	dialogos = [
 		{
 			'personagem': 'jose',
@@ -94,6 +93,63 @@ func _on_Area2D_area_shape_entered(area_rid, area, area_shape_index, local_shape
 				'*Pausa',
 				'Ah é, você se movimenta com WASD',
 				'Venha até aqui para saber mais.'
+			]
+		}
+	]
+	mostrarMensagem()
+	get_tree().paused = true
+
+
+
+func _on_TutoraiMapa1Fala2_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
+	dialogos = [
+		{
+			'personagem': 'dellson',
+			'falas': [
+				'Aff… Eu preciso falar com a Fabi sobre esse algoritmo de spawn.',
+				'Então, novato, aqui você irá aprender sobre as dimensões do modelo de produto. Ao total são 9. N. O. V. E. Você sabe contar?'
+			]
+		},
+		{
+			'personagem': 'jose',
+			'falas': [
+				'Sim, Dellson. Você não precisa me explicar TUUUUDO'
+			]
+		},
+		{
+			'personagem': 'dellson',
+			'falas': [
+				'Ahã! Sabia que você é um cara inteligente.',
+				'Bom, continuando… São 9 dimensões. Então, você terá 9 desafios para completar aqui. Para vencer cada um dos desafios, você terá que utilizar um conceito da dimensão que ele representa. Ou seja, você só sai daqui se aprender!!!',
+				'Legal, né? Eu que tive a ideia. Agora avance para a próxima área para continuarmos com o treinamento..'
+			]
+		}
+	]
+	mostrarMensagem()
+	get_tree().paused = true
+
+
+func _on_TutorialMapa2Fala1_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
+	dialogos = [
+		{
+			'personagem': 'dellson',
+			'falas': [
+				'Eu fiquei com preguiça de terminar essa área, então fiz o upload de um mapa da Internet mesmo. Espero que você não fique assustado…',
+				'hehe'
+			]
+		},
+	]
+	mostrarMensagem()
+	get_tree().paused = true
+
+
+func _on_TuroailMapa2Fala2_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
+	dialogos = [
+		{
+			'personagem': 'dellson',
+			'falas': [
+				'BOO!! Errei o timing?',
+				' … Enfim, quando você se deparar com um lugar o qual não consegue passar, pressione ESPAÇO para atravessar pequenos obstáculos.'
 			]
 		}
 	]

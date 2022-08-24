@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/backgroundTutorial3.jpeg-f170480cf236bd8641535f6cfd8a8924.stex"
+path="res://.import/dellson1.png-39439204c153dadd1fb3dada1c2b6e6d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Public/backgroundTutorial3.jpeg"
-dest_files=[ "res://.import/backgroundTutorial3.jpeg-f170480cf236bd8641535f6cfd8a8924.stex" ]
+source_file="res://Public/dellson1.png"
+dest_files=[ "res://.import/dellson1.png-39439204c153dadd1fb3dada1c2b6e6d.stex" ]
 
 [params]
 
