@@ -1,5 +1,6 @@
 extends ProgressBar
 
+var transition = 0
 # Função executada quando a barra de progresso está carregada
 func _ready():
 	var progress = 0
@@ -12,4 +13,5 @@ func _ready():
 	
 	# Redireciona para a tela principal
 	get_tree().change_scene("res://Cenas/Fases/Tutorial/Mapa1/Calabouco.tscn")
+
 	

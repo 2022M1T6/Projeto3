@@ -14,13 +14,12 @@ pause_mode = 2
 self_modulate = Color( 0, 0, 0, 0.223529 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -1.0
-margin_bottom = -1.0
+margin_left = -1.0
+margin_top = -63.0
+margin_right = 2.0
+margin_bottom = -63.0
 rect_scale = Vector2( 1.25228, 1.16034 )
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.02
@@ -30,12 +29,15 @@ autostart = true
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 228.0
-margin_top = -211.0
-margin_right = 1790.0
-margin_bottom = 463.0
+margin_left = 223.592
+margin_top = -237.175
+margin_right = 1785.59
+margin_bottom = 436.825
 rect_scale = Vector2( 0.307, 0.307 )
 texture = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Label" type="Label" parent="DialogBox"]
 margin_left = 150.0
@@ -48,10 +50,10 @@ autowrap = true
 percent_visible = 0.0
 
 [node name="DialogSprite" type="TextureRect" parent="."]
-margin_left = 30.3447
-margin_top = 367.996
-margin_right = 246.345
-margin_bottom = 570.996
+margin_left = 7.18689
+margin_top = 427.461
+margin_right = 223.187
+margin_bottom = 630.461
 texture = ExtResource( 4 )
 expand = true
 

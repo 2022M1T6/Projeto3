@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Personagens/Jose/Jose.gd" type="Script" id=1]
 [ext_resource path="res://Personagens/Jose/Hitbox.gd" type="Script" id=2]
 [ext_resource path="res://Public/player.png" type="Texture" id=4]
+[ext_resource path="res://Public/icon.png" type="Texture" id=5]
 
 [sub_resource type="Animation" id=4]
 length = 0.001
@@ -105,6 +106,23 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 1.98679, 0.954307 )
 
+[sub_resource type="Curve" id=9]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0681495, 0, 0, Vector2( 1, 0 ), -3.48769, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=10]
+curve = SubResource( 9 )
+
+[sub_resource type="ParticlesMaterial" id=11]
+flag_disable_z = true
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 19.0
+angular_velocity = -200.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale_curve = SubResource( 10 )
+
 [node name="Jose" type="KinematicBody2D"]
 position = Vector2( 420, 167 )
 scale = Vector2( 4.92001, 3.72001 )
@@ -131,6 +149,8 @@ shape = SubResource( 1 )
 [node name="Hitbox" type="Area2D" parent="."]
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 8.13006, -5.10751 )
+collision_layer = 2
+collision_mask = 2
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
@@ -150,3 +170,16 @@ anims/Attack = SubResource( 3 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( -0.157524, 14.7849 )
 shape = SubResource( 8 )
+
+[node name="dash" type="Timer" parent="."]
+one_shot = true
+
+[node name="Particles2D" type="Particles2D" parent="."]
+modulate = Color( 0.47451, 0.227451, 0.643137, 0.0666667 )
+position = Vector2( 1.01626, 10.4838 )
+scale = Vector2( 0.5, 0.5 )
+emitting = false
+amount = 80
+local_coords = false
+process_material = SubResource( 11 )
+texture = ExtResource( 5 )

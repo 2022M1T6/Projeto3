@@ -13,7 +13,7 @@ extents = Vector2( 48.5, 34 )
 extents = Vector2( 50, 25.5 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 51.5, 10 )
+extents = Vector2( 51.5, 22.25 )
 
 [node name="Node2D2" type="Node2D"]
 script = ExtResource( 3 )
@@ -24,7 +24,7 @@ scale = Vector2( 1.89368, 1.64564 )
 texture = ExtResource( 2 )
 
 [node name="Jose" parent="." instance=ExtResource( 1 )]
-position = Vector2( 537, 23 )
+position = Vector2( 48, 577 )
 
 [node name="Camera2D" type="Camera2D" parent="Jose"]
 position = Vector2( 153.658, 1.6129 )
@@ -59,19 +59,19 @@ __meta__ = {
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 548.5, 11 )
+position = Vector2( 553, 13 )
 shape = SubResource( 1 )
 
 [node name="TutorialMapa2Fala1" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialMapa2Fala1"]
-position = Vector2( 71, 621.5 )
+position = Vector2( 165, 623 )
 shape = SubResource( 2 )
 
 [node name="TuroailMapa2Fala2" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TuroailMapa2Fala2"]
-position = Vector2( 56, 391 )
+position = Vector2( 58, 389.25 )
 shape = SubResource( 3 )
 
 [connection signal="area_shape_entered" from="Area2D" to="." method="_on_Area2D_area_shape_entered"]
