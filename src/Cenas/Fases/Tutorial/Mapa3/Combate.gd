@@ -14,7 +14,9 @@ func _on_Hurtbox_area_entered(area):
 	HP.text = str(currentHP)
 	if currentHP <= 1:
 		$Area2D.monitoring = true
-		currentHP = maxHP
+		currentHP = 0
+		$KinematicBody2D.hide()
+		$KinematicBody2D.position = Vector2(0,0)
 
 func _on_Area2D_area_entered(area):
 	get_tree().change_scene("res://Cenas/Fases/Fase1/Fase1.tscn")
