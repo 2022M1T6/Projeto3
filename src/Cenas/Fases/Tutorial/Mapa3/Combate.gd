@@ -26,3 +26,7 @@ func _on_Area2D3_area_entered(area):
 
 func _on_Area2D4_area_entered(area):
 	$Dellson1.hide()
+
+
+func _on_Area2D2_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
+	$Jose/Camera2D/CanvasLayer/Hint.text = ' -> Destrua o boneco de testes usando P e vá até a porta escura'

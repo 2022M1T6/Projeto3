@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Personagens/Jose/Jose.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Public/WhatsApp Image 2022-08-24 at 20.44.49.jpeg" type="Texture" id=2]
@@ -7,12 +7,17 @@
 [ext_resource path="res://Cenas/Utilitarios/PopupPause.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Cenas/Fases/Tutorial/Mapa3/Combate.gd" type="Script" id=6]
 [ext_resource path="res://Public/dellson1.png" type="Texture" id=7]
+[ext_resource path="res://Public/Fonts/Kenney Pixel.ttf" type="DynamicFontData" id=8]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 22.3607
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 20.9308
+
+[sub_resource type="DynamicFont" id=9]
+size = 40
+font_data = ExtResource( 8 )
 
 [sub_resource type="CapsuleShape2D" id=3]
 radius = 33.0
@@ -105,6 +110,13 @@ editor_draw_drag_margin = true
 
 [node name="PopupDialog" parent="Jose/Camera2D/CanvasLayer" instance=ExtResource( 3 )]
 
+[node name="Hint" type="Label" parent="Jose/Camera2D/CanvasLayer"]
+margin_left = 16.0
+margin_top = 7.0
+margin_right = 668.0
+margin_bottom = 57.0
+custom_fonts/font = SubResource( 9 )
+
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
 
 [node name="Hurtbox" type="Area2D" parent="KinematicBody2D"]
@@ -145,7 +157,7 @@ shape = SubResource( 5 )
 [node name="Area2D2" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
-position = Vector2( 219, 633 )
+position = Vector2( 75, 634 )
 shape = SubResource( 6 )
 
 [node name="Area2D3" type="Area2D" parent="."]
@@ -164,6 +176,7 @@ shape = SubResource( 8 )
 [connection signal="area_entered" from="KinematicBody2D/Hurtbox" to="Jose/Camera2D/CanvasLayer/PopupDialog" method="_on_Hurtbox_area_entered"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="area_entered" from="Area2D2" to="Jose/Camera2D/CanvasLayer/PopupDialog" method="_on_Area2D2_area_entered"]
+[connection signal="area_shape_exited" from="Area2D2" to="." method="_on_Area2D2_area_shape_exited"]
 [connection signal="area_entered" from="Area2D3" to="." method="_on_Area2D3_area_entered"]
 [connection signal="area_entered" from="Area2D3" to="Jose/Camera2D/CanvasLayer/PopupDialog" method="_on_Area2D3_area_entered"]
 [connection signal="area_entered" from="Area2D4" to="." method="_on_Area2D4_area_entered"]
