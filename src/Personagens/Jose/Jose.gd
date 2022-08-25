@@ -23,7 +23,6 @@ func _ready():
 #Função que determina o que acontece quando o tempo do timer esgota
 func timer_timeout():
 	isDashing = false
-	$Area2D.collision_layer = 1
 	yield(get_tree().create_timer(1),"timeout")
 	canDash = true
 
@@ -33,7 +32,6 @@ func dash():
 		isDashing = true
 		canDash = false
 		dashDir = get_move_direction().normalized() * dashSpeed
-		$Area2D.collision_layer = 2
 		timer.start(dashLenght)
 		
 	if isDashing:
