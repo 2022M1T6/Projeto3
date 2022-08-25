@@ -3,15 +3,25 @@ extends Node2D
 var maxHP = 60
 var currentHP
 var dano = 20
+var hits = 0
 
 onready var HP = $KinematicBody2D/Label
 
 func _ready():
 	currentHP = maxHP
+	
+func _process(delta):
+	if hits <= 2:
+		$Area2D3.monitoring = false
+		$Area2D4.monitoring = false
+	else:
+		$Area2D3.monitoring = true
+		$Area2D4.monitoring = true
 
 func _on_Hurtbox_area_entered(area):
 	currentHP -= dano
 	HP.text = str(currentHP)
+	hits += 1
 	if currentHP <= 1:
 		$Area2D.monitoring = true
 		currentHP = 0
