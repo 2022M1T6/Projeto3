@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Jogo Grupo 3"
-run/main_scene="res://Cenas/Menus/MenuPrincipal.tscn"
+run/main_scene="res://Cenas/Fases/Fase1/Fase.tscn"
 config/icon="res://Public/icon.png"
 
 [editor_plugins]
@@ -68,6 +68,12 @@ interact={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":69,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="World"
+2d_physics/layer_2="Itens"
+2d_physics/layer_3="Player and NPCs"
 
 [physics]
 
