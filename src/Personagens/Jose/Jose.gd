@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 export(float) var moveSpeed = 10
+export(float) var life = 100
 var isDashing = false
 var canDash = true
 var dashDir = Vector2.ZERO
@@ -50,6 +51,9 @@ func get_move_direction():
 # Função que executa o movimento do personagem
 func _physics_process(delta):
 	velocity = get_move_direction().normalized() * moveSpeed * delta * 1000
+	if Input.is_action_pressed("shift"): 
+		velocity *= 2 
+		
 	verify_direction()
 	animate()
 	dash()
