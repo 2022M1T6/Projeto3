@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Personagens/Jose/Jose.gd" type="Script" id=1]
 [ext_resource path="res://Personagens/Jose/Hitbox.gd" type="Script" id=2]
@@ -20,8 +20,67 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=12]
 resource_name = "attack"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 19, 20, 21, 21 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hitbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, true, false ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 24, 25, 26 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "idle"
+length = 0.66
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "punchAttack"
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -48,23 +107,6 @@ tracks/1/keys = {
 "values": [ true, false, false, true ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "idle"
-length = 0.66
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3, 4, 5 ]
-}
-
 [sub_resource type="Animation" id=6]
 resource_name = "run"
 length = 0.6
@@ -83,7 +125,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 4.21238, 1.88785 )
+extents = Vector2( 7.5221, 1.36345 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 5.33609, 1.85161 )
@@ -104,7 +146,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 1.98679, 0.954307 )
+extents = Vector2( 3.76016, 1.07526 )
 
 [sub_resource type="Curve" id=9]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0681495, 0, 0, Vector2( 1, 0 ), -3.48769, 0.0, 0, 0 ]
@@ -131,26 +173,27 @@ collision_mask = 3
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -3.8147e-06, 5.64515 )
-scale = Vector2( 0.601626, 0.600806 )
+position = Vector2( -0.918714, 5.59677 )
 texture = ExtResource( 4 )
 hframes = 6
 vframes = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 4 )
-anims/attack = SubResource( 7 )
+anims/attack = SubResource( 12 )
+anims/death = SubResource( 13 )
 anims/idle = SubResource( 5 )
+anims/punchAttack = SubResource( 7 )
 anims/run = SubResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.101639, 14.6505 )
+position = Vector2( -0.558937, 21.5725 )
 scale = Vector2( 0.506637, 0.64077 )
 shape = SubResource( 1 )
 
 [node name="Hitbox" type="Area2D" parent="."]
 modulate = Color( 0, 0, 0, 1 )
-position = Vector2( 8.13006, -5.10751 )
+position = Vector2( 7.72357, 2.95698 )
 collision_layer = 32768
 collision_mask = 32768
 script = ExtResource( 2 )
@@ -170,7 +213,7 @@ anims/Attack = SubResource( 3 )
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( -0.157524, 14.7849 )
+position = Vector2( -0.711372, 21.5053 )
 shape = SubResource( 8 )
 
 [node name="dash" type="Timer" parent="."]
