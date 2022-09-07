@@ -70,6 +70,18 @@ func _unhandled_input(event: InputEvent) -> void:
 		animation.play("attack")
 		yield(get_tree().create_timer(0.4),"timeout")
 		attacking = false
+		
+	if event.is_action_pressed("punch") and attacking == false:
+		attacking = true
+		animation.play("punchAttack")
+		yield(get_tree().create_timer(0.4),"timeout")
+		attacking = false
+		
+	if event.is_action_pressed("death") and attacking == false:
+		attacking = true
+		animation.play("death")
+		yield(get_tree().create_timer(0.4),"timeout")
+		attacking = false
 			
 # Função que rege a hurtbox do personagem
 func _on_Hitbox_area_entered(area):
