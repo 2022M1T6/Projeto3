@@ -1,6 +1,12 @@
 extends Node
 
+# Guarda qual machado o usuário ta editando durante o minigame
 var choicedCards = []
+
+# Guarda qual machado o usuário escolheu no último minigame
+var axeChoicedParts = []
+
+# Informações das cartas do minigame
 var cards = [
 	[
 		{
@@ -38,17 +44,17 @@ var cards = [
 			'objeto': false
 		},
 		{
-			'titulo': 'Lâmina simples',
+			'titulo': 'Lâmina Simples',
 			'sprite': "res://Public/Minigame1/laminaSimples.png",
-			'descricao': 'Lâmina balanceada para um lado',
+			'descricao': 'Lâmina balanceada e corte afiado para um lado',
 			'position': Vector2(400, 50),
 			'correto': true,
 			'objeto': false
 		},
 		{
-			'titulo': 'Lâmina longa',
-			'sprite': "res://Public/Minigame1/laminaLonga.png",
-			'descricao': 'Lâmina pesada balanceada para um lado',
+			'titulo': 'Lâmina Pesada',
+			'sprite': "res://Public/Minigame1/laminaPesada.png",
+			'descricao': 'Lâmina pesada, ideal para usos curtos',
 			'position': Vector2(700, 50),
 			'correto': false,
 			'objeto': false
@@ -60,7 +66,7 @@ var cards = [
 			'sprite': "res://Public/Minigame1/cabecoteMadeira.png",
 			'descricao': 'Da para o gasto',
 			'position': Vector2(100, 50),
-			'correto': false,
+			'correto': true,
 			'objeto': false
 		},
 		{
@@ -68,7 +74,7 @@ var cards = [
 			'sprite': "res://Public/Minigame1/cabecoteAco.png",
 			'descricao': 'Fornece mais peso para a cabeça, mais resistente',
 			'position': Vector2(400, 50),
-			'correto': true,
+			'correto': false,
 			'objeto': false
 		},
 		{
@@ -81,3 +87,6 @@ var cards = [
 		}
 	]
 ]
+
+# Guarda um booleano se todas as partes do machado estão ok
+var AxeOk = false
