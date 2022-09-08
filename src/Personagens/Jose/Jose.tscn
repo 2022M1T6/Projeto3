@@ -168,8 +168,8 @@ scale_curve = SubResource( 10 )
 [node name="Jose" type="KinematicBody2D"]
 position = Vector2( 420, 167 )
 scale = Vector2( 4.92001, 3.72001 )
-collision_layer = 4
-collision_mask = 7
+collision_layer = 8
+collision_mask = 15
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
