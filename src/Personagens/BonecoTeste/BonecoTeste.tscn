@@ -14,7 +14,7 @@ extents = Vector2( 107.7, 183 )
 position = Vector2( 95, 126 )
 scale = Vector2( 0.473539, 0.325655 )
 collision_layer = 4
-collision_mask = 7
+collision_mask = 15
 script = ExtResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="."]

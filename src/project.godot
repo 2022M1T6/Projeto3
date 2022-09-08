@@ -14,6 +14,10 @@ config/name="Jogo Grupo 3"
 run/main_scene="res://Cenas/Fases/Fase1/Fase.tscn"
 config/icon="res://Public/icon.png"
 
+[autoload]
+
+GlobalFase1="*res://Cenas/Fases/Fase1/globalFase1.gd"
+
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/vnen.tiled_importer/plugin.cfg" )
