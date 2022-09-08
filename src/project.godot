@@ -11,12 +11,12 @@ config_version=4
 [application]
 
 config/name="Jogo Grupo 3"
-run/main_scene="res://Cenas/Fases/Fase1/Fase.tscn"
+run/main_scene="res://Cenas/Menus/MenuPrincipal.tscn"
 config/icon="res://Public/icon.png"
 
-[autoload]
+[display]
 
-GlobalFase1="*res://Cenas/Fases/Fase1/globalFase1.gd"
+window/size/fullscreen=true
 
 [editor_plugins]
 
