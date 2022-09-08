@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/First Asset pack.png-71069b26f922fb6faf1f291a39e83fa4.stex"
+path="res://.import/king.png-a93ab603cf21e3668f9fe27b21fc4a78.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Public/Tilesets/First Asset pack.png"
-dest_files=[ "res://.import/First Asset pack.png-71069b26f922fb6faf1f291a39e83fa4.stex" ]
+source_file="res://Public/Characters/king.png"
+dest_files=[ "res://.import/king.png-a93ab603cf21e3668f9fe27b21fc4a78.stex" ]
 
 [params]
 

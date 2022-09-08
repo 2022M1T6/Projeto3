@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/First Asset pack.png-71069b26f922fb6faf1f291a39e83fa4.stex"
+path="res://.import/player.png-6a72dd34db3e2823605ee1f1e5dfb957.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Public/Tilesets/First Asset pack.png"
-dest_files=[ "res://.import/First Asset pack.png-71069b26f922fb6faf1f291a39e83fa4.stex" ]
+source_file="res://Public/Characters/player.png"
+dest_files=[ "res://.import/player.png-6a72dd34db3e2823605ee1f1e5dfb957.stex" ]
 
 [params]
 
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

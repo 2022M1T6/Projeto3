@@ -1,9 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Cenas/Utilitarios/Tilesets/Area1/Tileset1.tres" type="TileSet" id=1]
 [ext_resource path="res://Personagens/Jose/Jose.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Cenas/Fases/Fase1/Fase.gd" type="Script" id=3]
 [ext_resource path="res://Public/MiniWorldSprites/Buildings/Wood/Resources.png" type="Texture" id=4]
+[ext_resource path="res://Personagens/King/king.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Personagens/Lumberjack/lumberjack.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Personagens/Blacksmith/blacksmith.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Personagens/Marketer/marketer.tscn" type="PackedScene" id=8]
 
 [sub_resource type="TileSet" id=1]
 0/name = "Resources.png 0"
@@ -22,7 +26,7 @@
 0/z_index = 0
 
 [node name="Node2D" type="Node2D"]
-position = Vector2( 0, 3 )
+position = Vector2( 0, -3 )
 script = ExtResource( 3 )
 
 [node name="Grass" type="TileMap" parent="."]
@@ -47,14 +51,27 @@ tile_data = PoolIntArray( 131102, 1, 262151, 131103, 1, 262147, 131104, 1, 26214
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( -786381, 0, 262151, -720844, 0, 196619, -655308, 0, 393226, -589771, 0, 262151, -524234, 0, 196619, -458698, 0, 393226, -393161, 0, 262151, -327624, 0, 262151, -262087, 0, 196619, -196551, 0, 393226, -131014, 0, 262151, -65477, 0, 196619, 59, 0, 393226, 65596, 0, 262151, 131133, 0, 196619, 196638, 2, 0, 196639, 2, 0, 196644, 2, 0, 196669, 0, 393226, 262172, 2, 0, 262173, 2, 0, 262174, 2, 0, 262182, 2, 0, 262206, 0, 262151, 327707, 3, 0, 327708, 2, 0, 327719, 2, 0, 327743, 0, 262151, 393243, 2, 0, 393253, 3, 0, 393280, 0, 196619, 458779, 2, 0, 458782, 3, 0, 458785, 3, 0, 458816, 0, 393226, 524315, 2, 0, 524353, 0, 262151, 589851, 2, 0, 589859, 3, 0, 589864, 2, 0, 589890, 0, 196619, 655387, 2, 0, 655388, 3, 0, 655397, 3, 0, 655398, 3, 0, 655399, 2, 0, 655426, 0, 393226, 720924, 2, 0, 720926, 3, 0, 720934, 2, 0, 720963, 0, 262151, 786461, 2, 0, 786469, 2, 0, 786500, 0, 196619, 851998, 2, 0, 852002, 3, 0, 852003, 2, 0, 852004, 2, 0, 852036, 0, 393226, 917535, 2, 0, 917537, 2, 0, 917539, 3, 0, 917573, 0, 262151, 983110, 0, 262151, 1048647, 0, 196619, 1114183, 0, 65545, 1179680, 3, 0, 1179719, 0, 131079, 1179720, 0, 327692, 1507360, 3, 0, 1900576, 3, 0, 2228256, 3, 0 )
+tile_data = PoolIntArray( -786381, 0, 262151, -720844, 0, 196619, -655308, 0, 393226, -589771, 0, 262151, -524234, 0, 196619, -458698, 0, 393226, -393161, 0, 262151, -327624, 0, 262151, -262087, 0, 196619, -196551, 0, 393226, -131014, 0, 262151, -65477, 0, 196619, 59, 0, 393226, 65596, 0, 262151, 131133, 0, 196619, 196638, 2, 0, 196639, 2, 0, 196644, 2, 0, 196669, 0, 393226, 262172, 2, 0, 262173, 2, 0, 262174, 2, 0, 262182, 2, 0, 262206, 0, 262151, 327707, 3, 0, 327708, 2, 0, 327719, 2, 0, 327743, 0, 262151, 393243, 2, 0, 393253, 3, 0, 393280, 0, 196619, 458779, 2, 0, 458782, 3, 0, 458785, 3, 0, 458816, 0, 393226, 524315, 2, 0, 524353, 0, 262151, 589851, 2, 0, 589859, 3, 0, 589864, 2, 0, 589890, 0, 196619, 655387, 2, 0, 655388, 3, 0, 655397, 3, 0, 655398, 3, 0, 655399, 2, 0, 655426, 0, 393226, 720924, 2, 0, 720926, 3, 0, 720934, 2, 0, 720963, 0, 262151, 786461, 2, 0, 786469, 2, 0, 786500, 0, 196619, 851998, 2, 0, 852002, 3, 0, 852003, 2, 0, 852004, 2, 0, 852036, 0, 393226, 917535, 2, 0, 917537, 2, 0, 917539, 3, 0, 917573, 0, 262151, 983110, 0, 262151, 1048647, 0, 196619, 1114183, 0, 65545, 1179680, 3, 0, 1179719, 0, 131079, 1179720, 0, 327692, 1507360, 3, 0, 1900576, 3, 0, 2228256, 3, 0, 4063268, 1, 65547, 4128803, 1, 65547, 4128804, 1, 65547, 4128805, 1, 131075, 4128806, 1, 65547, 4194340, 1, 65547 )
+
+[node name="Lumberjack" parent="." instance=ExtResource( 6 )]
+position = Vector2( 492, 72 )
+
+[node name="Blacksmith" parent="." instance=ExtResource( 7 )]
+position = Vector2( 598, 72 )
+
+[node name="King" parent="." instance=ExtResource( 5 )]
+position = Vector2( 558, 147 )
 
 [node name="Jose" parent="." instance=ExtResource( 2 )]
 position = Vector2( 544, 209 )
-scale = Vector2( 2, 2 )
+scale = Vector2( 1, 1 )
 
 [node name="Camera2D" type="Camera2D" parent="Jose"]
 position = Vector2( -24.5934, -5.10751 )
+current = true
+
+[node name="Marketer" parent="." instance=ExtResource( 8 )]
+position = Vector2( 558, 312 )
 
 [node name="TreeAndRocks" type="TileMap" parent="."]
 position = Vector2( 0, -1 )
@@ -67,3 +84,4 @@ tile_data = PoolIntArray( -983024, 5, 0, -851970, 5, 0, -851966, 5, 0, -851954, 
 tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
+tile_data = PoolIntArray( 65535, 0, 0 )
