@@ -91,6 +91,7 @@ func _onMinigameCardPressed(titulo):
 	
 	if actualIndex >= len(GlobalFase1.cards):
 		GlobalFase1.axeChoicedParts = GlobalFase1.choicedCards
+		print(GlobalFase1.axeChoicedParts)
 		removeCards()
 		$Control/ColorRect/Machado.visible = false
 		$Control/ColorRect/MachadoGrande.visible = true
