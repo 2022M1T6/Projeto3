@@ -13,19 +13,19 @@ var dialogoAtual = {"personagem": "", "falas": []}
 # Função que estabelece qual sprite usar quando estiver na fala
 func getDialogSpriteFilePath():
 	if dialogoAtual["personagem"] == 'dellson':
-		return "res://Public/dellsonCaixaDialogo.png"
+		return "res://Public/Characters/dellsonProfile.png"
 	elif dialogoAtual["personagem"] == 'jose':
-		return "res://Personagens/playerProfile.png"
+		return "res://Public/Characters/playerProfile.png"
 	elif dialogoAtual["personagem"] == 'blacksmith':
-		return "res://Personagens/blacksmithProfile.png"
+		return "res://Public/Characters/blacksmithProfile.png"
 	elif dialogoAtual["personagem"] == 'king':
-		return "res://Personagens/kingProfile.png"
+		return "res://Public/Characters/kingProfile.png"
 	elif dialogoAtual["personagem"] == 'lumberjack':
-		return "res://Personagens/lumberjackProfile.png"
+		return "res://Public/Characters/lumberjackProfile.png"
 	elif dialogoAtual["personagem"] == 'marketer':
-		return "res://Personagens/marketerProfile.png"
+		return "res://Public/Characters/marketerProfile.png"
 	else:
-		return "res://Personagens/fabiPerfil.png"
+		return "res://Public/Characters/fabiProfile.png"
 		
 # Função que mostra a próxima mensagem do array de diálogos
 func mostrarMensagem() -> void:
