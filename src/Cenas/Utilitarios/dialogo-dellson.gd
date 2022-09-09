@@ -5,6 +5,7 @@ var podeIrParaProximaLinha = false
 var completarFrase = false
 # Essa variável determina se é a primeira vez que o player vê determinada fala
 var primeiraVez = 0
+var fase1Dialog = [false,false,false,false]
 
 var dialogos = []
 var dialogoAtual = {"personagem": "", "falas": []}
@@ -14,9 +15,17 @@ func getDialogSpriteFilePath():
 	if dialogoAtual["personagem"] == 'dellson':
 		return "res://Public/dellsonCaixaDialogo.png"
 	elif dialogoAtual["personagem"] == 'jose':
-		return "res://Public/Jose.png"
-	
-	return "res://Public/icon.png"
+		return "res://Personagens/playerProfile.png"
+	elif dialogoAtual["personagem"] == 'blacksmith':
+		return "res://Personagens/blacksmithProfile.png"
+	elif dialogoAtual["personagem"] == 'king':
+		return "res://Personagens/kingProfile.png"
+	elif dialogoAtual["personagem"] == 'lumberjack':
+		return "res://Personagens/lumberjackProfile.png"
+	elif dialogoAtual["personagem"] == 'marketer':
+		return "res://Personagens/marketerProfile.png"
+	else:
+		return "res://Personagens/fabiPerfil.png"
 		
 # Função que mostra a próxima mensagem do array de diálogos
 func mostrarMensagem() -> void:
@@ -243,3 +252,277 @@ func _on_Area2D4_area_entered(area):
 		mostrarMensagem()
 		get_tree().paused = true
 		primeiraVez += 1
+
+
+func _on_Marketer_area_entered(area):
+		if fase1Dialog[0] == false:
+			dialogos = [
+				{
+					'personagem': 'marketer',
+					'falas': [
+						'Aaaaaah meu jovem, como eu queria ter essa idade, com a visão que tenho hoje eu poderia ter entendido muitas coisas em minha vida.',
+						'OPS, acabei falando alto, me desculpe e eu não me apresentei, prazer sou o Geraldo e você?'
+					]
+				},
+				{
+					'personagem': 'jose',
+					'falas': [
+						'Prazer me chamo José. Deixa eu te perguntar, você é vendedor também?'
+					]
+				},
+				{
+					'personagem': 'marketer',
+					'falas': [
+						'Sou sim, trabalho há 30 anos como vendedor.'
+					]
+				},
+				{
+					'personagem': 'jose',
+					'falas':[
+						'Há tanto tempo, e como o senhor faz para ter tanto sucesso?'
+					]
+				},
+				{
+					'personagem':'marketer',
+					'falas':[
+						'Tenho um segredo que é tentar compreender os problemas das pessoas e passar a visão do que poderia ser feito, e assim eles se tornam meus clientes e compram muita comida HAHAHA!!',
+						'Quer comprar uma maça? Elas recuperam a fadiga'
+					]
+				}
+			]
+			mostrarMensagem()
+			get_tree().paused = true
+			fase1Dialog[0] = true
+		else:
+			dialogos = [
+				{
+					'personagem':'marketer',
+					'falas':[
+						'Lembre-se, entender o problema é a parte mais importante para resolvê-lo'
+					]
+				}
+			]
+			mostrarMensagem()
+			get_tree().paused = true
+
+
+func _on_King_area_entered(area):
+		if fase1Dialog[1] == false:
+			dialogos = [
+				{
+					'personagem': 'jose',
+					'falas': [
+						'Ei cara, tudo bem? PArece que você viu um fantasma'
+					]
+				},
+				{
+					'personagem': 'king',
+					'falas': [
+						'CARA????? SOU O REI GINALDO SEGUNDO',
+						'Um fantasma não, mas suponho que seja alguma bruxaria! Essas árvores apareceram do nada.'
+					]
+				},
+				{
+					'personagem': 'dellson',
+					'falas': [
+						'(cochicho) Ops, acredito que eu renderizei sem querer…, vamos ajudar esse cara, fiquei com peso na consciência.'
+					]
+				},
+				{
+					'personagem': 'jose',
+					'falas':[
+						'(cochicha) Eu não, você que fez a besteira, então você que resolva'
+					]
+				},
+				{
+					'personagem':'dellson',
+					'falas':[
+						'(cochicho) Ok, deixa que eu resolvo',
+						'Meu amigo aqui vai te ajudar a resolver isso, pode contar com ele'
+					]
+				},
+				{
+					'personagem': 'jose',
+					'falas':[
+						'O que, como as…'
+					]
+				},
+				{
+					'personagem':'king',
+					'falas':[
+						'Bom, precisamos dar um jeito de tirar essas árvores do nosso caminho'
+					]
+				},
+				{
+					'personagem':'jose',
+					'falas':[
+						'...',
+						'Tá bom, vamos pensar em algo'
+					]
+				},
+			]
+			mostrarMensagem()
+			get_tree().paused = true
+			fase1Dialog[1] = true
+			GlobalFase1.kingTalk = true
+		else:
+			dialogos = [
+				{
+					'personagem':'king',
+					'falas':[
+						'Como está o progresso? Eu quero cortar logo essas árvores e voltar para o meu castelo'
+					]
+				}
+			]
+			mostrarMensagem()
+			get_tree().paused = true
+
+
+
+
+
+func _on_Lumberjack_area_entered(area):
+	if fase1Dialog[2] == false and fase1Dialog[1] == true:
+		dialogos = [
+			{
+				'personagem': 'lumberjack',
+				'falas': [
+					'Hey garoto, o que faz aqui?'
+					]
+			},
+			{
+				'personagem': 'jose',
+				'falas': [
+					'Eu caí neste mundo para aprender melhor o modelo de produto, mas o rei está com problemas para chegar ao castelo, por conta destas árvores que estão impedindo o caminho.'
+				]
+			},
+			{
+				'personagem': 'lumberjack',
+				'falas': [
+					'Aaaah, mas ainda não entendi o porquê de bater as mãos na árvore. E que legal, então quer dizer que você é amigo do Dellson!?'
+				]
+			},
+			{
+				'personagem': 'jose',
+				'falas': [
+					'Sim, ele é meu mentor!',
+					'Por que você está com este machado nas mãos?'
+				]
+			},
+			{
+				'personagem': 'lumberjack',
+				'falas': [
+					'HAHA meu jovem, eu sou o melhor lenhador desta região. E se você precisar de ajuda para entender como quebrar uma árvore, eu te ajudarei.'
+				]
+			},
+			{
+				'personagem': 'jose',
+				'falas': [
+					'Qual dica você daria para um iniciante?'
+				]
+			},
+			{
+				'personagem': 'lumberjack',
+				'falas': [
+					'Pode parecer besta, mas as vezes, a ferramenta mais simples é a melhor para o trabalho',
+					'Se você colorir uma faca, a funcinalidade é a mesma. Portanto, gaste tempo pensando no que faz um machado bom para cortar árvores'
+				]
+			}
+		]
+		mostrarMensagem()
+		get_tree().paused = true
+		fase1Dialog[2] = true
+		GlobalFase1.kingTalk = true
+		
+	elif fase1Dialog[2] == false and fase1Dialog[1] == false:
+		dialogos = [
+			{
+				'personagem': 'lumberjack',
+				'falas': [
+					'O rei parece estar com problemas, você pode ir falar com ele?'
+				]
+			}
+		]
+		mostrarMensagem()
+		get_tree().paused = true
+	else:
+		dialogos = [
+			{
+				'personagem': 'lumberjack',
+				'falas': [
+					'Lembre-se, muitas vezes a ferramenta mais simples é a ideal para o problema'
+				]
+			}
+		]
+		mostrarMensagem()
+		get_tree().paused = true
+
+
+func _on_Blacksmith_area_entered(area):
+	if fase1Dialog[3] == false and fase1Dialog[1] == true:
+		dialogos = [
+			{
+				'personagem': 'jose',
+				'falas': [
+					'Olá, o senhor é o ferreiro desta cidade?'
+				]
+			},
+			{
+				'personagem': 'blacksmith',
+				'falas': [
+					'E aí garoto, sim, sou o poderoso Horn, as minhas armas são forjadas com o puro fogo do dragão. O que você precisa?'
+				]
+			},
+			{
+				'personagem': 'jose',
+				'falas': [
+					'Estava precisando de um machado para cortar árvores'
+				]
+			},
+			{
+				'personagem': 'blacksmith',
+				'falas': [
+					'O machado é composto por 3 partes: cabeça, cabo e cabeçote. Tenho 3 modelos para cada parte, cabe a você saber o que é melhor para o seu machado.',
+					'Agora, entre na minha forja e escolha quais partes você quer'
+				]
+			},
+		]
+		mostrarMensagem()
+		get_tree().paused = true
+		fase1Dialog[3] = true
+		GlobalFase1.blacksmithTalk = true
+	elif fase1Dialog[3] == false and fase1Dialog[1] == false:
+		dialogos = [
+			{
+				'personagem': 'blacksmith',
+				'falas': [
+					'Raridade o rei estar aqui, o que será que ele precisa?'
+				]
+			}
+		]
+		mostrarMensagem()
+		get_tree().paused = true
+	else:
+		dialogos = [
+			{
+				'personagem': 'blacksmith',
+				'falas': [
+					'Você precisa de algo? Pode entrar na minha forja'
+				]
+			}
+		]
+		mostrarMensagem()
+		get_tree().paused = true
+
+func _on_MinigameArea2D_area_exited(area):
+	if GlobalFase1.AxeOk == true:
+		dialogos = [
+			{
+				'personagem': 'blacksmith',
+				'falas': [
+					'Acho que esse é o melhor para o serviço, boa sorte!'
+				]
+			}
+		]
+		mostrarMensagem()
+		get_tree().paused = true

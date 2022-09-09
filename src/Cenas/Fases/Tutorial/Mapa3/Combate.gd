@@ -29,7 +29,7 @@ func _on_Hurtbox_area_entered(area):
 		$KinematicBody2D.position = Vector2(0,0)
 
 func _on_Area2D_area_entered(area):
-	get_tree().change_scene("res://Cenas/Fases/Fase1/Fase1.tscn")
+	get_tree().change_scene("res://Cenas/Fases/Fase1/Fase.tscn")
 
 
 func _on_Area2D3_area_entered(area):
