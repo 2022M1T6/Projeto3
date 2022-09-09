@@ -72,7 +72,6 @@ func redefinirMinigame():
 	actualIndex = 0
 	setCards()
 	GlobalFase1.choicedCards = []
-	GlobalFase1.axeChoicedParts = []
 	hide()
 	get_tree().paused = false
 	$Control/ColorRect/Machado/Cabo.texture = null
@@ -92,6 +91,7 @@ func _onMinigameCardPressed(titulo):
 	
 	if actualIndex >= len(GlobalFase1.cards):
 		GlobalFase1.axeChoicedParts = GlobalFase1.choicedCards
+		print(GlobalFase1.axeChoicedParts)
 		removeCards()
 		$Control/ColorRect/Machado.visible = false
 		$Control/ColorRect/MachadoGrande.visible = true
