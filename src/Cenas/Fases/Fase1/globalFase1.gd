@@ -1,5 +1,8 @@
 extends Node
 
+var blacksmithTalk = false
+var kingTalk = false
+
 # Guarda qual machado o usuário ta editando durante o minigame
 var choicedCards = []
 
@@ -12,7 +15,7 @@ var cards = [
 		{
 			'titulo': 'Cabo de Madeira',
 			'sprite': "res://Public/Minigame1/caboMadeira.png",
-			'descricao': 'Cabo leve e resistente com tamanho médio',
+			'descricao': 'O clássico, mais duro do que você imaginava',
 			'position': Vector2(100, 50),
 			'correto': true,
 			'objeto': false
@@ -20,7 +23,7 @@ var cards = [
 		{
 			'titulo': 'Cabo de Aço',
 			'sprite': "res://Public/Minigame1/caboAco.png",
-			'descricao': 'Cabo pesado, muito resistente e tamanho longo',
+			'descricao': 'Muito resistente mas muito pesado',
 			'position': Vector2(400, 50),
 			'correto': false,
 			'objeto': false
@@ -28,7 +31,7 @@ var cards = [
 		{
 			'titulo': 'Cabo de Madeira Curto',
 			'sprite': "res://Public/Minigame1/caboMadeiraCurto.png",
-			'descricao': 'Cabo leve e resistente com tamanho curto',
+			'descricao': 'Ele mal cabe na sua mão',
 			'position': Vector2(700, 50),
 			'correto': false,
 			'objeto': false
@@ -38,15 +41,15 @@ var cards = [
 		{
 			'titulo': 'Lâmina dupla',
 			'sprite': "res://Public/Minigame1/laminaDupla.png",
-			'descricao': 'Corte nos dois lados, ideal para batalhas',
+			'descricao': 'Para batalhas e instigar medo no inimigo',
 			'position': Vector2(100, 50),
 			'correto': false,
 			'objeto': false
 		},
 		{
-			'titulo': 'Lâmina Simples',
+			'titulo': 'Lâmina de Fio Único',
 			'sprite': "res://Public/Minigame1/laminaSimples.png",
-			'descricao': 'Lâmina balanceada e corte afiado para um lado',
+			'descricao': 'Só de encostar na lâmina, você já cortou seu dedo',
 			'position': Vector2(400, 50),
 			'correto': true,
 			'objeto': false
@@ -54,7 +57,7 @@ var cards = [
 		{
 			'titulo': 'Lâmina Pesada',
 			'sprite': "res://Public/Minigame1/laminaPesada.png",
-			'descricao': 'Lâmina pesada, ideal para usos curtos',
+			'descricao': 'Ideal para usos curtos e pessoas muito fortes',
 			'position': Vector2(700, 50),
 			'correto': false,
 			'objeto': false
@@ -64,7 +67,7 @@ var cards = [
 		{
 			'titulo': 'Cabeçote de Madeira',
 			'sprite': "res://Public/Minigame1/cabecoteMadeira.png",
-			'descricao': 'Da para o gasto',
+			'descricao': 'Parece que foi feito com algum tipo de cola de madeira',
 			'position': Vector2(100, 50),
 			'correto': true,
 			'objeto': false
@@ -80,7 +83,7 @@ var cards = [
 		{
 			'titulo': 'Cabeçote pontudo',
 			'sprite': "res://Public/Minigame1/cabecoteLamina.png",
-			'descricao': 'Feito de aço, é uma lâmina a mais para garantir ataque',
+			'descricao': 'É uma lâmina a mais para garantir ataque',
 			'position': Vector2(700, 50),
 			'correto': false,
 			'objeto': false

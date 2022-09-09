@@ -20,7 +20,7 @@ size = 40
 font_data = ExtResource( 8 )
 
 [sub_resource type="CapsuleShape2D" id=3]
-radius = 33.0
+radius = 45.0
 
 [sub_resource type="CapsuleShape2D" id=4]
 radius = 31.0

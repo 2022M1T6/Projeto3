@@ -9,6 +9,7 @@ var velocity = Vector2.ZERO
 var dashSpeed = 600
 var dashLenght= 0.3
 var attacking = false
+var haveAxe
 
 
 onready var animation: AnimationPlayer = get_node("AnimationPlayer")
@@ -62,20 +63,24 @@ func _physics_process(delta):
 	else:
 		move_and_slide(velocity)
 
+func _process(delta):
+	if GlobalFase1.axeChoicedParts == []:
+		haveAxe = false
+	else:
+		haveAxe = true
+
 
 # Função que realiza o movimento de ataque
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("attack") and attacking == false:
-		attacking = true
-		animation.play("attack")
-		yield(get_tree().create_timer(0.4),"timeout")
-		attacking = false
-		
+
 	if event.is_action_pressed("punch") and attacking == false:
-		attacking = true
-		animation.play("punchAttack")
-		yield(get_tree().create_timer(0.4),"timeout")
-		attacking = false
+			attacking = true
+			if haveAxe == false:
+				animation.play("punchAttack")
+			else:
+				animation.play("attack")
+			yield(get_tree().create_timer(0.4),"timeout")
+			attacking = false
 		
 	if event.is_action_pressed("death") and attacking == false:
 		attacking = true
