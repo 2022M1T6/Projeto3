@@ -84,6 +84,7 @@ polygon = PoolVector2Array( -237.384, 250.703, -246.043, 249.977, -244.6, 243.44
 
 [node name="Jose" parent="." instance=ExtResource( 3 )]
 position = Vector2( 53, 268 )
+scale = Vector2( 2, 2 )
 
 [node name="Camera2D" type="Camera2D" parent="Jose"]
 position = Vector2( 76.6259, 4.8387 )
