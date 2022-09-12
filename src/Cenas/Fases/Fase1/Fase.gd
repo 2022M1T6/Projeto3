@@ -4,8 +4,10 @@ var enteredTreeArea = false
 
 func _ready():
 	$Jose/Camera2D/CanvasLayer/PopupMinigame.hide()
-	
 	$TreeAndRocks/TreeArea2D.monitoring = false
+	
+	$Jose/Camera2D/CanvasLayer/Hint/HintText.text = "Descubra a problemática da vila"
+	$Jose/Camera2D/CanvasLayer/Hint.visible = true
 
 func _on_Area2D2_area_entered(area):
 	GlobalFase1.axeChoicedParts = []
@@ -50,10 +52,6 @@ func _on_TreeArea2D_area_entered(area):
 	
 func _on_TreeArea2D_area_exited(area):
 	enteredTreeArea = false
-
-
-
-
 
 func _on_Area2D_area_entered(area):
 	get_tree().change_scene("res://Cenas/Utilitarios/FimDemo.tscn")

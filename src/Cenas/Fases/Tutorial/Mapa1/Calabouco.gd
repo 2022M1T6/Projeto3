@@ -6,7 +6,8 @@ func _on_Area2D_area_shape_entered(area_rid, area, area_shape_index, local_shape
 
 
 func _on_TutoraiMapa1Fala1_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
-	$Jose/Camera2D/CanvasLayer/Hint.text = ' -> Procure e vá até Dellson'
+	$Jose/Camera2D/CanvasLayer/Hint.visible = true
+	$Jose/Camera2D/CanvasLayer/Hint/HintText.text = 'Procure e vá até Dellson'
 
 
 func _on_TutoraiMapa1Fala2_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
@@ -14,7 +15,7 @@ func _on_TutoraiMapa1Fala2_area_shape_entered(area_rid, area, area_shape_index, 
 
 
 func _on_TutoraiMapa1Fala2_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
-	$Jose/Camera2D/CanvasLayer/Hint.text = ' -> Vá até a próxima área atrás de Dellson'
+	$Jose/Camera2D/CanvasLayer/Hint/HintText.text = 'Vá até a próxima área atrás de Dellson'
 	$Jose/Camera2D/CanvasLayer/Hint.visible = true
 
 

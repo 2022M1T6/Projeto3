@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Cenas/Utilitarios/Tilesets/Area1/Tileset1.tres" type="TileSet" id=1]
 [ext_resource path="res://Personagens/Jose/Jose.tscn" type="PackedScene" id=2]
@@ -9,15 +9,11 @@
 [ext_resource path="res://Personagens/Blacksmith/blacksmith.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Personagens/Marketer/marketer.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Cenas/Fases/Fase1/minigame.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Cenas/Utilitarios/Hint/Hint.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Cenas/Utilitarios/popupDialogo.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Outros/balaoDialogo.png" type="Texture" id=12]
 [ext_resource path="res://Outros/balaoMissao.png" type="Texture" id=13]
-[ext_resource path="res://Public/Fonts/Kenney Pixel.ttf" type="DynamicFontData" id=14]
 [ext_resource path="res://Cenas/Utilitarios/PopupPause.tscn" type="PackedScene" id=15]
-
-[sub_resource type="DynamicFont" id=10]
-size = 40
-font_data = ExtResource( 14 )
 
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 31.5, 19.5 )
@@ -99,15 +95,8 @@ editor_draw_drag_margin = true
 [node name="PopupMinigame" parent="Jose/Camera2D/CanvasLayer" instance=ExtResource( 9 )]
 
 [node name="PopupDialog" parent="Jose/Camera2D/CanvasLayer" instance=ExtResource( 11 )]
-visible = false
 
-[node name="Hint" type="Label" parent="Jose/Camera2D/CanvasLayer"]
-margin_left = 15.0
-margin_top = 5.0
-margin_right = 403.0
-margin_bottom = 35.0
-custom_fonts/font = SubResource( 10 )
-text = "-> Pressione E para conversar"
+[node name="Hint" parent="Jose/Camera2D/CanvasLayer" instance=ExtResource( 10 )]
 
 [node name="Lumberjack" parent="." instance=ExtResource( 6 )]
 position = Vector2( 412, 43 )
