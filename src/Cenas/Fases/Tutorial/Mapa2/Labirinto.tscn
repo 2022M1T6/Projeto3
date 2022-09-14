@@ -1,15 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Personagens/Jose/Jose.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Public/backgroundTutorial2.png" type="Texture" id=2]
 [ext_resource path="res://Cenas/Fases/Tutorial/Mapa2/Labirinto.gd" type="Script" id=3]
 [ext_resource path="res://Cenas/Utilitarios/popupDialogo.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Cenas/Utilitarios/PopupPause.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Public/Fonts/Kenney Pixel.ttf" type="DynamicFontData" id=6]
-
-[sub_resource type="DynamicFont" id=4]
-size = 40
-font_data = ExtResource( 6 )
+[ext_resource path="res://Cenas/Utilitarios/Hint/Hint.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 48.5, 34 )
@@ -53,12 +49,7 @@ editor_draw_drag_margin = true
 
 [node name="PopupDialog" parent="Jose/Camera2D/CanvasLayer" instance=ExtResource( 4 )]
 
-[node name="Hint" type="Label" parent="Jose/Camera2D/CanvasLayer"]
-margin_left = 16.0
-margin_top = 7.0
-margin_right = 668.0
-margin_bottom = 57.0
-custom_fonts/font = SubResource( 4 )
+[node name="Hint" parent="Jose/Camera2D/CanvasLayer" instance=ExtResource( 6 )]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

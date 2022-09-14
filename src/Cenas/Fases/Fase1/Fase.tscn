@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Cenas/Utilitarios/Tilesets/Area1/Tileset1.tres" type="TileSet" id=1]
 [ext_resource path="res://Personagens/Jose/Jose.tscn" type="PackedScene" id=2]
@@ -9,15 +9,9 @@
 [ext_resource path="res://Personagens/Blacksmith/blacksmith.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Personagens/Marketer/marketer.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Cenas/Fases/Fase1/minigame.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Cenas/Utilitarios/Hint/Hint.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Cenas/Utilitarios/popupDialogo.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Outros/balaoDialogo.png" type="Texture" id=12]
-[ext_resource path="res://Outros/balaoMissao.png" type="Texture" id=13]
-[ext_resource path="res://Public/Fonts/Kenney Pixel.ttf" type="DynamicFontData" id=14]
 [ext_resource path="res://Cenas/Utilitarios/PopupPause.tscn" type="PackedScene" id=15]
-
-[sub_resource type="DynamicFont" id=10]
-size = 40
-font_data = ExtResource( 14 )
 
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 31.5, 19.5 )
@@ -26,13 +20,13 @@ extents = Vector2( 31.5, 19.5 )
 extents = Vector2( 34, 31.5 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 10.25, 1 )
+extents = Vector2( 31, 1 )
 
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 35.5, 10 )
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 17.5, 14.5 )
+extents = Vector2( 25, 19.5 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 16, 72 )
@@ -84,7 +78,7 @@ collision_mask = 143
 [node name="Camera2D" type="Camera2D" parent="Jose"]
 position = Vector2( -1, 6 )
 current = true
-zoom = Vector2( 0.5, 0.5 )
+zoom = Vector2( 0.3, 0.3 )
 limit_left = 0
 limit_top = -194
 limit_right = 1343
@@ -99,21 +93,13 @@ editor_draw_drag_margin = true
 [node name="PopupMinigame" parent="Jose/Camera2D/CanvasLayer" instance=ExtResource( 9 )]
 
 [node name="PopupDialog" parent="Jose/Camera2D/CanvasLayer" instance=ExtResource( 11 )]
-visible = false
 
-[node name="Hint" type="Label" parent="Jose/Camera2D/CanvasLayer"]
-margin_left = 15.0
-margin_top = 5.0
-margin_right = 403.0
-margin_bottom = 35.0
-custom_fonts/font = SubResource( 10 )
-text = "-> Pressione E para conversar"
+[node name="Hint" parent="Jose/Camera2D/CanvasLayer" instance=ExtResource( 10 )]
 
 [node name="Lumberjack" parent="." instance=ExtResource( 6 )]
 position = Vector2( 412, 43 )
 
 [node name="Lumberjack" type="Area2D" parent="Lumberjack"]
-monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lumberjack/Lumberjack"]
 position = Vector2( 4.5, 9.5 )
@@ -123,7 +109,6 @@ shape = SubResource( 8 )
 position = Vector2( 538, 76 )
 
 [node name="King" type="Area2D" parent="King"]
-monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="King/King"]
 position = Vector2( 2, 3.5 )
@@ -138,11 +123,10 @@ collision_mask = 15
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blacksmith/MinigameArea2D"]
-position = Vector2( 13.25, 4 )
+position = Vector2( 11, 4 )
 shape = SubResource( 2 )
 
 [node name="Blacksmith" type="Area2D" parent="Blacksmith"]
-monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blacksmith/Blacksmith"]
 position = Vector2( 14.5, 15.5 )
@@ -153,10 +137,9 @@ position = Vector2( 558, 312 )
 
 [node name="Marketer" type="Area2D" parent="Marketer"]
 collision_layer = 15
-monitoring = false
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Marketer/Marketer"]
-position = Vector2( -0.5, 10.5 )
+position = Vector2( -8, 15.5 )
 shape = SubResource( 6 )
 
 [node name="TreeAndRocks" type="TileMap" parent="."]
@@ -185,41 +168,27 @@ visible = false
 position = Vector2( 0, -12 )
 polygon = PoolVector2Array( 672, 170, 957, 171, 955, 91, 905, 91, 865, 97, 703, 93, 680, -42, 590, -24, 587, 47, 485, 50, 477, -41, 381, -41, 370, 66, 415, 99, 431, 201, 498, 258, 492, 753, 582, 753, 583, 829, 485, 828, -62, 820, -58, -187, 1351, -185, 1345, 830, 583, 828, 583, 247 )
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 834, 327 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 12 )
-offset = Vector2( -542, -55 )
-
-[node name="Sprite2" type="Sprite" parent="."]
-position = Vector2( 548, 57 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 13 )
-
-[node name="Sprite3" type="Sprite" parent="."]
-visible = false
-position = Vector2( 421, 33 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 12 )
-
-[node name="Sprite4" type="Sprite" parent="."]
-visible = false
-position = Vector2( 662, 37 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 13 )
-
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 928.5, 120 )
 shape = SubResource( 11 )
 
+[connection signal="area_entered" from="Lumberjack/Lumberjack" to="." method="_on_Lumberjack_area_entered"]
 [connection signal="area_entered" from="Lumberjack/Lumberjack" to="Jose/Camera2D/CanvasLayer/PopupDialog" method="_on_Lumberjack_area_entered"]
+[connection signal="area_exited" from="Lumberjack/Lumberjack" to="." method="_on_Lumberjack_area_exited"]
+[connection signal="area_entered" from="King/King" to="." method="_on_King_area_entered"]
 [connection signal="area_entered" from="King/King" to="Jose/Camera2D/CanvasLayer/PopupDialog" method="_on_King_area_entered"]
+[connection signal="area_exited" from="King/King" to="." method="_on_King_area_exited"]
 [connection signal="area_entered" from="Blacksmith/MinigameArea2D" to="." method="_on_Area2D2_area_entered"]
+[connection signal="area_exited" from="Blacksmith/MinigameArea2D" to="." method="_on_MinigameArea2D_area_exited"]
 [connection signal="area_exited" from="Blacksmith/MinigameArea2D" to="Jose/Camera2D/CanvasLayer/PopupDialog" method="_on_MinigameArea2D_area_exited"]
+[connection signal="area_entered" from="Blacksmith/Blacksmith" to="." method="_on_Blacksmith_area_entered"]
 [connection signal="area_entered" from="Blacksmith/Blacksmith" to="Jose/Camera2D/CanvasLayer/PopupDialog" method="_on_Blacksmith_area_entered"]
+[connection signal="area_exited" from="Blacksmith/Blacksmith" to="." method="_on_Blacksmith_area_exited"]
+[connection signal="area_entered" from="Marketer/Marketer" to="." method="_on_Marketer_area_entered"]
 [connection signal="area_entered" from="Marketer/Marketer" to="Jose/Camera2D/CanvasLayer/PopupDialog" method="_on_Marketer_area_entered"]
+[connection signal="area_exited" from="Marketer/Marketer" to="." method="_on_Marketer_area_exited"]
 [connection signal="area_entered" from="TreeAndRocks/TreeArea2D" to="." method="_on_TreeArea2D_area_entered"]
 [connection signal="area_exited" from="TreeAndRocks/TreeArea2D" to="." method="_on_TreeArea2D_area_exited"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/balaoMissao.png-653842fe611114c5366b6a8659aa9be8.stex"
+path="res://.import/balaoMissao.png-4a94239f3c78303eb8f3e1e501480ba5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Outros/balaoMissao.png"
-dest_files=[ "res://.import/balaoMissao.png-653842fe611114c5366b6a8659aa9be8.stex" ]
+source_file="res://Public/Utilitarios/balaoMissao.png"
+dest_files=[ "res://.import/balaoMissao.png-4a94239f3c78303eb8f3e1e501480ba5.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
