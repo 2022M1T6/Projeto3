@@ -18,10 +18,6 @@ config/icon="res://Public/icon.png"
 
 GlobalFase1="*res://Cenas/Fases/Fase1/globalFase1.gd"
 
-[display]
-
-window/size/fullscreen=true
-
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/vnen.tiled_importer/plugin.cfg" )
