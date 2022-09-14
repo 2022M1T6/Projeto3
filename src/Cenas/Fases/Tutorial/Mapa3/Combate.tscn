@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Personagens/Jose/Jose.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Public/WhatsApp Image 2022-08-24 at 20.44.49.jpeg" type="Texture" id=2]
@@ -7,7 +7,7 @@
 [ext_resource path="res://Cenas/Utilitarios/PopupPause.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Cenas/Fases/Tutorial/Mapa3/Combate.gd" type="Script" id=6]
 [ext_resource path="res://Public/dellson1.png" type="Texture" id=7]
-[ext_resource path="res://Public/Fonts/Kenney Pixel.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://Cenas/Utilitarios/Hint/Hint.tscn" type="PackedScene" id=8]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 22.3607
@@ -15,12 +15,8 @@ radius = 22.3607
 [sub_resource type="CircleShape2D" id=2]
 radius = 20.9308
 
-[sub_resource type="DynamicFont" id=9]
-size = 40
-font_data = ExtResource( 8 )
-
 [sub_resource type="CapsuleShape2D" id=3]
-radius = 33.0
+radius = 45.0
 
 [sub_resource type="CapsuleShape2D" id=4]
 radius = 31.0
@@ -41,12 +37,9 @@ extents = Vector2( 92.5, 10 )
 script = ExtResource( 6 )
 
 [node name="WhatsAppImage2022-08-24At204449" type="Sprite" parent="."]
-position = Vector2( 642.5, 347.5 )
-scale = Vector2( 2.71875, 2.20937 )
+position = Vector2( 642.5, 359.5 )
+scale = Vector2( 2.71875, 2.28437 )
 texture = ExtResource( 2 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Dellson1" type="Sprite" parent="."]
 position = Vector2( 689, 195 )
@@ -62,13 +55,13 @@ __meta__ = {
 }
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PoolVector2Array( -4, 0, 470.909, -3.05176e-05, 469.091, 155.238, 441, 154, 441, 145, 268, 144, 268, 153, 203, 152, 202, 141, 32, 140, 33, 158, -2, 158 )
+polygon = PoolVector2Array( -4, 0, 470.909, -3.05176e-05, 471.818, 168.571, 442.727, 167.619, 445.455, 153.333, 261.818, 154.286, 263.636, 173.333, 204.545, 173.333, 204.545, 158.095, 27.2727, 159.048, 28.1818, 180, 0, 180.952 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PoolVector2Array( 1, 0, -1, 270, 1175, 264, 1174, -302, 1136, -302, 1137, -204, 1023, -203, 1023, -324, 901, -324, 901, -205, 787, -205, 758, -208, 703, -210, 697, -203, 675, -204, 666, -217, 588, -218, 580, -205, 555, -204, 546, -223, 544, -205, 474, -205, 471, -218, 307, -218, 307, -207, 261, -208, 257, -271, 244, -270, 244, -285, 244, -298, -1, -298, -2, 56, -98, 54, -92, -446, 1229, -446, 1229, 324, -27, 325 )
+polygon = PoolVector2Array( 1, 0, -0.909091, 288.571, 1181.82, 291.429, 1174, -302, 1136, -302, 1137, -204, 1023, -203, 1023, -324, 894.545, -322.857, 894.545, -205.714, 787, -205, 758, -208, 703, -210, 697, -203, 675, -204, 666, -217, 588, -218, 580, -205, 555, -204, 546, -223, 544, -205, 474, -205, 471, -218, 307, -218, 307, -207, 261, -208, 257, -271, 244, -270, 244, -285, 244, -298, -1, -298, -2, 56, -98, 54, -92, -446, 1229, -446, 1229, -192.515, 1229, 324, -27, 325 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -89,6 +82,7 @@ __meta__ = {
 
 [node name="Jose" parent="." instance=ExtResource( 1 )]
 position = Vector2( 43, 611 )
+scale = Vector2( 4, 4 )
 
 [node name="Camera2D" type="Camera2D" parent="Jose"]
 position = Vector2( 90.447, -53.4945 )
@@ -110,12 +104,7 @@ editor_draw_drag_margin = true
 
 [node name="PopupDialog" parent="Jose/Camera2D/CanvasLayer" instance=ExtResource( 3 )]
 
-[node name="Hint" type="Label" parent="Jose/Camera2D/CanvasLayer"]
-margin_left = 16.0
-margin_top = 7.0
-margin_right = 668.0
-margin_bottom = 57.0
-custom_fonts/font = SubResource( 9 )
+[node name="Hint" parent="Jose/Camera2D/CanvasLayer" instance=ExtResource( 8 )]
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
 

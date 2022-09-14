@@ -1,10 +1,12 @@
 extends PopupDialog
 
 onready var dialogBoxLabel = $DialogBox/Label
+var startedDialog = false
 var podeIrParaProximaLinha = false
 var completarFrase = false
 # Essa variável determina se é a primeira vez que o player vê determinada fala
 var primeiraVez = 0
+var fase1Dialog = [false,false,false,false]
 
 var dialogos = []
 var dialogoAtual = {"personagem": "", "falas": []}
@@ -12,23 +14,61 @@ var dialogoAtual = {"personagem": "", "falas": []}
 # Função que estabelece qual sprite usar quando estiver na fala
 func getDialogSpriteFilePath():
 	if dialogoAtual["personagem"] == 'dellson':
-		return "res://Public/dellsonCaixaDialogo.png"
+		return "res://Public/Characters/dellsonProfile.png"
 	elif dialogoAtual["personagem"] == 'jose':
-		return "res://Public/Jose.png"
+		return "res://Public/Characters/playerProfile.png"
+	elif dialogoAtual["personagem"] == 'blacksmith':
+		return "res://Public/Characters/blacksmithProfile.png"
+	elif dialogoAtual["personagem"] == 'king':
+		return "res://Public/Characters/kingProfile.png"
+	elif dialogoAtual["personagem"] == 'lumberjack':
+		return "res://Public/Characters/lumberjackProfile.png"
+	elif dialogoAtual["personagem"] == 'marketer':
+		return "res://Public/Characters/marketerProfile.png"
+	else:
+		return "res://Public/Characters/fabiProfile.png"
+
+
+func sendDialog(dialog):
+	if startedDialog:
+		return
 	
-	return "res://Public/icon.png"
-		
-# Função que mostra a próxima mensagem do array de diálogos
-func mostrarMensagem() -> void:
+	addDialog(dialog)
+	startedDialog = true
+	showMessage()	
+	get_tree().paused = true
+	
+# Função que adiciona um array de diálogo para a lista
+func addDialog(dialog):
+	match typeof(dialog):
+		18:
+			dialogos.append(dialog)
+		19:
+			dialogos.append_array(dialog)
+			
+func killDialog():
+	startedDialog = false
+	hide()
+	get_tree().paused = false
+	
+func getNextSpeak():
 	if dialogoAtual["falas"].size() == 0 && dialogos.size() == 0:
-		get_tree().paused = false
-		hide()
 		return
 	
 	if(dialogoAtual["falas"].size() == 0):
 		dialogoAtual = dialogos.pop_front()
+		return getNextSpeak()
+	else:
+		return dialogoAtual["falas"].pop_front()
 	
-	var text = dialogoAtual["falas"].pop_front()	
+# Função que mostra a próxima mensagem do array de diálogos
+func showMessage() -> void:
+	var text = getNextSpeak()
+	
+	if !text:
+		killDialog()
+		return
+		
 	dialogBoxLabel.percent_visible = 0
 	dialogBoxLabel.text = text
 	podeIrParaProximaLinha = false
@@ -38,12 +78,12 @@ func mostrarMensagem() -> void:
 
 	show()
 	return
-	
+
 # Neste caso, esta função serve para que ao pressionar o botão E, a fala mude para a próxima
-func _process(delta):
-	if Input.is_action_just_pressed("interact"):
+func _unhandled_key_input(event):
+	if Input.is_action_just_pressed("interact") && startedDialog:
 		if(podeIrParaProximaLinha):
-			mostrarMensagem()
+			showMessage()
 		else:
 			completarFrase = true
 
@@ -69,6 +109,7 @@ func _on_Timer_timeout():
 
 
 func _on_TutoraiMapa1Fala1_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
+	startedDialog = true
 	if primeiraVez == 0:
 		dialogos = [
 			{
@@ -104,7 +145,7 @@ func _on_TutoraiMapa1Fala1_area_shape_entered(area_rid, area, area_shape_index, 
 				]
 			}
 		]
-		mostrarMensagem()
+		showMessage()
 		get_tree().paused = true
 		primeiraVez += 1
 	
@@ -112,6 +153,7 @@ func _on_TutoraiMapa1Fala1_area_shape_entered(area_rid, area, area_shape_index, 
 
 
 func _on_TutoraiMapa1Fala2_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
+	startedDialog = true
 	if primeiraVez == 1:
 		dialogos = [
 			{
@@ -137,12 +179,13 @@ func _on_TutoraiMapa1Fala2_area_shape_entered(area_rid, area, area_shape_index, 
 				]
 			}
 		]
-		mostrarMensagem()
+		showMessage()
 		get_tree().paused = true
 		primeiraVez += 1
 
 
 func _on_TutorialMapa2Fala1_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
+	startedDialog = true
 	if primeiraVez == 0:
 		dialogos = [
 			{
@@ -153,12 +196,13 @@ func _on_TutorialMapa2Fala1_area_shape_entered(area_rid, area, area_shape_index,
 				]
 			},
 		]
-		mostrarMensagem()
+		showMessage()
 		get_tree().paused = true
 		primeiraVez +=1
 
 
 func _on_TuroailMapa2Fala2_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
+	startedDialog = true
 	if primeiraVez == 1:
 		dialogos = [
 			{
@@ -170,12 +214,13 @@ func _on_TuroailMapa2Fala2_area_shape_entered(area_rid, area, area_shape_index, 
 				]
 			}
 		]
-		mostrarMensagem()
+		showMessage()
 		get_tree().paused = true
 		primeiraVez += 1
 
 
 func _on_Area2D2_area_entered(area):
+	startedDialog = true
 	if primeiraVez == 0:
 		dialogos = [
 			{
@@ -191,12 +236,13 @@ func _on_Area2D2_area_entered(area):
 				]
 			}
 		]
-		mostrarMensagem()
+		showMessage()
 		get_tree().paused = true
 		primeiraVez += 1
 
 
 func _on_Hurtbox_area_entered(area):
+	startedDialog = true
 	if primeiraVez == 1:
 		dialogos = [
 			{
@@ -207,12 +253,13 @@ func _on_Hurtbox_area_entered(area):
 				]
 			}
 		]
-		mostrarMensagem()
+		showMessage()
 		get_tree().paused = true
 		primeiraVez +=1
 		
 
 func _on_Area2D3_area_entered(area):
+	startedDialog = true
 	if primeiraVez == 2:
 		dialogos = [
 			{
@@ -224,12 +271,13 @@ func _on_Area2D3_area_entered(area):
 				]
 			}
 		]
-		mostrarMensagem()
+		showMessage()
 		get_tree().paused = true
 		primeiraVez += 1
 
 
 func _on_Area2D4_area_entered(area):
+	startedDialog = true
 	if primeiraVez == 3:
 		dialogos = [
 			{
@@ -240,6 +288,6 @@ func _on_Area2D4_area_entered(area):
 				]
 			}
 		]
-		mostrarMensagem()
+		showMessage()
 		get_tree().paused = true
 		primeiraVez += 1
