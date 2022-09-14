@@ -7,7 +7,7 @@
 [ext_resource path="res://Cenas/Utilitarios/popupDialogo.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Cenas/Fases/Tutorial/Mapa1/Calabouco.gd" type="Script" id=6]
 [ext_resource path="res://Cenas/Utilitarios/Hint/Hint.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Outros/balaoMissao.png" type="Texture" id=8]
+[ext_resource path="res://Public/Utilitarios/balaoMissao.png" type="Texture" id=8]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 134.876, 27.211 )
