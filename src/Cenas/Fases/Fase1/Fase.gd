@@ -254,7 +254,7 @@ func sendBlacksmithDialog():
 	else:
 		if fase1Dialog.king:
 			fase1Dialog.blacksmith = true
-			$Blacksmith/MinigameArea2D.monitoring = true
+			$Blacksmith/Blacksmith.monitoring = true
 			$Jose/Camera2D/CanvasLayer/PopupDialog.call("sendDialog", [
 				{
 					'personagem': 'jose',
