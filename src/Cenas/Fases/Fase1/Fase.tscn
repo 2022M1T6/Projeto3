@@ -23,6 +23,9 @@ extents = Vector2( 34, 31.5 )
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 35.5, 12.25 )
 
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 32, 5 )
+
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 25, 19.5 )
 
@@ -113,13 +116,20 @@ position = Vector2( 2, 3.5 )
 shape = SubResource( 7 )
 
 [node name="Blacksmith" parent="." instance=ExtResource( 7 )]
-position = Vector2( 650, 45 )
+position = Vector2( 646, 49 )
 
 [node name="Blacksmith" type="Area2D" parent="Blacksmith"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blacksmith/Blacksmith"]
 position = Vector2( 14.5, 13.25 )
 shape = SubResource( 9 )
+
+[node name="MinigameArea2D" type="Area2D" parent="Blacksmith"]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Blacksmith/MinigameArea2D"]
+position = Vector2( 11, -5 )
+shape = SubResource( 12 )
 
 [node name="Marketer" parent="." instance=ExtResource( 8 )]
 position = Vector2( 558, 312 )
@@ -176,6 +186,8 @@ volume_db = 4.37
 [connection signal="area_entered" from="Blacksmith/Blacksmith" to="." method="_on_Blacksmith_area_entered"]
 [connection signal="area_entered" from="Blacksmith/Blacksmith" to="Jose/Camera2D/CanvasLayer/PopupDialog" method="_on_Blacksmith_area_entered"]
 [connection signal="area_exited" from="Blacksmith/Blacksmith" to="." method="_on_Blacksmith_area_exited"]
+[connection signal="area_entered" from="Blacksmith/MinigameArea2D" to="." method="_on_MinigameArea2D_area_entered"]
+[connection signal="area_exited" from="Blacksmith/MinigameArea2D" to="." method="_on_MinigameArea2D_area_exited"]
 [connection signal="area_entered" from="Marketer/Marketer" to="." method="_on_Marketer_area_entered"]
 [connection signal="area_entered" from="Marketer/Marketer" to="Jose/Camera2D/CanvasLayer/PopupDialog" method="_on_Marketer_area_entered"]
 [connection signal="area_exited" from="Marketer/Marketer" to="." method="_on_Marketer_area_exited"]

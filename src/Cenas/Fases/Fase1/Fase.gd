@@ -15,15 +15,8 @@ func _ready():
 	$Jose/Camera2D/CanvasLayer/Hint/HintText.text = "Fale com os NPCs"
 	$Jose/Camera2D/CanvasLayer/Hint.visible = true
 	
-	$Marketer.call("setInteraction", 1)
+	$Marketer.setInteraction(1)
 	$VillageSound.play()
-
-# Função que executa a chamada do minigame da fase 1
-func _on_Area2D2_area_entered(area):
-	GlobalFase1.axeChoicedParts = []
-	get_tree().paused = true
-	$Jose/Camera2D/CanvasLayer/PopupMinigame.show()
-	$Jose/Camera2D/CanvasLayer/PopupMinigame/Control.show()
 
 # Função que verifica se o usuário concluiu o minigame e pode cortar o tronco caído
 func _process(delta):
@@ -41,7 +34,7 @@ func verifyAndRemoveTree():
 # Faz o envio dos diálogos do marketer
 func sendMarketerDialog():
 	if fase1Dialog.marketer:
-		$Jose/Camera2D/CanvasLayer/PopupDialog.call("sendDialog", [
+		$Jose/Camera2D/CanvasLayer/PopupDialog.sendDialog([
 				{
 					'personagem':'marketer',
 					'falas':[
@@ -49,12 +42,12 @@ func sendMarketerDialog():
 					]
 				}
 		])
-		$Marketer.call("setInteraction", 0)
+		$Marketer.setInteraction(0)
 	else:
 		fase1Dialog.marketer = true # Marca que o jogador já falou com o Marketer
-		$Marketer.call("setInteraction", 0) # Muda a interação do marketer para sem balão
-		$King.call("setInteraction", 1)
-		$Jose/Camera2D/CanvasLayer/PopupDialog.call("sendDialog", [ # Envia o diálogo do marketer
+		$Marketer.setInteraction(0) # Muda a interação do marketer para sem balão
+		$King.setInteraction(1)
+		$Jose/Camera2D/CanvasLayer/PopupDialog.sendDialog([ # Envia o diálogo do marketer
 				{
 					'personagem': 'marketer',
 					'falas': [
@@ -92,7 +85,7 @@ func sendMarketerDialog():
 # Faz o envio dos diálogos do king
 func sendKingDialog():
 	if fase1Dialog.king:
-		$Jose/Camera2D/CanvasLayer/PopupDialog.call("sendDialog", [
+		$Jose/Camera2D/CanvasLayer/PopupDialog.sendDialog([
 			{
 				'personagem':'king',
 				'falas':[
@@ -102,8 +95,8 @@ func sendKingDialog():
 		])
 	else:
 		fase1Dialog.king = true
-		$King.call("setInteraction", 0) # Tira o balão do king
-		$Jose/Camera2D/CanvasLayer/PopupDialog.call("sendDialog", [ # Envia o diálogo com king
+		$King.setInteraction(0) # Tira o balão do king
+		$Jose/Camera2D/CanvasLayer/PopupDialog.sendDialog([ # Envia o diálogo com king
 			{
 				'personagem': 'jose',
 				'falas': [
@@ -156,15 +149,15 @@ func sendKingDialog():
 				]
 			},
 		])
-		$Marketer.call("setInteraction", 0) # Seta a interação para sem balões para o marketer		
-		$Blacksmith.call("setInteraction", 1) # Seta o balão de missão para o blacksmith
-		$Lumberjack.call("setInteraction", 2) # Seta o balão de diálogo para o lumberjack
+		$Marketer.setInteraction(0) # Seta a interação para sem balões para o marketer		
+		$Blacksmith.setInteraction(1) # Seta o balão de missão para o blacksmith
+		$Lumberjack.setInteraction(2) # Seta o balão de diálogo para o lumberjack
 		
 # Faz o envio dos diálogos do lumberjack
 func sendLumberjackDialog():
 	if fase1Dialog.lumberjack:
 		if fase1Dialog.king:
-			$Jose/Camera2D/CanvasLayer/PopupDialog.call("sendDialog", [
+			$Jose/Camera2D/CanvasLayer/PopupDialog.sendDialog([
 				{
 					'personagem': 'lumberjack',
 					'falas': [
@@ -173,7 +166,7 @@ func sendLumberjackDialog():
 				}
 			])
 		else:
-			$Jose/Camera2D/CanvasLayer/PopupDialog.call("sendDialog", [
+			$Jose/Camera2D/CanvasLayer/PopupDialog.sendDialog([
 				{
 					'personagem': 'lumberjack',
 					'falas': [
@@ -183,7 +176,7 @@ func sendLumberjackDialog():
 			])
 	else:
 		fase1Dialog.lumberjack = true
-		$Jose/Camera2D/CanvasLayer/PopupDialog.call("sendDialog", [
+		$Jose/Camera2D/CanvasLayer/PopupDialog.sendDialog([
 			{
 				'personagem': 'lumberjack',
 				'falas': [
@@ -233,7 +226,7 @@ func sendLumberjackDialog():
 # Faz o envio dos diálogos do blacksmith
 func sendBlacksmithDialog():
 	if fase1Dialog.blacksmith:
-		$Jose/Camera2D/CanvasLayer/PopupDialog.call("sendDialog", [
+		$Jose/Camera2D/CanvasLayer/PopupDialog.sendDialog([
 			{
 				'personagem': 'blacksmith',
 				'falas': [
@@ -245,7 +238,7 @@ func sendBlacksmithDialog():
 		if fase1Dialog.king:
 			fase1Dialog.blacksmith = true
 			$Blacksmith/MinigameArea2D.monitoring = true
-			$Jose/Camera2D/CanvasLayer/PopupDialog.call("sendDialog", [
+			$Jose/Camera2D/CanvasLayer/PopupDialog.sendDialog([
 				{
 					'personagem': 'jose',
 					'falas': [
@@ -273,7 +266,7 @@ func sendBlacksmithDialog():
 				},
 			])
 		else:
-			$Jose/Camera2D/CanvasLayer/PopupDialog.call("sendDialog", [
+			$Jose/Camera2D/CanvasLayer/PopupDialog.sendDialog([
 				{
 					'personagem': 'blacksmith',
 					'falas': [
@@ -302,35 +295,35 @@ func _on_TreeArea2D_area_exited(area):
 	enteredTreeArea = false
 
 func _on_Lumberjack_area_entered(area):
-	$Lumberjack.call("setState", 1)
+	$Lumberjack.setState(1)
 	enteredLumberjackArea = true
 
 func _on_Lumberjack_area_exited(area):
-	$Lumberjack.call("setState", 0)
+	$Lumberjack.setState(0)
 	enteredLumberjackArea = false
 
 func _on_King_area_entered(area):
-	$King.call("setState", 1)
+	$King.setState(1)
 	enteredKingArea = true
 
 func _on_King_area_exited(area):
-	$King.call("setState", 0)
+	$King.setState(0)
 	enteredKingArea = false
 
 func _on_Blacksmith_area_entered(area):
-	$Blacksmith.call("setState", 1)
+	$Blacksmith.setState(1)
 	enteredBlacksmithArea = true
 
 func _on_Blacksmith_area_exited(area):
-	$Blacksmith.call("setState", 0)
+	$Blacksmith.setState(0)
 	enteredBlacksmithArea = false
 
 func _on_Marketer_area_entered(area):
-	$Marketer.call("setState", 1)
+	$Marketer.setState(1)
 	enteredMarketerArea = true
 
 func _on_Marketer_area_exited(area):
-	$Marketer.call("setState", 0)
+	$Marketer.setState(0)
 	enteredMarketerArea = false
 
 func _on_Area2D_area_entered(area):
@@ -339,11 +332,11 @@ func _on_Area2D_area_entered(area):
 
 func _on_MinigameArea2D_area_exited(area):
 	if GlobalFase1.AxeOk:
-		$Marketer.call("setInteraction", 0)
-		$Blacksmith.call("setInteraction", 0)
-		$Lumberjack.call("setInteraction", 0)
+		$Marketer.setInteraction(0)
+		$Blacksmith.setInteraction(0)
+		$Lumberjack.setInteraction(0)
 		
-		$Jose/Camera2D/CanvasLayer/PopupDialog.call("sendDialog", [
+		$Jose/Camera2D/CanvasLayer/PopupDialog.sendDialog([
 			{
 				'personagem': 'blacksmith',
 				'falas': [
@@ -351,3 +344,10 @@ func _on_MinigameArea2D_area_exited(area):
 				]
 			}
 		])
+
+
+func _on_MinigameArea2D_area_entered(area):
+	GlobalFase1.axeChoicedParts = []
+	get_tree().paused = true
+	$Jose/Camera2D/CanvasLayer/PopupMinigame.show()
+	$Jose/Camera2D/CanvasLayer/PopupMinigame/Control.show()

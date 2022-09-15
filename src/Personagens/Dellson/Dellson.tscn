@@ -1,6 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Public/Characters/dellson.png" type="Texture" id=1]
+[ext_resource path="res://Personagens/Dellson/Dellson.gd" type="Script" id=2]
+[ext_resource path="res://Public/Utilitarios/balaoDialogo.png" type="Texture" id=3]
+[ext_resource path="res://Public/KeyboardKeys/teclaE.png" type="Texture" id=4]
+[ext_resource path="res://Public/Utilitarios/balaoMissao.png" type="Texture" id=5]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -17,8 +21,9 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "idle"
+[sub_resource type="Animation" id=3]
+resource_name = "actionIdle"
+length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -26,21 +31,60 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "idle"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3 ]
 }
 
 [node name="Dellson" type="KinematicBody2D"]
+collision_layer = 4
+collision_mask = 15
+script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 hframes = 4
+vframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 1 )
+anims/actionIdle = SubResource( 3 )
 anims/idle = SubResource( 2 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( -16, 12, 16, 12, 11, 2, 11, -2, -11, -2, -11, 2 )
+
+[node name="dialogBubble" type="Sprite" parent="."]
+visible = false
+position = Vector2( 18, -20 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="missionBubble" type="Sprite" parent="."]
+visible = false
+position = Vector2( 18, -20 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 5 )
+
+[node name="actionButton" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, -18 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 4 )

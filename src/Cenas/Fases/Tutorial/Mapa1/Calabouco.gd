@@ -1,23 +1,102 @@
 extends Node2D
 
+var onDellsonArea = false
+
+var dellsonDialog = false
+
+func _ready():
+	$Dellson.setInteraction(1)
+	$Jose/Camera2D/CanvasLayer/PopupDialog.sendDialog([
+			{
+				'personagem': 'jose',
+				'falas': [
+					'Uooou. Esse treinamento é REALMENTE imersivo.'
+				]
+			},
+			{
+				'personagem': 'dellson',
+				'falas': [
+					'Ei, você!',
+					'Você mesmo com cara de bobão!',
+					'Preciso falar com a Fabi para ter pelo menos um tutorial de como se mexer antes dos novatos chegarem aqui…',
+					'Mas ainda bem que você tem…',
+					'EEEU DELLSON! Seu capitão! Ou comandante!'
+				]
+			},
+			{
+				'personagem': 'fabiana',
+				'falas': [
+					'Instrutor, Dellson. Instrutor.'
+				]
+			},
+			{
+				'personagem': 'dellson',
+				'falas': [
+					'Pode ser, Fabi, pode ser…',
+					'Vem cá, novato. EU serei seu mestre dos magos',
+					'...',
+					'Ah é, você se movimenta com WASD',
+					'Venha até aqui para saber mais.'
+				]
+			}
+		])
+
 # Ao entrar na área, muda a cena
 func _on_Area2D_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	get_tree().change_scene("res://Cenas/Fases/Tutorial/Mapa2/Labirinto.tscn")
 
-
 func _on_TutoraiMapa1Fala1_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
-	$Jose/Camera2D/CanvasLayer/Hint.visible = true
-	$Jose/Camera2D/CanvasLayer/Hint/HintText.text = 'Procure e vá até Dellson'
+	$Jose/Camera2D/CanvasLayer/Hint.sendHint('Procure e vá até Dellson')
 
+func _on_Area2DDellson_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
+	$Dellson.setState(1)
+	$Jose/Camera2D/CanvasLayer/Hint.hideHint()
+	onDellsonArea = true
 
-func _on_TutoraiMapa1Fala2_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
-	$Jose/Camera2D/CanvasLayer/Hint.visible = false
+func _on_Area2DDellson_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
+	$Jose/Camera2D/CanvasLayer/Hint.sendHint('Vá até a próxima área atrás de Dellson')
+	$Dellson.setState(0)
+	onDellsonArea = false
 
+func sendDellsonDialog():
+	if dellsonDialog:
+		$Jose/Camera2D/CanvasLayer/PopupDialog.sendDialog([
+				{
+					'personagem': 'dellson',
+					'falas': [
+						'Vai ali atrás campeão'
+					]
+				}
+			])
+	else:
+		$Jose/Camera2D/CanvasLayer/PopupDialog.sendDialog([
+				{
+					'personagem': 'dellson',
+					'falas': [
+						'Aff… Eu preciso falar com a Fabi sobre esse algoritmo de spawn.',
+						'Então, novato, aqui você irá aprender sobre as dimensões do modelo de produto. Ao total são 9. N. O. V. E. Você sabe contar?'
+					]
+				},
+				{
+					'personagem': 'jose',
+					'falas': [
+						'Sim, Dellson. Você não precisa me explicar TUUUUDO'
+					]
+				},
+				{
+					'personagem': 'dellson',
+					'falas': [
+						'Ahã! Sabia que você é um cara inteligente.',
+						'Bom, continuando… São 9 dimensões. Então, você terá 9 desafios para completar aqui. Para vencer cada um dos desafios,',
+						'Você terá que utilizar um conceito da dimensão que ele representa. Ou seja, você só sai daqui se aprender!!!',
+						'Legal, né? Eu que tive a ideia. Agora avance para a próxima área para continuarmos com o treinamento..'
+					]
+				}
+		])
+		dellsonDialog = true
+		$Dellson.setInteraction(0)
 
-func _on_TutoraiMapa1Fala2_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
-	$Jose/Camera2D/CanvasLayer/Hint/HintText.text = 'Vá até a próxima área atrás de Dellson'
-	$Jose/Camera2D/CanvasLayer/Hint.visible = true
-
-
-func _on_TutoraiMapa1Fala2_area_entered(area):
-	$Sprite.visible = false
+func _unhandled_input(event):
+	if Input.is_action_just_pressed("interact"):
+		if onDellsonArea:
+			sendDellsonDialog()
