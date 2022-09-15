@@ -78,6 +78,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			attacking = true
 			if haveAxe == false:
 				animation.play("punchAttack")
+				$PunchSound.play()
 			else:
 				animation.play("attack")
 			yield(get_tree().create_timer(0.4),"timeout")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Personagens/Jose/Jose.gd" type="Script" id=1]
+[ext_resource path="res://Public/Sounds-effects/Dash cortada.wav" type="AudioStream" id=2]
 [ext_resource path="res://Public/Sounds-effects/Sword.wav" type="AudioStream" id=3]
 [ext_resource path="res://Public/Characters/player.png" type="Texture" id=4]
 [ext_resource path="res://Public/icon.png" type="Texture" id=5]
@@ -213,8 +214,8 @@ texture = ExtResource( 5 )
 stream = ExtResource( 3 )
 
 [node name="DashSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 6 )
-volume_db = 4.601
+stream = ExtResource( 2 )
+volume_db = -22.089
 
 [node name="AxewoodSound" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource( 14 )
