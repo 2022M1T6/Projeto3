@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Public/backgroundTutorial1.jpeg" type="Texture" id=1]
 [ext_resource path="res://Cenas/Utilitarios/PopupPause.tscn" type="PackedScene" id=2]
@@ -6,15 +6,11 @@
 [ext_resource path="res://Public/dellson1.png" type="Texture" id=4]
 [ext_resource path="res://Cenas/Utilitarios/popupDialogo.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Cenas/Fases/Tutorial/Mapa1/Calabouco.gd" type="Script" id=6]
-[ext_resource path="res://Public/Fonts/Kenney Pixel.ttf" type="DynamicFontData" id=7]
-[ext_resource path="res://Outros/balaoMissao.png" type="Texture" id=8]
+[ext_resource path="res://Cenas/Utilitarios/Hint/Hint.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Public/Utilitarios/balaoMissao.png" type="Texture" id=8]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 134.876, 27.211 )
-
-[sub_resource type="DynamicFont" id=5]
-size = 40
-font_data = ExtResource( 7 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 310.625, 58 )
@@ -84,6 +80,7 @@ polygon = PoolVector2Array( -237.384, 250.703, -246.043, 249.977, -244.6, 243.44
 
 [node name="Jose" parent="." instance=ExtResource( 3 )]
 position = Vector2( 53, 268 )
+scale = Vector2( 2, 2 )
 
 [node name="Camera2D" type="Camera2D" parent="Jose"]
 position = Vector2( 76.6259, 4.8387 )
@@ -106,12 +103,11 @@ editor_draw_drag_margin = true
 
 [node name="PopupDialog" parent="Jose/Camera2D/CanvasLayer" instance=ExtResource( 5 )]
 
-[node name="Hint" type="Label" parent="Jose/Camera2D/CanvasLayer"]
+[node name="Hint" parent="Jose/Camera2D/CanvasLayer" instance=ExtResource( 7 )]
 margin_left = 16.0
 margin_top = 7.0
-margin_right = 668.0
-margin_bottom = 57.0
-custom_fonts/font = SubResource( 5 )
+margin_right = 16.0
+margin_bottom = 23.0
 
 [node name="TutoraiMapa1Fala1" type="Area2D" parent="."]
 
