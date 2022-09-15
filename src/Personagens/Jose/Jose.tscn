@@ -1,8 +1,11 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Personagens/Jose/Jose.gd" type="Script" id=1]
+[ext_resource path="res://Public/Sounds-effects/Machado.wav" type="AudioStream" id=2]
+[ext_resource path="res://Public/Sounds-effects/Espada.wav" type="AudioStream" id=3]
 [ext_resource path="res://Public/Characters/player.png" type="Texture" id=4]
 [ext_resource path="res://Public/icon.png" type="Texture" id=5]
+[ext_resource path="res://Public/Sounds-effects/Punch.wav" type="AudioStream" id=6]
 
 [sub_resource type="Animation" id=4]
 length = 0.001
@@ -203,3 +206,14 @@ amount = 80
 local_coords = false
 process_material = SubResource( 11 )
 texture = ExtResource( 5 )
+
+[node name="AxeSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 2 )
+
+[node name="SwordSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+
+[node name="WalkingSound" type="AudioStreamPlayer2D" parent="."]
+
+[node name="PunchSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )

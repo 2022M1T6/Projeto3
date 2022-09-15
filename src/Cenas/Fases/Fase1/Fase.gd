@@ -7,7 +7,6 @@ var enteredKingArea = false
 var enteredMarketerArea = false
 
 var fase1Dialog = {"marketer": false, "king": false, "lumberjack": false, "blacksmith": false}
-
 # Setup da fase
 func _ready():
 	$Jose/Camera2D/CanvasLayer/PopupMinigame.hide()
@@ -17,6 +16,7 @@ func _ready():
 	$Jose/Camera2D/CanvasLayer/Hint.visible = true
 	
 	$Marketer.call("setInteraction", 1)
+	$VillageSound.play()
 
 # Função que executa a chamada do minigame da fase 1
 func _on_Area2D2_area_entered(area):
