@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/Punch.wav-a88239cf64ac23a86adda2caa037ffe2.sample"
+path="res://.import/Sword.wav-4c12c7c4bd2c2b80eb1e0ff81c87d8bd.sample"
 
 [deps]
 
-source_file="res://Public/Sounds-effects/Punch.wav"
-dest_files=[ "res://.import/Punch.wav-a88239cf64ac23a86adda2caa037ffe2.sample" ]
+source_file="res://Public/Sounds-effects/Sword.wav"
+dest_files=[ "res://.import/Sword.wav-4c12c7c4bd2c2b80eb1e0ff81c87d8bd.sample" ]
 
 [params]
 

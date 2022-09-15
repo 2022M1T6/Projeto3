@@ -270,7 +270,7 @@ func sendBlacksmithDialog():
 						'O machado é composto por 3 partes: cabeça, cabo e cabeçote. Tenho 3 modelos para cada parte, cabe a você saber o que é melhor para o seu machado.',
 						'Agora, entre na minha forja e escolha quais partes você quer'
 					]
-					},
+				},
 			])
 		else:
 			$Jose/Camera2D/CanvasLayer/PopupDialog.call("sendDialog", [

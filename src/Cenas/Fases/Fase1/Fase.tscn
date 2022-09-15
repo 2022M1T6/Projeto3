@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Cenas/Utilitarios/Tilesets/Area1/Tileset1.tres" type="TileSet" id=1]
 [ext_resource path="res://Personagens/Jose/Jose.tscn" type="PackedScene" id=2]
@@ -20,11 +20,8 @@ extents = Vector2( 31.5, 19.5 )
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 34, 31.5 )
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 31, 1 )
-
 [sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 35.5, 10 )
+extents = Vector2( 35.5, 12.25 )
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 25, 19.5 )
@@ -33,7 +30,7 @@ extents = Vector2( 25, 19.5 )
 extents = Vector2( 16, 72 )
 
 [sub_resource type="RectangleShape2D" id=11]
-extents = Vector2( 21.5, 37 )
+extents = Vector2( 21.5, 40 )
 
 [node name="Node2D" type="Node2D"]
 position = Vector2( 0, -3 )
@@ -116,21 +113,12 @@ position = Vector2( 2, 3.5 )
 shape = SubResource( 7 )
 
 [node name="Blacksmith" parent="." instance=ExtResource( 7 )]
-position = Vector2( 650, 44 )
-
-[node name="MinigameArea2D" type="Area2D" parent="Blacksmith"]
-collision_layer = 129
-collision_mask = 15
-monitoring = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Blacksmith/MinigameArea2D"]
-position = Vector2( 11, 4 )
-shape = SubResource( 2 )
+position = Vector2( 650, 45 )
 
 [node name="Blacksmith" type="Area2D" parent="Blacksmith"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blacksmith/Blacksmith"]
-position = Vector2( 14.5, 15.5 )
+position = Vector2( 14.5, 13.25 )
 shape = SubResource( 9 )
 
 [node name="Marketer" parent="." instance=ExtResource( 8 )]
@@ -154,12 +142,12 @@ tile_data = PoolIntArray( -983024, 5, 0, -851970, 5, 0, -851966, 5, 0, -851954, 
 tile_set = ExtResource( 4 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( 262199, 4, 0, 393271, 4, 0, 458807, 4, 0 )
+tile_data = PoolIntArray( 262191, 4, 0, 327727, 4, 0, 458799, 4, 0 )
 
 [node name="TreeArea2D" type="Area2D" parent="TreeAndRocks"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TreeAndRocks/TreeArea2D"]
-position = Vector2( 886, 107 )
+position = Vector2( 754, 117 )
 shape = SubResource( 3 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -172,7 +160,7 @@ polygon = PoolVector2Array( 672, 170, 957, 171, 955, 91, 905, 91, 865, 97, 703, 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 928.5, 120 )
+position = Vector2( 798, 119 )
 shape = SubResource( 11 )
 
 [node name="VillageSound" type="AudioStreamPlayer" parent="."]
@@ -186,9 +174,6 @@ volume_db = 4.37
 [connection signal="area_entered" from="King/King" to="." method="_on_King_area_entered"]
 [connection signal="area_entered" from="King/King" to="Jose/Camera2D/CanvasLayer/PopupDialog" method="_on_King_area_entered"]
 [connection signal="area_exited" from="King/King" to="." method="_on_King_area_exited"]
-[connection signal="area_entered" from="Blacksmith/MinigameArea2D" to="." method="_on_Area2D2_area_entered"]
-[connection signal="area_exited" from="Blacksmith/MinigameArea2D" to="." method="_on_MinigameArea2D_area_exited"]
-[connection signal="area_exited" from="Blacksmith/MinigameArea2D" to="Jose/Camera2D/CanvasLayer/PopupDialog" method="_on_MinigameArea2D_area_exited"]
 [connection signal="area_entered" from="Blacksmith/Blacksmith" to="." method="_on_Blacksmith_area_entered"]
 [connection signal="area_entered" from="Blacksmith/Blacksmith" to="Jose/Camera2D/CanvasLayer/PopupDialog" method="_on_Blacksmith_area_entered"]
 [connection signal="area_exited" from="Blacksmith/Blacksmith" to="." method="_on_Blacksmith_area_exited"]

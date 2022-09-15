@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/Punch.wav-a88239cf64ac23a86adda2caa037ffe2.sample"
+path="res://.import/Axe.wav-9175365f537c1a415b418ebcd12a25a3.sample"
 
 [deps]
 
-source_file="res://Public/Sounds-effects/Punch.wav"
-dest_files=[ "res://.import/Punch.wav-a88239cf64ac23a86adda2caa037ffe2.sample" ]
+source_file="res://Public/Sounds-effects/Axe.wav"
+dest_files=[ "res://.import/Axe.wav-9175365f537c1a415b418ebcd12a25a3.sample" ]
 
 [params]
 
