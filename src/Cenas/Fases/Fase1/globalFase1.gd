@@ -3,6 +3,7 @@ extends Node
 var blacksmithTalk = false
 var kingTalk = false
 
+
 # Guarda qual machado o usuário ta editando durante o minigame
 var choicedCards = []
 

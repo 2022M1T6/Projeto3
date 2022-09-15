@@ -39,6 +39,7 @@ func dash():
 		canDash = false
 		dashDir = get_move_direction().normalized() * dashSpeed
 		timer.start(dashLenght)
+		$DashSound.play()
 		
 	if isDashing:
 		particles.emitting = true
