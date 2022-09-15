@@ -82,8 +82,6 @@ func _unhandled_input(event: InputEvent) -> void:
 				animation.play("attack")
 			yield(get_tree().create_timer(0.4),"timeout")
 			attacking = false
-			$AxewoodSound.play()
-		
 	if event.is_action_pressed("death") and attacking == false:
 		attacking = true
 		animation.play("death")

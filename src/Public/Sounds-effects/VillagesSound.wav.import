@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/VillagesSound.wav-5805761d58e62e5ab36a447ca986ddcf.sample"
+
+[deps]
+
+source_file="res://Public/Sounds-effects/VillagesSound.wav"
+dest_files=[ "res://.import/VillagesSound.wav-5805761d58e62e5ab36a447ca986ddcf.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
