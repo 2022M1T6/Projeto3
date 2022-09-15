@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Public/mapa.png" type="Texture" id=1]
-[ext_resource path="res://Personagens/BonecoTeste/BonecoTeste.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Personagens/Dummy/Dummy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Cenas/Utilitarios/PopupPause.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Personagens/Jose/Jose.tscn" type="PackedScene" id=4]
 

@@ -25,20 +25,6 @@ script = ExtResource( 3 )
 wait_time = 0.02
 autostart = true
 
-[node name="DialogSprite" type="TextureRect" parent="."]
-anchor_left = -0.0178836
-anchor_top = 1.02026
-anchor_right = -0.0178836
-anchor_bottom = 1.02026
-margin_left = -3.99272
-margin_top = -325.171
-margin_right = 158.007
-margin_bottom = -5.17084
-texture = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": true
-}
-
 [node name="DialogBox" type="TextureRect" parent="."]
 anchor_top = 1.0
 anchor_right = 1.0
@@ -62,5 +48,19 @@ custom_fonts/font = SubResource( 1 )
 text = "Dellson"
 autowrap = true
 percent_visible = 0.0
+
+[node name="DialogSprite" type="TextureRect" parent="."]
+anchor_left = -0.0178836
+anchor_top = 1.02026
+anchor_right = -0.0178836
+anchor_bottom = 1.02026
+margin_left = -3.99273
+margin_top = -325.171
+margin_right = 316.007
+margin_bottom = -5.17078
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

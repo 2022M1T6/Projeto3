@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Personagens/Jose/Jose.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Public/WhatsApp Image 2022-08-24 at 20.44.49.jpeg" type="Texture" id=2]
@@ -6,8 +6,9 @@
 [ext_resource path="res://Public/bonecoTeste.png" type="Texture" id=4]
 [ext_resource path="res://Cenas/Utilitarios/PopupPause.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Cenas/Fases/Tutorial/Mapa3/Combate.gd" type="Script" id=6]
-[ext_resource path="res://Public/dellson1.png" type="Texture" id=7]
+[ext_resource path="res://Personagens/Dellson/Dellson.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Cenas/Utilitarios/Hint/Hint.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Public/KeyboardKeys/teclaP.png" type="Texture" id=9]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 22.3607
@@ -16,10 +17,15 @@ radius = 22.3607
 radius = 20.9308
 
 [sub_resource type="CapsuleShape2D" id=3]
-radius = 45.0
+radius = 32.8646
+height = 38.0933
 
 [sub_resource type="CapsuleShape2D" id=4]
-radius = 31.0
+radius = 38.0
+height = 44.0
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 52.5, 53 )
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 69.5, 27 )
@@ -30,9 +36,6 @@ extents = Vector2( 70, 80 )
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 105, 17.5 )
 
-[sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 92.5, 10 )
-
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 6 )
 
@@ -40,12 +43,6 @@ script = ExtResource( 6 )
 position = Vector2( 642.5, 359.5 )
 scale = Vector2( 2.71875, 2.28437 )
 texture = ExtResource( 2 )
-
-[node name="Dellson1" type="Sprite" parent="."]
-position = Vector2( 689, 195 )
-scale = Vector2( 0.662963, 0.721053 )
-texture = ExtResource( 7 )
-flip_h = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2( -5, 421 )
@@ -103,12 +100,14 @@ editor_draw_drag_margin = true
 [node name="PopupPause" parent="Jose/Camera2D/CanvasLayer" instance=ExtResource( 5 )]
 
 [node name="PopupDialog" parent="Jose/Camera2D/CanvasLayer" instance=ExtResource( 3 )]
+visible = false
 
 [node name="Hint" parent="Jose/Camera2D/CanvasLayer" instance=ExtResource( 8 )]
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
 
 [node name="Hurtbox" type="Area2D" parent="KinematicBody2D"]
+rotation = -0.000448217
 collision_layer = 32768
 collision_mask = 32768
 
@@ -136,6 +135,17 @@ align = 1
 valign = 1
 uppercase = true
 
+[node name="TeclaP" type="Sprite" parent="KinematicBody2D"]
+visible = false
+position = Vector2( 167, 279 )
+texture = ExtResource( 9 )
+
+[node name="actionArea" type="Area2D" parent="KinematicBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D/actionArea"]
+position = Vector2( 206.5, 325 )
+shape = SubResource( 8 )
+
 [node name="Area2D" type="Area2D" parent="."]
 monitoring = false
 
@@ -150,23 +160,22 @@ position = Vector2( 70, 622 )
 shape = SubResource( 6 )
 
 [node name="Area2D3" type="Area2D" parent="."]
+monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]
 position = Vector2( 1059, 218 )
 shape = SubResource( 7 )
 
-[node name="Area2D4" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D4"]
-position = Vector2( 1054, 180 )
-shape = SubResource( 8 )
+[node name="Dellson" parent="." instance=ExtResource( 7 )]
+position = Vector2( 677, 195 )
+scale = Vector2( 3, 3 )
 
 [connection signal="area_entered" from="KinematicBody2D/Hurtbox" to="." method="_on_Hurtbox_area_entered"]
-[connection signal="area_entered" from="KinematicBody2D/Hurtbox" to="Jose/Camera2D/CanvasLayer/PopupDialog" method="_on_Hurtbox_area_entered"]
+[connection signal="area_entered" from="KinematicBody2D/actionArea" to="." method="_on_actionArea_area_entered"]
+[connection signal="area_exited" from="KinematicBody2D/actionArea" to="." method="_on_actionArea_area_exited"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="area_entered" from="Area2D2" to="Jose/Camera2D/CanvasLayer/PopupDialog" method="_on_Area2D2_area_entered"]
 [connection signal="area_shape_exited" from="Area2D2" to="." method="_on_Area2D2_area_shape_exited"]
 [connection signal="area_entered" from="Area2D3" to="." method="_on_Area2D3_area_entered"]
 [connection signal="area_entered" from="Area2D3" to="Jose/Camera2D/CanvasLayer/PopupDialog" method="_on_Area2D3_area_entered"]
-[connection signal="area_entered" from="Area2D4" to="." method="_on_Area2D4_area_entered"]
-[connection signal="area_entered" from="Area2D4" to="Jose/Camera2D/CanvasLayer/PopupDialog" method="_on_Area2D4_area_entered"]
+[connection signal="area_exited" from="Area2D3" to="." method="_on_Area2D3_area_exited"]

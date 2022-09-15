@@ -1,7 +1,10 @@
 extends KinematicBody2D
 
 export(float) var moveSpeed = 10
-export(float) var life = 100
+export(float) var maxHp = 100
+export(float) var currentHp = maxHp
+export(float) var damage = 20
+
 var isDashing = false
 var canDash = true
 var dashDir = Vector2.ZERO
@@ -18,17 +21,18 @@ onready var sprite = $Sprite
 onready var timer = $dash
 onready var particles = $Particles2D
 
-#A função foi chamada para conectar o timer com a função "timer_timeout"
+# A função foi chamada para conectar o timer com a função "timer_timeout"
 func _ready():
 	timer.connect("timeout",self,"timer_timeout")
+	$Hitbox/CollisionShape2D.disabled = true
 	
-#Função que determina o que acontece quando o tempo do timer esgota
+# Função que determina o que acontece quando o tempo do timer esgota
 func timer_timeout():
 	isDashing = false
 	yield(get_tree().create_timer(1),"timeout")
 	canDash = true
 
-#Função que faz todo o processamento do dash/esquiva
+# Função que faz todo o processamento do dash/esquiva
 func dash():
 	if Input.is_action_just_pressed("dash") and canDash:
 		isDashing = true
@@ -88,11 +92,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		animation.play("death")
 		yield(get_tree().create_timer(0.4),"timeout")
 		attacking = false
-			
-# Função que rege a hurtbox do personagem
-func _on_Hitbox_area_entered(area):
-	if area.is_in_group("hurbox"):
-		area.take_damage()
 
 # Função que determina qual animação aparecer
 func animate() -> void:
@@ -108,5 +107,9 @@ func animate() -> void:
 func verify_direction() -> void:
 	if velocity.x > 0:
 		sprite.flip_h = false
+		$Hitbox.position.x = 9
 	elif velocity.x < 0:
 		sprite.flip_h = true
+		$Hitbox.position.x = -9
+
+
