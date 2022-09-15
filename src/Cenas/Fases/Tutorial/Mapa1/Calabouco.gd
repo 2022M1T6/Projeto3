@@ -45,9 +45,6 @@ func _ready():
 func _on_Area2D_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	get_tree().change_scene("res://Cenas/Fases/Tutorial/Mapa2/Labirinto.tscn")
 
-func _on_TutoraiMapa1Fala1_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
-	$Jose/Camera2D/CanvasLayer/Hint.sendHint('Procure e vá até Dellson')
-
 func _on_Area2DDellson_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	$Dellson.setState(1)
 	$Jose/Camera2D/CanvasLayer/Hint.hideHint()
@@ -100,3 +97,6 @@ func _unhandled_input(event):
 	if Input.is_action_just_pressed("interact"):
 		if onDellsonArea:
 			sendDellsonDialog()
+
+func _on_TurorialArea1_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
+	$Jose/Camera2D/CanvasLayer/Hint.sendHint('Procure e vá até Dellson')

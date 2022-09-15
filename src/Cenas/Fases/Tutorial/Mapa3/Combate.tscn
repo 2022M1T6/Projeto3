@@ -100,6 +100,7 @@ editor_draw_drag_margin = true
 [node name="PopupPause" parent="Jose/Camera2D/CanvasLayer" instance=ExtResource( 5 )]
 
 [node name="PopupDialog" parent="Jose/Camera2D/CanvasLayer" instance=ExtResource( 3 )]
+visible = false
 
 [node name="Hint" parent="Jose/Camera2D/CanvasLayer" instance=ExtResource( 8 )]
 

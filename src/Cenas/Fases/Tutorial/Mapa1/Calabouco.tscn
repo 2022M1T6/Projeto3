@@ -105,9 +105,9 @@ margin_top = 7.0
 margin_right = 16.0
 margin_bottom = 23.0
 
-[node name="TutoraiMapa1Fala1" type="Area2D" parent="."]
+[node name="TurorialArea1" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TutoraiMapa1Fala1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TurorialArea1"]
 position = Vector2( 81, 311 )
 shape = SubResource( 3 )
 
@@ -122,7 +122,7 @@ position = Vector2( 1278, 208 )
 shape = SubResource( 3 )
 
 [connection signal="area_shape_entered" from="BackgroundTutorial1/Area2D" to="." method="_on_Area2D_area_shape_entered"]
-[connection signal="area_shape_entered" from="TutoraiMapa1Fala1" to="Jose/Camera2D/CanvasLayer/PopupDialog" method="_on_TutoraiMapa1Fala1_area_shape_entered"]
-[connection signal="area_shape_exited" from="TutoraiMapa1Fala1" to="." method="_on_TutoraiMapa1Fala1_area_shape_exited"]
+[connection signal="area_shape_exited" from="TurorialArea1" to="." method="_on_TurorialArea1_area_shape_exited"]
+[connection signal="area_shape_exited" from="TurorialArea1" to="." method="_on_TutoraiMapa1Fala1_area_shape_exited"]
 [connection signal="area_shape_entered" from="Dellson/Area2DDellson" to="." method="_on_Area2DDellson_area_shape_entered"]
 [connection signal="area_shape_exited" from="Dellson/Area2DDellson" to="." method="_on_Area2DDellson_area_shape_exited"]
