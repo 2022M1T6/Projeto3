@@ -77,13 +77,11 @@ func _unhandled_input(event: InputEvent) -> void:
 			attacking = true
 			if haveAxe == false:
 				animation.play("punchAttack")
-				$SwordSound.play()
+				$PunchSound.play()
 			else:
 				animation.play("attack")
-				$AxeSound.play()
 			yield(get_tree().create_timer(0.4),"timeout")
 			attacking = false
-		
 	if event.is_action_pressed("death") and attacking == false:
 		attacking = true
 		animation.play("death")

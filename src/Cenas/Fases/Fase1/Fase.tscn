@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Cenas/Utilitarios/Tilesets/Area1/Tileset1.tres" type="TileSet" id=1]
 [ext_resource path="res://Personagens/Jose/Jose.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Cenas/Fases/Fase1/minigame.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Cenas/Utilitarios/Hint/Hint.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Cenas/Utilitarios/popupDialogo.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Public/Sounds-effects/VillagesSound.wav" type="AudioStream" id=12]
 [ext_resource path="res://Cenas/Utilitarios/PopupPause.tscn" type="PackedScene" id=15]
 
 [sub_resource type="RectangleShape2D" id=8]
@@ -173,6 +174,10 @@ polygon = PoolVector2Array( 672, 170, 957, 171, 955, 91, 905, 91, 865, 97, 703, 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 928.5, 120 )
 shape = SubResource( 11 )
+
+[node name="VillageSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+volume_db = -14.857
 
 [connection signal="area_entered" from="Lumberjack/Lumberjack" to="." method="_on_Lumberjack_area_entered"]
 [connection signal="area_entered" from="Lumberjack/Lumberjack" to="Jose/Camera2D/CanvasLayer/PopupDialog" method="_on_Lumberjack_area_entered"]
