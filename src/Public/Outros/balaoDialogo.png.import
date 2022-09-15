@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/balaoDialogo.png-ecdbacb043f9d187100db37245e2a6ab.stex"
+path="res://.import/balaoDialogo.png-b00501668172fcabe47f92ad2ef4b0ac.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Outros/balaoDialogo.png"
-dest_files=[ "res://.import/balaoDialogo.png-ecdbacb043f9d187100db37245e2a6ab.stex" ]
+source_file="res://Public/Outros/balaoDialogo.png"
+dest_files=[ "res://.import/balaoDialogo.png-b00501668172fcabe47f92ad2ef4b0ac.stex" ]
 
 [params]
 

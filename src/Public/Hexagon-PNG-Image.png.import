@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Hexagon-PNG-Image.png-47e640a2cff551e66d72f88ea4ac5ab0.stex"
+path="res://.import/Hexagon-PNG-Image.png-d989f2078bcb65d3584600140f06c670.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Cenas/Fases/Fase 2/Hexagon-PNG-Image.png"
-dest_files=[ "res://.import/Hexagon-PNG-Image.png-47e640a2cff551e66d72f88ea4ac5ab0.stex" ]
+source_file="res://Public/Hexagon-PNG-Image.png"
+dest_files=[ "res://.import/Hexagon-PNG-Image.png-d989f2078bcb65d3584600140f06c670.stex" ]
 
 [params]
 
