@@ -176,6 +176,7 @@ position = Vector2( 928.5, 120 )
 shape = SubResource( 11 )
 
 [node name="VillageSound" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
 stream = ExtResource( 12 )
 volume_db = 4.37
 
