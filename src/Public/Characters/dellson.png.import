@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/balaoMissao.png-054b541aae6fa9e9d1cf44f393bc44af.stex"
+path="res://.import/dellson.png-963bfecdf27cea0aff0ef93d0a031cfd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Public/Outros/balaoMissao.png"
-dest_files=[ "res://.import/balaoMissao.png-054b541aae6fa9e9d1cf44f393bc44af.stex" ]
+source_file="res://Public/Characters/dellson.png"
+dest_files=[ "res://.import/dellson.png-963bfecdf27cea0aff0ef93d0a031cfd.stex" ]
 
 [params]
 

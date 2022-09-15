@@ -1,13 +1,17 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Cenas/Fases/Fase 2/Bridge.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Personagens/Jose/Jose.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Cenas/Fases/Fase 2/Puzzle2.gd" type="Script" id=3]
 [ext_resource path="res://Public/Hexagon-PNG-Image.png" type="Texture" id=4]
 [ext_resource path="res://Cenas/Fases/Fase 2/Tree.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Personagens/Swordsman/Swordsman.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 20, 9.5 )
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 53.0094
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 3 )
@@ -117,81 +121,97 @@ scale = Vector2( 2, 2 )
 [node name="Hexagon" type="Sprite" parent="."]
 position = Vector2( 349, 368.8 )
 scale = Vector2( 0.4, 0.4 )
+z_index = -1
 texture = ExtResource( 4 )
 
 [node name="Hexagon2" type="Sprite" parent="."]
 position = Vector2( 643, 192.8 )
 scale = Vector2( 0.4, 0.4 )
+z_index = -1
 texture = ExtResource( 4 )
 
 [node name="Hexagon3" type="Sprite" parent="."]
 position = Vector2( 644, 543.8 )
 scale = Vector2( 0.4, 0.4 )
+z_index = -1
 texture = ExtResource( 4 )
 
 [node name="Hexagon4" type="Sprite" parent="."]
 position = Vector2( 349, 719.8 )
 scale = Vector2( 0.4, 0.4 )
+z_index = -1
 texture = ExtResource( 4 )
 
 [node name="Hexagon5" type="Sprite" parent="."]
 position = Vector2( 939.4, 718.6 )
 scale = Vector2( 0.4, 0.4 )
+z_index = -1
 texture = ExtResource( 4 )
 
 [node name="Hexagon6" type="Sprite" parent="."]
 position = Vector2( 1233.4, 542.6 )
 scale = Vector2( 0.4, 0.4 )
+z_index = -1
 texture = ExtResource( 4 )
 
 [node name="Hexagon7" type="Sprite" parent="."]
 position = Vector2( 939.4, 1069.6 )
 scale = Vector2( 0.4, 0.4 )
+z_index = -1
 texture = ExtResource( 4 )
 
 [node name="Hexagon8" type="Sprite" parent="."]
 position = Vector2( 1527.4, 366.6 )
 scale = Vector2( 0.4, 0.4 )
+z_index = -1
 texture = ExtResource( 4 )
 
 [node name="Hexagon9" type="Sprite" parent="."]
 position = Vector2( 1528.4, 717.6 )
 scale = Vector2( 0.4, 0.4 )
+z_index = -1
 texture = ExtResource( 4 )
 
 [node name="Hexagon10" type="Sprite" parent="."]
 position = Vector2( 1528.4, 1067.6 )
 scale = Vector2( 0.4, 0.4 )
+z_index = -1
 texture = ExtResource( 4 )
 
 [node name="Hexagon11" type="Sprite" parent="."]
 position = Vector2( 1234.4, 1243.6 )
 scale = Vector2( 0.4, 0.4 )
+z_index = -1
 texture = ExtResource( 4 )
 
 [node name="Hexagon12" type="Sprite" parent="."]
 position = Vector2( 1529.4, 1418.6 )
 scale = Vector2( 0.4, 0.4 )
+z_index = -1
 texture = ExtResource( 4 )
 
 [node name="Hexagon13" type="Sprite" parent="."]
 position = Vector2( 1234.4, 1594.6 )
 scale = Vector2( 0.4, 0.4 )
+z_index = -1
 texture = ExtResource( 4 )
 
 [node name="Hexagon14" type="Sprite" parent="."]
 position = Vector2( 1234.4, 1944.6 )
 scale = Vector2( 0.4, 0.4 )
+z_index = -1
 texture = ExtResource( 4 )
 
 [node name="Hexagon15" type="Sprite" parent="."]
 position = Vector2( 1823.4, 893.6 )
 scale = Vector2( 0.4, 0.4 )
+z_index = -1
 texture = ExtResource( 4 )
 
 [node name="Hexagon16" type="Sprite" parent="."]
 position = Vector2( 2121, 1067.8 )
 scale = Vector2( 0.4, 0.4 )
+z_index = -1
 texture = ExtResource( 4 )
 
 [node name="Border" type="StaticBody2D" parent="."]
@@ -258,8 +278,36 @@ color = Color( 0, 0, 0, 1 )
 position = Vector2( 76, 122.5 )
 shape = SubResource( 1 )
 
+[node name="Tree1" parent="." instance=ExtResource( 5 )]
+position = Vector2( 681, 145 )
+
+[node name="Tree2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 899, 716 )
+
+[node name="Tree3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1572, 355 )
+
+[node name="Tree4" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1464, 981 )
+
+[node name="Tree5" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1161, 1527 )
+
+[node name="Tree6" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1867, 793 )
+
+[node name="Swordsman" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1502, 289 )
+
+[node name="Area2D" type="Area2D" parent="Swordsman"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Swordsman/Area2D"]
+position = Vector2( -1, 38 )
+shape = SubResource( 2 )
+
 [node name="Jose" parent="." instance=ExtResource( 2 )]
-position = Vector2( 44, 184 )
+position = Vector2( 56, 166 )
+scale = Vector2( 4, 4 )
 
 [node name="Camera2D" type="Camera2D" parent="Jose"]
 position = Vector2( -45.3333, -105.667 )
@@ -270,23 +318,5 @@ limit_left = 0
 limit_top = 0
 limit_right = 2400
 limit_bottom = 2200
-
-[node name="Tree1" parent="." instance=ExtResource( 5 )]
-position = Vector2( 687, 157 )
-
-[node name="Tree2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 899, 738 )
-
-[node name="Tree3" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1575, 320 )
-
-[node name="Tree4" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1466, 1032 )
-
-[node name="Tree5" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1296, 1624 )
-
-[node name="Tree6" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1867, 837 )
 
 [connection signal="body_entered" from="Reset" to="." method="_on_Reset_body_entered"]

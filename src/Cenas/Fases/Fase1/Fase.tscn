@@ -67,33 +67,6 @@ show_collision = true
 format = 1
 tile_data = PoolIntArray( -393193, 2, 0, -262108, 0, 0, 917540, 3, 0 )
 
-[node name="Jose" parent="." instance=ExtResource( 2 )]
-position = Vector2( 536, 625 )
-scale = Vector2( 1, 1 )
-collision_layer = 5
-collision_mask = 143
-
-[node name="Camera2D" type="Camera2D" parent="Jose"]
-position = Vector2( -1, 6 )
-current = true
-zoom = Vector2( 0.3, 0.3 )
-limit_left = 0
-limit_top = -194
-limit_right = 1343
-limit_bottom = 827
-editor_draw_limits = true
-editor_draw_drag_margin = true
-
-[node name="CanvasLayer" type="CanvasLayer" parent="Jose/Camera2D"]
-
-[node name="PopupPause" parent="Jose/Camera2D/CanvasLayer" instance=ExtResource( 15 )]
-
-[node name="PopupMinigame" parent="Jose/Camera2D/CanvasLayer" instance=ExtResource( 9 )]
-
-[node name="PopupDialog" parent="Jose/Camera2D/CanvasLayer" instance=ExtResource( 11 )]
-
-[node name="Hint" parent="Jose/Camera2D/CanvasLayer" instance=ExtResource( 10 )]
-
 [node name="Lumberjack" parent="." instance=ExtResource( 6 )]
 position = Vector2( 412, 43 )
 
@@ -130,6 +103,33 @@ collision_layer = 15
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Marketer/Marketer"]
 position = Vector2( -8, 15.5 )
 shape = SubResource( 6 )
+
+[node name="Jose" parent="." instance=ExtResource( 2 )]
+position = Vector2( 536, 625 )
+scale = Vector2( 1, 1 )
+collision_layer = 5
+collision_mask = 143
+
+[node name="Camera2D" type="Camera2D" parent="Jose"]
+position = Vector2( 0, 8 )
+current = true
+zoom = Vector2( 0.3, 0.3 )
+limit_left = 0
+limit_top = -194
+limit_right = 1343
+limit_bottom = 827
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Jose/Camera2D"]
+
+[node name="PopupPause" parent="Jose/Camera2D/CanvasLayer" instance=ExtResource( 15 )]
+
+[node name="PopupMinigame" parent="Jose/Camera2D/CanvasLayer" instance=ExtResource( 9 )]
+
+[node name="PopupDialog" parent="Jose/Camera2D/CanvasLayer" instance=ExtResource( 11 )]
+
+[node name="Hint" parent="Jose/Camera2D/CanvasLayer" instance=ExtResource( 10 )]
 
 [node name="TreeAndRocks" type="TileMap" parent="."]
 position = Vector2( 0, -1 )

@@ -27,11 +27,21 @@ func _on_Area2D2_area_entered(area):
 
 # Função que verifica se o usuário concluiu o minigame e pode cortar o tronco caído
 func _process(delta):
+	GlobalFase2.paralax($Jose,$Lumberjack)
+	GlobalFase2.paralax($Jose,$Blacksmith)
+	GlobalFase2.paralax($Jose,$Marketer)
+	GlobalFase2.paralax($Jose,$King)
+	
 	if(GlobalFase1.AxeOk):
 		$Blacksmith/MinigameArea2D.visible = false
 		$Blacksmith/MinigameArea2D.monitoring = false
 		
 		$TreeAndRocks/TreeArea2D.monitoring = true
+		GlobalFase2.paralax($Jose,$Lumberjack)
+		GlobalFase2.paralax($Jose,$Blacksmith)
+		GlobalFase2.paralax($Jose,$Marketer)
+		GlobalFase2.paralax($Jose,$King)
+		
 
 # Função que verifica se o tronco caído pode ser retirado
 func verifyAndRemoveTree():

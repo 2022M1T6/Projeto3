@@ -13,7 +13,13 @@ func _process(delta):
 		for i in range(1,7):
 			get_node("Tree" + str(i)).call('cut')
 	
-	print($Bridge1/Block.disabled)
+	if $Jose.position.y <= $Swordsman.position.y:
+		$Swordsman.z_index = 1
+	else:
+		$Swordsman.z_index = -1
+	
+	for c in range(1,7):
+		GlobalFase2.paralax($Jose,get_node('Tree' + str(c)))
 
 
 
