@@ -1,7 +1,6 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Personagens/Jose/Jose.gd" type="Script" id=1]
-[ext_resource path="res://Public/Sounds-effects/Axe.wav" type="AudioStream" id=2]
 [ext_resource path="res://Public/Sounds-effects/Sword.wav" type="AudioStream" id=3]
 [ext_resource path="res://Public/Characters/player.png" type="Texture" id=4]
 [ext_resource path="res://Public/icon.png" type="Texture" id=5]
@@ -208,15 +207,12 @@ local_coords = false
 process_material = SubResource( 11 )
 texture = ExtResource( 5 )
 
-[node name="AxeSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 2 )
-
 [node name="SwordSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
 
 [node name="DashSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )
-volume_db = -33.133
+volume_db = -16.567
 
 [node name="AxewoodSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 7 )
