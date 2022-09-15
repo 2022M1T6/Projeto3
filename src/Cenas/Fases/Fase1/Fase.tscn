@@ -177,7 +177,7 @@ shape = SubResource( 11 )
 
 [node name="VillageSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
-volume_db = -14.857
+volume_db = -1.748
 
 [connection signal="area_entered" from="Lumberjack/Lumberjack" to="." method="_on_Lumberjack_area_entered"]
 [connection signal="area_entered" from="Lumberjack/Lumberjack" to="Jose/Camera2D/CanvasLayer/PopupDialog" method="_on_Lumberjack_area_entered"]

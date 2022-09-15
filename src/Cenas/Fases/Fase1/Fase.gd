@@ -7,7 +7,6 @@ var enteredKingArea = false
 var enteredMarketerArea = false
 
 var fase1Dialog = {"marketer": false, "king": false, "lumberjack": false, "blacksmith": false}
-
 # Setup da fase
 func _ready():
 	$Jose/Camera2D/CanvasLayer/PopupMinigame.hide()
