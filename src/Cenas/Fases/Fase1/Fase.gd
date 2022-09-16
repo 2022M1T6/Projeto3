@@ -5,9 +5,9 @@ var enteredBlacksmithArea = false
 var enteredLumberjackArea = false
 var enteredKingArea = false
 var enteredMarketerArea = false
+var removedTree = false
 
 var fase1Dialog = {"marketer": false, "king": false, "lumberjack": false, "blacksmith": false}
-
 # Setup da fase
 func _ready():
 	$Jose/Camera2D/CanvasLayer/PopupMinigame.hide()
@@ -17,26 +17,31 @@ func _ready():
 	$Jose/Camera2D/CanvasLayer/Hint.visible = true
 	
 	$Marketer.call("setInteraction", 1)
-
-# Função que executa a chamada do minigame da fase 1
-func _on_Area2D2_area_entered(area):
-	GlobalFase1.axeChoicedParts = []
-	get_tree().paused = true
-	$Jose/Camera2D/CanvasLayer/PopupMinigame.show()
-	$Jose/Camera2D/CanvasLayer/PopupMinigame/Control.show()
+	$VillageSound.play()
 
 # Função que verifica se o usuário concluiu o minigame e pode cortar o tronco caído
 func _process(delta):
+	GlobalFase2.paralax($Jose,$Lumberjack)
+	GlobalFase2.paralax($Jose,$Blacksmith)
+	GlobalFase2.paralax($Jose,$Marketer)
+	GlobalFase2.paralax($Jose,$King)
+	
 	if(GlobalFase1.AxeOk):
 		$Blacksmith/MinigameArea2D.visible = false
 		$Blacksmith/MinigameArea2D.monitoring = false
 		
 		$TreeAndRocks/TreeArea2D.monitoring = true
+		GlobalFase2.paralax($Jose,$Lumberjack)
+		GlobalFase2.paralax($Jose,$Blacksmith)
+		GlobalFase2.paralax($Jose,$Marketer)
+		GlobalFase2.paralax($Jose,$King)
+		
 
 # Função que verifica se o tronco caído pode ser retirado
 func verifyAndRemoveTree():
-	if Input.is_action_just_pressed("punch") && enteredTreeArea && GlobalFase1.AxeOk:
+	if Input.is_action_just_pressed("punch") && enteredTreeArea && GlobalFase1.AxeOk && !removedTree:
 		$TreeAndRocks/Treelog.queue_free()
+		removedTree = true
 
 # Faz o envio dos diálogos do marketer
 func sendMarketerDialog():
@@ -270,7 +275,7 @@ func sendBlacksmithDialog():
 						'O machado é composto por 3 partes: cabeça, cabo e cabeçote. Tenho 3 modelos para cada parte, cabe a você saber o que é melhor para o seu machado.',
 						'Agora, entre na minha forja e escolha quais partes você quer'
 					]
-					},
+				},
 			])
 		else:
 			$Jose/Camera2D/CanvasLayer/PopupDialog.call("sendDialog", [
@@ -351,3 +356,10 @@ func _on_MinigameArea2D_area_exited(area):
 				]
 			}
 		])
+
+# Função que executa a chamada do minigame da fase 1
+func _on_MinigameArea2D_area_entered(area):
+	GlobalFase1.axeChoicedParts = []
+	get_tree().paused = true
+	$Jose/Camera2D/CanvasLayer/PopupMinigame.show()
+	$Jose/Camera2D/CanvasLayer/PopupMinigame/Control.show()

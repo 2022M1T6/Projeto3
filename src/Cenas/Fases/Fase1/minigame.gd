@@ -82,6 +82,11 @@ func redefinirMinigame():
 	$Control/ColorRect/MachadoGrande.visible = false
 	$Control/ColorRect/Button.visible = false
 	
+func sendMinigame():
+	GlobalFase1.axeChoicedParts = []
+	get_tree().paused = true
+	show()
+	
 # Função que recebe o evento de click nos cards. Salva as alterações e prepara para uma próxima execução	
 func _onMinigameCardPressed(titulo):
 	var card = getCardByTitulo(titulo)

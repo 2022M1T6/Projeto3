@@ -1,8 +1,15 @@
 extends KinematicBody2D
 
 export(float) var moveSpeed = 10
-export(float) var life = 100
+export(float) var maxHp = 100
+export(float) var currentHp = maxHp
+export(float) var damage = 20
+
+var isPlayingWalkingSoud = false
+var isPlayingRunningSoud = false
+export (int) var fase = 0
 var isDashing = false
+var isRunning = false
 var canDash = true
 var dashDir = Vector2.ZERO
 var velocity = Vector2.ZERO
@@ -18,23 +25,33 @@ onready var sprite = $Sprite
 onready var timer = $dash
 onready var particles = $Particles2D
 
-#A função foi chamada para conectar o timer com a função "timer_timeout"
+# A função foi chamada para conectar o timer com a função "timer_timeout"
 func _ready():
 	timer.connect("timeout",self,"timer_timeout")
+	$Hitbox/CollisionShape2D.disabled = true
 	
-#Função que determina o que acontece quando o tempo do timer esgota
+	if fase == 0:
+		$WalkingSound.stream = load("res://Public/Sounds-effects/walkingOnConcrete.wav")		
+	elif fase == 1:
+		$WalkingSound.stream = load("res://Public/Sounds-effects/WalkingOnGrass.wav")
+	elif fase == 2:
+		pass
+	
+	
+# Função que determina o que acontece quando o tempo do timer esgota
 func timer_timeout():
 	isDashing = false
 	yield(get_tree().create_timer(1),"timeout")
 	canDash = true
 
-#Função que faz todo o processamento do dash/esquiva
+# Função que faz todo o processamento do dash/esquiva
 func dash():
 	if Input.is_action_just_pressed("dash") and canDash:
 		isDashing = true
 		canDash = false
 		dashDir = get_move_direction().normalized() * dashSpeed
 		timer.start(dashLenght)
+		$DashSound.play()
 		
 	if isDashing:
 		particles.emitting = true
@@ -53,7 +70,10 @@ func get_move_direction():
 func _physics_process(delta):
 	velocity = get_move_direction().normalized() * moveSpeed * delta * 1000
 	if Input.is_action_pressed("shift"): 
-		velocity *= 2 
+		velocity *= 2
+		
+	#if isPlayingWalkingSoud && !$WalkingSound.is_processing():
+	#	$WalkingSound.play()
 		
 	verify_direction()
 	animate()
@@ -77,29 +97,40 @@ func _unhandled_input(event: InputEvent) -> void:
 			attacking = true
 			if haveAxe == false:
 				animation.play("punchAttack")
+				$PunchSound.play()
 			else:
 				animation.play("attack")
 			yield(get_tree().create_timer(0.4),"timeout")
 			attacking = false
-		
 	if event.is_action_pressed("death") and attacking == false:
 		attacking = true
 		animation.play("death")
 		yield(get_tree().create_timer(0.4),"timeout")
 		attacking = false
-			
-# Função que rege a hurtbox do personagem
-func _on_Hitbox_area_entered(area):
-	if area.is_in_group("hurbox"):
-		area.take_damage()
 
 # Função que determina qual animação aparecer
 func animate() -> void:
 	if velocity != Vector2.ZERO:
 		if attacking == false:
-			animation.play("run")
+			if Input.is_action_just_pressed("shift"):
+				animation.play("run")
+				isRunning = true
+				if !isPlayingRunningSoud:
+					$WalkingSound.pitch_scale = 4
+					$WalkingSound.play()
+					isPlayingWalkingSoud = false
+					isPlayingRunningSoud = true
+			else:
+				animation.play("walking")
+				if !isPlayingWalkingSoud:
+					$WalkingSound.pitch_scale = 1
+					$WalkingSound.play()
+					isPlayingWalkingSoud = true
+					isPlayingRunningSoud = false
 	else:
 		if attacking == false:
+			isPlayingWalkingSoud = false
+			$WalkingSound.stop()
 			animation.play('idle')
 			
 			
@@ -107,5 +138,9 @@ func animate() -> void:
 func verify_direction() -> void:
 	if velocity.x > 0:
 		sprite.flip_h = false
+		$Hitbox.position.x = 9
 	elif velocity.x < 0:
 		sprite.flip_h = true
+		$Hitbox.position.x = -9
+
+

@@ -1,0 +1,426 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Cenas/Fases/Fase 2/Bridge.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Personagens/Jose/Jose.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Cenas/Fases/Fase 2/Puzzle2.gd" type="Script" id=3]
+[ext_resource path="res://Public/Hexagon-PNG-Image.png" type="Texture" id=4]
+[ext_resource path="res://Cenas/Fases/Fase 2/Tree.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Personagens/Swordsman/Swordsman.tscn" type="PackedScene" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 20, 9.5 )
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 53.0094
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 32.25, 19 )
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 49.0102
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 1.55024, 10 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 7.5, 10 )
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 42.19
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Bridge1" parent="." instance=ExtResource( 1 )]
+position = Vector2( 133, 239.8 )
+rotation = -1.0472
+scale = Vector2( 2, 2 )
+
+[node name="Bridge2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 565, 239.8 )
+rotation = 1.0472
+scale = Vector2( 2, 2 )
+
+[node name="Bridge3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 566, 495.8 )
+rotation = 2.0944
+scale = Vector2( 2, 2 )
+
+[node name="Bridge4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 349, 463.8 )
+scale = Vector2( 2, 2 )
+
+[node name="Bridge5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 566, 590.8 )
+rotation = 1.0472
+scale = Vector2( 2, 2 )
+
+[node name="Bridge6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 643, 288.8 )
+scale = Vector2( 2, 2 )
+
+[node name="Bridge7" parent="." instance=ExtResource( 1 )]
+position = Vector2( 861.4, 670.6 )
+rotation = 2.0944
+scale = Vector2( 2, 2 )
+
+[node name="Bridge8" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1155.4, 589.6 )
+rotation = 1.0472
+scale = Vector2( 2, 2 )
+
+[node name="Bridge9" parent="." instance=ExtResource( 1 )]
+position = Vector2( 939.4, 813.6 )
+scale = Vector2( 2, 2 )
+
+[node name="Bridge10" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1449.4, 413.6 )
+rotation = 1.0472
+scale = Vector2( 2, 2 )
+
+[node name="Bridge11" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1450.4, 669.6 )
+rotation = 2.0944
+scale = Vector2( 2, 2 )
+
+[node name="Bridge12" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1528, 812.8 )
+scale = Vector2( 2, 2 )
+
+[node name="Bridge13" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1528.4, 1163.6 )
+scale = Vector2( 2, 2 )
+
+[node name="Bridge14" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1450.4, 1114.6 )
+rotation = 1.0472
+scale = Vector2( 2, 2 )
+
+[node name="Bridge15" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1451.4, 1370.6 )
+rotation = 2.0944
+scale = Vector2( 2, 2 )
+
+[node name="Bridge16" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1234.4, 1338.6 )
+scale = Vector2( 2, 2 )
+
+[node name="Bridge17" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1451.4, 1465.6 )
+rotation = 1.0472
+scale = Vector2( 2, 2 )
+
+[node name="Bridge18" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1156, 1195.8 )
+rotation = 2.0944
+scale = Vector2( 2, 2 )
+
+[node name="Bridge19" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1234.4, 1688.6 )
+scale = Vector2( 2, 2 )
+
+[node name="Bridge20" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1904, 939.8 )
+rotation = -1.0472
+scale = Vector2( 2, 2 )
+
+[node name="Bridge21" parent="." instance=ExtResource( 1 )]
+position = Vector2( 2121, 1162.8 )
+scale = Vector2( 2, 2 )
+
+[node name="Bridge22" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1745.4, 940.6 )
+rotation = 1.0472
+scale = Vector2( 2, 2 )
+
+[node name="Hexagon" type="Sprite" parent="."]
+position = Vector2( 349, 368.8 )
+scale = Vector2( 0.4, 0.4 )
+z_index = -1
+texture = ExtResource( 4 )
+
+[node name="Hexagon2" type="Sprite" parent="."]
+position = Vector2( 643, 192.8 )
+scale = Vector2( 0.4, 0.4 )
+z_index = -1
+texture = ExtResource( 4 )
+
+[node name="Hexagon3" type="Sprite" parent="."]
+position = Vector2( 644, 543.8 )
+scale = Vector2( 0.4, 0.4 )
+z_index = -1
+texture = ExtResource( 4 )
+
+[node name="Hexagon4" type="Sprite" parent="."]
+position = Vector2( 349, 719.8 )
+scale = Vector2( 0.4, 0.4 )
+z_index = -1
+texture = ExtResource( 4 )
+
+[node name="Hexagon5" type="Sprite" parent="."]
+position = Vector2( 939.4, 718.6 )
+scale = Vector2( 0.4, 0.4 )
+z_index = -1
+texture = ExtResource( 4 )
+
+[node name="Hexagon6" type="Sprite" parent="."]
+position = Vector2( 1233.4, 542.6 )
+scale = Vector2( 0.4, 0.4 )
+z_index = -1
+texture = ExtResource( 4 )
+
+[node name="Hexagon7" type="Sprite" parent="."]
+position = Vector2( 939.4, 1069.6 )
+scale = Vector2( 0.4, 0.4 )
+z_index = -1
+texture = ExtResource( 4 )
+
+[node name="Hexagon8" type="Sprite" parent="."]
+position = Vector2( 1527.4, 366.6 )
+scale = Vector2( 0.4, 0.4 )
+z_index = -1
+texture = ExtResource( 4 )
+
+[node name="Hexagon9" type="Sprite" parent="."]
+position = Vector2( 1528.4, 717.6 )
+scale = Vector2( 0.4, 0.4 )
+z_index = -1
+texture = ExtResource( 4 )
+
+[node name="Hexagon10" type="Sprite" parent="."]
+position = Vector2( 1528.4, 1067.6 )
+scale = Vector2( 0.4, 0.4 )
+z_index = -1
+texture = ExtResource( 4 )
+
+[node name="Hexagon11" type="Sprite" parent="."]
+position = Vector2( 1234.4, 1243.6 )
+scale = Vector2( 0.4, 0.4 )
+z_index = -1
+texture = ExtResource( 4 )
+
+[node name="Hexagon12" type="Sprite" parent="."]
+position = Vector2( 1529.4, 1418.6 )
+scale = Vector2( 0.4, 0.4 )
+z_index = -1
+texture = ExtResource( 4 )
+
+[node name="Hexagon13" type="Sprite" parent="."]
+position = Vector2( 1234.4, 1594.6 )
+scale = Vector2( 0.4, 0.4 )
+z_index = -1
+texture = ExtResource( 4 )
+
+[node name="Hexagon14" type="Sprite" parent="."]
+position = Vector2( 1234.4, 1944.6 )
+scale = Vector2( 0.4, 0.4 )
+z_index = -1
+texture = ExtResource( 4 )
+
+[node name="Hexagon15" type="Sprite" parent="."]
+position = Vector2( 1823.4, 893.6 )
+scale = Vector2( 0.4, 0.4 )
+z_index = -1
+texture = ExtResource( 4 )
+
+[node name="Hexagon16" type="Sprite" parent="."]
+position = Vector2( 2121, 1067.8 )
+scale = Vector2( 0.4, 0.4 )
+z_index = -1
+texture = ExtResource( 4 )
+
+[node name="Border" type="StaticBody2D" parent="."]
+position = Vector2( -109, -144 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Border"]
+position = Vector2( 3, 0 )
+polygon = PoolVector2Array( 206, 413, 357, 498, 350, 510, 403, 606, 413, 607, 413, 770, 405, 770, 350, 863, 403, 957, 506, 957, 561, 864, 554, 852, 692, 771, 699, 781, 800, 781, 807, 770, 947, 850, 940, 864, 995, 957, 1005, 956, 1005, 1120, 996, 1119, 941, 1213, 994, 1307, 1097, 1307, 1103, 1295, 1241, 1375, 1236, 1386, 1288, 1481, 1299, 1481, 1299, 1644, 1290, 1644, 1235, 1739, 1290, 1834, 1299, 1834, 1299, 1995, 1289, 1995, 1236, 2089, 1289, 2183, 1391, 2183, 1446, 2088, 1392, 1995, 1382, 1994, 1381, 1833, 1392, 1833, 1445, 1739, 1437, 1726, 1578, 1646, 1585, 1657, 1687, 1657, 1740, 1562, 1687, 1470, 1676, 1470, 1676, 1304, 1685, 1304, 1739, 1211, 1733, 1202, 1872, 1120, 1878, 1131, 1981, 1131, 1989, 1118, 2129, 1200, 2123, 1210, 2175, 1305, 2186, 1305, 2186, 1481, 1522, 2345, 105, 2208, 101, 2102, 221, 2101, 205, 827 )
+
+[node name="Border2" type="StaticBody2D" parent="."]
+position = Vector2( -109, -144 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Border2"]
+position = Vector2( 2, 0 )
+polygon = PoolVector2Array( 248, 340, 398, 427, 403, 418, 505, 418, 511, 429, 650, 348, 644, 338, 698, 242, 800, 242, 855, 335, 801, 432, 790, 432, 790, 593, 801, 593, 855, 687, 849, 698, 987, 779, 994, 768, 1096, 768, 1102, 779, 1241, 699, 1235, 686, 1288, 593, 1391, 593, 1396, 603, 1535, 521, 1530, 510, 1583, 417, 1684, 417, 1738, 510, 1685, 604, 1583, 604, 1576, 594, 1437, 674, 1444, 687, 1438, 697, 1576, 778, 1582, 768, 1686, 768, 1739, 861, 1685, 955, 1676, 955, 1676, 1117, 1685, 1117, 1692, 1129, 1832, 1048, 1826, 1039, 1879, 944, 1981, 944, 2034, 1038, 2029, 1046, 2171, 1128, 2176, 1118, 2278, 1118, 2332, 1211, 2278, 1306, 2269, 1306, 2270, 1481, 2446, 1479, 2256, 339, 665, 177 )
+
+[node name="Border3" type="StaticBody2D" parent="."]
+position = Vector2( -109, -144 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Border3"]
+position = Vector2( 4, 1 )
+polygon = PoolVector2Array( 553, 521, 559, 512, 553, 501, 692, 420, 698, 431, 707, 431, 707, 594, 699, 594, 693, 604 )
+
+[node name="Border4" type="StaticBody2D" parent="."]
+position = Vector2( -109, -144 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Border4"]
+position = Vector2( 674, -132 )
+rotation = 1.0472
+polygon = PoolVector2Array( 553, 521, 557.493, 512.394, 550.966, 501.698, 691.481, 422.321, 697.641, 431.651, 708.801, 432.321, 708.949, 594.064, 699, 594, 693.655, 602.554 )
+
+[node name="Border5" type="StaticBody2D" parent="."]
+position = Vector2( -109, -144 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Border5"]
+position = Vector2( 888, 876 )
+polygon = PoolVector2Array( 554, 521, 559, 512, 553, 501, 692, 420, 698, 431, 707, 431, 707, 594, 699, 594, 694, 602 )
+
+[node name="Border6" type="StaticBody2D" parent="."]
+position = Vector2( -109, -144 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Border6"]
+position = Vector2( 1561, 742 )
+rotation = 1.0472
+polygon = PoolVector2Array( 553, 521, 557.493, 512.394, 551.333, 503.064, 691.481, 422.321, 697.641, 431.651, 708.801, 432.321, 708.949, 594.064, 699, 594, 693, 604 )
+
+[node name="Border7" type="StaticBody2D" parent="."]
+position = Vector2( -109, -144 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Border7"]
+position = Vector2( 3, 0 )
+polygon = PoolVector2Array( 1142, 849, 1282, 769, 1289, 781, 1390, 781, 1397, 769, 1537, 850, 1531, 860, 1583, 956, 1593, 956, 1593, 1117, 1583, 1117, 1529, 1210, 1536, 1222, 1397, 1303, 1392, 1294, 1289, 1294, 1283, 1304, 1143, 1223, 1149, 1214, 1097, 1120, 1087, 1120, 1087, 956, 1096, 956, 1150, 862 )
+
+[node name="Reset" type="Area2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Reset"]
+margin_left = 243.0
+margin_top = 88.0
+margin_right = 283.0
+margin_bottom = 107.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Reset"]
+position = Vector2( 263, 98 )
+shape = SubResource( 1 )
+
+[node name="Tree1" parent="." instance=ExtResource( 5 )]
+position = Vector2( 681, 145 )
+
+[node name="Tree2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 899, 716 )
+
+[node name="Tree3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1572, 355 )
+
+[node name="Tree4" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1464, 981 )
+
+[node name="Tree5" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1161, 1527 )
+
+[node name="Tree6" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1867, 793 )
+
+[node name="Swordsman" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1502, 289 )
+
+[node name="Swordsman" type="Area2D" parent="Swordsman"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Swordsman/Swordsman"]
+position = Vector2( 6, 40 )
+shape = SubResource( 2 )
+
+[node name="Sign" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="ColorRect" type="ColorRect" parent="Sign"]
+margin_left = 48.0
+margin_top = 36.0
+margin_right = 111.0
+margin_bottom = 74.0
+color = Color( 0.788235, 0.564706, 0.305882, 1 )
+
+[node name="Label" type="Label" parent="Sign/ColorRect"]
+margin_right = 63.0
+margin_bottom = 37.0
+text = "Change
+camera"
+align = 1
+valign = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sign"]
+position = Vector2( 79.75, 55 )
+shape = SubResource( 3 )
+
+[node name="Sign" type="Area2D" parent="Sign"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sign/Sign"]
+position = Vector2( 78, 55 )
+shape = SubResource( 4 )
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 56, 156 )
+scale = Vector2( 4, 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 17.6885, 19.7249 )
+rotation = 0.523599
+shape = SubResource( 5 )
+
+[node name="Quest" type="ColorRect" parent="."]
+visible = false
+margin_left = 1593.0
+margin_top = 955.0
+margin_right = 1760.0
+margin_bottom = 995.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Label" type="Label" parent="Quest"]
+margin_left = 3.0
+margin_top = 5.0
+margin_right = 91.0
+margin_bottom = 21.0
+rect_scale = Vector2( 1.88, 1.88 )
+text = "Needs sword"
+
+[node name="Sword" type="StaticBody2D" parent="."]
+position = Vector2( 1232, 1918 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="ColorRect" type="ColorRect" parent="Sword"]
+margin_left = -4.0
+margin_top = 22.0
+margin_right = 5.0
+margin_bottom = 69.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sword"]
+position = Vector2( 0.5, 59 )
+shape = SubResource( 6 )
+
+[node name="Sword" type="Area2D" parent="Sword"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sword/Sword"]
+position = Vector2( 1, 45 )
+shape = SubResource( 7 )
+
+[node name="Jose" parent="." instance=ExtResource( 2 )]
+position = Vector2( 56, 156 )
+scale = Vector2( 4, 4 )
+
+[node name="Camera" type="Camera2D" parent="Jose"]
+current = true
+limit_left = 0
+limit_top = 0
+limit_right = 2400
+limit_bottom = 2200
+limit_smoothed = true
+
+[node name="Label" type="Label" parent="Jose/Camera"]
+margin_left = -4.5
+margin_top = -10.25
+margin_right = 11.5
+margin_bottom = 3.75
+rect_scale = Vector2( 0.5, 0.5 )
+
+[connection signal="body_entered" from="Reset" to="." method="_on_Reset_body_entered"]
+[connection signal="body_entered" from="Swordsman/Swordsman" to="." method="_on_Swordsman_body_entered"]
+[connection signal="body_exited" from="Swordsman/Swordsman" to="." method="_on_Swordsman_body_exited"]
+[connection signal="body_entered" from="Sign/Sign" to="." method="_on_Sign_body_entered"]
+[connection signal="body_exited" from="Sign/Sign" to="." method="_on_Sign_body_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="Sword/Sword" to="." method="_on_Sword_body_entered"]
+[connection signal="body_exited" from="Sword/Sword" to="." method="_on_Sword_body_exited"]
