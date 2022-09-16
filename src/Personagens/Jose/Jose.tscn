@@ -1,11 +1,12 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Personagens/Jose/Jose.gd" type="Script" id=1]
-[ext_resource path="res://Public/Sounds-effects/Dash cortada.wav" type="AudioStream" id=2]
+[ext_resource path="res://Public/Sounds-effects/Dash.wav" type="AudioStream" id=2]
 [ext_resource path="res://Public/Sounds-effects/Sword.wav" type="AudioStream" id=3]
 [ext_resource path="res://Public/Characters/player.png" type="Texture" id=4]
 [ext_resource path="res://Public/icon.png" type="Texture" id=5]
 [ext_resource path="res://Public/Sounds-effects/Punch.wav" type="AudioStream" id=6]
+[ext_resource path="res://Public/Sounds-effects/WalkingOnGrass.wav" type="AudioStream" id=7]
 
 [sub_resource type="Animation" id=4]
 length = 0.001
@@ -109,10 +110,11 @@ tracks/1/keys = {
 "values": [ 12, 13, 14, 15, 16 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=15]
 resource_name = "run"
-length = 0.6
+length = 0.66
 loop = true
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -123,7 +125,25 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 6, 7, 8, 9, 10, 11 ]
+"values": [ 6, 7, 9, 8, 10, 11 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "walking"
+length = 0.85
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45, 0.6, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 7, 9, 8, 10, 11 ]
 }
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -173,7 +193,8 @@ anims/attack = SubResource( 12 )
 anims/death = SubResource( 13 )
 anims/idle = SubResource( 5 )
 anims/punchAttack = SubResource( 7 )
-anims/run = SubResource( 6 )
+anims/run = SubResource( 15 )
+anims/walking = SubResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.482727, 16.0954 )
@@ -218,11 +239,13 @@ stream = ExtResource( 3 )
 stream = ExtResource( 2 )
 volume_db = -22.089
 
+[node name="WalkingSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
+volume_db = -4.37
+
 [node name="AxewoodSound" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource( 14 )
 volume_db = -19.327
-
-[node name="WalkingSound" type="AudioStreamPlayer2D" parent="."]
 
 [node name="PunchSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )

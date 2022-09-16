@@ -100,13 +100,17 @@ func getPercentVisibleStepByText(text):
 	return percentVisible
 
 func _on_Timer_timeout():
-	if(dialogBoxLabel.percent_visible >= 1):
-		canGoToNextLine = true
-	else:
-		if canCompleteLine:
-			completeLine()
+	if startedDialog:
+		if(dialogBoxLabel.percent_visible >= 1):
+			canGoToNextLine = true
+			$AudioStreamPlayer2D.stop()
 		else:
-			dialogBoxLabel.percent_visible += getPercentVisibleStepByText(dialogBoxLabel.text)
+			if canCompleteLine:
+				completeLine()
+				$AudioStreamPlayer2D.play()				
+			else:
+				$AudioStreamPlayer2D.play()
+				dialogBoxLabel.percent_visible += getPercentVisibleStepByText(dialogBoxLabel.text)
 			
 # Função que recebe eventos do teclado
 func _unhandled_key_input(event):

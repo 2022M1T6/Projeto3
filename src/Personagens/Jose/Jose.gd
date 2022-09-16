@@ -5,7 +5,11 @@ export(float) var maxHp = 100
 export(float) var currentHp = maxHp
 export(float) var damage = 20
 
+var isPlayingWalkingSoud = false
+var isPlayingRunningSoud = false
+export (int) var fase = 0
 var isDashing = false
+var isRunning = false
 var canDash = true
 var dashDir = Vector2.ZERO
 var velocity = Vector2.ZERO
@@ -25,6 +29,14 @@ onready var particles = $Particles2D
 func _ready():
 	timer.connect("timeout",self,"timer_timeout")
 	$Hitbox/CollisionShape2D.disabled = true
+	
+	if fase == 0:
+		$WalkingSound.stream = load("res://Public/Sounds-effects/walkingOnConcrete.wav")		
+	elif fase == 1:
+		$WalkingSound.stream = load("res://Public/Sounds-effects/WalkingOnGrass.wav")
+	elif fase == 2:
+		pass
+	
 	
 # Função que determina o que acontece quando o tempo do timer esgota
 func timer_timeout():
@@ -58,7 +70,10 @@ func get_move_direction():
 func _physics_process(delta):
 	velocity = get_move_direction().normalized() * moveSpeed * delta * 1000
 	if Input.is_action_pressed("shift"): 
-		velocity *= 2 
+		velocity *= 2
+		
+	#if isPlayingWalkingSoud && !$WalkingSound.is_processing():
+	#	$WalkingSound.play()
 		
 	verify_direction()
 	animate()
@@ -97,9 +112,25 @@ func _unhandled_input(event: InputEvent) -> void:
 func animate() -> void:
 	if velocity != Vector2.ZERO:
 		if attacking == false:
-			animation.play("run")
+			if Input.is_action_just_pressed("shift"):
+				animation.play("run")
+				isRunning = true
+				if !isPlayingRunningSoud:
+					$WalkingSound.pitch_scale = 4
+					$WalkingSound.play()
+					isPlayingWalkingSoud = false
+					isPlayingRunningSoud = true
+			else:
+				animation.play("walking")
+				if !isPlayingWalkingSoud:
+					$WalkingSound.pitch_scale = 1
+					$WalkingSound.play()
+					isPlayingWalkingSoud = true
+					isPlayingRunningSoud = false
 	else:
 		if attacking == false:
+			isPlayingWalkingSoud = false
+			$WalkingSound.stop()
 			animation.play('idle')
 			
 			

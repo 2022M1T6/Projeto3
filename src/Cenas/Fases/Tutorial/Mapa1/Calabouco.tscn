@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Public/backgroundTutorial1.jpeg" type="Texture" id=1]
 [ext_resource path="res://Cenas/Utilitarios/PopupPause.tscn" type="PackedScene" id=2]
@@ -8,12 +8,13 @@
 [ext_resource path="res://Cenas/Fases/Tutorial/Mapa1/Calabouco.gd" type="Script" id=6]
 [ext_resource path="res://Cenas/Utilitarios/Hint/Hint.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Cenas/Utilitarios/Tilesets/Tutorial/rogueFantasyCatacombs.tres" type="TileSet" id=8]
+[ext_resource path="res://Public/Sounds-effects/CavernSound.wav" type="AudioStream" id=9]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 134.876, 27.211 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 29.5, 25 )
+extents = Vector2( 31.5, 31.3333 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 6 )
@@ -83,8 +84,8 @@ polygon = PoolVector2Array( 22.3676, 255.057, 9.37994, 255.782, 11.5446, 246.349
 polygon = PoolVector2Array( -237.384, 250.703, -246.043, 249.977, -244.6, 243.447, -235.22, 247.075 )
 
 [node name="Jose" parent="." instance=ExtResource( 3 )]
-position = Vector2( 57, 282 )
-scale = Vector2( 1, 1 )
+position = Vector2( 64, 267 )
+scale = Vector2( 3, 3 )
 
 [node name="Camera2D" type="Camera2D" parent="Jose"]
 position = Vector2( 76.6259, 4.8387 )
@@ -121,16 +122,25 @@ shape = SubResource( 3 )
 
 [node name="Dellson" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1279, 208 )
+scale = Vector2( 3, 3 )
 
 [node name="Area2DDellson" type="Area2D" parent="Dellson"]
 position = Vector2( -1279, -208 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Dellson/Area2DDellson"]
-position = Vector2( 1276.5, 214 )
+position = Vector2( 1278.5, 220.333 )
 shape = SubResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Dellson"]
+polygon = PoolVector2Array( 24.6667, 30.6667, 12.6667, -14, -13.6667, -13.6667, -22.3333, 30.6667 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+pause_mode = 2
+stream = ExtResource( 9 )
+volume_db = -17.262
+autoplay = true
 
 [connection signal="area_shape_entered" from="BackgroundTutorial1/Area2D" to="." method="_on_Area2D_area_shape_entered"]
 [connection signal="area_shape_exited" from="TurorialArea1" to="." method="_on_TurorialArea1_area_shape_exited"]
-[connection signal="area_shape_exited" from="TurorialArea1" to="." method="_on_TutoraiMapa1Fala1_area_shape_exited"]
 [connection signal="area_shape_entered" from="Dellson/Area2DDellson" to="." method="_on_Area2DDellson_area_shape_entered"]
 [connection signal="area_shape_exited" from="Dellson/Area2DDellson" to="." method="_on_Area2DDellson_area_shape_exited"]
