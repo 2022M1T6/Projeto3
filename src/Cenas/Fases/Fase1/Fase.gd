@@ -167,8 +167,8 @@ func sendKingDialog():
 		
 # Faz o envio dos diálogos do lumberjack
 func sendLumberjackDialog():
-	if fase1Dialog.lumberjack:
-		if fase1Dialog.king:
+	if fase1Dialog.king:
+		if fase1Dialog.lumberjack:
 			$Jose/Camera2D/CanvasLayer/PopupDialog.call("sendDialog", [
 				{
 					'personagem': 'lumberjack',
@@ -178,6 +178,7 @@ func sendLumberjackDialog():
 				}
 			])
 		else:
+			fase1Dialog.lumberjack = true
 			$Jose/Camera2D/CanvasLayer/PopupDialog.call("sendDialog", [
 				{
 					'personagem': 'lumberjack',
@@ -187,50 +188,11 @@ func sendLumberjackDialog():
 				}
 			])
 	else:
-		fase1Dialog.lumberjack = true
 		$Jose/Camera2D/CanvasLayer/PopupDialog.call("sendDialog", [
 			{
 				'personagem': 'lumberjack',
 				'falas': [
-					'Hey garoto, o que faz aqui?'
-					]
-			},
-			{
-				'personagem': 'jose',
-				'falas': [
-					'Eu caí neste mundo para aprender melhor o modelo de produto, mas o rei está com problemas para chegar ao castelo, por conta destas árvores que estão impedindo o caminho.'
-				]
-			},
-			{
-				'personagem': 'lumberjack',
-				'falas': [
-					'Aaaah, mas ainda não entendi o porquê de bater as mãos na árvore. E que legal, então quer dizer que você é amigo do Dellson!?'
-				]
-			},
-			{
-				'personagem': 'jose',
-				'falas': [
-					'Sim, ele é meu mentor!',
-					'Por que você está com este machado nas mãos?'
-				]
-			},
-			{
-				'personagem': 'lumberjack',
-				'falas': [
-					'HAHA meu jovem, eu sou o melhor lenhador desta região. E se você precisar de ajuda para entender como quebrar uma árvore, eu te ajudarei.'
-				]
-			},
-			{
-				'personagem': 'jose',
-				'falas': [
-					'Qual dica você daria para um iniciante?'
-				]
-			},
-			{
-				'personagem': 'lumberjack',
-				'falas': [
-					'Pode parecer besta, mas as vezes, a ferramenta mais simples é a melhor para o trabalho',
-					'Se você colorir uma faca, a funcinalidade é a mesma. Portanto, gaste tempo pensando no que faz um machado bom para cortar árvores'
+					'O rei parece estar com problemas, você pode ir falar com ele?'
 				]
 			}
 		])
