@@ -92,7 +92,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ true, false, false, true ]
@@ -206,6 +206,7 @@ modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 9.14632, -4.03224 )
 collision_layer = 32768
 collision_mask = 32768
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2( 2.77286, 14.6989 )

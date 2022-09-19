@@ -46,7 +46,8 @@ func _on_Hurtbox_area_entered(area):
 	
 
 func _on_Area2D_area_entered(area):
-	get_tree().change_scene("res://Cenas/Fases/Fase1/Fase.tscn")
+	if currentHP <= 0:
+		get_tree().change_scene("res://Cenas/Fases/Fase1/Fase.tscn")
 
 	
 func _on_Area2D2_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
@@ -54,22 +55,24 @@ func _on_Area2D2_area_shape_exited(area_rid, area, area_shape_index, local_shape
 	
 
 func _on_Area2D3_area_entered(area):
-	$Dellson/Sprite.flip_h = true
-	$Jose/Camera2D/CanvasLayer/PopupDialog.sendDialog([
-			{
-				'personagem': 'dellson',
-				'falas':[
-					'ESPERA!!!',
-					'Eu sei que você já aprendeu o básico, mas com o meu intelecto e seu ... corpo(?), eu acho que chegaremos muito mais longe e você aprenderá muito mais.',
-					'O que você acha, parceiro?',
-					'Não precisa responder, vou entrar na sua mochila!',
-					'Com licença.'
-				]
-			},
-	])
+	if currentHP <= 0:
+		$Dellson/Sprite.flip_h = true
+		$Jose/Camera2D/CanvasLayer/PopupDialog.sendDialog([
+				{
+					'personagem': 'dellson',
+					'falas':[
+						'ESPERA!!!',
+						'Eu sei que você já aprendeu o básico, mas com o meu intelecto e seu ... corpo(?), eu acho que chegaremos muito mais longe e você aprenderá muito mais.',
+						'O que você acha, parceiro?',
+						'Não precisa responder, vou entrar na sua mochila!',
+						'Com licença.'
+					]
+				},
+		])
 	
 func _on_Area2D3_area_exited(area):
-	$Dellson.queue_free()
+	if currentHP <= 0:
+		$Dellson.queue_free()
 
 
 func _on_actionArea_area_entered(area):
