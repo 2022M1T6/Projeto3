@@ -343,6 +343,7 @@ func _on_Area2D_area_entered(area):
 
 
 func _on_MinigameArea2D_area_exited(area):
+	$Jose/Camera2D/CanvasLayer/Hint.visible = true
 	if GlobalFase1.AxeOk:
 		$Marketer.call("setInteraction", 0)
 		$Blacksmith.call("setInteraction", 0)
@@ -359,6 +360,7 @@ func _on_MinigameArea2D_area_exited(area):
 
 # Função que executa a chamada do minigame da fase 1
 func _on_MinigameArea2D_area_entered(area):
+	$Jose/Camera2D/CanvasLayer/Hint.visible = false
 	GlobalFase1.axeChoicedParts = []
 	get_tree().paused = true
 	$Jose/Camera2D/CanvasLayer/PopupMinigame.show()
