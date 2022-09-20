@@ -12,9 +12,19 @@ var fase1Dialog = {"marketer": false, "king": false, "lumberjack": false, "black
 
 # Função que verifica se o tronco caído pode ser retirado
 func verifyAndRemoveTree():
-	if Input.is_action_just_pressed("punch") && enteredTreeArea && GlobalFase1.AxeOk && !removedTree:
-		$TreeAndRocks/Treelog.queue_free()
-		removedTree = true
+	if Input.is_action_just_pressed("punch") && enteredTreeArea && !removedTree:
+		if GlobalFase1.AxeOk:
+			$TreeAndRocks/Treelog.queue_free()
+			removedTree = true
+		else: 
+			$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
+				{
+					'personagem': 'dellson',
+					'falas': [
+						'Hmm... Parece que esse machado não vai funcionar tão bem. Tente colher informações com os residentes e montar outro machado na casa do ferreiro!'
+					]
+				}
+			])
 
 # Faz o envio dos diálogos do marketer
 func sendMarketerDialog():
