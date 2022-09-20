@@ -6,7 +6,7 @@ var dellsonDialog = false
 
 func _ready():
 	$Dellson.setInteraction(1)
-	$Jose/Camera2D/CanvasLayer/PopupDialog.sendDialog([
+	$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
 			{
 				'personagem': 'jose',
 				'falas': [
@@ -47,17 +47,17 @@ func _on_Area2D_area_shape_entered(area_rid, area, area_shape_index, local_shape
 
 func _on_Area2DDellson_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	$Dellson.setState(1)
-	$Jose/Camera2D/CanvasLayer/Hint.hideHint()
+	$Player/Camera2D/CanvasLayer/Hint.hideHint()
 	onDellsonArea = true
 
 func _on_Area2DDellson_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
-	$Jose/Camera2D/CanvasLayer/Hint.sendHint('Vá até a próxima área atrás de Dellson')
+	$Player/Camera2D/CanvasLayer/Hint.sendHint('Vá até a próxima área atrás de Dellson')
 	$Dellson.setState(0)
 	onDellsonArea = false
 
 func sendDellsonDialog():
 	if dellsonDialog:
-		$Jose/Camera2D/CanvasLayer/PopupDialog.sendDialog([
+		$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
 				{
 					'personagem': 'dellson',
 					'falas': [
@@ -66,7 +66,7 @@ func sendDellsonDialog():
 				}
 			])
 	else:
-		$Jose/Camera2D/CanvasLayer/PopupDialog.sendDialog([
+		$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
 				{
 					'personagem': 'dellson',
 					'falas': [
@@ -99,4 +99,4 @@ func _unhandled_input(event):
 			sendDellsonDialog()
 
 func _on_TurorialArea1_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
-	$Jose/Camera2D/CanvasLayer/Hint.sendHint('Procure e vá até Dellson')
+	$Player/Camera2D/CanvasLayer/Hint.sendHint('Procure e vá até Dellson')

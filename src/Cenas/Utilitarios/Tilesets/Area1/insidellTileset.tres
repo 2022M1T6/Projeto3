@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=7 format=2]
+[gd_resource type="TileSet" load_steps=8 format=2]
 
 [ext_resource path="res://Public/Tilesets/insidellTilesetArea1.png" type="Texture" id=1]
 
@@ -15,7 +15,10 @@ points = PoolVector2Array( 3.6694, 30.8087, 108.046, 30.2505, 106.371, 121.789, 
 points = PoolVector2Array( 70.3775, 13.8791, 70.6566, 102.069, 3.95612, 102.627, 4.51428, 14.4373 )
 
 [sub_resource type="ConvexPolygonShape2D" id=5]
-points = PoolVector2Array( 26.0015, 6.30292, 25.7224, 59.8866, 6.7449, 60.1657, 4.79132, 6.30292 )
+points = PoolVector2Array( 27.6157, 0, 25.6867, 101.715, 5.4321, 100.269, 5.91434, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=6]
+points = PoolVector2Array( 3.72839, 4.05902, 28.3233, 4.05902, 27.841, 102.921, 4.21063, 101.956 )
 
 [resource]
 0/name = "blacksmithHouse"
@@ -114,7 +117,7 @@ points = PoolVector2Array( 26.0015, 6.30292, 25.7224, 59.8866, 6.7449, 60.1657, 
 4/texture = ExtResource( 1 )
 4/tex_offset = Vector2( 0, 0 )
 4/modulate = Color( 1, 1, 1, 1 )
-4/region = Rect2( 0, 127, 32, 64 )
+4/region = Rect2( 0, 127, 32, 112 )
 4/tile_mode = 0
 4/occluder_offset = Vector2( 0, 0 )
 4/navigation_offset = Vector2( 0, 0 )
@@ -131,3 +134,24 @@ points = PoolVector2Array( 26.0015, 6.30292, 25.7224, 59.8866, 6.7449, 60.1657, 
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 4/z_index = 0
+5/name = "woodLogSelected"
+5/texture = ExtResource( 1 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 48, 127, 32, 112 )
+5/tile_mode = 0
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shape_offset = Vector2( 0, 0 )
+5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+5/shape = SubResource( 6 )
+5/shape_one_way = false
+5/shape_one_way_margin = 1.0
+5/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 6 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+5/z_index = 0

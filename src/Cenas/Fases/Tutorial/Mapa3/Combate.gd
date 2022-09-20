@@ -6,7 +6,7 @@ var maxHP = 60
 var dano = 20
 
 func _ready():
-	$Jose/Camera2D/CanvasLayer/PopupDialog.sendDialog([
+	$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
 			{
 				'personagem': 'dellson',
 				'falas':[
@@ -32,7 +32,7 @@ func _on_Hurtbox_area_entered(area):
 		$KinematicBody2D.queue_free()
 	
 	if maxHP - dano == currentHP:
-		$Jose/Camera2D/CanvasLayer/PopupDialog.sendDialog([
+		$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
 			{
 				'personagem': 'dellson',
 				'falas':[
@@ -50,12 +50,12 @@ func _on_Area2D_area_entered(area):
 
 	
 func _on_Area2D2_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
-	$Jose/Camera2D/CanvasLayer/Hint.sendHint('Destrua o boneco de testes usando P e vá até a porta escura')
+	$Player/Camera2D/CanvasLayer/Hint.sendHint('Destrua o boneco de testes usando P e vá até a porta escura')
 	
 
 func _on_Area2D3_area_entered(area):
 	$Dellson/Sprite.flip_h = true
-	$Jose/Camera2D/CanvasLayer/PopupDialog.sendDialog([
+	$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
 			{
 				'personagem': 'dellson',
 				'falas':[
