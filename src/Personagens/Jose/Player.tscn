@@ -214,6 +214,7 @@ collision_mask = 32768
 position = Vector2( 2.77286, 14.6989 )
 scale = Vector2( 1.63787, 1.88734 )
 shape = SubResource( 2 )
+disabled = true
 
 [node name="Area2D" type="Area2D" parent="."]
 

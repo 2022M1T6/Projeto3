@@ -37,7 +37,7 @@ extents = Vector2( 70, 80 )
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 105, 4.75 )
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D2" type="Node2D"]
 script = ExtResource( 6 )
 
 [node name="WhatsAppImage2022-08-24At204449" type="Sprite" parent="."]
@@ -81,6 +81,7 @@ __meta__ = {
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 70, 622 )
 scale = Vector2( 4, 4 )
+moveSpeed = 15
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2( -9.64743, -51.0311 )
