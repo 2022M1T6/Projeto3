@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://Personagens/Jose/Jose.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Personagens/Jose/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Public/WhatsApp Image 2022-08-24 at 20.44.49.jpeg" type="Texture" id=2]
 [ext_resource path="res://Cenas/Utilitarios/popupDialogo.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Public/bonecoTeste.png" type="Texture" id=4]
@@ -37,7 +37,7 @@ extents = Vector2( 70, 80 )
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 105, 4.75 )
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D2" type="Node2D"]
 script = ExtResource( 6 )
 
 [node name="WhatsAppImage2022-08-24At204449" type="Sprite" parent="."]
@@ -78,12 +78,14 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Jose" parent="." instance=ExtResource( 1 )]
-position = Vector2( 43, 611 )
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 70, 622 )
 scale = Vector2( 4, 4 )
+moveSpeed = 15
 
-[node name="Camera2D" type="Camera2D" parent="Jose"]
-position = Vector2( 90.447, -53.4945 )
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2( -9.64743, -51.0311 )
+scale = Vector2( 0.739097, 1.02406 )
 rotating = true
 limit_left = 4
 limit_top = 0
@@ -96,13 +98,13 @@ drag_margin_right = 0.28
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Jose/Camera2D"]
+[node name="CanvasLayer" type="CanvasLayer" parent="Player/Camera2D"]
 
-[node name="PopupPause" parent="Jose/Camera2D/CanvasLayer" instance=ExtResource( 5 )]
+[node name="PopupPause" parent="Player/Camera2D/CanvasLayer" instance=ExtResource( 5 )]
 
-[node name="PopupDialog" parent="Jose/Camera2D/CanvasLayer" instance=ExtResource( 3 )]
+[node name="PopupDialog" parent="Player/Camera2D/CanvasLayer" instance=ExtResource( 3 )]
 
-[node name="Hint" parent="Jose/Camera2D/CanvasLayer" instance=ExtResource( 8 )]
+[node name="Hint" parent="Player/Camera2D/CanvasLayer" instance=ExtResource( 8 )]
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
 
@@ -183,8 +185,8 @@ autoplay = true
 [connection signal="area_entered" from="KinematicBody2D/actionArea" to="." method="_on_actionArea_area_entered"]
 [connection signal="area_exited" from="KinematicBody2D/actionArea" to="." method="_on_actionArea_area_exited"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
-[connection signal="area_entered" from="Area2D2" to="Jose/Camera2D/CanvasLayer/PopupDialog" method="_on_Area2D2_area_entered"]
+[connection signal="area_entered" from="Area2D2" to="Player/Camera2D/CanvasLayer/PopupDialog" method="_on_Area2D2_area_entered"]
 [connection signal="area_shape_exited" from="Area2D2" to="." method="_on_Area2D2_area_shape_exited"]
 [connection signal="area_entered" from="Area2D3" to="." method="_on_Area2D3_area_entered"]
-[connection signal="area_entered" from="Area2D3" to="Jose/Camera2D/CanvasLayer/PopupDialog" method="_on_Area2D3_area_entered"]
+[connection signal="area_entered" from="Area2D3" to="Player/Camera2D/CanvasLayer/PopupDialog" method="_on_Area2D3_area_entered"]
 [connection signal="area_exited" from="Area2D3" to="." method="_on_Area2D3_area_exited"]

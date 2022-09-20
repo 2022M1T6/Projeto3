@@ -9,7 +9,7 @@ func _process(delta):
 	$AudioStreamPlayer2D.volume_db = GlobalOptions.setMusicSound(float($AudioStreamPlayer2D.volume_db))
 
 func _ready():
-	$Jose/Camera2D/CanvasLayer/PopupDialog.sendDialog([
+	$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
 			{
 				'personagem': 'dellson',
 				'falas':[
@@ -35,7 +35,7 @@ func _on_Hurtbox_area_entered(area):
 		$KinematicBody2D.queue_free()
 	
 	if maxHP - dano == currentHP:
-		$Jose/Camera2D/CanvasLayer/PopupDialog.sendDialog([
+		$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
 			{
 				'personagem': 'dellson',
 				'falas':[
@@ -54,24 +54,23 @@ func _on_Area2D_area_entered(area):
 
 	
 func _on_Area2D2_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
-	$Jose/Camera2D/CanvasLayer/Hint.sendHint('Destrua o boneco de testes usando P e vá até a porta escura')
+	$Player/Camera2D/CanvasLayer/Hint.sendHint('Destrua o boneco de testes usando P e vá até a porta escura')
 	
 
 func _on_Area2D3_area_entered(area):
-	if currentHP <= 0:
-		$Dellson/Sprite.flip_h = true
-		$Jose/Camera2D/CanvasLayer/PopupDialog.sendDialog([
-				{
-					'personagem': 'dellson',
-					'falas':[
-						'ESPERA!!!',
-						'Eu sei que você já aprendeu o básico, mas com o meu intelecto e seu ... corpo(?), eu acho que chegaremos muito mais longe e você aprenderá muito mais.',
-						'O que você acha, parceiro?',
-						'Não precisa responder, vou entrar na sua mochila!',
-						'Com licença.'
-					]
-				},
-		])
+	$Dellson/Sprite.flip_h = true
+	$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
+			{
+				'personagem': 'dellson',
+				'falas':[
+					'ESPERA!!!',
+					'Eu sei que você já aprendeu o básico, mas com o meu intelecto e seu ... corpo(?), eu acho que chegaremos muito mais longe e você aprenderá muito mais.',
+					'O que você acha, parceiro?',
+					'Não precisa responder, vou entrar na sua mochila!',
+					'Com licença.'
+				]
+			},
+	])
 	
 func _on_Area2D3_area_exited(area):
 	if currentHP <= 0:

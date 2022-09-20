@@ -7,7 +7,7 @@ func _on_Area2D_area_shape_entered(area_rid, area, area_shape_index, local_shape
 
 # Seta a fala ao entrar no mapa
 func _ready():
-	$Jose/Camera2D/CanvasLayer/PopupDialog.sendDialog([
+	$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
 			{
 				'personagem': 'dellson',
 				'falas': [
@@ -19,20 +19,17 @@ func _ready():
 
 # Seta a hint ao sair da primeira area 2D
 func _on_TutorialMapa2Fala1_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
-	$Jose/Camera2D/CanvasLayer/Hint.sendHint('Vá até o final do labirinto')
+	$Player/Camera2D/CanvasLayer/Hint.sendHint('Vá até o final do labirinto')
 
 
 func _on_TuroalMapa2Fala2_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
-	if first == false:
-		$Jose/Camera2D/CanvasLayer/PopupDialog.sendDialog([
-				{
-					'personagem': 'dellson',
-					'falas': [
-						'BOO!!',
-						'Errei o timing?',
-						'… Enfim, quando você se deparar com um lugar o qual não consegue passar, pressione ESPAÇO para atravessar pequenos obstáculos.'
-					]
-				}
-			])
-		first = true
-	
+	$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
+			{
+				'personagem': 'dellson',
+				'falas': [
+					'BOO!!',
+					'Errei o timing?',
+					'… Enfim, quando você se deparar com um lugar o qual não consegue passar, pressione ESPAÇO para atravessar pequenos obstáculos.'
+				]
+			}
+		])

@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Personagens/Jose/Jose.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Personagens/Jose/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Public/backgroundTutorial2.png" type="Texture" id=2]
 [ext_resource path="res://Cenas/Fases/Tutorial/Mapa2/Labirinto.gd" type="Script" id=3]
 [ext_resource path="res://Cenas/Utilitarios/popupDialogo.tscn" type="PackedScene" id=4]
@@ -25,13 +25,15 @@ position = Vector2( 551, 253.563 )
 scale = Vector2( 1.89368, 1.64564 )
 texture = ExtResource( 2 )
 
-[node name="Jose" parent="." instance=ExtResource( 1 )]
-position = Vector2( 48, 577 )
-scale = Vector2( 2, 2 )
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 47.4968, 576.879 )
+scale = Vector2( 3, 3 )
+moveSpeed = 15
 
-[node name="Camera2D" type="Camera2D" parent="Jose"]
-position = Vector2( 153.658, 1.6129 )
-scale = Vector2( 0.203252, 0.268816 )
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2( -13.1471, 111.082 )
+rotation = 3.5225e-10
+scale = Vector2( 0.0826226, 0.144524 )
 current = true
 limit_left = -4
 limit_top = 0
@@ -44,13 +46,13 @@ drag_margin_right = 0.28
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Jose/Camera2D"]
+[node name="CanvasLayer" type="CanvasLayer" parent="Player/Camera2D"]
 
-[node name="PopupPause" parent="Jose/Camera2D/CanvasLayer" instance=ExtResource( 5 )]
+[node name="PopupPause" parent="Player/Camera2D/CanvasLayer" instance=ExtResource( 5 )]
 
-[node name="PopupDialog" parent="Jose/Camera2D/CanvasLayer" instance=ExtResource( 4 )]
+[node name="PopupDialog" parent="Player/Camera2D/CanvasLayer" instance=ExtResource( 4 )]
 
-[node name="Hint" parent="Jose/Camera2D/CanvasLayer" instance=ExtResource( 6 )]
+[node name="Hint" parent="Player/Camera2D/CanvasLayer" instance=ExtResource( 6 )]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -70,7 +72,7 @@ shape = SubResource( 1 )
 [node name="TutorialMapa2Fala1" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialMapa2Fala1"]
-position = Vector2( 42.9347, 622 )
+position = Vector2( 45.6162, 622.884 )
 shape = SubResource( 2 )
 
 [node name="TuroalMapa2Fala2" type="Area2D" parent="."]
@@ -80,6 +82,6 @@ position = Vector2( 55.3211, 364.835 )
 shape = SubResource( 3 )
 
 [connection signal="area_shape_entered" from="Area2D" to="." method="_on_Area2D_area_shape_entered"]
-[connection signal="area_shape_entered" from="TutorialMapa2Fala1" to="Jose/Camera2D/CanvasLayer/PopupDialog" method="_on_TutorialMapa2Fala1_area_shape_entered"]
+[connection signal="area_shape_entered" from="TutorialMapa2Fala1" to="Player/Camera2D/CanvasLayer/PopupDialog" method="_on_TutorialMapa2Fala1_area_shape_entered"]
 [connection signal="area_shape_exited" from="TutorialMapa2Fala1" to="." method="_on_TutorialMapa2Fala1_area_shape_exited"]
 [connection signal="area_shape_entered" from="TuroalMapa2Fala2" to="." method="_on_TuroalMapa2Fala2_area_shape_entered"]

@@ -6,48 +6,30 @@ var enteredLumberjackArea = false
 var enteredKingArea = false
 var enteredMarketerArea = false
 var removedTree = false
+var endGameSetedUp = false # Guarda se o setup das configurações de pós-minigame concluido foram feitos
 
 var fase1Dialog = {"marketer": false, "king": false, "lumberjack": false, "blacksmith": false}
-# Setup da fase
-func _ready():
-	$Jose/Camera2D/CanvasLayer/PopupMinigame.hide()
-	$TreeAndRocks/TreeArea2D.monitoring = false
-	
-	$Jose/Camera2D/CanvasLayer/Hint/HintText.text = "Fale com os NPCs"
-	$Jose/Camera2D/CanvasLayer/Hint.visible = true
-	
-	$Marketer.call("setInteraction", 1)
-	$VillageSound.play()
-
-# Função que verifica se o usuário concluiu o minigame e pode cortar o tronco caído
-func _process(delta):
-	$VillageSound.volume_db = GlobalOptions.setMusicSound(float($VillageSound.volume_db))
-	GlobalFase2.paralax($Jose,$Lumberjack)
-	GlobalFase2.paralax($Jose,$Blacksmith)
-	GlobalFase2.paralax($Jose,$Marketer)
-	GlobalFase2.paralax($Jose,$King)
-	
-	if(GlobalFase1.AxeOk):
-		$Blacksmith/MinigameArea2D.visible = false
-		$Blacksmith/MinigameArea2D.monitoring = false
-		
-		$TreeAndRocks/TreeArea2D.monitoring = true
-		GlobalFase2.paralax($Jose,$Lumberjack)
-		GlobalFase2.paralax($Jose,$Blacksmith)
-		GlobalFase2.paralax($Jose,$Marketer)
-		GlobalFase2.paralax($Jose,$King)
-		
 
 # Função que verifica se o tronco caído pode ser retirado
 func verifyAndRemoveTree():
-	if Input.is_action_just_pressed("punch") && enteredTreeArea && GlobalFase1.AxeOk && !removedTree:
-		$TreeAndRocks/Treelog.queue_free()
-		removedTree = true
+	if Input.is_action_just_pressed("punch") && enteredTreeArea && !removedTree:
+		if GlobalFase1.AxeOk:
+			$TreeAndRocks/Treelog.queue_free()
+			removedTree = true
+		else: 
+			$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
+				{
+					'personagem': 'dellson',
+					'falas': [
+						'Hmm... Parece que esse machado não vai funcionar tão bem. Tente colher informações com os residentes e montar outro machado na casa do ferreiro!'
+					]
+				}
+			])
 
 # Faz o envio dos diálogos do marketer
 func sendMarketerDialog():
 	if fase1Dialog.marketer:
-		$Jose/Camera2D/CanvasLayer/PopupDialog.call("sendDialog", [
+		$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
 				{
 					'personagem':'marketer',
 					'falas':[
@@ -55,12 +37,14 @@ func sendMarketerDialog():
 					]
 				}
 		])
-		$Marketer.call("setInteraction", 0)
+		$Marketer.setInteraction(0)
 	else:
 		fase1Dialog.marketer = true # Marca que o jogador já falou com o Marketer
-		$Marketer.call("setInteraction", 0) # Muda a interação do marketer para sem balão
-		$King.call("setInteraction", 1)
-		$Jose/Camera2D/CanvasLayer/PopupDialog.call("sendDialog", [ # Envia o diálogo do marketer
+		$Marketer.setInteraction(0) # Muda a interação do marketer para sem balão
+		if !fase1Dialog.king:
+			$King.setInteraction(1)
+			$Player/Camera2D/CanvasLayer/Hint.sendHint("Verifique se o rei está com problemas")
+		$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([ # Envia o diálogo do marketer
 				{
 					'personagem': 'marketer',
 					'falas': [
@@ -98,7 +82,7 @@ func sendMarketerDialog():
 # Faz o envio dos diálogos do king
 func sendKingDialog():
 	if fase1Dialog.king:
-		$Jose/Camera2D/CanvasLayer/PopupDialog.call("sendDialog", [
+		$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
 			{
 				'personagem':'king',
 				'falas':[
@@ -108,8 +92,9 @@ func sendKingDialog():
 		])
 	else:
 		fase1Dialog.king = true
-		$King.call("setInteraction", 0) # Tira o balão do king
-		$Jose/Camera2D/CanvasLayer/PopupDialog.call("sendDialog", [ # Envia o diálogo com king
+		$King.setInteraction(0) # Tira o balão do king
+		$Player/Camera2D/CanvasLayer/Hint.sendHint("Procure informações afim de solucionar o problema do rei")
+		$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([ # Envia o diálogo com king
 			{
 				'personagem': 'jose',
 				'falas': [
@@ -162,15 +147,15 @@ func sendKingDialog():
 				]
 			},
 		])
-		$Marketer.call("setInteraction", 0) # Seta a interação para sem balões para o marketer		
-		$Blacksmith.call("setInteraction", 1) # Seta o balão de missão para o blacksmith
-		$Lumberjack.call("setInteraction", 2) # Seta o balão de diálogo para o lumberjack
+		$Marketer.setInteraction(0) # Seta a interação para sem balões para o marketer		
+		$Blacksmith.setInteraction(1) # Seta o balão de missão para o blacksmith
+		$Lumberjack.setInteraction(2) # Seta o balão de diálogo para o lumberjack
 		
 # Faz o envio dos diálogos do lumberjack
 func sendLumberjackDialog():
 	if fase1Dialog.king:
 		if fase1Dialog.lumberjack:
-			$Jose/Camera2D/CanvasLayer/PopupDialog.call("sendDialog", [
+			$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
 				{
 					'personagem': 'lumberjack',
 					'falas': [
@@ -180,7 +165,7 @@ func sendLumberjackDialog():
 			])
 		else:
 			fase1Dialog.lumberjack = true
-			$Jose/Camera2D/CanvasLayer/PopupDialog.call("sendDialog", [
+			$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
 				{
 					'personagem': 'lumberjack',
 					'falas': [
@@ -227,7 +212,7 @@ func sendLumberjackDialog():
 				}
 			])
 	else:
-		$Jose/Camera2D/CanvasLayer/PopupDialog.call("sendDialog", [
+		$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
 			{
 				'personagem': 'lumberjack',
 				'falas': [
@@ -239,7 +224,7 @@ func sendLumberjackDialog():
 # Faz o envio dos diálogos do blacksmith
 func sendBlacksmithDialog():
 	if fase1Dialog.blacksmith:
-		$Jose/Camera2D/CanvasLayer/PopupDialog.call("sendDialog", [
+		$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
 			{
 				'personagem': 'blacksmith',
 				'falas': [
@@ -251,7 +236,9 @@ func sendBlacksmithDialog():
 		if fase1Dialog.king:
 			fase1Dialog.blacksmith = true
 			$Blacksmith/MinigameArea2D.monitoring = true
-			$Jose/Camera2D/CanvasLayer/PopupDialog.call("sendDialog", [
+			$TreeAndRocks/TreeArea2D.monitoring = true
+			$Player/Camera2D/CanvasLayer/Hint.sendHint("Use a forja e monte uma ferramenta que solucione o problema. Teste-a no tronco")
+			$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
 				{
 					'personagem': 'jose',
 					'falas': [
@@ -279,7 +266,7 @@ func sendBlacksmithDialog():
 				},
 			])
 		else:
-			$Jose/Camera2D/CanvasLayer/PopupDialog.call("sendDialog", [
+			$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
 				{
 					'personagem': 'blacksmith',
 					'falas': [
@@ -287,6 +274,93 @@ func sendBlacksmithDialog():
 					]
 				}
 			])
+
+func _on_TreeArea2D_area_entered(area):
+	if $TreeAndRocks/Treelog/TreelogSelected:
+		enteredTreeArea = true
+		$TreeAndRocks/Treelog/TreelogSelected.show()
+	
+func _on_TreeArea2D_area_exited(area):
+	if $TreeAndRocks/Treelog/TreelogSelected:
+		enteredTreeArea = false
+		$TreeAndRocks/Treelog/TreelogSelected.hide()
+
+func _on_Lumberjack_area_entered(area):
+	$Lumberjack.setState(1)
+	enteredLumberjackArea = true
+
+func _on_Lumberjack_area_exited(area):
+	$Lumberjack.setState(0)
+	enteredLumberjackArea = false
+
+func _on_King_area_entered(area):
+	$King.setState(1)
+	enteredKingArea = true
+
+func _on_King_area_exited(area):
+	$King.setState(0)
+	enteredKingArea = false
+
+func _on_Blacksmith_area_entered(area):
+	$Blacksmith.setState(1)
+	enteredBlacksmithArea = true
+
+func _on_Blacksmith_area_exited(area):
+	$Blacksmith.setState(0)
+	enteredBlacksmithArea = false
+
+func _on_Marketer_area_entered(area):
+	$Marketer.setState(1)
+	enteredMarketerArea = true
+
+func _on_Marketer_area_exited(area):
+	$Marketer.setState(0)
+	enteredMarketerArea = false
+
+func _on_Area2D_area_entered(area):
+	get_tree().change_scene("res://Cenas/Utilitarios/FimDemo.tscn")
+
+# Função que prepara o ambiente depois que o jogador vence o minigame
+func hitTheAxe():
+	$Marketer.setInteraction(0)
+	$Blacksmith.setInteraction(0)
+	$Lumberjack.setInteraction(0)
+	$Player/Camera2D/CanvasLayer/Hint.sendHint("Use o machado para liberar o caminho")
+	
+	$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
+			{
+				'personagem': 'blacksmith',
+				'falas': [
+					'Acho que esse é o melhor para o serviço, boa sorte!'
+				]
+			}
+		])
+
+func _on_MinigameArea2D_area_exited(area):
+	$Player/Camera2D/CanvasLayer/Hint.show()
+
+# Função que executa a chamada do minigame da fase 1
+func _on_MinigameArea2D_area_entered(area):
+	$Player/Camera2D/CanvasLayer/Hint.hide()
+	$Player.setWeapon(1)
+	GlobalFase1.axeChoicedParts = []
+	get_tree().paused = true
+	$Player/Camera2D/CanvasLayer/PopupMinigame.show()
+	$Player/Camera2D/CanvasLayer/PopupMinigame/Control.show()
+	
+	
+# Setup da fase
+func _ready():
+	$Player/Camera2D/CanvasLayer/PopupMinigame.hide()
+	$TreeAndRocks/TreeArea2D.monitoring = false
+	
+	$Player/Camera2D/CanvasLayer/Hint.sendHint("Fale com os residentes da vila")
+	$Player/Camera2D/CanvasLayer/Hint.visible = true
+	
+	$Marketer.setInteraction(1)
+	$Player.setTerrain(0)
+	$VillageSound.play()
+
 
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("interact"):
@@ -301,68 +375,16 @@ func _unhandled_input(event):
 			
 	verifyAndRemoveTree()
 		
-func _on_TreeArea2D_area_entered(area):
-	enteredTreeArea = true
+# Função que verifica se o usuário concluiu o minigame e pode cortar o tronco caído
+func _process(delta):
+	GlobalFase2.paralax($Player,$Lumberjack)
+	GlobalFase2.paralax($Player,$Blacksmith)
+	GlobalFase2.paralax($Player,$Marketer)
+	GlobalFase2.paralax($Player,$King)
 	
-func _on_TreeArea2D_area_exited(area):
-	enteredTreeArea = false
-
-func _on_Lumberjack_area_entered(area):
-	$Lumberjack.call("setState", 1)
-	enteredLumberjackArea = true
-
-func _on_Lumberjack_area_exited(area):
-	$Lumberjack.call("setState", 0)
-	enteredLumberjackArea = false
-
-func _on_King_area_entered(area):
-	$King.call("setState", 1)
-	enteredKingArea = true
-
-func _on_King_area_exited(area):
-	$King.call("setState", 0)
-	enteredKingArea = false
-
-func _on_Blacksmith_area_entered(area):
-	$Blacksmith.call("setState", 1)
-	enteredBlacksmithArea = true
-
-func _on_Blacksmith_area_exited(area):
-	$Blacksmith.call("setState", 0)
-	enteredBlacksmithArea = false
-
-func _on_Marketer_area_entered(area):
-	$Marketer.call("setState", 1)
-	enteredMarketerArea = true
-
-func _on_Marketer_area_exited(area):
-	$Marketer.call("setState", 0)
-	enteredMarketerArea = false
-
-func _on_Area2D_area_entered(area):
-	get_tree().change_scene("res://Cenas/Utilitarios/FimDemo.tscn")
-
-
-func _on_MinigameArea2D_area_exited(area):
-	$Jose/Camera2D/CanvasLayer/Hint.visible = true
-	if GlobalFase1.AxeOk:
-		$Marketer.call("setInteraction", 0)
-		$Blacksmith.call("setInteraction", 0)
-		$Lumberjack.call("setInteraction", 0)
+	if(!endGameSetedUp && GlobalFase1.AxeOk):
+		hitTheAxe()
+		$Blacksmith/MinigameArea2D.visible = false
+		$Blacksmith/MinigameArea2D.monitoring = false
+		endGameSetedUp = true
 		
-		$Jose/Camera2D/CanvasLayer/PopupDialog.call("sendDialog", [
-			{
-				'personagem': 'blacksmith',
-				'falas': [
-					'Acho que esse é o melhor para o serviço, boa sorte!'
-				]
-			}
-		])
-
-# Função que executa a chamada do minigame da fase 1
-func _on_MinigameArea2D_area_entered(area):
-	$Jose/Camera2D/CanvasLayer/Hint.visible = false
-	GlobalFase1.axeChoicedParts = []
-	get_tree().paused = true
-	$Jose/Camera2D/CanvasLayer/PopupMinigame.show()
-	$Jose/Camera2D/CanvasLayer/PopupMinigame/Control.show()
