@@ -88,6 +88,12 @@ func _process(delta):
 		haveAxe = false
 	else:
 		haveAxe = true
+	
+	$SwordSound.volume_db = GlobalOptions.setSFXSound(float($SwordSound.volume_db))
+	$DashSound.volume_db = GlobalOptions.setSFXSound(float($DashSound.volume_db))
+	$WalkingSound.volume_db = GlobalOptions.setSFXSound(float($WalkingSound.volume_db))
+	$AxewoodSound.volume_db = GlobalOptions.setSFXSound(float($AxewoodSound.volume_db))
+	$PunchSound.volume_db = GlobalOptions.setSFXSound(float($PunchSound.volume_db))
 
 
 # Função que realiza o movimento de ataque

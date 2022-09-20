@@ -4,7 +4,11 @@ var onDellsonArea = false
 
 var dellsonDialog = false
 
+
+
 func _ready():
+	$AudioStreamPlayer2D.volume_db = GlobalOptions.setMusicSound(float($AudioStreamPlayer2D.volume_db))
+	print($AudioStreamPlayer2D.volume_db)
 	$Dellson.setInteraction(1)
 	$Jose/Camera2D/CanvasLayer/PopupDialog.sendDialog([
 			{

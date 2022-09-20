@@ -21,6 +21,7 @@ func _ready():
 
 # Função que verifica se o usuário concluiu o minigame e pode cortar o tronco caído
 func _process(delta):
+	$VillageSound.volume_db = GlobalOptions.setMusicSound(float($VillageSound.volume_db))
 	GlobalFase2.paralax($Jose,$Lumberjack)
 	GlobalFase2.paralax($Jose,$Blacksmith)
 	GlobalFase2.paralax($Jose,$Marketer)

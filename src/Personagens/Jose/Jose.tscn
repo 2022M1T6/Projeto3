@@ -238,15 +238,15 @@ stream = ExtResource( 3 )
 
 [node name="DashSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 2 )
-volume_db = -22.089
+volume_db = -20.0
 
 [node name="WalkingSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 7 )
-volume_db = -4.37
+volume_db = -5.0
 
 [node name="AxewoodSound" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource( 14 )
-volume_db = -19.327
+volume_db = -20.0
 
 [node name="PunchSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )

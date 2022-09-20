@@ -137,7 +137,7 @@ polygon = PoolVector2Array( 24.6667, 30.6667, 12.6667, -14, -13.6667, -13.6667, 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 pause_mode = 2
 stream = ExtResource( 9 )
-volume_db = -17.262
+volume_db = -15.0
 autoplay = true
 
 [connection signal="area_shape_entered" from="BackgroundTutorial1/Area2D" to="." method="_on_Area2D_area_shape_entered"]

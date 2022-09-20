@@ -5,6 +5,9 @@ var currentHP = 60
 var maxHP = 60
 var dano = 20
 
+func _process(delta):
+	$AudioStreamPlayer2D.volume_db = GlobalOptions.setMusicSound(float($AudioStreamPlayer2D.volume_db))
+
 func _ready():
 	$Jose/Camera2D/CanvasLayer/PopupDialog.sendDialog([
 			{
