@@ -7,8 +7,11 @@ var dellsonDialog = false
 
 
 func _ready():
+	
 	$AudioStreamPlayer2D.volume_db = GlobalOptions.setMusicSound(float($AudioStreamPlayer2D.volume_db))
-	print($AudioStreamPlayer2D.volume_db)
+	$Player/PunchSound.volume_db = GlobalOptions.setSFXSound(float($Player/PunchSound.volume_db))
+	$Player/RunningSound.volume_db = GlobalOptions.setSFXSound(float($Player/RunningSound.volume_db))
+	$Player/WalkingSound.volume_db = GlobalOptions.setSFXSound(float($Player/WalkingSound.volume_db))
 	$Dellson.setInteraction(1)
 	$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
 			{

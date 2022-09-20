@@ -8,9 +8,10 @@ var canCompleteLine = false
 var dialogs = []
 var currentDialog = {"personagem": "", "falas": []}
 
-func _process(delta):
-	$AudioStreamPlayer2D.volume_db = GlobalOptions.setMusicSound(float($AudioStreamPlayer2D.volume_db))
 
+func _ready():
+	$AudioStreamPlayer2D.volume_db = GlobalOptions.setSFXSound(float($AudioStreamPlayer2D.volume_db))
+	
 # Função que estabelece qual sprite usar quando estiver na fala
 func getDialogSpriteFilePath():
 	if currentDialog["personagem"] == 'dellson':

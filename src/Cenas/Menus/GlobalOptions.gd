@@ -7,13 +7,11 @@ var sfxVolume = 100
 
 
 func setSFXSound(a):
-	var b = 80 + a
-	b = b * masterVolume * sfxVolume / 10000
-	a = b - 80
-	return a
+	var volume = masterVolume * sfxVolume / 100
+	var dB = ((4*volume/10) + a - 40)
+	return dB
 
 func setMusicSound(a):
-	var b = 80 + a
-	b = b * masterVolume * musicVolume / 10000
-	a = b - 80
-	return a
+	var volume = masterVolume * musicVolume / 100
+	var dB = ((4*volume/10) + a - 40)
+	return dB

@@ -178,7 +178,7 @@ polygon = PoolVector2Array( -22.3333, 37.6667, 22.6667, 38.6667, 11, -11.6667, -
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 pause_mode = 2
 stream = ExtResource( 10 )
-volume_db = -15.0
+volume_db = -20.0
 autoplay = true
 
 [connection signal="area_entered" from="KinematicBody2D/Hurtbox" to="." method="_on_Hurtbox_area_entered"]

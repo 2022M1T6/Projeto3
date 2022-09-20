@@ -26,6 +26,9 @@ func _on_BotaoVoltarMenuPrincipal_pressed():
 # Quando o documento estiver pronto
 func _ready():
 	SetLanguage()
+	$TextureRect/ContainerOpcoes/RangeMaster.value = GlobalOptions.masterVolume
+	$TextureRect/ContainerOpcoes/RangeMusic.value = GlobalOptions.musicVolume
+	$TextureRect/ContainerOpcoes/RangeSFX.value = GlobalOptions.sfxVolume
 
 func _process(delta):
 	if language.selected == 0:
