@@ -5,7 +5,12 @@ var currentHP = 60
 var maxHP = 60
 var dano = 20
 
+
 func _ready():
+	$Player/PunchSound.volume_db = GlobalOptions.setSFXSound(float($Player/PunchSound.volume_db))
+	$Player/RunningSound.volume_db = GlobalOptions.setSFXSound(float($Player/RunningSound.volume_db))
+	$Player/WalkingSound.volume_db = GlobalOptions.setSFXSound(float($Player/WalkingSound.volume_db))
+	$AudioStreamPlayer2D.volume_db = GlobalOptions.setMusicSound(float($AudioStreamPlayer2D.volume_db))
 	$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
 			{
 				'personagem': 'dellson',

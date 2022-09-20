@@ -240,15 +240,14 @@ stream = ExtResource( 3 )
 
 [node name="DashSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 2 )
-volume_db = -22.089
+volume_db = -20.0
 
 [node name="WalkingSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 7 )
-volume_db = -4.37
+volume_db = -35.0
 
 [node name="RunningSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 7 )
-volume_db = -4.37
 pitch_scale = 1.5
 
 [node name="AxeAttackSound" type="AudioStreamPlayer2D" parent="."]
@@ -257,6 +256,7 @@ volume_db = -19.327
 
 [node name="PunchSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )
+volume_db = -15.0
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]

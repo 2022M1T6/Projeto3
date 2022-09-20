@@ -7,6 +7,10 @@ func _on_Area2D_area_shape_entered(area_rid, area, area_shape_index, local_shape
 
 # Seta a fala ao entrar no mapa
 func _ready():
+	$Player/PunchSound.volume_db = GlobalOptions.setSFXSound(float($Player/PunchSound.volume_db))
+	$Player/RunningSound.volume_db = GlobalOptions.setSFXSound(float($Player/RunningSound.volume_db))
+	$Player/WalkingSound.volume_db = GlobalOptions.setSFXSound(float($Player/WalkingSound.volume_db))
+	
 	$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
 			{
 				'personagem': 'dellson',

@@ -360,7 +360,12 @@ func _ready():
 	$Marketer.setInteraction(1)
 	$Player.setTerrain(0)
 	$VillageSound.play()
-
+	
+	$VillageSound.volume_db = GlobalOptions.setMusicSound($VillageSound.volume_db)
+	$Player/PunchSound.volume_db = GlobalOptions.setMusicSound(float($Player/PunchSound.volume_db))
+	$Player/RunningSound.volume_db = GlobalOptions.setMusicSound(float($Player/RunningSound.volume_db))
+	$Player/WalkingSound.volume_db = GlobalOptions.setMusicSound(float($Player/WalkingSound.volume_db))
+	$Player/AxeAttackSound.volume_db = GlobalOptions.setMusicSound(float($Player/AxeAttackSound.volume_db))
 
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("interact"):
