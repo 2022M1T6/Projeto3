@@ -17,6 +17,7 @@ func verifyAndRemoveTree():
 			$TreeAndRocks/Treelog.queue_free()
 			removedTree = true
 		else: 
+			$Player/Camera2D/CanvasLayer/WeaponFrame.hide()
 			$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
 				{
 					'personagem': 'dellson',
@@ -284,6 +285,9 @@ func _on_TreeArea2D_area_exited(area):
 	if $TreeAndRocks/Treelog/TreelogSelected:
 		enteredTreeArea = false
 		$TreeAndRocks/Treelog/TreelogSelected.hide()
+		
+	if !$Player/Camera2D/CanvasLayer/WeaponFrame.visible:
+		$Player/Camera2D/CanvasLayer/WeaponFrame.show()
 
 func _on_Lumberjack_area_entered(area):
 	$Lumberjack.setState(1)
@@ -292,6 +296,7 @@ func _on_Lumberjack_area_entered(area):
 func _on_Lumberjack_area_exited(area):
 	$Lumberjack.setState(0)
 	enteredLumberjackArea = false
+	$Player/Camera2D/CanvasLayer/WeaponFrame.show()
 
 func _on_King_area_entered(area):
 	$King.setState(1)
@@ -300,6 +305,7 @@ func _on_King_area_entered(area):
 func _on_King_area_exited(area):
 	$King.setState(0)
 	enteredKingArea = false
+	$Player/Camera2D/CanvasLayer/WeaponFrame.show()
 
 func _on_Blacksmith_area_entered(area):
 	$Blacksmith.setState(1)
@@ -308,6 +314,7 @@ func _on_Blacksmith_area_entered(area):
 func _on_Blacksmith_area_exited(area):
 	$Blacksmith.setState(0)
 	enteredBlacksmithArea = false
+	$Player/Camera2D/CanvasLayer/WeaponFrame.show()
 
 func _on_Marketer_area_entered(area):
 	$Marketer.setState(1)
@@ -316,6 +323,7 @@ func _on_Marketer_area_entered(area):
 func _on_Marketer_area_exited(area):
 	$Marketer.setState(0)
 	enteredMarketerArea = false
+	$Player/Camera2D/CanvasLayer/WeaponFrame.show()
 
 func _on_Area2D_area_entered(area):
 	GlobalOptions.dimensoes["vision"] = true
@@ -328,6 +336,7 @@ func hitTheAxe():
 	$Lumberjack.setInteraction(0)
 	$Player/Camera2D/CanvasLayer/Hint.sendHint("Use o machado para liberar o caminho")
 	
+	$Player/Camera2D/CanvasLayer/WeaponFrame.hide()
 	$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
 			{
 				'personagem': 'blacksmith',
@@ -336,19 +345,37 @@ func hitTheAxe():
 				]
 			}
 		])
+		
+func showAxeFrame():
+	$Player/Camera2D/CanvasLayer/WeaponFrame/PunchIcon.hide()
+	$Player/Camera2D/CanvasLayer/WeaponFrame/Machado.setSprites(
+		GlobalFase1.axeChoicedParts[0]['sprite'], # Cabo
+		GlobalFase1.axeChoicedParts[1]['sprite'], # Lamina
+		GlobalFase1.axeChoicedParts[2]['sprite'] # Cabecote
+	)
+	$Player/Camera2D/CanvasLayer/WeaponFrame/Machado.show()
+	$Player/Camera2D/CanvasLayer/WeaponFrame.show()
 
 func _on_MinigameArea2D_area_exited(area):
 	$Player/Camera2D/CanvasLayer/Hint.show()
+	showAxeFrame()
+	
+	if(GlobalFase1.AxeOk):
+		$Blacksmith/MinigameArea2D.visible = false
+		$Blacksmith/MinigameArea2D.monitoring = false
+		
+	
 
 # Função que executa a chamada do minigame da fase 1
 func _on_MinigameArea2D_area_entered(area):
 	$Player/Camera2D/CanvasLayer/Hint.hide()
+	$Player/Camera2D/CanvasLayer/WeaponFrame.hide()
 	$Player.setWeapon(1)
 	GlobalFase1.axeChoicedParts = []
 	get_tree().paused = true
 	$Player/Camera2D/CanvasLayer/PopupMinigame.show()
 	$Player/Camera2D/CanvasLayer/PopupMinigame/Control.show()
-	
+	$Player.setMoveDirection(Vector2(0,0))
 	
 # Setup da fase
 func _ready():
@@ -361,22 +388,21 @@ func _ready():
 	$Marketer.setInteraction(1)
 	$Player.setTerrain(0)
 	$VillageSound.play()
-	
-	$VillageSound.volume_db = GlobalOptions.setMusicSound($VillageSound.volume_db)
-	$Player/PunchSound.volume_db = GlobalOptions.setMusicSound(float($Player/PunchSound.volume_db))
-	$Player/RunningSound.volume_db = GlobalOptions.setMusicSound(float($Player/RunningSound.volume_db))
-	$Player/WalkingSound.volume_db = GlobalOptions.setMusicSound(float($Player/WalkingSound.volume_db))
-	$Player/AxeAttackSound.volume_db = GlobalOptions.setMusicSound(float($Player/AxeAttackSound.volume_db))
+
 
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("interact"):
 		if enteredMarketerArea:
+			$Player/Camera2D/CanvasLayer/WeaponFrame.hide()
 			sendMarketerDialog()
 		elif enteredKingArea:
+			$Player/Camera2D/CanvasLayer/WeaponFrame.hide()
 			sendKingDialog()
 		elif enteredLumberjackArea:
+			$Player/Camera2D/CanvasLayer/WeaponFrame.hide()
 			sendLumberjackDialog()
 		elif enteredBlacksmithArea:
+			$Player/Camera2D/CanvasLayer/WeaponFrame.hide()
 			sendBlacksmithDialog()
 			
 	verifyAndRemoveTree()
@@ -390,7 +416,5 @@ func _process(delta):
 	
 	if(!endGameSetedUp && GlobalFase1.AxeOk):
 		hitTheAxe()
-		$Blacksmith/MinigameArea2D.visible = false
-		$Blacksmith/MinigameArea2D.monitoring = false
 		endGameSetedUp = true
 		

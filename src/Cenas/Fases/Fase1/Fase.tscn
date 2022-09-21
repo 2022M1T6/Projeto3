@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Cenas/Utilitarios/Tilesets/Area1/Tileset1.tres" type="TileSet" id=1]
 [ext_resource path="res://Personagens/Jose/Player.tscn" type="PackedScene" id=2]
@@ -13,7 +13,10 @@
 [ext_resource path="res://Cenas/Utilitarios/popupDialogo.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Public/Sounds-effects/VillagesSound.wav" type="AudioStream" id=12]
 [ext_resource path="res://Public/KeyboardKeys/teclaP.png" type="Texture" id=13]
+[ext_resource path="res://Public/Utilitarios/frame.png" type="Texture" id=14]
 [ext_resource path="res://Cenas/Utilitarios/PopupPause.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Public/Utilitarios/punchIcon.png" type="Texture" id=16]
+[ext_resource path="res://Cenas/Fases/Fase1/machado.tscn" type="PackedScene" id=17]
 
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 31.5, 19.5 )
@@ -25,7 +28,7 @@ extents = Vector2( 34, 31.5 )
 extents = Vector2( 35.5, 12.25 )
 
 [sub_resource type="RectangleShape2D" id=12]
-extents = Vector2( 32, 5 )
+extents = Vector2( 32, 6 )
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 25, 19.5 )
@@ -90,7 +93,7 @@ position = Vector2( 2, 3.5 )
 shape = SubResource( 7 )
 
 [node name="Blacksmith" parent="." instance=ExtResource( 7 )]
-position = Vector2( 642, 57 )
+position = Vector2( 642, 61 )
 
 [node name="Blacksmith" type="Area2D" parent="Blacksmith"]
 collision_mask = 15
@@ -103,7 +106,7 @@ shape = SubResource( 9 )
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blacksmith/MinigameArea2D"]
-position = Vector2( 15, -7 )
+position = Vector2( 15, -8 )
 shape = SubResource( 12 )
 
 [node name="Marketer" parent="." instance=ExtResource( 8 )]
@@ -142,6 +145,34 @@ editor_draw_drag_margin = true
 
 [node name="Hint" parent="Player/Camera2D/CanvasLayer" instance=ExtResource( 10 )]
 
+[node name="WeaponFrame" type="TextureRect" parent="Player/Camera2D/CanvasLayer"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 23.0
+margin_top = -134.0
+margin_right = 55.0
+margin_bottom = -102.0
+rect_scale = Vector2( 4, 4 )
+texture = ExtResource( 14 )
+
+[node name="PunchIcon" type="TextureRect" parent="Player/Camera2D/CanvasLayer/WeaponFrame"]
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 7.75
+margin_top = 8.0
+margin_right = 24.75
+margin_bottom = 25.0
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 16 )
+
+[node name="Machado" parent="Player/Camera2D/CanvasLayer/WeaponFrame" instance=ExtResource( 17 )]
+visible = false
+margin_left = 8.25
+margin_top = 10.25
+margin_right = 8.25
+margin_bottom = 10.25
+rect_scale = Vector2( 0.2, 0.2 )
+
 [node name="TreeAndRocks" type="TileMap" parent="."]
 position = Vector2( 0, -1 )
 tile_set = ExtResource( 1 )
@@ -175,12 +206,14 @@ shape = SubResource( 3 )
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+visible = false
 position = Vector2( 0, -12 )
 polygon = PoolVector2Array( 672, 170, 957, 171, 955, 91, 905, 91, 865, 97, 703, 93, 680, -42, 590, -24, 587, 47, 485, 50, 477, -41, 381, -41, 370, 66, 415, 99, 431, 201, 498, 258, 492, 753, 582, 753, 583, 829, 485, 828, -62, 820, -58, -187, 1351, -185, 1345, 830, 583, 828, 583, 588.24, 583, 247 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 position = Vector2( 798, 119 )
 shape = SubResource( 11 )
 

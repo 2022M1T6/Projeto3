@@ -6,8 +6,8 @@ var inside = false
 func construct():
 	if inside:
 		$Wood.visible = true
-		self.collision_layer = 16
-		self.collision_mask = 16
+		self.collision_layer = 32
+		self.collision_mask = 32
 		$Input.monitoring = false
 		GlobalFase2.wood -= 1
 

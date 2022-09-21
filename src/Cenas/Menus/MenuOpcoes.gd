@@ -9,15 +9,15 @@ func SetLanguage():
 	language.add_item("English") #1
 	
 	# Seta a opção selecionada como médio
-	language.select(0)
+	if GlobalOptions.isPortuguese:
+		language.select(0)
+	else:
+		language.select(1)
 
 	# Cria o evento de mudança de opção selecionada
 	language.connect("item_selected", self, "on_item_selected")
 	
 
-# Função executada quando a opção do dropdown de dificuldade muda
-func on_item_selected(id):
-	print(id)
 
 # Função executada quando clica no botão voltar
 func _on_BotaoVoltarMenuPrincipal_pressed():
@@ -26,6 +26,18 @@ func _on_BotaoVoltarMenuPrincipal_pressed():
 # Quando o documento estiver pronto
 func _ready():
 	SetLanguage()
+	if GlobalOptions.isPortuguese:
+		$TextureRect/ContainerOpcoes/MasterVolume.text = 'Volume Geral'
+		$TextureRect/ContainerOpcoes/Music.text = 'Volume da Música'
+		$TextureRect/ContainerOpcoes/SFX.text = 'Volume dos Efeitos Sonoros'
+		$TextureRect/ContainerOpcoes/Language.text = 'Língua'
+		$TextureRect/BotaoVoltarMenuPrincipal.text = 'Salvar Alterações'
+	else:
+		$TextureRect/ContainerOpcoes/MasterVolume.text = 'General Volume'
+		$TextureRect/ContainerOpcoes/Music.text = 'Music Volume'
+		$TextureRect/ContainerOpcoes/SFX.text = 'Sound Effects Volume'
+		$TextureRect/ContainerOpcoes/Language.text = 'Language'
+		$TextureRect/BotaoVoltarMenuPrincipal.text = 'Save Changes'
 	$TextureRect/ContainerOpcoes/RangeMaster.value = GlobalOptions.masterVolume
 	$TextureRect/ContainerOpcoes/RangeMusic.value = GlobalOptions.musicVolume
 	$TextureRect/ContainerOpcoes/RangeSFX.value = GlobalOptions.sfxVolume
