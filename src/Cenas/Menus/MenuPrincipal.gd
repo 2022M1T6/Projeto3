@@ -11,3 +11,13 @@ func _on_BotaoOpcoes_pressed():
 # Função executada quando o botão Sair é pressionado
 func _on_BotaoSair_pressed():
 	return get_tree().quit()
+	
+func _ready():
+	if GlobalOptions.isPortuguese:
+		$BotaoNovoJogo.text = '__Novo Jogo__'
+		$BotaoOpcoes.text = '__Opções__'
+		$BotaoSair.text = '__Sair__'
+	else:
+		$BotaoNovoJogo.text = '__New Game__'
+		$BotaoOpcoes.text = '__Options__'
+		$BotaoSair.text = '__Quit__'
