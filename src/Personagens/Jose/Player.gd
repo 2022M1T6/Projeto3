@@ -36,10 +36,14 @@ func setTerrain(newTerrain: int) -> void:
 
 # Função que seta a direção do player com base no teclado
 func setMoveDirectionByKeyboard():
-	moveDirection = Vector2(
+	setMoveDirection(Vector2(
 		int(Input.is_action_pressed('ui_right')) - int(Input.is_action_pressed('ui_left')),
 		int(Input.is_action_pressed('ui_down')) - int(Input.is_action_pressed('ui_up'))
-	)
+	))
+
+# Função que seta a direção do player
+func setMoveDirection(newMoveDirection: Vector2):
+	moveDirection = newMoveDirection
 	
 # Verifica se o botão de ataque está pressionado e seta o estado
 func verifyAttackByKeybord():
