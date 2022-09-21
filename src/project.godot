@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Jogo Grupo 3"
-run/main_scene="res://Cenas/Fases/Fase1/Fase.tscn"
+run/main_scene="res://Cenas/Fases/Fase 2/Fase2.tscn"
 config/icon="res://Public/icon.png"
 
 [autoload]

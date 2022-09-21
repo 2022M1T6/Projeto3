@@ -18,6 +18,7 @@ func pausar():
 	
 func despausar():
 	$".".hide()
+	$"Settings".hide()
 	get_tree().paused = false
 	pausado = false
 	$support.text = ""
@@ -40,6 +41,7 @@ func _ready():
 		$Label.text = "Paused"
 		$ButtonMenu.text = "Main Menu"
 		$ButtonContinuar.text = "Continue"
+		$ButtonOptions.text = "Settings"
 
 func _on_ButtonContinuar_pressed():
 	despausar()
@@ -62,3 +64,14 @@ func _on_roadmap_pressed():
 		$support.text = textos["roadmap"]
 	else:
 		$support.text = text["roadmap"]
+
+
+func _on_ButtonOptions_pressed():
+	$Settings.show()
+
+
+func _on_Back_pressed():
+	GlobalOptions.masterVolume = $Settings/Container/RangeMaster.value
+	GlobalOptions.musicVolume = $Settings/Container/RangeMusic.value
+	GlobalOptions.sfxVolume = $Settings/Container/RangeSFX.value
+	$Settings.hide()
