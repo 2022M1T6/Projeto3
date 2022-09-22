@@ -256,7 +256,7 @@ stream = ExtResource( 12 )
 volume_db = 5.0
 
 [node name="Gallo" parent="." instance=ExtResource( 21 )]
-position = Vector2( 448, 191 )
+position = Vector2( 605, 232 )
 scale = Vector2( 0.8, 0.8 )
 
 [connection signal="area_entered" from="Lumberjack/Lumberjack" to="." method="_on_Lumberjack_area_entered"]
