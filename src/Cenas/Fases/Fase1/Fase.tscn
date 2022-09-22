@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Cenas/Utilitarios/Tilesets/Area1/Tileset1.tres" type="TileSet" id=1]
 [ext_resource path="res://Personagens/Jose/Player.tscn" type="PackedScene" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://Public/eye.png" type="Texture" id=18]
 [ext_resource path="res://Public/Utilitarios/lightFrame.png" type="Texture" id=19]
 [ext_resource path="res://Public/Fonts/Kenney Pixel.ttf" type="DynamicFontData" id=20]
+[ext_resource path="res://Personagens/Gallo/Gallo.tscn" type="PackedScene" id=21]
 
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 31.5, 19.5 )
@@ -253,6 +254,10 @@ shape = SubResource( 11 )
 pause_mode = 2
 stream = ExtResource( 12 )
 volume_db = 5.0
+
+[node name="Gallo" parent="." instance=ExtResource( 21 )]
+position = Vector2( 448, 191 )
+scale = Vector2( 0.8, 0.8 )
 
 [connection signal="area_entered" from="Lumberjack/Lumberjack" to="." method="_on_Lumberjack_area_entered"]
 [connection signal="area_exited" from="Lumberjack/Lumberjack" to="." method="_on_Lumberjack_area_exited"]
