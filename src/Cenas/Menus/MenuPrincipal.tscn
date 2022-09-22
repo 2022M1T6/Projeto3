@@ -29,26 +29,38 @@ texture = SubResource( 1 )
 expand = true
 
 [node name="BotaoNovoJogo" type="Button" parent="."]
-margin_left = 425.0
-margin_top = 103.0
-margin_right = 563.0
-margin_bottom = 163.0
+anchor_left = 0.386
+anchor_top = 0.207
+anchor_right = 0.386
+anchor_bottom = 0.207
+margin_left = -69.264
+margin_top = -30.2
+margin_right = 68.736
+margin_bottom = 29.8
 text = "__Novo Jogo__"
 flat = true
 
 [node name="BotaoOpcoes" type="Button" parent="."]
-margin_left = 425.0
-margin_top = 180.0
-margin_right = 563.0
-margin_bottom = 200.0
+anchor_left = 0.386
+anchor_top = 0.307
+anchor_right = 0.386
+anchor_bottom = 0.307
+margin_left = -69.288
+margin_top = -10.2
+margin_right = 68.712
+margin_bottom = 9.79999
 text = "__ Opcoes __"
 flat = true
 
 [node name="BotaoSair" type="Button" parent="."]
-margin_left = 424.0
-margin_top = 245.0
-margin_right = 562.0
-margin_bottom = 265.0
+anchor_left = 0.386
+anchor_top = 0.407
+anchor_right = 0.386
+anchor_bottom = 0.407
+margin_left = -69.312
+margin_top = -9.80002
+margin_right = 68.688
+margin_bottom = 10.2
 text = "__ Sair __"
 flat = true
 

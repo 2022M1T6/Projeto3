@@ -1,10 +1,10 @@
 extends Node
 
-var isPortuguese = true
+var isPortuguese = false
 var masterVolume = 100
 var musicVolume = 100
 var sfxVolume = 100
-
+var dimensoes = {"vision": true, "roadmap": true}
 
 func setSFXSound(a):
 	var volume = masterVolume * sfxVolume / 100

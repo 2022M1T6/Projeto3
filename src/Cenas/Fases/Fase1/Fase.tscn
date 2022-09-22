@@ -208,7 +208,7 @@ shape = SubResource( 3 )
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 visible = false
 position = Vector2( 0, -12 )
-polygon = PoolVector2Array( 672, 170, 957, 171, 955, 91, 905, 91, 865, 97, 703, 93, 680, -42, 590, -24, 587, 47, 485, 50, 477, -41, 381, -41, 370, 66, 415, 99, 431, 201, 498, 258, 492, 753, 582, 753, 583, 829, 485, 828, -62, 820, -58, -187, 1351, -185, 1345, 830, 583, 828, 583, 247 )
+polygon = PoolVector2Array( 672, 170, 957, 171, 955, 91, 905, 91, 865, 97, 703, 93, 680, -42, 590, -24, 587, 47, 485, 50, 477, -41, 381, -41, 370, 66, 415, 99, 431, 201, 498, 258, 492, 753, 582, 753, 583, 829, 485, 828, -62, 820, -58, -187, 1351, -185, 1345, 830, 583, 828, 583, 588.24, 583, 247 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -220,7 +220,7 @@ shape = SubResource( 11 )
 [node name="VillageSound" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
 stream = ExtResource( 12 )
-volume_db = -5.0
+volume_db = 5.0
 
 [connection signal="area_entered" from="Lumberjack/Lumberjack" to="." method="_on_Lumberjack_area_entered"]
 [connection signal="area_exited" from="Lumberjack/Lumberjack" to="." method="_on_Lumberjack_area_exited"]
