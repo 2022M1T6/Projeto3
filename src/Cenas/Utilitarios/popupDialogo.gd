@@ -103,8 +103,9 @@ func getPercentVisibleStepByText(text):
 		
 	return percentVisible
 
+# Função que executa a lógica de complete das linhas se não estiver pausado
 func _on_Timer_timeout():
-	if startedDialog:
+	if startedDialog && !GlobalOptions.isPaused:
 		if(dialogBoxLabel.percent_visible >= 1):
 			canGoToNextLine = true
 			$AudioStreamPlayer2D.stop()
@@ -116,10 +117,11 @@ func _on_Timer_timeout():
 				$AudioStreamPlayer2D.play()
 				dialogBoxLabel.percent_visible += getPercentVisibleStepByText(dialogBoxLabel.text)
 			
-# Função que recebe eventos do teclado
+# Função que recebe eventos do teclado para o popup de fala SE não estiver pausado
 func _unhandled_key_input(event):
-	if Input.is_action_just_pressed("interact") && startedDialog:
-		if(canGoToNextLine):
-			showNextMessageOnList()
-		else:
-			canCompleteLine = true
+	if !GlobalOptions.isPaused:
+		if Input.is_action_just_pressed("interact") && startedDialog:
+			if(canGoToNextLine):
+				showNextMessageOnList()
+			else:
+				canCompleteLine = true

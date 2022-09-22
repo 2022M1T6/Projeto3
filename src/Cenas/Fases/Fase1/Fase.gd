@@ -638,6 +638,7 @@ func _ready():
 		$Player/Camera2D/CanvasLayer/Hint.sendHint("Fale com os residentes da vila")
 	else:
 		$Player/Camera2D/CanvasLayer/Hint.sendHint("Talk to the villagers")
+		$Player/Camera2D/CanvasLayer/DimensionFrame/Label.text = 'Vision'
 	$Player/Camera2D/CanvasLayer/Hint.visible = true
 	
 	$Marketer.setInteraction(1)
