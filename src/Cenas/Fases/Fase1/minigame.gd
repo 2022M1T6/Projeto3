@@ -23,13 +23,13 @@ func removeCards():
 	if GlobalOptions.isPortuguese:
 		for categoria in GlobalFase1.cardsP:
 			for carta in categoria:
-				if carta["objeto"]:
+				if carta["objeto"] && carta["objeto"] != null:
 					carta["objeto"].queue_free()
 					carta["objeto"] = false
 	else:
 		for categoria in GlobalFase1.cardsE:
 			for carta in categoria:
-				if carta["objeto"]:
+				if carta["objeto"] && carta["objeto"] != null:
 					carta["objeto"].queue_free()
 					carta["objeto"] = false
 
