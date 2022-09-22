@@ -621,14 +621,15 @@ func _on_MinigameArea2D_area_exited(area):
 
 # Função que executa a chamada do minigame da fase 1
 func _on_MinigameArea2D_area_entered(area):
-	$Player/Camera2D/CanvasLayer/Hint.hide()
-	$Player/Camera2D/CanvasLayer/WeaponFrame.hide()
-	$Player.setWeapon(1)
-	GlobalFase1.axeChoicedParts = []
-	get_tree().paused = true
-	$Player/Camera2D/CanvasLayer/PopupMinigame.show()
-	$Player/Camera2D/CanvasLayer/PopupMinigame/Control.show()
-	$Player.setMoveDirection(Vector2(0,0))
+	if !GlobalFase1.AxeOk:
+		$Player/Camera2D/CanvasLayer/Hint.hide()
+		$Player/Camera2D/CanvasLayer/WeaponFrame.hide()
+		$Player.setWeapon(1)
+		GlobalFase1.axeChoicedParts = []
+		get_tree().paused = true
+		$Player/Camera2D/CanvasLayer/PopupMinigame.show()
+		$Player/Camera2D/CanvasLayer/PopupMinigame/Control.show()
+		$Player.setMoveDirection(Vector2(0,0))
 	
 # Setup da fase
 func _ready():
