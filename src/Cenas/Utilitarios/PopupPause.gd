@@ -50,7 +50,7 @@ func _on_ButtonContinuar_pressed():
 
 
 func _on_ButtonMenu_pressed():
-	get_tree().paused = false
+	despausar()
 	get_tree().change_scene("res://Cenas/Menus/MenuPrincipal.tscn")
 
 
