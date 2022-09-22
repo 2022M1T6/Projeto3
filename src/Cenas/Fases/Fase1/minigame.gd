@@ -22,7 +22,7 @@ func instanceCard(cardInfo):
 func removeCards():
 	for categoria in GlobalFase1.cards:
 		for carta in categoria:
-			if carta["objeto"]:
+			if carta["objeto"] && carta["objeto"] != null:
 				carta["objeto"].queue_free()
 				carta["objeto"] = false
 

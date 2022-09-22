@@ -40,10 +40,17 @@ func _ready():
 			get_node("Panel/"+dimensao).hide()
 	
 	if !GlobalOptions.isPortuguese:
-		$Label.text = "Paused"
+		$Label.text = "PAUSED"
+		$Settings/TextureRect/Label.text = 'Settings'
 		$ButtonMenu/Label.text = "Main Menu"
 		$ButtonContinuar/Label.text = "Continue"
 		$ButtonOptions/Label.text = "Settings"
+	else:
+		$Label.text = "PAUSADO"
+		$Settings/TextureRect/Label.text = 'Configurações'
+		$ButtonMenu/Label.text = "Menu Principal"
+		$ButtonContinuar/Label.text = "Continuar"
+		$ButtonOptions/Label.text = "Configurações"
 
 func _on_ButtonContinuar_pressed():
 	despausar()
@@ -73,7 +80,7 @@ func _on_ButtonOptions_pressed():
 
 
 func _on_Back_pressed():
-	GlobalOptions.masterVolume = $Settings/Container/RangeMaster.value
-	GlobalOptions.musicVolume = $Settings/Container/RangeMusic.value
-	GlobalOptions.sfxVolume = $Settings/Container/RangeSFX.value
+	GlobalOptions.masterVolume = $Settings/TextureRect/Container/RangeMaster.value
+	GlobalOptions.musicVolume = $Settings/TextureRect/Container/RangeMusic.value
+	GlobalOptions.sfxVolume = $Settings/TextureRect/Container/RangeSFX.value
 	$Settings.hide()

@@ -27,17 +27,19 @@ func _on_BotaoVoltarMenuPrincipal_pressed():
 func _ready():
 	SetLanguage()
 	if GlobalOptions.isPortuguese:
+		$TextureRect/Title.text = "Configurações"
 		$TextureRect/ContainerOpcoes/MasterVolume.text = 'Volume Geral'
 		$TextureRect/ContainerOpcoes/Music.text = 'Volume da Música'
 		$TextureRect/ContainerOpcoes/SFX.text = 'Volume dos Efeitos Sonoros'
 		$TextureRect/ContainerOpcoes/Language.text = 'Língua'
-		$TextureRect/BotaoVoltarMenuPrincipal.text = 'Salvar Alterações'
+		$TextureRect/BotaoVoltarMenuPrincipal/Label.text = 'Salvar e Sair'
 	else:
+		$TextureRect/Title.text = "Configurations"
 		$TextureRect/ContainerOpcoes/MasterVolume.text = 'General Volume'
 		$TextureRect/ContainerOpcoes/Music.text = 'Music Volume'
 		$TextureRect/ContainerOpcoes/SFX.text = 'Sound Effects Volume'
 		$TextureRect/ContainerOpcoes/Language.text = 'Language'
-		$TextureRect/BotaoVoltarMenuPrincipal.text = 'Save Changes'
+		$TextureRect/BotaoVoltarMenuPrincipal/Label.text = 'Save Changes'
 	$TextureRect/ContainerOpcoes/RangeMaster.value = GlobalOptions.masterVolume
 	$TextureRect/ContainerOpcoes/RangeMusic.value = GlobalOptions.musicVolume
 	$TextureRect/ContainerOpcoes/RangeSFX.value = GlobalOptions.sfxVolume
