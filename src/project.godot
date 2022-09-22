@@ -10,9 +10,9 @@ config_version=4
 
 [application]
 
-config/name="Jogo Grupo 3"
+config/name="Insidell"
 run/main_scene="res://Cenas/Menus/MenuPrincipal.tscn"
-config/icon="res://Public/icon.png"
+config/icon="res://Public/Characters/playerProfile.png"
 
 [autoload]
 
