@@ -88,6 +88,12 @@ func _process(delta):
 		haveAxe = false
 	else:
 		haveAxe = true
+	
+	$SwordSound.volume_db = GlobalOptions.setSFXSound(float($SwordSound.volume_db))
+	$DashSound.volume_db = GlobalOptions.setSFXSound(float($DashSound.volume_db))
+	$WalkingSound.volume_db = GlobalOptions.setSFXSound(float($WalkingSound.volume_db))
+	$AxewoodSound.volume_db = GlobalOptions.setSFXSound(float($AxewoodSound.volume_db))
+	$PunchSound.volume_db = GlobalOptions.setSFXSound(float($PunchSound.volume_db))
 
 
 # Função que realiza o movimento de ataque
@@ -98,9 +104,12 @@ func _unhandled_input(event: InputEvent) -> void:
 			if haveAxe == false:
 				animation.play("punchAttack")
 				$PunchSound.play()
+				$Hitbox.monitorable = true
 			else:
 				animation.play("attack")
+				$Hitbox.monitorable = true
 			yield(get_tree().create_timer(0.4),"timeout")
+			$Hitbox.monitorable = false
 			attacking = false
 	if event.is_action_pressed("death") and attacking == false:
 		attacking = true

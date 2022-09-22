@@ -12,6 +12,13 @@ func setText(newText):
 func showText():
 	$HintText.text = text
 	
+	if len(text) > 80:
+		$HintText.set("custom_fonts/font/settings/size", 10)		
+	elif len(text) > 55:
+		$HintText.set("custom_fonts/font/settings/size", 20)
+	elif len(text) <= 55:
+		$HintText.set("custom_fonts/font/settings/size", 25)
+	
 # Função que mostra a hint e altera o texto dela caso algo for passado por parâmetro
 func sendHint(newText = ''):
 	if newText:
@@ -22,4 +29,4 @@ func sendHint(newText = ''):
 # Função que esconde a hint
 func hideHint():
 	hide()
-	
+

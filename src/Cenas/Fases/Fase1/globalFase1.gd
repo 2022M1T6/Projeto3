@@ -16,7 +16,7 @@ var cards = [
 		{
 			'titulo': 'Cabo de Madeira',
 			'sprite': "res://Public/Minigame1/caboMadeira.png",
-			'descricao': 'O clássico, mais duro do que você imaginava',
+			'descricao': 'O clássico, melhor escolha para machado de lenhadores.',
 			'position': Vector2(100, 50),
 			'correto': true,
 			'objeto': false
@@ -24,7 +24,7 @@ var cards = [
 		{
 			'titulo': 'Cabo de Aço',
 			'sprite': "res://Public/Minigame1/caboAco.png",
-			'descricao': 'Muito resistente mas muito pesado',
+			'descricao': 'Muito resistente, pesado e o melhor para batalhas.',
 			'position': Vector2(400, 50),
 			'correto': false,
 			'objeto': false
@@ -32,7 +32,7 @@ var cards = [
 		{
 			'titulo': 'Cabo de Madeira Curto',
 			'sprite': "res://Public/Minigame1/caboMadeiraCurto.png",
-			'descricao': 'Ele mal cabe na sua mão',
+			'descricao': 'Um cabo excelente para arremessos.',
 			'position': Vector2(700, 50),
 			'correto': false,
 			'objeto': false
@@ -42,7 +42,7 @@ var cards = [
 		{
 			'titulo': 'Lâmina dupla',
 			'sprite': "res://Public/Minigame1/laminaDupla.png",
-			'descricao': 'Para batalhas e instigar medo no inimigo',
+			'descricao': 'A cabeça de machado que mais amedronta os inimigos.',
 			'position': Vector2(100, 50),
 			'correto': false,
 			'objeto': false
@@ -50,7 +50,7 @@ var cards = [
 		{
 			'titulo': 'Lâmina de Fio Único',
 			'sprite': "res://Public/Minigame1/laminaSimples.png",
-			'descricao': 'Só de encostar na lâmina, você já cortou seu dedo',
+			'descricao': 'Forjada com o formato perfeito para cortar madeira.',
 			'position': Vector2(400, 50),
 			'correto': true,
 			'objeto': false
@@ -58,7 +58,7 @@ var cards = [
 		{
 			'titulo': 'Lâmina Pesada',
 			'sprite': "res://Public/Minigame1/laminaPesada.png",
-			'descricao': 'Ideal para usos curtos e pessoas muito fortes',
+			'descricao': 'Utilizada por guerreiros muito fortes.',
 			'position': Vector2(700, 50),
 			'correto': false,
 			'objeto': false
@@ -68,7 +68,7 @@ var cards = [
 		{
 			'titulo': 'Cabeçote de Madeira',
 			'sprite': "res://Public/Minigame1/cabecoteMadeira.png",
-			'descricao': 'Parece que foi feito com algum tipo de cola de madeira',
+			'descricao': 'A escolha favorita de todos: versátil e universal.',
 			'position': Vector2(100, 50),
 			'correto': true,
 			'objeto': false
@@ -76,7 +76,7 @@ var cards = [
 		{
 			'titulo': 'Cabeçote de Aço',
 			'sprite': "res://Public/Minigame1/cabecoteAco.png",
-			'descricao': 'Fornece mais peso para a cabeça, mais resistente',
+			'descricao': 'Resistente, mas aumenta demais o peso no topo do machado.',
 			'position': Vector2(400, 50),
 			'correto': false,
 			'objeto': false
@@ -84,7 +84,7 @@ var cards = [
 		{
 			'titulo': 'Cabeçote pontudo',
 			'sprite': "res://Public/Minigame1/cabecoteLamina.png",
-			'descricao': 'É uma lâmina a mais para garantir ataque',
+			'descricao': 'Uma lâmina a mais para ferir seu inimigo.',
 			'position': Vector2(700, 50),
 			'correto': false,
 			'objeto': false

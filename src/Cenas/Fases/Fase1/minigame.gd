@@ -20,11 +20,11 @@ func instanceCard(cardInfo):
 
 # Função que retira os cards que estão impressos na tela
 func removeCards():
-	for i in range(len(GlobalFase1.cards)):
-		for n in range(len(GlobalFase1.cards[i])):
-			if GlobalFase1.cards[i][n]['objeto']:
-				GlobalFase1.cards[i][n]['objeto'].queue_free()
-				GlobalFase1.cards[i][n]['objeto'] = false
+	for categoria in GlobalFase1.cards:
+		for carta in categoria:
+			if carta["objeto"] && carta["objeto"] != null:
+				carta["objeto"].queue_free()
+				carta["objeto"] = false
 
 # Função que imprime na tela os cards que estão na posição atual da matriz
 func setCards():
@@ -96,7 +96,6 @@ func _onMinigameCardPressed(titulo):
 	
 	if actualIndex >= len(GlobalFase1.cards):
 		GlobalFase1.axeChoicedParts = GlobalFase1.choicedCards
-		print(GlobalFase1.axeChoicedParts)
 		removeCards()
 		$Control/ColorRect/Machado.visible = false
 		$Control/ColorRect/MachadoGrande.visible = true

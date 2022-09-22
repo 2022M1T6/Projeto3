@@ -7,7 +7,7 @@ func _ready():
 	
 	# Preenche a barra de progresso com um ponto a cada 0,01s
 	while progress < 100:
-		progress += 1
+		progress += 2
 		get_node(".").value = progress
 		yield(get_tree().create_timer(0.005), "timeout")
 	
