@@ -1,6 +1,6 @@
 extends Node
 
-var isPortuguese = false
+var isPortuguese = true
 var masterVolume = 100
 var musicVolume = 100
 var sfxVolume = 100
