@@ -1,5 +1,5 @@
 extends Popup
-onready var pausado = false
+onready var alreadyPaused = get_tree().paused
 var dimensoes = GlobalOptions.dimensoes
 var textos = {"vision": "Nessa dimensão, a equipe deve descobrir qual problema vão abordar e quem são os clientes impactados pelo problema. Nesse momento o objetivo é saber o que é necessário para extinguir, ou ao menos reduzir o problema, quem utilizará essa invenção e o porquê é importante essa invenção/acabar com o problema. O importante é que a equipe deve pesquisar muito, pois tudo deve se basear em dados.",
 "roadmap": "Roadmap é a dimensão de organização, nessa “fase” a equipe deve traçar um roteiro/guia, que servirá para ajudar na orientação e na organização do “projeto”. Esse guia deve ser extremamente detalhado, uma vez que ele é a base para organização do produto. As etapas do planejamento são específicas e devem estar presentes no guia, no Roadmap é definida as etapas de antes, durante e para depois da criação do produto.",
@@ -10,25 +10,27 @@ var text = {"vision": "In this dimension, the team needs to discover which probl
 
 func pausar():
 	$".".show()
+	alreadyPaused = get_tree().paused
 	get_tree().paused = true
-	pausado = true
+	GlobalOptions.isPaused = true
 	dimensoes = GlobalOptions.dimensoes
 	$AnimationPlayer.play("idle")
-	get_parent().get_node("Hint").hide()
 	
-func despausar():
+func despausar(removePause:bool = true):
 	$".".hide()
 	$"Settings".hide()
-	get_tree().paused = false
-	pausado = false
+	
+	if removePause:
+		get_tree().paused = false
+		
+	GlobalOptions.isPaused = false
+	
 	$support.text = ""
-	get_parent().get_node("Hint").show()
 
-# Menu de pausa
 func _process(delta):
 	if Input.is_action_just_pressed("ui_esc"):
-		if pausado == true:
-			despausar()
+		if GlobalOptions.isPaused == true:
+			despausar(!alreadyPaused)
 		else:
 			pausar()
 
@@ -38,17 +40,24 @@ func _ready():
 			get_node("Panel/"+dimensao).hide()
 	
 	if !GlobalOptions.isPortuguese:
-		$Label.text = "Paused"
-		$ButtonMenu.text = "Main Menu"
-		$ButtonContinuar.text = "Continue"
-		$ButtonOptions.text = "Settings"
+		$Label.text = "PAUSED"
+		$Settings/TextureRect/Label.text = 'Settings'
+		$ButtonMenu/Label.text = "Main Menu"
+		$ButtonContinuar/Label.text = "Continue"
+		$ButtonOptions/Label.text = "Settings"
+	else:
+		$Label.text = "PAUSADO"
+		$Settings/TextureRect/Label.text = 'Configurações'
+		$ButtonMenu/Label.text = "Menu Principal"
+		$ButtonContinuar/Label.text = "Continuar"
+		$ButtonOptions/Label.text = "Configurações"
 
 func _on_ButtonContinuar_pressed():
 	despausar()
 
 
 func _on_ButtonMenu_pressed():
-	get_tree().paused = false
+	despausar()
 	get_tree().change_scene("res://Cenas/Menus/MenuPrincipal.tscn")
 
 
@@ -71,7 +80,7 @@ func _on_ButtonOptions_pressed():
 
 
 func _on_Back_pressed():
-	GlobalOptions.masterVolume = $Settings/Container/RangeMaster.value
-	GlobalOptions.musicVolume = $Settings/Container/RangeMusic.value
-	GlobalOptions.sfxVolume = $Settings/Container/RangeSFX.value
+	GlobalOptions.masterVolume = $Settings/TextureRect/Container/RangeMaster.value
+	GlobalOptions.musicVolume = $Settings/TextureRect/Container/RangeMusic.value
+	GlobalOptions.sfxVolume = $Settings/TextureRect/Container/RangeSFX.value
 	$Settings.hide()

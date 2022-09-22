@@ -24,7 +24,7 @@ var cardsP = [
 		{
 			'titulo': 'Cabo de Aço',
 			'sprite': "res://Public/Minigame1/caboAco.png",
-			'descricao': 'Muito resistente, pesado e o melhor para batalhas sangrentas.',
+			'descricao': 'Muito resistente, pesado e o melhor para batalhas.',
 			'position': Vector2(400, 50),
 			'correto': false,
 			'objeto': false
@@ -50,7 +50,7 @@ var cardsP = [
 		{
 			'titulo': 'Lâmina de Fio Único',
 			'sprite': "res://Public/Minigame1/laminaSimples.png",
-			'descricao': 'Forjada com o formato perfeito para trabalhadores braçais, a melhor para cortar madeira',
+			'descricao': 'Forjada com o formato perfeito para cortar madeira.',
 			'position': Vector2(400, 50),
 			'correto': true,
 			'objeto': false
@@ -58,7 +58,7 @@ var cardsP = [
 		{
 			'titulo': 'Lâmina Pesada',
 			'sprite': "res://Public/Minigame1/laminaPesada.png",
-			'descricao': 'O seu peso só é suportado por um cabo de aço, utilizada por guerreiros com muita força.',
+			'descricao': 'Utilizada por guerreiros muito fortes.',
 			'position': Vector2(700, 50),
 			'correto': false,
 			'objeto': false
@@ -68,7 +68,7 @@ var cardsP = [
 		{
 			'titulo': 'Cabeçote de Madeira',
 			'sprite': "res://Public/Minigame1/cabecoteMadeira.png",
-			'descricao': 'A escolha favorita de todos, realmente versátil e universal.',
+			'descricao': 'A escolha favorita de todos: versátil e universal.',
 			'position': Vector2(100, 50),
 			'correto': true,
 			'objeto': false
@@ -76,7 +76,7 @@ var cardsP = [
 		{
 			'titulo': 'Cabeçote de Aço',
 			'sprite': "res://Public/Minigame1/cabecoteAco.png",
-			'descricao': 'Muito mais estético do que prático, aumenta o peso no topo do machado.',
+			'descricao': 'Resistente, mas aumenta demais o peso no topo do machado.',
 			'position': Vector2(400, 50),
 			'correto': false,
 			'objeto': false
