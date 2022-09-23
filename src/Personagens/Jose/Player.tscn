@@ -244,7 +244,7 @@ volume_db = -20.0
 
 [node name="WalkingSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 7 )
-volume_db = -35.0
+volume_db = 5.0
 
 [node name="RunningSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 7 )

@@ -1,11 +1,12 @@
 extends Node2D
 
+# Variaveis que guardam se o player está dentro de alguma área de ação
 var enteredTreeArea = false
 var enteredBlacksmithArea = false
 var enteredLumberjackArea = false
 var enteredKingArea = false
 var enteredMarketerArea = false
-var removedTree = false
+var removedTree = false # Guarda se o tronco foi removid
 var endGameSetedUp = false # Guarda se o setup das configurações de pós-minigame concluido foram feitos
 
 var fase1Dialog = {"marketer": false, "king": false, "lumberjack": false, "blacksmith": false}
@@ -353,13 +354,13 @@ func sendLumberjackDialog():
 					{
 						'personagem': 'lumberjack',
 						'falas': [
-							'Hey pal, whatcha doin hea?'
+							'Hey pal, whatcha doin here?'
 							]
 					},
 					{
 						'personagem': 'jose',
 						'falas': [
-							"I've been sucked into this world to learn about product model, but the king have problems. The trees are blocking his way into the castle."
+							"I've been sucked into this world to learn about product model, but the king is in trouble. There is a log blocking his way into the castle."
 						]
 					},
 					{
@@ -390,7 +391,7 @@ func sendLumberjackDialog():
 					{
 						'personagem': 'lumberjack',
 						'falas': [
-							'May seem silly, but sometimes the simplest is the best for the job.',
+							'May seem silly, but sometimes the simplest tool is the best one for the job.',
 							"If a butcher doesn't have a good knife, the meat he cuts won't be good. So think about what makes an axe good at cutting trees."
 						]
 					}
@@ -464,7 +465,7 @@ func sendBlacksmithDialog():
 					{
 						'personagem': 'blacksmith',
 						'falas': [
-							'O machado é composto por 3 partes: cabeça, cabo e cabeçote. Tenho 3 modelos para cada parte, cabe a você saber o que é melhor para o seu machado.',
+							'O machado é composto por 3 partes importantes: cabeça, cabo e cabeçote. Tenho 3 modelos para cada parte, cabe a você saber o que é melhor para o seu machado.',
 							'Agora, entre na minha forja e escolha quais partes você quer'
 						]
 					},
@@ -493,7 +494,7 @@ func sendBlacksmithDialog():
 					{
 						'personagem': 'blacksmith',
 						'falas': [
-							'The ax has 3 parts: head, yoke and handle. I have 3 models for each one of them, it is up to ya knowing which is the best.',
+							'The ax has 3 main parts: bit, eye and handle. I have 3 models for each one of them, it is up to ya knowing which is the best.',
 							'Now enter me forge and you may choose!'
 						]
 					},
@@ -513,16 +514,18 @@ func sendBlacksmithDialog():
 					{
 						'personagem': 'blacksmith',
 						'falas': [
-							"Unusual to see the king here, does he needs somethin'?"
+							"Unusual to see the king here, does he need somethin'?"
 						]
 					}
 				])
 
+# Função que realiza o registro e dispara a ação que o usuário entrou na área do tronco caído
 func _on_TreeArea2D_area_entered(area):
 	if $TreeAndRocks/Treelog/TreelogSelected:
 		enteredTreeArea = true
 		$TreeAndRocks/Treelog/TreelogSelected.show()
 	
+# Função que realiza o registro que o usuário saiu da área do tronco caído e esconde o tronco destacado
 func _on_TreeArea2D_area_exited(area):
 	if $TreeAndRocks/Treelog/TreelogSelected:
 		enteredTreeArea = false
@@ -530,25 +533,30 @@ func _on_TreeArea2D_area_exited(area):
 		
 	if !$Player/Camera2D/CanvasLayer/WeaponFrame.visible:
 		$Player/Camera2D/CanvasLayer/WeaponFrame.show()
-
+		
+# Função que ativa o estado de ação do lumberjack quando o player entra na área
 func _on_Lumberjack_area_entered(area):
 	$Lumberjack.setState(1)
 	enteredLumberjackArea = true
 
+# Função que desativa o estado de ação do lumberjack quando o player entra na área
 func _on_Lumberjack_area_exited(area):
 	$Lumberjack.setState(0)
 	enteredLumberjackArea = false
 	$Player/Camera2D/CanvasLayer/WeaponFrame.show()
 
+# Função que ativa o estado de ação do king quando o player entra na área
 func _on_King_area_entered(area):
 	$King.setState(1)
 	enteredKingArea = true
 
+# Função que desativa o estado de ação do king quando o player entra na área
 func _on_King_area_exited(area):
 	$King.setState(0)
 	enteredKingArea = false
 	$Player/Camera2D/CanvasLayer/WeaponFrame.show()
 
+# Função que ativa o estado de ação do blacksmith quando o player entra na área
 func _on_Blacksmith_area_entered(area):
 	$Blacksmith.setState(1)
 	enteredBlacksmithArea = true
@@ -558,18 +566,21 @@ func _on_Blacksmith_area_exited(area):
 	enteredBlacksmithArea = false
 	$Player/Camera2D/CanvasLayer/WeaponFrame.show()
 
+# Função que ativa o stado de ação do marketer quando o player entra na área
 func _on_Marketer_area_entered(area):
 	$Marketer.setState(1)
 	enteredMarketerArea = true
 
+# Função que desativa o estado de ação do marketer quando o player entra na área
 func _on_Marketer_area_exited(area):
 	$Marketer.setState(0)
 	enteredMarketerArea = false
 	$Player/Camera2D/CanvasLayer/WeaponFrame.show()
 
+# Função que muda o player de cena quando entra na área 2D depois de encerrar o minigame
 func _on_Area2D_area_entered(area):
 	GlobalOptions.dimensoes["vision"] = true
-	get_tree().change_scene("res://Cenas/Fases/Fase 2/Fase2.tscn")
+	get_tree().change_scene("res://Cenas/Utilitarios/FimDemo.tscn")
 
 # Função que prepara o ambiente depois que o jogador vence o minigame
 func hitTheAxe():
@@ -598,7 +609,7 @@ func hitTheAxe():
 		])
 	$Player/Camera2D/CanvasLayer/WeaponFrame.hide()
 	
-		
+# Função que mostra o frame de arma com o machado montado pelo jogador
 func showAxeFrame():
 	$Player/Camera2D/CanvasLayer/WeaponFrame/PunchIcon.hide()
 	$Player/Camera2D/CanvasLayer/WeaponFrame/Machado.setSprites(
@@ -609,6 +620,7 @@ func showAxeFrame():
 	$Player/Camera2D/CanvasLayer/WeaponFrame/Machado.show()
 	$Player/Camera2D/CanvasLayer/WeaponFrame.show()
 
+# Função que mostra o frame de arma e desativa a área 2D se o usuário acertar o machado depois de sair da área 2D do minigame
 func _on_MinigameArea2D_area_exited(area):
 	$Player/Camera2D/CanvasLayer/Hint.show()
 	showAxeFrame()
@@ -646,7 +658,7 @@ func _ready():
 	$Player.setTerrain(0)
 	$VillageSound.play()
 
-
+# Função que recebe os eventos do teclado
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("interact"):
 		if enteredMarketerArea:

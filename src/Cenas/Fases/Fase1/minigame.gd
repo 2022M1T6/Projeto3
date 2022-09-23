@@ -20,25 +20,42 @@ func instanceCard(cardInfo):
 
 # Função que retira os cards que estão impressos na tela
 func removeCards():
-	for categoria in GlobalFase1.cards:
-		for carta in categoria:
-			if carta["objeto"] && carta["objeto"] != null:
-				carta["objeto"].queue_free()
-				carta["objeto"] = false
+	if GlobalOptions.isPortuguese:
+		for categoria in GlobalFase1.cardsP:
+			for carta in categoria:
+				if carta["objeto"] && carta["objeto"] != null:
+					carta["objeto"].queue_free()
+					carta["objeto"] = false
+	else:
+		for categoria in GlobalFase1.cardsE:
+			for carta in categoria:
+				if carta["objeto"] && carta["objeto"] != null:
+					carta["objeto"].queue_free()
+					carta["objeto"] = false
 
 # Função que imprime na tela os cards que estão na posição atual da matriz
 func setCards():
 	removeCards()
-	for i in range(len(GlobalFase1.cards[actualIndex])):
-		var newCard = instanceCard(GlobalFase1.cards[actualIndex][i])
-		GlobalFase1.cards[actualIndex][i]['objeto'] = newCard
-		$Control/ColorRect/Cards.add_child(newCard)
-
+	if GlobalOptions.isPortuguese:
+		for i in range(len(GlobalFase1.cardsP[actualIndex])):
+			var newCard = instanceCard(GlobalFase1.cardsP[actualIndex][i])
+			GlobalFase1.cardsP[actualIndex][i]['objeto'] = newCard
+			$Control/ColorRect/Cards.add_child(newCard)
+	else:
+		for i in range(len(GlobalFase1.cardsE[actualIndex])):
+			var newCard = instanceCard(GlobalFase1.cardsE[actualIndex][i])
+			GlobalFase1.cardsE[actualIndex][i]['objeto'] = newCard
+			$Control/ColorRect/Cards.add_child(newCard)
 # Função que filtra os cards e retorna o card com o titulo desejado
 func getCardByTitulo(titulo):
-	for i in range(len(GlobalFase1.cards[actualIndex])):
-		if titulo == GlobalFase1.cards[actualIndex][i]['titulo']:
-			return GlobalFase1.cards[actualIndex][i]
+	if GlobalOptions.isPortuguese:
+		for i in range(len(GlobalFase1.cardsP[actualIndex])):
+			if titulo == GlobalFase1.cardsP[actualIndex][i]['titulo']:
+				return GlobalFase1.cardsP[actualIndex][i]
+	else:
+		for i in range(len(GlobalFase1.cardsE[actualIndex])):
+			if titulo == GlobalFase1.cardsE[actualIndex][i]['titulo']:
+				return GlobalFase1.cardsE[actualIndex][i]
 
 # Verifica se o machado montado até o momento é o machado certo
 func verifyActualAxeOk():
@@ -94,19 +111,34 @@ func _onMinigameCardPressed(titulo):
 	actualIndex += 1
 	montarMachado()
 	
-	if actualIndex >= len(GlobalFase1.cards):
-		GlobalFase1.axeChoicedParts = GlobalFase1.choicedCards
-		removeCards()
-		$Control/ColorRect/Machado.visible = false
-		$Control/ColorRect/MachadoGrande.visible = true
-		$Control/ColorRect/Button.visible = true
+	if GlobalOptions.isPortuguese:
+		if actualIndex >= len(GlobalFase1.cardsP):
+			GlobalFase1.axeChoicedParts = GlobalFase1.choicedCards
+			removeCards()
+			$Control/ColorRect/Machado.visible = false
+			$Control/ColorRect/MachadoGrande.visible = true
+			$Control/ColorRect/Button.visible = true
+		else:
+			setCards()
 	else:
-		setCards()
+		if actualIndex >= len(GlobalFase1.cardsE):
+			GlobalFase1.axeChoicedParts = GlobalFase1.choicedCards
+			removeCards()
+			$Control/ColorRect/Machado.visible = false
+			$Control/ColorRect/MachadoGrande.visible = true
+			$Control/ColorRect/Button.visible = true
+		else:
+			setCards()
 
 # Prepara o ambiente do minigame para a primeira execução
 func _ready():
 	redefinirMinigame()
-
+	if GlobalOptions.isPortuguese:
+		$Control/ColorRect/Titulo/Label.text = 'Monte sua ferramenta'
+		$Control/ColorRect/Button.text = 'Forjar!'
+	else:
+		$Control/ColorRect/Titulo/Label.text = 'Make your tool'
+		$Control/ColorRect/Button.text = 'Forge!'
 # Função que recebe o click do botão forjar. Redefine o game para uma próxima jogada
 func _on_Button_pressed():
 	if len(GlobalFase1.axeChoicedParts) == 3:
