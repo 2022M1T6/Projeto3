@@ -353,13 +353,13 @@ func sendLumberjackDialog():
 					{
 						'personagem': 'lumberjack',
 						'falas': [
-							'Hey pal, whatcha doin hea?'
+							'Hey pal, whatcha doin here?'
 							]
 					},
 					{
 						'personagem': 'jose',
 						'falas': [
-							"I've been sucked into this world to learn about product model, but the king have problems. The trees are blocking his way into the castle."
+							"I've been sucked into this world to learn about product model, but the king is in trouble. There is a log blocking his way into the castle."
 						]
 					},
 					{
@@ -390,7 +390,7 @@ func sendLumberjackDialog():
 					{
 						'personagem': 'lumberjack',
 						'falas': [
-							'May seem silly, but sometimes the simplest is the best for the job.',
+							'May seem silly, but sometimes the simplest tool is the best one for the job.',
 							"If a butcher doesn't have a good knife, the meat he cuts won't be good. So think about what makes an axe good at cutting trees."
 						]
 					}
@@ -464,7 +464,7 @@ func sendBlacksmithDialog():
 					{
 						'personagem': 'blacksmith',
 						'falas': [
-							'O machado é composto por 3 partes: cabeça, cabo e cabeçote. Tenho 3 modelos para cada parte, cabe a você saber o que é melhor para o seu machado.',
+							'O machado é composto por 3 partes importantes: cabeça, cabo e cabeçote. Tenho 3 modelos para cada parte, cabe a você saber o que é melhor para o seu machado.',
 							'Agora, entre na minha forja e escolha quais partes você quer'
 						]
 					},
@@ -493,7 +493,7 @@ func sendBlacksmithDialog():
 					{
 						'personagem': 'blacksmith',
 						'falas': [
-							'The ax has 3 parts: head, yoke and handle. I have 3 models for each one of them, it is up to ya knowing which is the best.',
+							'The ax has 3 main parts: bit, eye and handle. I have 3 models for each one of them, it is up to ya knowing which is the best.',
 							'Now enter me forge and you may choose!'
 						]
 					},
@@ -513,7 +513,7 @@ func sendBlacksmithDialog():
 					{
 						'personagem': 'blacksmith',
 						'falas': [
-							"Unusual to see the king here, does he needs somethin'?"
+							"Unusual to see the king here, does he need somethin'?"
 						]
 					}
 				])

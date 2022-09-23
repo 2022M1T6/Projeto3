@@ -39,18 +39,18 @@ func _ready():
 		if !dimensoes[dimensao]:
 			get_node("Panel/"+dimensao).hide()
 	
-	if !GlobalOptions.isPortuguese:
-		$Label.text = "PAUSED"
-		$Settings/TextureRect/Label.text = 'Settings'
-		$ButtonMenu/Label.text = "Main Menu"
-		$ButtonContinuar/Label.text = "Continue"
-		$ButtonOptions/Label.text = "Settings"
-	else:
+	if GlobalOptions.isPortuguese:
 		$Label.text = "PAUSADO"
 		$Settings/TextureRect/Label.text = 'Configurações'
 		$ButtonMenu/Label.text = "Menu Principal"
 		$ButtonContinuar/Label.text = "Continuar"
 		$ButtonOptions/Label.text = "Configurações"
+	else:
+		$Label.text = "PAUSED"
+		$Settings/TextureRect/Label.text = 'Settings'
+		$ButtonMenu/Label.text = "Main Menu"
+		$ButtonContinuar/Label.text = "Continue"
+		$ButtonOptions/Label.text = "Settings"
 
 func _on_ButtonContinuar_pressed():
 	despausar()

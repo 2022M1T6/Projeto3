@@ -22,7 +22,6 @@ GlobalOptions="*res://Cenas/Menus/GlobalOptions.gd"
 
 [display]
 
-window/size/fullscreen=true
 GlobalFase1="*res://Cenas/Fases/Fase1/globalFase1.gd"
 
 [editor_plugins]
