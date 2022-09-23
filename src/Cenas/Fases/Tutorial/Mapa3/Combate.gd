@@ -1,11 +1,11 @@
 extends Node2D
-
+# Seta os valores do Dummy
 onready var HP = $KinematicBody2D/Label
 var currentHP = 60
 var maxHP = 60
 var dano = 20
 
-
+# Prepara o audio do game e dispara o primeiro diálogo
 func _ready():
 	$Player/PunchSound.volume_db = GlobalOptions.setSFXSound(float($Player/PunchSound.volume_db))
 	$Player/RunningSound.volume_db = GlobalOptions.setSFXSound(float($Player/RunningSound.volume_db))
@@ -40,17 +40,21 @@ func _ready():
 					]
 				}
 		])
-		
+
+# Executado quando o player ataca o Dummy
 func _on_Hurtbox_area_entered(area):
+	# Diminui a vida do Dummy
 	currentHP -= dano
 	HP.text = str(currentHP)
 	
-	if currentHP <= 1:
+	# Mata o Dummy se a vida for menor ou igual a 0 
+	if currentHP <= 0:
 		$Area2D.monitoring = true
 		$Area2D3.monitoring = true
 		currentHP = 0
 		$KinematicBody2D.queue_free()
 	
+	# Na primeira vez que o dummy receber dano, dispara a fala do Dellson
 	if maxHP - dano == currentHP:
 		if GlobalOptions.isPortuguese:
 			$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
@@ -75,21 +79,21 @@ func _on_Hurtbox_area_entered(area):
 			
 		$Area2D3.monitoring = true
 	
-
+# Teletransporta o player para a primeira fase
 func _on_Area2D_area_entered(area):
 	if currentHP <= 0:
 		GlobalOptions.fase = 1
 		get_tree().change_scene("res://Cenas/Fases/Fase1/Fase.tscn")
 		
 
-	
+# Ao sair da primeira área, seta a hint
 func _on_Area2D2_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
 	if GlobalOptions.isPortuguese:
 		$Player/Camera2D/CanvasLayer/Hint.sendHint('Destrua o boneco de testes usando P e vá até a porta escura')
 	else:
 		$Player/Camera2D/CanvasLayer/Hint.sendHint('Beat the dummy using P and cross the gate')
 	
-
+# Ao chegar próximo da porta para o próximo nível, dispara o diálogo
 func _on_Area2D3_area_entered(area):
 	$Dellson/Sprite.flip_h = true
 	if GlobalOptions.isPortuguese:
@@ -118,15 +122,16 @@ func _on_Area2D3_area_entered(area):
 					]
 				},
 		])
-	
+
+# Verifica se o Dummy morreu e some com o Dellson
 func _on_Area2D3_area_exited(area):
 	if currentHP <= 0:
 		$Dellson.queue_free()
 
-
+# Mostra a tecla de ataque ao chegar perto do Dummy
 func _on_actionArea_area_entered(area):
 	$KinematicBody2D/TeclaP.visible = true
 
-
+# Esconde a tecla de ataque ao sair da área do Dummy
 func _on_actionArea_area_exited(area):
 	$KinematicBody2D/TeclaP.visible = false

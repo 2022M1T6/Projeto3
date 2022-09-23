@@ -44,6 +44,7 @@ func _ready():
 	$TextureRect/ContainerOpcoes/RangeMusic.value = GlobalOptions.musicVolume
 	$TextureRect/ContainerOpcoes/RangeSFX.value = GlobalOptions.sfxVolume
 
+# Verifica e troca a linguagem, define os sons
 func _process(delta):
 	if language.selected == 0:
 		GlobalOptions.isPortuguese = true
