@@ -80,7 +80,14 @@ func _on_ButtonOptions_pressed():
 
 
 func _on_Back_pressed():
-	GlobalOptions.masterVolume = $Settings/TextureRect/Container/RangeMaster.value
-	GlobalOptions.musicVolume = $Settings/TextureRect/Container/RangeMusic.value
-	GlobalOptions.sfxVolume = $Settings/TextureRect/Container/RangeSFX.value
 	$Settings.hide()
+	if GlobalOptions.fase == 0.1 or GlobalOptions.fase == 0.2:
+		get_parent().get_parent().get_parent().get_parent().get_node("AudioStreamPlayer2D").volume_db = GlobalOptions.setMusicSound(float(get_parent().get_parent().get_parent().get_parent().get_node("AudioStreamPlayer2D").volume_db))
+		get_parent().get_parent().get_parent().get_parent().get_node("AudioStreamPlayer2D").play()
+	elif GlobalOptions.fase == 1:
+		get_parent().get_parent().get_parent().get_parent().get_node("VillageSound").volume_db = GlobalOptions.setMusicSound(float(get_parent().get_parent().get_parent().get_parent().get_node("VillageSound").volume_db))
+		get_parent().get_parent().get_parent().get_parent().get_node("VillageSound").play()
+	get_parent().get_parent().get_parent().get_node("PunchSound").volume_db = GlobalOptions.setSFXSound(float(get_parent().get_parent().get_parent().get_node("PunchSound").volume_db))
+	get_parent().get_parent().get_parent().get_node("RunningSound").volume_db = GlobalOptions.setSFXSound(float(get_parent().get_parent().get_parent().get_node("RunningSound").volume_db))
+	get_parent().get_parent().get_parent().get_node("WalkingSound").volume_db = GlobalOptions.setSFXSound(float(get_parent().get_parent().get_parent().get_node("WalkingSound").volume_db))
+	

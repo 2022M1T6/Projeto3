@@ -86,6 +86,7 @@ func _ready():
 
 # Ao entrar na área, muda a cena
 func _on_Area2D_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
+	GlobalOptions.fase = 0.2
 	get_tree().change_scene("res://Cenas/Fases/Tutorial/Mapa2/Labirinto.tscn")
 
 func _on_Area2DDellson_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):

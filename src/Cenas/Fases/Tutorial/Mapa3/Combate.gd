@@ -78,7 +78,9 @@ func _on_Hurtbox_area_entered(area):
 
 func _on_Area2D_area_entered(area):
 	if currentHP <= 0:
+		GlobalOptions.fase = 1
 		get_tree().change_scene("res://Cenas/Fases/Fase1/Fase.tscn")
+		
 
 	
 func _on_Area2D2_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
