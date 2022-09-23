@@ -13,9 +13,6 @@ func SetLanguage():
 		language.select(0)
 	else:
 		language.select(1)
-
-	# Cria o evento de mudança de opção selecionada
-	language.connect("item_selected", self, "on_item_selected")
 	
 
 

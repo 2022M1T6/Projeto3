@@ -527,7 +527,7 @@ func _on_TreeArea2D_area_entered(area):
 	
 # Função que realiza o registro que o usuário saiu da área do tronco caído e esconde o tronco destacado
 func _on_TreeArea2D_area_exited(area):
-	if $TreeAndRocks/Treelog/TreelogSelected:
+	if !removedTree:
 		enteredTreeArea = false
 		$TreeAndRocks/Treelog/TreelogSelected.hide()
 		
@@ -626,8 +626,7 @@ func _on_MinigameArea2D_area_exited(area):
 	showAxeFrame()
 	
 	if(GlobalFase1.AxeOk):
-		$Blacksmith/MinigameArea2D.visible = false
-		$Blacksmith/MinigameArea2D.monitoring = false
+		$Blacksmith/MinigameArea2D.queue_free()
 		
 	
 

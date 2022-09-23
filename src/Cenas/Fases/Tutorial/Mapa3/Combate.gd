@@ -96,36 +96,38 @@ func _on_Area2D2_area_shape_exited(area_rid, area, area_shape_index, local_shape
 # Ao chegar próximo da porta para o próximo nível, dispara o diálogo
 func _on_Area2D3_area_entered(area):
 	$Dellson/Sprite.flip_h = true
-	if GlobalOptions.isPortuguese:
-		$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
-				{
-					'personagem': 'dellson',
-					'falas':[
-						'ESPERA!!!',
-						'Eu sei que você já aprendeu o básico, mas com o meu intelecto e seu ... corpo(?), eu acho que chegaremos muito mais longe e você aprenderá muito mais.',
-						'O que você acha, parceiro?',
-						'Não precisa responder, vou entrar na sua mochila!',
-						'Com licença.'
-					]
-				},
-		])
-	else:
-		$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
-				{
-					'personagem': 'dellson',
-					'falas':[
-						'WAIT!!!',
-						"I know you've already learned the basics, but with my great intelligence and your… body(?) I think we can go much further and you'll learn way more.",
-						'What do you think, partner?',
-						'There’s no need to answer. I’ll get inside your bag.',
-						'Excuse me'
-					]
-				},
-		])
+	if currentHP <= 0:	
+		if GlobalOptions.isPortuguese:
+			$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
+					{
+						'personagem': 'dellson',
+						'falas':[
+							'ESPERA!!!',
+							'Eu sei que você já aprendeu o básico, mas com o meu intelecto e seu ... corpo(?), eu acho que chegaremos muito mais longe e você aprenderá muito mais.',
+							'O que você acha, parceiro?',
+							'Não precisa responder, vou entrar na sua mochila!',
+							'Com licença.'
+						]
+					},
+			])
+		else:
+			$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
+					{
+						'personagem': 'dellson',
+						'falas':[
+							'WAIT!!!',
+							"I know you've already learned the basics, but with my great intelligence and your… body(?) I think we can go much further and you'll learn way more.",
+							'What do you think, partner?',
+							'There’s no need to answer. I’ll get inside your bag.',
+							'Excuse me'
+						]
+					},
+			])
 
 # Verifica se o Dummy morreu e some com o Dellson
 func _on_Area2D3_area_exited(area):
 	if currentHP <= 0:
+		$Area2D3.queue_free()
 		$Dellson.queue_free()
 
 # Mostra a tecla de ataque ao chegar perto do Dummy
