@@ -19,12 +19,7 @@
 </p>
 
 
-💡 De um a dois parágrafos sobre o que é seu projeto e o que ele faz.
-<br><br>
-Meu projeto ajuda estudantes inteli a configurarem seus githubs.
-<br><br>
-May the force be with you!
-<br><br>
+💡 Através da história vivenciada por José, um engenheiro de software que embarca em uma aventura dentro de um treinamento imersivo da Dell, vários conceitos das dimensões do modelo de produtos são ensinados e validados.
 
 ## 🛠 Estrutura de pastas
 
