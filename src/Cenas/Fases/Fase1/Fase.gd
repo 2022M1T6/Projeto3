@@ -569,7 +569,7 @@ func _on_Marketer_area_exited(area):
 
 func _on_Area2D_area_entered(area):
 	GlobalOptions.dimensoes["vision"] = true
-	get_tree().change_scene("res://Cenas/Fases/Fase 2/Fase2.tscn")
+	get_tree().change_scene("res://Cenas/Utilitarios/FimDemo.tscn")
 
 # Função que prepara o ambiente depois que o jogador vence o minigame
 func hitTheAxe():
