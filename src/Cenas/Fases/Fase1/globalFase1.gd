@@ -131,7 +131,7 @@ var cardsE = [
 		{
 			'titulo': 'Single Bit',
 			'sprite': "res://Public/Minigame1/laminaSimples.png",
-			'descricao': 'Forged with an excellent shape for manual labor. The best at cutting trees',
+			'descricao': 'Excellent shape for manual labor. The best at cutting trees',
 			'position': Vector2(400, 50),
 			'correto': true,
 			'objeto': false
@@ -139,7 +139,7 @@ var cardsE = [
 		{
 			'titulo': 'Heavy Bit',
 			'sprite': "res://Public/Minigame1/laminaPesada.png",
-			'descricao': 'Its weight is supported by a steel cable. Used by strong warriors',
+			'descricao': 'The heaviest. Used by very strong warriors',
 			'position': Vector2(700, 50),
 			'correto': false,
 			'objeto': false
@@ -157,7 +157,7 @@ var cardsE = [
 		{
 			'titulo': 'Steel Eye',
 			'sprite': "res://Public/Minigame1/cabecoteAco.png",
-			'descricao': 'More about asthetics than usefulness. Makes the top heavier',
+			'descricao': 'Not very useful. Makes the top heavier',
 			'position': Vector2(400, 50),
 			'correto': false,
 			'objeto': false

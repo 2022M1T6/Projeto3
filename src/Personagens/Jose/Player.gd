@@ -153,17 +153,20 @@ func setPlayerDirection():
 	elif moveDirection.x < 0:
 		$Sprite.flip_h = true
 		$Hitbox.position.x = -9
-		
+
+# Verifica se o player já montou o machado certo
 func _ready():
 	if GlobalFase1.AxeOk:
 		setWeapon(WEAPONS.AXE)
 	else:
 		setWeapon(WEAPONS.PUNCH)
 
+# Process de Fisica
 func _physics_process(delta) -> void:
 	movePlayer(delta)
 	animate(delta)
 
+# Verifica os inputs do teclado
 func _unhandled_key_input(event):
 	setMoveDirectionByKeyboard()
 	verifyAttackByKeybord()

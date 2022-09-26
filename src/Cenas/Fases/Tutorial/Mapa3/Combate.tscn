@@ -40,7 +40,7 @@ extents = Vector2( 105, 4.75 )
 [node name="Node2D2" type="Node2D"]
 script = ExtResource( 6 )
 
-[node name="WhatsAppImage2022-08-24At204449" type="Sprite" parent="."]
+[node name="background" type="Sprite" parent="."]
 position = Vector2( 642.5, 359.5 )
 scale = Vector2( 2.71875, 2.28437 )
 texture = ExtResource( 2 )
@@ -174,6 +174,7 @@ editor_draw_drag_margin = true
 [node name="Hint" parent="Player/Camera2D/CanvasLayer" instance=ExtResource( 8 )]
 
 [node name="PopupPause" parent="Player/Camera2D/CanvasLayer" instance=ExtResource( 5 )]
+visible = false
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 pause_mode = 2
@@ -185,8 +186,6 @@ autoplay = true
 [connection signal="area_entered" from="KinematicBody2D/actionArea" to="." method="_on_actionArea_area_entered"]
 [connection signal="area_exited" from="KinematicBody2D/actionArea" to="." method="_on_actionArea_area_exited"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
-[connection signal="area_entered" from="Area2D2" to="Player/Camera2D/CanvasLayer/PopupDialog" method="_on_Area2D2_area_entered"]
 [connection signal="area_shape_exited" from="Area2D2" to="." method="_on_Area2D2_area_shape_exited"]
 [connection signal="area_entered" from="Area2D3" to="." method="_on_Area2D3_area_entered"]
-[connection signal="area_entered" from="Area2D3" to="Player/Camera2D/CanvasLayer/PopupDialog" method="_on_Area2D3_area_entered"]
 [connection signal="area_exited" from="Area2D3" to="." method="_on_Area2D3_area_exited"]

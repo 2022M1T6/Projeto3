@@ -74,13 +74,12 @@ shape = SubResource( 1 )
 position = Vector2( 45.6162, 622.884 )
 shape = SubResource( 2 )
 
-[node name="TuroalMapa2Fala2" type="Area2D" parent="."]
+[node name="TutorialMapa2Fala2" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TuroalMapa2Fala2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialMapa2Fala2"]
 position = Vector2( 55.3211, 364.835 )
 shape = SubResource( 3 )
 
 [connection signal="area_shape_entered" from="Area2D" to="." method="_on_Area2D_area_shape_entered"]
-[connection signal="area_shape_entered" from="TutorialMapa2Fala1" to="Player/Camera2D/CanvasLayer/PopupDialog" method="_on_TutorialMapa2Fala1_area_shape_entered"]
 [connection signal="area_shape_exited" from="TutorialMapa2Fala1" to="." method="_on_TutorialMapa2Fala1_area_shape_exited"]
-[connection signal="area_shape_entered" from="TuroalMapa2Fala2" to="." method="_on_TuroalMapa2Fala2_area_shape_entered"]
+[connection signal="area_shape_entered" from="TutorialMapa2Fala2" to="." method="_on_TutorialMapa2Fala2_area_shape_entered"]

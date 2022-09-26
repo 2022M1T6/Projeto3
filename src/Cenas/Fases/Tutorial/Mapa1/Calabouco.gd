@@ -1,98 +1,32 @@
 extends Node2D
 
+# Está na área de ação do Dellson
 var onDellsonArea = false
 
+# Já fez o diálogo do Dellson
 var dellsonDialog = false
-var ambient
-var punch
-var walk
-var run
 
 
-
-func _ready():
-	
-	$Dellson.setInteraction(1)
+# Ao sair da primeira área do game, muda o texto da hint
+func _on_TurorialArea1_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
 	if GlobalOptions.isPortuguese:
-		$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
-				{
-					'personagem': 'jose',
-					'falas': [
-						'Uooou. Esse treinamento é REALMENTE imersivo.'
-					]
-				},
-				{
-					'personagem': 'dellson',
-					'falas': [
-						'Ei, você!',
-						'Você mesmo com cara de bobão!',
-						'Preciso falar com a Fabi para ter pelo menos um tutorial de como se mexer antes dos novatos chegarem aqui…',
-						'Mas ainda bem que você tem…',
-						'EEEU DELLSON! Seu capitão! Ou comandante!'
-					]
-				},
-				{
-					'personagem': 'fabiana',
-					'falas': [
-						'Instrutor, Dellson. Instrutor.'
-					]
-				},
-				{
-					'personagem': 'dellson',
-					'falas': [
-						'Pode ser, Fabi, pode ser…',
-						'Vem cá, novato. EU serei seu mestre dos magos',
-						'...',
-						'Ah é, você se movimenta com WASD',
-						'Venha até aqui para saber mais.'
-					]
-				}
-		])
+		$Player/Camera2D/CanvasLayer/Hint.sendHint('Procure e vá até Dellson')
 	else:
-		$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
-				{
-					'personagem': 'jose',
-					'falas': [
-						'Oh shit, here we go again.'
-					]
-				},
-				{
-					'personagem': 'dellson',
-					'falas': [
-						'Hey, you!',
-						'Yeah, I’m talking to you, boy!',
-						'Damn, I need to tell Fabi to give you a tutorial before you start this program.',
-						'But lucky you, you have...',
-						'Meeeee, Dellson, as your captain!'
-					]
-				},
-				{
-					'personagem': 'fabiana',
-					'falas': [
-						'Instructor, Dellson. Instructor.'
-					]
-				},
-				{
-					'personagem': 'dellson',
-					'falas': [
-						'Okay, Fabi, okay.',
-						"Come here newbie. I'll be you Dungeon Master",
-						'...',
-						'Oh, almost forgot, you move using WASD. Come here to know more!'
-					]
-				}
-		])
-	$Player/Camera2D/CanvasLayer/Hint.hideHint()
+		$Player/Camera2D/CanvasLayer/Hint.sendHint('Go after Dellson')
+
 
 # Ao entrar na área, muda a cena
 func _on_Area2D_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
+	GlobalOptions.fase = 0.2
 	get_tree().change_scene("res://Cenas/Fases/Tutorial/Mapa2/Labirinto.tscn")
 
+# Ao entrar na área do Dellson, muda o estado dele e esconde a hint
 func _on_Area2DDellson_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	$Dellson.setState(1)
 	$Player/Camera2D/CanvasLayer/Hint.hideHint()
 	onDellsonArea = true
 
+# Ao sair da área do Dellson, muda o estado dele para o padrão e muda o texto da hint
 func _on_Area2DDellson_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
 	if GlobalOptions.isPortuguese:
 		$Player/Camera2D/CanvasLayer/Hint.sendHint('Vá até a próxima área (atrás de Dellson)')
@@ -101,6 +35,7 @@ func _on_Area2DDellson_area_shape_exited(area_rid, area, area_shape_index, local
 	$Dellson.setState(0)
 	onDellsonArea = false
 
+# Envia o diálogo do Dellson
 func sendDellsonDialog():
 	if GlobalOptions.isPortuguese:
 		if dellsonDialog:
@@ -177,19 +112,96 @@ func sendDellsonDialog():
 			dellsonDialog = true
 			$Dellson.setInteraction(0)
 
+
+func _ready():
+
+	# Altera as informações de som	
+	$AudioStreamPlayer2D.volume_db = GlobalOptions.setMusicSound(float($AudioStreamPlayer2D.volume_db))
+	$Player/PunchSound.volume_db = GlobalOptions.setSFXSound(float($Player/PunchSound.volume_db))
+	$Player/RunningSound.volume_db = GlobalOptions.setSFXSound(float($Player/RunningSound.volume_db))
+	$Player/WalkingSound.volume_db = GlobalOptions.setSFXSound(float($Player/WalkingSound.volume_db))
+	
+	# Define a interação com1
+	$Dellson.setInteraction(1)
+	
+	# Envia o primeiro diálogo
+	if GlobalOptions.isPortuguese:
+		$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
+				{
+					'personagem': 'jose',
+					'falas': [
+						'Uooou. Esse treinamento é REALMENTE imersivo.'
+					]
+				},
+				{
+					'personagem': 'dellson',
+					'falas': [
+						'Ei, você!',
+						'Você mesmo com cara de bobão!',
+						'Preciso falar com a Fabi para ter pelo menos um tutorial de como se mexer antes dos novatos chegarem aqui…',
+						'Mas ainda bem que você tem…',
+						'EEEU DELLSON! Seu capitão! Ou comandante!'
+					]
+				},
+				{
+					'personagem': 'fabiana',
+					'falas': [
+						'Instrutor, Dellson. Instrutor.'
+					]
+				},
+				{
+					'personagem': 'dellson',
+					'falas': [
+						'Pode ser, Fabi, pode ser…',
+						'Vem cá, novato. EU serei seu mestre dos magos',
+						'...',
+						'Ah é, você se movimenta com WASD',
+						'Venha até aqui para saber mais.'
+					]
+				}
+		])
+	else:
+		$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
+				{
+					'personagem': 'jose',
+					'falas': [
+						'Oh shit, here we go again.'
+					]
+				},
+				{
+					'personagem': 'dellson',
+					'falas': [
+						'Hey, you!',
+						'Yeah, I’m talking to you, boy!',
+						'Damn, I need to tell Fabi to give you a tutorial before you start this program.',
+						'But lucky you, you have...',
+						'Meeeee, Dellson, as your captain!'
+					]
+				},
+				{
+					'personagem': 'fabiana',
+					'falas': [
+						'Instructor, Dellson. Instructor.'
+					]
+				},
+				{
+					'personagem': 'dellson',
+					'falas': [
+						'Okay, Fabi, okay.',
+						"Come here newbie. I'll be you Dungeon Master",
+						'...',
+						'Oh, almost forgot, you move using WASD. Come here to know more!'
+					]
+				}
+		])
+	$Player/Camera2D/CanvasLayer/Hint.hideHint()
+
+
+# Verifica os inputs do teclado
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("interact"):
 		if onDellsonArea:
 			sendDellsonDialog()
 
-func _on_TurorialArea1_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
-	if GlobalOptions.isPortuguese:
-		$Player/Camera2D/CanvasLayer/Hint.sendHint('Procure e vá até Dellson')
-	else:
-		$Player/Camera2D/CanvasLayer/Hint.sendHint('Go after Dellson')
-
 func _process(delta):
 	GlobalFase2.paralax($Player,$Dellson)
-	
-	$AudioStreamPlayer2D.volume_db = GlobalOptions.setMusicSound(-20)
-	

@@ -11,7 +11,8 @@ func _on_BotaoOpcoes_pressed():
 # Função executada quando o botão Sair é pressionado
 func _on_BotaoSair_pressed():
 	return get_tree().quit()
-	
+
+# Troca os textos de acordo com a linguagem
 func _ready():
 	if GlobalOptions.isPortuguese:
 		$BotaoNovoJogo.text = '__Novo Jogo__'
