@@ -670,6 +670,7 @@ func _process(delta):
 	GlobalFase2.paralax($Player,$Blacksmith)
 	GlobalFase2.paralax($Player,$Marketer)
 	GlobalFase2.paralax($Player,$King)
+	$VillageSound.volume_db = GlobalOptions.setMusicSound(5)
 	
 	if(!endGameSetedUp && GlobalFase1.AxeOk):
 		hitTheAxe()

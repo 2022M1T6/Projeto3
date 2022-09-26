@@ -3,15 +3,15 @@ extends Node2D
 var onDellsonArea = false
 
 var dellsonDialog = false
+var ambient
+var punch
+var walk
+var run
 
 
 
 func _ready():
 	
-	$AudioStreamPlayer2D.volume_db = GlobalOptions.setMusicSound(float($AudioStreamPlayer2D.volume_db))
-	$Player/PunchSound.volume_db = GlobalOptions.setSFXSound(float($Player/PunchSound.volume_db))
-	$Player/RunningSound.volume_db = GlobalOptions.setSFXSound(float($Player/RunningSound.volume_db))
-	$Player/WalkingSound.volume_db = GlobalOptions.setSFXSound(float($Player/WalkingSound.volume_db))
 	$Dellson.setInteraction(1)
 	if GlobalOptions.isPortuguese:
 		$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
@@ -190,3 +190,6 @@ func _on_TurorialArea1_area_shape_exited(area_rid, area, area_shape_index, local
 
 func _process(delta):
 	GlobalFase2.paralax($Player,$Dellson)
+	
+	$AudioStreamPlayer2D.volume_db = GlobalOptions.setMusicSound(-20)
+	

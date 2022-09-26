@@ -252,7 +252,7 @@ pitch_scale = 1.5
 
 [node name="AxeAttackSound" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource( 14 )
-volume_db = -19.327
+volume_db = -15.0
 
 [node name="PunchSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )

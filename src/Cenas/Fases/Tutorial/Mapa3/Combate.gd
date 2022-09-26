@@ -7,10 +7,6 @@ var dano = 20
 
 
 func _ready():
-	$Player/PunchSound.volume_db = GlobalOptions.setSFXSound(float($Player/PunchSound.volume_db))
-	$Player/RunningSound.volume_db = GlobalOptions.setSFXSound(float($Player/RunningSound.volume_db))
-	$Player/WalkingSound.volume_db = GlobalOptions.setSFXSound(float($Player/WalkingSound.volume_db))
-	$AudioStreamPlayer2D.volume_db = GlobalOptions.setMusicSound(float($AudioStreamPlayer2D.volume_db))
 	if GlobalOptions.isPortuguese:
 		$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
 				{
@@ -128,3 +124,6 @@ func _on_actionArea_area_entered(area):
 
 func _on_actionArea_area_exited(area):
 	$KinematicBody2D/TeclaP.visible = false
+	
+func _process(delta):
+	$AudioStreamPlayer2D.volume_db = GlobalOptions.setMusicSound(-20)
