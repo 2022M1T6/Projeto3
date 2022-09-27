@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://Public/Fonts/Kenney Pixel.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Cenas/Transições/Transition1.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Public/Utilitarios/lightFrame.png" type="Texture" id=8]
 [ext_resource path="res://Public/eye.png" type="Texture" id=9]
 [ext_resource path="res://Cenas/Utilitarios/Tilesets/Area1/Tileset1.tres" type="TileSet" id=10]
+[ext_resource path="res://Public/Sounds-effects/birds-19624.mp3" type="AudioStream" id=11]
 
 [sub_resource type="ConvexPolygonShape2D" id=48]
 points = PoolVector2Array( 16, 64, 0, 64, 0, 0, 16, 0 )
@@ -1258,6 +1259,11 @@ shape = SubResource( 54 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
 position = Vector2( 241, 33.75 )
 shape = SubResource( 55 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 11 )
+volume_db = -5.0
+autoplay = true
 
 [connection signal="area_shape_entered" from="Area2D" to="." method="_on_Area2D_area_shape_entered"]
 [connection signal="area_shape_entered" from="Area2D2" to="." method="_on_Area2D2_area_shape_entered"]

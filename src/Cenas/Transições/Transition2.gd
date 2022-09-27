@@ -4,6 +4,7 @@ extends Node2D
 var dialog = false
 
 func _ready():
+	$Player/Camera2D/CanvasLayer/DimensionFrame/Label.text = "Roadmap"
 	if GlobalOptions.isPortuguese:
 		$Player/Camera2D/CanvasLayer/Hint.sendHint("Avance para a próxima fase")
 	else:
@@ -13,6 +14,7 @@ func _process(delta):
 	if dialog:
 		$Area2D.monitoring = false
 		$Area2D.monitorable = false
+		$AudioStreamPlayer2D.volume_db = GlobalOptions.setMusicSound(-5)
 
 func _on_Area2D_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	dialog = true
