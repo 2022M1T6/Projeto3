@@ -167,7 +167,6 @@ font_data = ExtResource( 8 )
 
 [node name="PopupPause" type="Popup"]
 pause_mode = 2
-visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
@@ -373,7 +372,6 @@ align = 1
 autowrap = true
 
 [node name="Settings" type="Popup" parent="."]
-visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 6 )

@@ -3,7 +3,6 @@ extends Node2D
 var first = false
 # Vai para a próxima área
 func _on_Area2D_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
-	GlobalOptions.fase = 0.3
 	get_tree().change_scene("res://Cenas/Fases/Tutorial/Mapa3/Combate.tscn")
 
 # Seta a fala ao entrar no mapa

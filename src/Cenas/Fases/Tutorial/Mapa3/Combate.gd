@@ -78,8 +78,7 @@ func _on_Hurtbox_area_entered(area):
 # Teletransporta o player para a primeira fase
 func _on_Area2D_area_entered(area):
 	if currentHP <= 0:
-		GlobalOptions.fase = 1
-		get_tree().change_scene("res://Cenas/Fases/Fase1/Fase.tscn")
+		get_tree().change_scene("res://Cenas/Transições/Transition1.tscn")
 		
 
 # Ao sair da primeira área, seta a hint

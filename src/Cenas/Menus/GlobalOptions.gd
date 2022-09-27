@@ -4,7 +4,7 @@ var isPortuguese = true
 var masterVolume = 100
 var musicVolume = 100
 var sfxVolume = 100
-var dimensoes = {"vision": true, "roadmap": true}
+var dimensoes = {"vision": false, "roadmap": false}
 var isPaused = false
 
 func setSFXSound(a : float):
