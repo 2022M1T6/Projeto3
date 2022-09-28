@@ -90,6 +90,7 @@ func redefinirMinigame():
 	setCards()
 	GlobalFase1.choicedCards = []
 	hide()
+	GlobalOptions.showHudItems()
 	get_tree().paused = false
 	$Control/ColorRect/Machado/Cabo.texture = null
 	$Control/ColorRect/Machado/Lamina.texture = null
@@ -100,6 +101,7 @@ func redefinirMinigame():
 	$Control/ColorRect/Button.visible = false
 	
 func sendMinigame():
+	GlobalOptions.hideHUDItems()
 	GlobalFase1.axeChoicedParts = []
 	get_tree().paused = true
 	show()
@@ -129,6 +131,7 @@ func _onMinigameCardPressed(titulo):
 			$Control/ColorRect/Button.visible = true
 		else:
 			setCards()
+			
 
 # Prepara o ambiente do minigame para a primeira execução
 func _ready():
@@ -139,6 +142,7 @@ func _ready():
 	else:
 		$Control/ColorRect/Titulo/Label.text = 'Make your tool'
 		$Control/ColorRect/Button.text = 'Forge!'
+		
 # Função que recebe o click do botão forjar. Redefine o game para uma próxima jogada
 func _on_Button_pressed():
 	if len(GlobalFase1.axeChoicedParts) == 3:

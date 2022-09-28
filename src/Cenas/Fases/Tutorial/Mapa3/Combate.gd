@@ -7,6 +7,9 @@ var dano = 20
 
 # Prepara o audio do game e dispara o primeiro diálogo
 func _ready():
+	GlobalOptions.setItemsToHideOnDialog([
+		$Player/Camera2D/CanvasLayer/Hint
+	])
 	$Player/PunchSound.volume_db = GlobalOptions.setSFXSound(float($Player/PunchSound.volume_db))
 	$Player/RunningSound.volume_db = GlobalOptions.setSFXSound(float($Player/RunningSound.volume_db))
 	$Player/WalkingSound.volume_db = GlobalOptions.setSFXSound(float($Player/WalkingSound.volume_db))

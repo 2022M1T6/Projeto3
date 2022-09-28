@@ -1,5 +1,24 @@
 extends Node
 
+# Guarda a referência dos itens que devem ser escondidos durante o diálogo
+var itemsToHideDialog = []
+
+# Seta a lista de itens para esconder durante o diálogo
+func setItemsToHideOnDialog(items: Array):
+	itemsToHideDialog = items
+	
+# Esconde os itens de HUD da variável global
+func hideHUDItems():
+	for i in range (0, len(GlobalOptions.itemsToHideDialog)):
+		if GlobalOptions.itemsToHideDialog[i] && is_instance_valid(GlobalOptions.itemsToHideDialog[i]):
+			GlobalOptions.itemsToHideDialog[i].hide()
+
+# Mostra os itens de HUD da variável global
+func showHudItems():
+	for i in range (0, len(GlobalOptions.itemsToHideDialog)):
+		if GlobalOptions.itemsToHideDialog[i] && is_instance_valid(GlobalOptions.itemsToHideDialog[i]):
+			GlobalOptions.itemsToHideDialog[i].show()
+
 # Lingua
 var isPortuguese = false
 

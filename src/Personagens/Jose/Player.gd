@@ -66,7 +66,11 @@ func movePlayerByKeyboard(delta: float) -> void:
 	if state == STATES.RUNNING:
 		nextPosition *= 1.3
 		
-	move_and_slide(nextPosition)
+	var movement = move_and_slide(nextPosition)
+	
+	# Caso haja alguma barreira impedindo o jogador de mover-se, muda para o estado IDLE
+	if !movement.x && !movement.y:
+		setState(STATES.IDLE)
 
 # Função que retorna a stream do som de andar ou correr de acordo com o terreno
 func getWalkingOrRunningSoundByTerrain():
@@ -115,7 +119,7 @@ func animateAttack() -> void:
 		setState(0)
 
 # Função responsável por executar a animação e som de corrida ou caminhada
-func animateWalkingOrRunning(delta) -> void:
+func animateWalkingOrRunning() -> void:
 	setPlayerDirection()
 	
 	match state:
@@ -134,12 +138,12 @@ func animateIdle() -> void:
 	playOrStopWalkingOrRunningSound()
 
 # Função responsável por dar play na animação e som com base no estado
-func animate(delta) -> void:
+func animate() -> void:
 	match state:
 		STATES.IDLE:
 			animateIdle()
 		STATES.WALKING, STATES.RUNNING:
-			animateWalkingOrRunning(delta)
+			animateWalkingOrRunning()
 		STATES.ATTACKING:
 			animateAttack()
 		STATES.DIED:
@@ -164,9 +168,11 @@ func _ready():
 # Process de Fisica
 func _physics_process(delta) -> void:
 	movePlayer(delta)
-	animate(delta)
+	animate()
 
 # Verifica os inputs do teclado
 func _unhandled_key_input(event):
 	setMoveDirectionByKeyboard()
 	verifyAttackByKeybord()
+	
+	return event
