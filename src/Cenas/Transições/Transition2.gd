@@ -14,7 +14,7 @@ func _process(delta):
 	if dialog:
 		$Area2D.monitoring = false
 		$Area2D.monitorable = false
-		$AudioStreamPlayer2D.volume_db = GlobalOptions.setMusicSound(-5)
+	$AudioStreamPlayer2D.volume_db = GlobalOptions.setMusicSound(-5)
 
 func _on_Area2D_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	dialog = true

@@ -150,7 +150,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 11.4336, 2.3598 )
+extents = Vector2( 13.2389, 2.3598 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 8.59702, 3.92826 )
@@ -200,7 +200,7 @@ anims/run = SubResource( 15 )
 anims/walk = SubResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.91465, 16.7674 )
+position = Vector2( 0.609764, 16.7674 )
 scale = Vector2( 0.506637, 0.64077 )
 shape = SubResource( 1 )
 

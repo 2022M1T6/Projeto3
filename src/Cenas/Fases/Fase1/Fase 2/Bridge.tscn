@@ -1,6 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Cenas/Fases/Fase 2/Bridge.gd" type="Script" id=1]
+[ext_resource path="res://Cenas/Fases/Fase1/Fase 2/Bridge.gd" type="Script" id=1]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 20, 40 )

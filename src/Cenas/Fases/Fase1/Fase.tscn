@@ -204,7 +204,6 @@ valign = 1
 autowrap = true
 
 [node name="PopupPause" parent="Player/Camera2D/CanvasLayer" instance=ExtResource( 15 )]
-visible = false
 
 [node name="TreeAndRocks" type="TileMap" parent="."]
 position = Vector2( 0, -1 )

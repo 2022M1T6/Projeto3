@@ -17,7 +17,7 @@ config/icon="res://Public/Characters/playerProfile.png"
 [autoload]
 
 GlobalFase1="*res://Cenas/Fases/Fase1/globalFase1.gd"
-GlobalFase2="*res://Cenas/Fases/Fase 2/GlobalFase2.gd"
+GlobalFase2="*res://Cenas/Fases/Fase1/Fase 2/GlobalFase2.gd"
 GlobalOptions="*res://Cenas/Menus/GlobalOptions.gd"
 
 [display]

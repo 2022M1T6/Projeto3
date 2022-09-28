@@ -59,6 +59,7 @@ collision_mask = 15
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, 18 )
 texture = ExtResource( 1 )
 hframes = 4
 vframes = 2
@@ -69,6 +70,7 @@ anims/actionIdle = SubResource( 3 )
 anims/idle = SubResource( 2 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( 0, 18 )
 polygon = PoolVector2Array( -16, 12, 16, 12, 11, 2, 11, -2, -11, -2, -11, 2 )
 
 [node name="dialogBubble" type="Sprite" parent="."]
