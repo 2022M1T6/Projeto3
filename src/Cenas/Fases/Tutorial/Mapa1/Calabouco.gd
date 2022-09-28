@@ -23,7 +23,6 @@ func _on_Area2D_area_shape_entered(area_rid, area, area_shape_index, local_shape
 # Ao entrar na área do Dellson, muda o estado dele e esconde a hint
 func _on_Area2DDellson_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	$Dellson.setState(1)
-	$Player/Camera2D/CanvasLayer/Hint.hideHint()
 	onDellsonArea = true
 
 # Ao sair da área do Dellson, muda o estado dele para o padrão e muda o texto da hint
@@ -187,7 +186,6 @@ func _ready():
 					]
 				}
 		])
-	$Player/Camera2D/CanvasLayer/Hint.hideHint()
 
 
 # Verifica os inputs do teclado

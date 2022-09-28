@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Cenas/Fases/Fase 2/Tree/Tree.gd" type="Script" id=1]
+[ext_resource path="res://Public/KeyboardKeys/teclaP.png" type="Texture" id=2]
+[ext_resource path="res://Public/Scenery/Tree/tree.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16.5, 19 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 7, 4.5 )
+
+[node name="Tree" type="StaticBody2D"]
+script = ExtResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( -4, -53 )
+collision_layer = 8
+collision_mask = 255
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 4, 111 )
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, 44 )
+texture = ExtResource( 3 )
+
+[node name="ActionButton" type="Sprite" parent="."]
+visible = false
+position = Vector2( -8, 55 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 1, 64.5 )
+shape = SubResource( 3 )
+
+[connection signal="area_shape_entered" from="Area2D" to="." method="_on_Area2D_area_shape_entered"]
+[connection signal="area_shape_exited" from="Area2D" to="." method="_on_Area2D_area_shape_exited"]

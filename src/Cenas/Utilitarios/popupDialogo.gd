@@ -1,7 +1,7 @@
 extends PopupDialog
 
 onready var dialogBoxLabel = $DialogBox/Label
-var startedDialog = false
+export (bool) var startedDialog = false
 var canGoToNextLine = false
 var canCompleteLine = false
 var diag
@@ -28,9 +28,15 @@ func getDialogSpriteFilePath():
 		return "res://Public/Characters/lumberjackProfile.png"
 	elif currentDialog["personagem"] == 'marketer':
 		return "res://Public/Characters/marketerProfile.png"
+	elif currentDialog["personagem"] == 'swordsman':
+		return "res://Public/Characters/swordsmanProfile.png"
+	elif currentDialog["personagem"] == 'gallo':
+		return "res://Public/Characters/galloProfile.png"
 	else:
 		return "res://Public/Characters/fabiProfile.png"
 
+
+		
 # Função que envia um diálogo
 func sendDialog(dialog):
 	if startedDialog:
@@ -39,6 +45,7 @@ func sendDialog(dialog):
 	addDialog(dialog)
 	startedDialog = true
 	showNextMessageOnList()
+	GlobalOptions.hideHUDItems()
 	get_tree().paused = true
 	
 # Função que adiciona um array de diálogo para a lista
@@ -54,6 +61,7 @@ func killDialog():
 	startedDialog = false
 	hide()
 	get_tree().paused = false
+	GlobalOptions.showHudItems()
 
 # Função que pega a próxima linha de diálogo
 func getNextSpeak():

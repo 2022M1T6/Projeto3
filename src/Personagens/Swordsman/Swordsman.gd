@@ -25,6 +25,7 @@ func animate():
 		STATES.IDLE_ACTION:
 			$AnimationPlayer.play("actionIdle")
 			$actionButton.visible = true
+		
 
 # Função que mostra ou esconde os balões de ação do personagem
 func setUpBubbles():
