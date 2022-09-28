@@ -4,13 +4,15 @@ onready var dialogBoxLabel = $DialogBox/Label
 export (bool) var startedDialog = false
 var canGoToNextLine = false
 var canCompleteLine = false
+var diag
 
 var dialogs = []
 var currentDialog = {"personagem": "", "falas": []}
 
 
-func _ready():
-	$AudioStreamPlayer2D.volume_db = GlobalOptions.setSFXSound(float($AudioStreamPlayer2D.volume_db))
+func _process(delta):
+	$AudioStreamPlayer2D.volume_db = GlobalOptions.setSFXSound(15)
+	 
 	
 # Função que estabelece qual sprite usar quando estiver na fala
 func getDialogSpriteFilePath():

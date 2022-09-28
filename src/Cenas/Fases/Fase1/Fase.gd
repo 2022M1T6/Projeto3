@@ -572,7 +572,7 @@ func _on_Marketer_area_exited(area):
 # Função que muda o player de cena quando entra na área 2D depois de encerrar o minigame
 func _on_Area2D_area_entered(area):
 	GlobalOptions.dimensoes["vision"] = true
-	get_tree().change_scene("res://Cenas/Utilitarios/FimDemo.tscn")
+	get_tree().change_scene("res://Cenas/Transições/Transição2.tscn")
 
 # Função que prepara o ambiente depois que o jogador vence o minigame
 func hitTheAxe():
@@ -665,6 +665,7 @@ func _process(delta):
 	GlobalFase2.paralax($Player,$Blacksmith)
 	GlobalFase2.paralax($Player,$Marketer)
 	GlobalFase2.paralax($Player,$King)
+	$VillageSound.volume_db = GlobalOptions.setMusicSound(5)
 	
 	if(!endGameSetedUp && GlobalFase1.AxeOk):
 		hitTheAxe()

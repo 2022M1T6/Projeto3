@@ -45,7 +45,7 @@ func _process(delta):
 func _ready():
 	for dimensao in dimensoes:
 		if !dimensoes[dimensao]:
-			get_node("Panel/"+dimensao).hide()
+			get_node(dimensao).hide()
 	
 	if GlobalOptions.isPortuguese:
 		$Label.text = "PAUSADO"

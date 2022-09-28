@@ -176,3 +176,8 @@ func _unhandled_key_input(event):
 	verifyAttackByKeybord()
 	
 	return event
+func _process(delta):
+	$PunchSound.volume_db = GlobalOptions.setSFXSound(-15)
+	$RunningSound.volume_db = GlobalOptions.setSFXSound(0)
+	$WalkingSound.volume_db = GlobalOptions.setMusicSound(0)
+	$AxeAttackSound.volume_db = GlobalOptions.setSFXSound(-15)

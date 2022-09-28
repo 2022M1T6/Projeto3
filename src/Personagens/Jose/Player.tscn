@@ -150,13 +150,13 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 6.56929, 1.31101 )
+extents = Vector2( 11.4336, 2.3598 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 8.59702, 3.92826 )
 
 [sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 3.5061, 3.26882 )
+extents = Vector2( 5.28454, 3.26882 )
 
 [sub_resource type="Curve" id=9]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0681495, 0, 0, Vector2( 1, 0 ), -3.48769, 0.0, 0, 0 ]
@@ -200,7 +200,7 @@ anims/run = SubResource( 15 )
 anims/walk = SubResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.482727, 16.0954 )
+position = Vector2( 0.91465, 16.7674 )
 scale = Vector2( 0.506637, 0.64077 )
 shape = SubResource( 1 )
 
@@ -219,7 +219,7 @@ disabled = true
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 0.355698, 13.9355 )
+position = Vector2( 0.406509, 13.9355 )
 shape = SubResource( 8 )
 
 [node name="dash" type="Timer" parent="."]
@@ -252,7 +252,7 @@ pitch_scale = 1.5
 
 [node name="AxeAttackSound" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource( 14 )
-volume_db = -19.327
+volume_db = -15.0
 
 [node name="PunchSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )

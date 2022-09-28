@@ -246,7 +246,6 @@ polygon = PoolVector2Array( 672, 170, 957, 171, 955, 91, 905, 91, 865, 97, 703, 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
 position = Vector2( 798, 119 )
 shape = SubResource( 11 )
 
