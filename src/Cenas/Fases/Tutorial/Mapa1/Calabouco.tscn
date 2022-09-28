@@ -1272,7 +1272,6 @@ polygon = PoolVector2Array( 24.6667, 30.6667, 12.6667, -14, -13.6667, -13.6667, 
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 69, 86 )
-scale = Vector2( 1, 1 )
 moveSpeed = 5
 
 [node name="Camera2D" type="Camera2D" parent="Player"]

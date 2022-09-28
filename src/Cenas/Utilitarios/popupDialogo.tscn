@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Public/caixa-dialogo.png" type="Texture" id=1]
+[ext_resource path="res://Public/Utilitarios/caixaDialogo.png" type="Texture" id=1]
 [ext_resource path="res://Public/Fonts/Kenney Pixel.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Cenas/Utilitarios/popupDialogo.gd" type="Script" id=3]
 [ext_resource path="res://Public/Characters/playerProfile.png" type="Texture" id=4]
@@ -10,15 +10,16 @@
 size = 92
 font_data = ExtResource( 2 )
 
+[sub_resource type="DynamicFont" id=2]
+size = 103
+font_data = ExtResource( 2 )
+
 [node name="PopupDialog" type="PopupDialog"]
 pause_mode = 2
+visible = true
 self_modulate = Color( 0, 0, 0, 0.223529 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -1.0
-margin_top = -63.0
-margin_right = 2.0
-margin_bottom = -63.0
 rect_scale = Vector2( 1.25228, 1.16034 )
 script = ExtResource( 3 )
 
@@ -30,35 +31,44 @@ autostart = true
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 223.592
-margin_top = -237.175
-margin_right = 1785.59
-margin_bottom = 436.825
-rect_scale = Vector2( 0.307, 0.307 )
+margin_left = 224.0
+margin_top = -307.756
+margin_right = 1566.0
+margin_bottom = 366.244
+rect_scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 1 )
+expand = true
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Label" type="Label" parent="DialogBox"]
 margin_left = 150.0
-margin_top = 173.0
-margin_right = 1866.0
-margin_bottom = 454.0
+margin_top = 201.0
+margin_right = 2513.0
+margin_bottom = 519.0
 custom_fonts/font = SubResource( 1 )
 text = "Dellson"
 autowrap = true
 percent_visible = 0.0
 
+[node name="CharacterName" type="Label" parent="DialogBox"]
+margin_left = 151.0
+margin_top = 46.0
+margin_right = 721.0
+margin_bottom = 124.0
+custom_fonts/font = SubResource( 2 )
+
 [node name="DialogSprite" type="TextureRect" parent="."]
-anchor_left = -0.0178836
-anchor_top = 1.02026
-anchor_right = -0.0178836
-anchor_bottom = 1.02026
+anchor_left = -0.0202231
+anchor_top = 0.955624
+anchor_right = -0.0202228
+anchor_bottom = 0.955624
 margin_left = -3.99273
 margin_top = -325.171
 margin_right = 316.007
 margin_bottom = -5.17078
+rect_scale = Vector2( 0.9, 0.9 )
 texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": true

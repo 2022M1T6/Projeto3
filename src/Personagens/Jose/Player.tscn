@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Personagens/Jose/Player.gd" type="Script" id=1]
 [ext_resource path="res://Public/Sounds-effects/Dash.wav" type="AudioStream" id=2]
@@ -7,6 +7,22 @@
 [ext_resource path="res://Public/icon.png" type="Texture" id=5]
 [ext_resource path="res://Public/Sounds-effects/Punch.wav" type="AudioStream" id=6]
 [ext_resource path="res://Public/Sounds-effects/WalkingOnGrass.wav" type="AudioStream" id=7]
+
+[sub_resource type="Animation" id=16]
+resource_name = "Dashing"
+length = 0.66
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 7, 8, 9, 10, 11, 12 ]
+}
 
 [sub_resource type="Animation" id=4]
 length = 0.001
@@ -150,13 +166,13 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 11.4336, 2.3598 )
+extents = Vector2( 6.56929, 1.31101 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 8.59702, 3.92826 )
 
 [sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 5.28454, 3.26882 )
+extents = Vector2( 3.5061, 3.26882 )
 
 [sub_resource type="Curve" id=9]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0681495, 0, 0, Vector2( 1, 0 ), -3.48769, 0.0, 0, 0 ]
@@ -180,7 +196,6 @@ data = PoolByteArray( 73, 68, 51, 4, 0, 0, 0, 2, 58, 46, 84, 69, 78, 67, 0, 0, 0
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 420, 167 )
-scale = Vector2( 4.92001, 3.72001 )
 collision_layer = 8
 collision_mask = 15
 script = ExtResource( 1 )
@@ -191,6 +206,7 @@ hframes = 6
 vframes = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Dashing = SubResource( 16 )
 anims/RESET = SubResource( 4 )
 anims/axeAttack = SubResource( 12 )
 anims/die = SubResource( 13 )

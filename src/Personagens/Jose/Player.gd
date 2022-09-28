@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 # States
-enum STATES {IDLE, WALKING, RUNNING, ATTACKING, DIED} # Estado atual do NPC
+enum STATES {IDLE, WALKING, RUNNING, ATTACKING, DASHING, DIED} # Estado atual do NPC
 enum WEAPONS {PUNCH, AXE}
 enum TERRAINS {GRASS, CONCRETE}
 
@@ -19,6 +19,8 @@ export (bool) var isPlayingAttackAnimation = false # Muda com a animação
 # Atributos
 export (Vector2) var moveDirection = Vector2(0,0)
 export (int) var moveSpeed = 10
+
+var canDash = true
 
 # Função responsável por alterar o estado
 func setState(newState: int) -> void:
@@ -54,6 +56,8 @@ func movePlayer(delta):
 	if moveDirection:
 		if Input.is_action_pressed("shift"):
 			setState(STATES.RUNNING)
+		elif Input.is_action_just_pressed("dash"): 
+			setState(STATES.DASHING)
 		else:
 			setState(STATES.WALKING)
 		movePlayerByKeyboard(delta)
@@ -65,6 +69,8 @@ func movePlayerByKeyboard(delta: float) -> void:
 	var nextPosition = moveDirection.normalized() * moveSpeed * delta * 1000
 	if state == STATES.RUNNING:
 		nextPosition *= 1.3
+	elif state == STATES.DASHING:
+		nextPosition *= 20
 		
 	var movement = move_and_slide(nextPosition)
 	
@@ -136,6 +142,9 @@ func animateWalkingOrRunning() -> void:
 func animateIdle() -> void:
 	$AnimationPlayer.play("idle")
 	playOrStopWalkingOrRunningSound()
+	
+func animateDash() -> void:
+	setPlayerDirection()
 
 # Função responsável por dar play na animação e som com base no estado
 func animate() -> void:
@@ -144,6 +153,8 @@ func animate() -> void:
 			animateIdle()
 		STATES.WALKING, STATES.RUNNING:
 			animateWalkingOrRunning()
+		STATES.DASHING:
+			animateDash()
 		STATES.ATTACKING:
 			animateAttack()
 		STATES.DIED:

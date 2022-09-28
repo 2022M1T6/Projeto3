@@ -164,7 +164,7 @@ extents = Vector2( 21.9347, 25.5 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 33.623, 22.25 )
 
-[node name="Node2D2" type="Node2D"]
+[node name="Node2D3" type="Node2D"]
 rotation = 0.00259445
 script = ExtResource( 3 )
 

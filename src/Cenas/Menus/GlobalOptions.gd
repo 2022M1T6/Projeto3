@@ -5,19 +5,26 @@ var itemsToHideDialog = []
 
 # Seta a lista de itens para esconder durante o diálogo
 func setItemsToHideOnDialog(items: Array):
-	itemsToHideDialog = items
+	itemsToHideDialog = []
+	for i in range(0, len(items)):
+		itemsToHideDialog.append({
+			'item': items[i],
+			'alreadyVisible': items[i].visible
+		})
 	
 # Esconde os itens de HUD da variável global
 func hideHUDItems():
-	for i in range (0, len(GlobalOptions.itemsToHideDialog)):
-		if GlobalOptions.itemsToHideDialog[i] && is_instance_valid(GlobalOptions.itemsToHideDialog[i]):
-			GlobalOptions.itemsToHideDialog[i].hide()
+	for i in range (0, len(itemsToHideDialog)):
+		if itemsToHideDialog[i] && is_instance_valid(itemsToHideDialog[i]['item']):
+			itemsToHideDialog[i]['alreadyVisible'] = itemsToHideDialog[i]['item'].visible
+			itemsToHideDialog[i]['item'].hide()
+			
 
 # Mostra os itens de HUD da variável global
 func showHudItems():
-	for i in range (0, len(GlobalOptions.itemsToHideDialog)):
-		if GlobalOptions.itemsToHideDialog[i] && is_instance_valid(GlobalOptions.itemsToHideDialog[i]):
-			GlobalOptions.itemsToHideDialog[i].show()
+	for i in range (0, len(itemsToHideDialog)):
+		if itemsToHideDialog[i] && is_instance_valid(itemsToHideDialog[i]['item']) && itemsToHideDialog[i]['alreadyVisible']:
+			itemsToHideDialog[i]['item'].show()
 
 # Lingua
 var isPortuguese = false

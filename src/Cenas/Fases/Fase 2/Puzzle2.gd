@@ -1,6 +1,4 @@
 extends Node2D
-# CÓDIGO EM PRODUÇÃO - NÃO PLANEJAMOS ENTREGAR NA SPRINT 4.
-# ESSE CÓDIGO AINDA NÃO FOI FINALIZADO, PORTANTO AINDA IRÁ SER COMPLETO E REFATORADO
 onready var camera = $Player/Camera
 var isOnPlayerCamera = true
 var enteredSwordsmanArea = false
@@ -19,6 +17,7 @@ var hasSword
 # Envia os diálogos do swordsman
 func sendSwordsmanDialog():
 	if !talkedWithSwordsman:
+		talkedWithSwordsman = true
 		$Player/Camera/CanvasLayer/Hint.sendHint("Recupere a espada do espadachim nas ilhas ao Sul")
 		$Swordsman.setInteraction(0)
 		$Player/Camera/CanvasLayer/PopupDialog.sendDialog([
@@ -44,6 +43,7 @@ func sendSwordsmanDialog():
 			}
 		])
 
+# Envia o diálogo do Gallo
 func sendGalloDialog():
 	if !talkedWithGallo:
 		talkedWithGallo = true
@@ -94,6 +94,7 @@ func sendGalloDialog():
 				}
 			])
 
+# Envia o diálogo do Dellson
 func sendDellsonDialog():
 	$Player/Camera/CanvasLayer/PopupDialog.sendDialog([
 		{
@@ -107,6 +108,26 @@ func sendDellsonDialog():
 		}
 	])
 
+# Envia o diálogo do Swordsman após pegar a espada
+func sendSwordsmanDialogWhenPickupSword():
+	$Sword.queue_free()
+	hasSword = true
+	$Player/Camera/CanvasLayer/PopupDialog.sendDialog([
+		{
+			"personagem": "swordsman",
+			"falas": [
+				"Ahã! Sabia que você iria conseguir!",
+				"Com essa espada, você conseguirá usar um feitiço para pular entre distancias pequenas!"
+			]
+		},
+		{
+			"personagem": "jose",
+			"falas": [
+				"Legal! Eu acho que vou precisar usar para conseguir ir até o lado oeste e sair dessas ilhas"
+			]
+		}
+	])
+	
 # Pega a espada do cenário
 func getSword():
 	if talkedWithSwordsman:
@@ -114,34 +135,22 @@ func getSword():
 		$Sword.queue_free()
 		$Player/Camera/CanvasLayer/Hint.sendHint("Atravesse até o próximo lado")
 
+func changePlayerCamera():
+	if isOnPlayerCamera:
+		camera.zoom = Vector2(1.2,1.2)
+		isOnPlayerCamera = false
+	else:
+		camera.zoom = Vector2(0.3,0.3)
+		isOnPlayerCamera = true
+
 func _process(delta):
 	$Player/Camera/CanvasLayer/WoodCountFrame/WoodCountLabel.text = " x " + str(GlobalFase2.wood)
-	GlobalFase2.paralax($Player,$Swordsman)
-	GlobalFase2.paralax($Player,$Sword)	
-	if Input.is_action_just_pressed("V"):
-		if isOnPlayerCamera:
-			camera.zoom = Vector2(1.2,1.2)
-			isOnPlayerCamera = false
-		else:
-			camera.zoom = Vector2(0.3,0.3)
-			isOnPlayerCamera = true
-			
-	if Input.is_action_just_pressed("interact") && onSword && talkedSwords:
-		GlobalFase2.hasSword = true
-		$Sword.visible = false
-		$Sword/Sword.monitoring = false
-		$Sword.collision_layer = 16
-		$Sword.collision_mask = 16
-		
-	if Input.is_action_just_pressed("interact") && onSwordsman:
-		$Swordsman/missionBub.visible = false
-		talkedSwords = true
-
-func _on_Area2D_body_entered(body):
-	if change%2 == 1:
-		camera.zoom.x = 1
-		camera.zoom.y = 1
-		change += 1
+	if is_instance_valid($Swordsman):
+		GlobalFase2.paralax($Player,$Swordsman)
+		if is_instance_valid($Sword):
+			GlobalFase2.paralax($Player,$Sword)
+	
+	GlobalFase2.paralax($Player,$Gallo)
 
 # Ao entrar na área de ação do Swordsman, ativa o estado de ação do NPC e registra que o jogador está dentro da área
 func _on_Swordsman2_area_entered(area):
@@ -152,6 +161,28 @@ func _on_Swordsman2_area_entered(area):
 func _on_Swordsman2_area_exited(area):
 	enteredSwordsmanArea = false
 	$Swordsman.setState(0)
+	if talkedWithSwordsman:
+		$Swordsman.queue_free()
+	
+# Muda o estado da espada quando entra em sua área de ação
+func _on_actionArea_area_entered(area):
+	enteredSwordArea = true
+	$Sword.setState(1)
+
+# Muda o estado da espada quando sai em sua área de ação
+func _on_actionArea_area_exited(area):
+	enteredSwordArea = false
+	$Sword.setState(0)
+
+# Muda o estado do gallo quando entra em sua área de ação
+func _on_GalloArea_area_entered(area):
+	enteredGalloArea = true
+	$Gallo.setState(1)
+
+# Muda o estado do gallo quando sai em sua área de ação
+func _on_GalloArea_area_exited(area):
+	enteredGalloArea = false
+	$Gallo.setState(0)
 
 func _ready():
 	GlobalOptions.setItemsToHideOnDialog([
@@ -191,29 +222,27 @@ func _unhandled_input(event):
 		if enteredSwordsmanArea:
 			sendSwordsmanDialog()
 		elif enteredSwordArea:
-			$Sword.queue_free()
-			hasSword = true
+			sendSwordsmanDialogWhenPickupSword()
 		elif enteredGalloArea:
 			sendGalloDialog()
 		elif enteredDellsonArea:
 			sendDellsonDialog()
+	
+	if Input.is_action_just_pressed("V"):
+		changePlayerCamera()
 			
 	return event
-	
-func _on_actionArea_area_entered(area):
-	enteredSwordArea = true
-	$Sword.setState(1)
 
 
-func _on_actionArea_area_exited(area):
-	enteredSwordArea = false
-	$Sword.setState(0)
-
-
-func _on_GalloArea_area_entered(area):
-	enteredGalloArea = true
-	$Gallo.setState(1)
-	
-func _on_GalloArea_area_exited(area):
-	enteredGalloArea = false
-	$Gallo.setState(0)
+func _on_finalDialog_area_entered(area):
+	$Player/Camera/CanvasLayer/PopupDialog.sendDialog([
+		{
+			"personagem": "dellson",
+			"falas": [
+				"Eai amigão, tudo bem?",
+				"Agora quero te dar os parabéns por concluir a fase 2 com êxito, sei que não deve ter sido uma tarefa fácil, tiveram alguns obstáculos para chegar até aqui, mas esses obstáculos serviram como lições.",
+				"Espero que você tenha compreendido que um roteiro prévio é sempre útil para atingir um objetivo, mesmo que ocorram empecilhos, o guia mesmo sofrendo alterações ajuda você a se organizar e se planejar, espero que com essa fase você tenha compreendido isso.",
+				"Isso que acabei de resumir para você, no modelo de produto é chamado de 'Roadmap'."
+			]
+		}
+	])

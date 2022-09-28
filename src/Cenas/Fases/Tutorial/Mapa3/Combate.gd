@@ -7,6 +7,10 @@ var dano = 20
 
 # Prepara o audio do game e dispara o primeiro diálogo
 func _ready():
+	GlobalOptions.setItemsToHideOnDialog([
+		$Player/Camera2D/CanvasLayer/Hint
+	])
+	
 	if GlobalOptions.isPortuguese:
 		$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
 				{

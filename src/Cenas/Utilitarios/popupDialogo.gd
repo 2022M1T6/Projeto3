@@ -72,7 +72,11 @@ func getNextSpeak():
 		currentDialog = dialogs.pop_front()
 		return getNextSpeak()
 	else:
-		return currentDialog["falas"].pop_front()
+		var characterName = currentDialog['personagem'][0].to_upper() + currentDialog['personagem'].substr(1,-1)
+		return {
+			'character': characterName,
+			'speak': currentDialog["falas"].pop_front()
+		}
 
 # Função que insere o texto na label e deixa-o invisível
 func setText(text):
@@ -80,16 +84,19 @@ func setText(text):
 	dialogBoxLabel.text = text
 	canGoToNextLine = false
 
+func setCharacterName(text):
+	$DialogBox/CharacterName.text = text
 
 # Função que mostra a próxima mensagem do array de diálogos
 func showNextMessageOnList() -> void:
-	var text = getNextSpeak()
+	var speak = getNextSpeak()
 	
-	if !text:
+	if !speak:
 		killDialog()
 		return
 		
-	setText(text)
+	setText(speak['speak'])
+	setCharacterName(speak['character'])
 
 	# Verifica se a foto da caixa de diálogo está condizente com o personagem e troca caso necessário
 	$DialogSprite.texture = load(getDialogSpriteFilePath())
