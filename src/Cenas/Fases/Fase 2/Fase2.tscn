@@ -129,6 +129,7 @@ position = Vector2( 263, 98 )
 shape = SubResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
+visible = false
 position = Vector2( 45, 350 )
 collision_mask = 255
 
@@ -217,10 +218,7 @@ text = "x 2"
 align = 1
 
 [node name="PopupDialog" parent="Player/Camera/CanvasLayer" instance=ExtResource( 12 )]
-anchor_right = 1.25228
-anchor_bottom = 1.16034
-margin_right = -258.335
-margin_bottom = -96.204
+margin_bottom = -24.0
 
 [node name="Hint" parent="Player/Camera/CanvasLayer" instance=ExtResource( 10 )]
 
