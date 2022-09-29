@@ -225,7 +225,6 @@ margin_bottom = -96.204
 [node name="Hint" parent="Player/Camera/CanvasLayer" instance=ExtResource( 10 )]
 
 [node name="PopupPause" parent="Player/Camera/CanvasLayer" instance=ExtResource( 11 )]
-visible = false
 
 [node name="Borders" type="StaticBody2D" parent="."]
 collision_layer = 255

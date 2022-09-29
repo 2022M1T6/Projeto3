@@ -208,7 +208,6 @@ editor_draw_drag_margin = true
 [node name="Hint" parent="Player/Camera2D/CanvasLayer" instance=ExtResource( 6 )]
 
 [node name="PopupPause" parent="Player/Camera2D/CanvasLayer" instance=ExtResource( 5 )]
-visible = false
 
 [node name="Area2D" type="Area2D" parent="."]
 
