@@ -7,6 +7,7 @@ var erros = 0
 var acertos = 0
 
 func _ready():
+	print('lol')
 	$Pergunta.text = str(perguntas.keys()[contador])
 	
 	$botaoA.text = respostas[contador][0]
@@ -50,8 +51,9 @@ func acertar():
 		get_tree().change_scene("res://Cenas/Menus/MenuOpcoes.tscn")
 	
 func _on_botaoA_pressed():
+	print('oi')
 	if perguntas[$Pergunta.text] == 'A':
-		print('acertou')
+		acertar()
 	else:
 		errar()
 	mudar_pergunta()	
@@ -79,3 +81,8 @@ func _on_botaoD_pressed():
 	else:
 		errar()
 	mudar_pergunta()
+	
+func sendQuiz():
+	GlobalOptions.hideHUDItems()
+	get_tree().paused = true
+	show()
