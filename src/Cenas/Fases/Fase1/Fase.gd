@@ -572,7 +572,7 @@ func _on_Marketer_area_exited(area):
 # Função que muda o player de cena quando entra na área 2D depois de encerrar o minigame
 func _on_Area2D_area_entered(area):
 	GlobalOptions.dimensoes["vision"] = true
-	get_tree().change_scene("res://Cenas/Transições/Transição2.tscn")
+	get_tree().change_scene("res://Cenas/Transições/Transition2.tscn")
 
 # Função que prepara o ambiente depois que o jogador vence o minigame
 func hitTheAxe():
