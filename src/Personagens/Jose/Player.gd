@@ -5,6 +5,8 @@ enum STATES {IDLE, WALKING, RUNNING, ATTACKING, DASHING, DIED} # Estado atual do
 enum WEAPONS {PUNCH, AXE}
 enum TERRAINS {GRASS, CONCRETE}
 
+onready var dash = $dash
+
 # Current States
 var state = STATES.IDLE
 var weapon = WEAPONS.AXE
@@ -21,6 +23,7 @@ export (Vector2) var moveDirection = Vector2(0,0)
 export (int) var moveSpeed = 10
 
 var canDash = true
+var isDashing = false
 
 # Função responsável por alterar o estado
 func setState(newState: int) -> void:
@@ -52,25 +55,23 @@ func verifyAttackByKeybord():
 	if Input.is_action_just_pressed("attack"):
 		setState(STATES.ATTACKING)
 	
-func movePlayer(delta):
+func movePlayer():
 	if moveDirection:
 		if Input.is_action_pressed("shift"):
 			setState(STATES.RUNNING)
-		elif Input.is_action_just_pressed("dash"): 
-			setState(STATES.DASHING)
 		else:
 			setState(STATES.WALKING)
-		movePlayerByKeyboard(delta)
+		movePlayerByKeyboard()
 	elif state == STATES.RUNNING || state == STATES.WALKING:
 		setState(STATES.IDLE)
 	
 # Função que efetivamente move o player
-func movePlayerByKeyboard(delta: float) -> void:
-	var nextPosition = moveDirection.normalized() * moveSpeed * delta * 1000
+func movePlayerByKeyboard() -> void:
+	var nextPosition = moveDirection.normalized() * moveSpeed * 20
 	if state == STATES.RUNNING:
 		nextPosition *= 1.3
 	elif state == STATES.DASHING:
-		nextPosition *= 20
+		nextPosition *= 5
 		
 	var movement = move_and_slide(nextPosition)
 	
@@ -143,8 +144,7 @@ func animateIdle() -> void:
 	$AnimationPlayer.play("idle")
 	playOrStopWalkingOrRunningSound()
 	
-func animateDash() -> void:
-	setPlayerDirection()
+
 
 # Função responsável por dar play na animação e som com base no estado
 func animate() -> void:
@@ -153,8 +153,6 @@ func animate() -> void:
 			animateIdle()
 		STATES.WALKING, STATES.RUNNING:
 			animateWalkingOrRunning()
-		STATES.DASHING:
-			animateDash()
 		STATES.ATTACKING:
 			animateAttack()
 		STATES.DIED:
@@ -178,13 +176,16 @@ func _ready():
 
 # Process de Fisica
 func _physics_process(delta) -> void:
-	movePlayer(delta)
 	animate()
+	movePlayer()
+	
+	
 
 # Verifica os inputs do teclado
 func _unhandled_key_input(event):
 	setMoveDirectionByKeyboard()
 	verifyAttackByKeybord()
+
 	
 	return event
 func _process(delta):
@@ -192,3 +193,13 @@ func _process(delta):
 	$RunningSound.volume_db = GlobalOptions.setSFXSound(0)
 	$WalkingSound.volume_db = GlobalOptions.setMusicSound(0)
 	$AxeAttackSound.volume_db = GlobalOptions.setSFXSound(-15)
+
+
+
+
+
+
+
+
+
+	

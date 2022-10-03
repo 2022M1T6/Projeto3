@@ -27,7 +27,7 @@ func showHudItems():
 			itemsToHideDialog[i]['item'].show()
 
 # Lingua
-var isPortuguese = false
+var isPortuguese = true
 
 # Volume
 var masterVolume = 100

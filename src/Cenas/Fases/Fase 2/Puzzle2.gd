@@ -5,6 +5,8 @@ var enteredSwordsmanArea = false
 var enteredGalloArea = false
 var enteredSwordArea = false
 var enteredDellsonArea = false
+var enteredResetDiag = false
+var enteredDash = false
 
 var onSword = false
 var onSwordsman = false
@@ -12,7 +14,6 @@ var talkedSwords = false
 var talkedWithSwordsman = false
 var talkedWithGallo = false
 var change = 0
-var hasSword
 
 # Envia os diálogos do swordsman
 func sendSwordsmanDialog():
@@ -129,7 +130,7 @@ func sendGalloDialog():
 				},
 			])
 	else:
-		if hasSword:
+		if GlobalFase2.hasSword:
 			$Player/Camera/CanvasLayer/PopupDialog.sendDialog([
 				{
 					"personagem": "gallo",
@@ -179,7 +180,7 @@ func sendDellsonDialog():
 # Envia o diálogo do Swordsman após pegar a espada
 func sendSwordsmanDialogWhenPickupSword():
 	$Sword.queue_free()
-	hasSword = true
+	GlobalFase2.hasSword = true
 	if GlobalOptions.isPortuguese:
 		$Player/Camera/CanvasLayer/PopupDialog.sendDialog([
 			{
@@ -216,7 +217,7 @@ func sendSwordsmanDialogWhenPickupSword():
 # Pega a espada do cenário
 func getSword():
 	if talkedWithSwordsman:
-		hasSword = true
+		GlobalFase2.hasSword = true
 		$Sword.queue_free()
 		if GlobalOptions.isPortuguese:
 			$Player/Camera/CanvasLayer/Hint.sendHint("Atravesse até o próximo lado")
@@ -233,13 +234,31 @@ func changePlayerCamera():
 
 func _process(delta):
 	$Player/Camera/CanvasLayer/WoodCountFrame/WoodCountLabel.text = " x " + str(GlobalFase2.wood)
-	if is_instance_valid($Swordsman):
-		GlobalFase2.paralax($Player,$Swordsman)
-		if is_instance_valid($Sword):
-			GlobalFase2.paralax($Player,$Sword)
+	if Input.is_action_just_pressed("Reload"):
+		reset()
+	for i in range(1,7):
+		GlobalFase2.paralax($Player,get_node('Tree'+str(i)))
 	
 	GlobalFase2.paralax($Player,$Gallo)
-
+	GlobalFase2.paralax($Player,$Swordsman)
+	GlobalFase2.paralax($Player,$Sword)
+	
+	if enteredDash && GlobalFase2.hasSword:
+		$TeclaE.show()
+		if Input.is_action_just_pressed("interact"):
+			$Player.hide()
+			$Player.position += Vector2(40,0)
+			$AnimationPlayer.play("New Anim")
+			yield(get_tree().create_timer(0.2),"timeout")
+			$Player.show()
+	else:
+		$TeclaE.hide()
+	
+	if GlobalFase2.hasSword:
+		if GlobalOptions.isPortuguese:
+			$Player/Camera/CanvasLayer/Hint.sendHint("Atravesse até o próximo lado")
+		else:
+			$Player/Camera/CanvasLayer/Hint.sendHint("Go to the other side.")
 # Ao entrar na área de ação do Swordsman, ativa o estado de ação do NPC e registra que o jogador está dentro da área
 func _on_Swordsman2_area_entered(area):
 	enteredSwordsmanArea = true
@@ -280,56 +299,57 @@ func _ready():
 	])
 	
 	$Swordsman.setInteraction(1)
-	if GlobalOptions.isPortuguese:
-		$Player/Camera/CanvasLayer/Hint.sendHint("Colete madeira, construa pontes e atravesse até o outro lado")	
-		$Player/Camera/CanvasLayer/PopupDialog.sendDialog([
-			{
-				"personagem": "dellson",
-				"falas": [
-					"Jovem padawan, agora você deve continuar sua jornada, em busca do conhecimento, deve superar os obstáculos e chegar do outro lado do desfiladeiro."
-				]
-			},
-			{
-				"personagem": "jose",
-				"falas": [
-					"Ora, Dellson, como passerei por todas essas ilhas? Mesmo que eu conseguisse pular, não seria forte o bastante."
-				]
-			},
-			{
-				"personagem": "dellson",
-				"falas": [
-					"Você tem um machado e existem árvores, é só você cortá-las e construir pontes improvisadas com elas.",
-					"Lembre-se de planejar o caminho e o material disponível, pense em como as árvores estão dispostas e que uma árvore rende apenas duas pontes, o improviso pode ser sua ruína.",
-					"Visualizar, planejar, gerir recursos e possibilidades... Tudo isso é roadmap.",
-					"Agora leve-nos para o outro lado"
-				]
-			}
-		])
-	else:
-		$Player/Camera/CanvasLayer/Hint.sendHint("Gather wood to build bridges and get to the other side")	
-		$Player/Camera/CanvasLayer/PopupDialog.sendDialog([
-			{
-				"personagem": "dellson",
-				"falas": [
-					"Young padawan, now you must continue your journey in search of knowledge. You must overcome the obstacles and get to the other side of the Canyon."
-				]
-			},
-			{
-				"personagem": "jose",
-				"falas": [
-					"Well, Dellson, how will I go over all these islands? Even if I could jump it wouldn't be strong enough."
-				]
-			},
-			{
-				"personagem": "dellson",
-				"falas": [
-					"You have an ax and there are trees, you may cut them in order to build bridges, improvising with them.",
-					"Remember to plan your path and available material, think of how the trees are disposed and that one tree yields only two bridges, improvising can be your ruin.",
-					"Visualize, plan, manage resources and possibilities... All this is roadmap.",
-					"Now take us to the other side."
-				]
-			}
-		])
+	if !GlobalFase2.hasReset:
+		if GlobalOptions.isPortuguese:
+			$Player/Camera/CanvasLayer/Hint.sendHint("Colete madeira, construa pontes e atravesse até o outro lado")	
+			$Player/Camera/CanvasLayer/PopupDialog.sendDialog([
+				{
+					"personagem": "dellson",
+					"falas": [
+						"Jovem padawan, agora você deve continuar sua jornada, em busca do conhecimento, deve superar os obstáculos e chegar do outro lado do desfiladeiro."
+					]
+				},
+				{
+					"personagem": "jose",
+					"falas": [
+						"Ora, Dellson, como passerei por todas essas ilhas? Mesmo que eu conseguisse pular, não seria forte o bastante."
+					]
+				},
+				{
+					"personagem": "dellson",
+					"falas": [
+						"Você tem um machado e existem árvores, é só você cortá-las e construir pontes improvisadas com elas.",
+						"Lembre-se de planejar o caminho e o material disponível, pense em como as árvores estão dispostas e que uma árvore rende apenas duas pontes, o improviso pode ser sua ruína.",
+						"Visualizar, planejar, gerir recursos e possibilidades... Tudo isso é roadmap.",
+						"Agora leve-nos para o outro lado"
+					]
+				}
+			])
+		else:
+			$Player/Camera/CanvasLayer/Hint.sendHint("Gather wood to build bridges and get to the other side")	
+			$Player/Camera/CanvasLayer/PopupDialog.sendDialog([
+				{
+					"personagem": "dellson",
+					"falas": [
+						"Young padawan, now you must continue your journey in search of knowledge. You must overcome the obstacles and get to the other side of the Canyon."
+					]
+				},
+				{
+					"personagem": "jose",
+					"falas": [
+						"Well, Dellson, how will I go over all these islands? Even if I could jump it wouldn't be strong enough."
+					]
+				},
+				{
+					"personagem": "dellson",
+					"falas": [
+						"You have an ax and there are trees, you may cut them in order to build bridges, improvising with them.",
+						"Remember to plan your path and available material, think of how the trees are disposed and that one tree yields only two bridges, improvising can be your ruin.",
+						"Visualize, plan, manage resources and possibilities... All this is roadmap.",
+						"Now take us to the other side."
+					]
+				}
+			])
 
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("interact"):
@@ -349,27 +369,46 @@ func _unhandled_input(event):
 
 
 func _on_finalDialog_area_entered(area):
-	if GlobalOptions.isPortuguese:
-		$Player/Camera/CanvasLayer/PopupDialog.sendDialog([
-			{
-				"personagem": "dellson",
-				"falas": [
-					"Eai amigão, tudo bem?",
-					"Agora quero te dar os parabéns por concluir a fase 2 com êxito, sei que não deve ter sido uma tarefa fácil, tiveram alguns obstáculos para chegar até aqui, mas esses obstáculos serviram como lições.",
-					"Espero que você tenha compreendido que um roteiro prévio é sempre útil para atingir um objetivo, mesmo que ocorram empecilhos, o guia mesmo sofrendo alterações ajuda você a se organizar e se planejar, espero que com essa fase você tenha compreendido isso.",
-					"Isso que acabei de resumir para você, no modelo de produto é chamado de 'Roadmap'."
-				]
-			}
-		])
-	else:
-		$Player/Camera/CanvasLayer/PopupDialog.sendDialog([
-			{
-				"personagem": "dellson",
-				"falas": [
-					"Hey mate, are you alright?",
-					"Now I must congrat you for successfully finishing level 2, I kown it probably wasn't an easy task for there were some obstacles to get here but they served as a lesson.",
-					"I hope you've understood that making a previous script is always useful for achieving your objectives, mesmo que ocorram empecilhos. Even if there were obstacles that made the need to change the guide, it helped you organize and plan ahead.",
-					"What I just sumarized for you, in product model, is called 'Roadmap'."
-				]
-			}
-		])
+	GlobalOptions.dimensoes["roadmap"] = true
+	get_tree().change_scene("res://Cenas/Utilitarios/FimDemo.tscn")
+
+func reset():
+	get_tree().reload_current_scene()
+	GlobalFase2.hasReset = true
+	GlobalFase2.wood = 2
+	GlobalFase2.hasSword = false
+
+
+func _on_Area2D_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
+	if !enteredResetDiag:
+		if GlobalOptions.isPortuguese:
+			$Player/Camera/CanvasLayer/PopupDialog.sendDialog([
+				{
+					"personagem": "dellson",
+					"falas": [
+						"Ah, quase esquci de te avisar que se você pressionar V, você consegue trocar o zoom da câmera para planejar melhor seu próximo passo.",
+						"E caso voçê tenha feito algum erro, pressione R para reiniciar o puzzle. Útil, não?"
+					]
+				}
+			])
+		else:
+			$Player/Camera/CanvasLayer/PopupDialog.sendDialog([
+				{
+					"personagem": "dellson",
+					"falas": [
+						"Oh, almost forgot to tell you that if you press V, you can change the camera's zoom to plan your moves better.",
+						"And if you find yourself stuck, you can press R to restart the puzzle. Usefull, am I right?",
+					]
+				}
+			])
+		enteredResetDiag = true
+
+
+
+func _on_Dash_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
+	enteredDash = true
+	
+
+
+func _on_Dash_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
+	enteredDash = false

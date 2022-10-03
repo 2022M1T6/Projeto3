@@ -1,6 +1,7 @@
 extends Node
 var wood = 2
 var hasSword= false
+var hasReset = false
 
 func paralax(a,b):
 	if a && b:
