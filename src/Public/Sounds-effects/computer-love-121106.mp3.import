@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/computer-love-121106.mp3-6f7684bb0d84e4fc859bf2bc8d0509e6.mp3str"
+
+[deps]
+
+source_file="res://Public/Sounds-effects/computer-love-121106.mp3"
+dest_files=[ "res://.import/computer-love-121106.mp3-6f7684bb0d84e4fc859bf2bc8d0509e6.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

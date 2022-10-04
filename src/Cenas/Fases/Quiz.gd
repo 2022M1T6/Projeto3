@@ -80,6 +80,7 @@ func _ready():
 			}
 		])
 	
+	$AudioStreamPlayer2D.volume_db = GlobalOptions.setMusicSound(-5)
 	
 
 func mudar_pergunta():
@@ -102,7 +103,7 @@ func errar():
 	get_node(string_quebrado).show()
 	
 	if erros >= 3:
-		get_tree().change_scene("res://Cenas/Fases/Quiz.tscn")
+		get_tree().change_scene("res://Cenas/Utilitarios/Gameover.tscn")
 	
 
 func acertar():
@@ -110,7 +111,7 @@ func acertar():
 	$Acertos.text = str(acertos) + "/6"
 	
 	if acertos >= 6:
-		get_tree().change_scene("res://Cenas/Menus/MenuOpcoes.tscn")
+		get_tree().change_scene("res://Cenas/Utilitarios/Creditos.tscn")
 	
 func _on_botaoA_pressed():
 	if perguntas[$Pergunta.text] == 'A':
