@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/battle-of-the-dragons-8037.mp3-5170ea8014535b2cd939b5aba617e991.mp3str"
+
+[deps]
+
+source_file="res://Public/Sounds-effects/battle-of-the-dragons-8037.mp3"
+dest_files=[ "res://.import/battle-of-the-dragons-8037.mp3-5170ea8014535b2cd939b5aba617e991.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

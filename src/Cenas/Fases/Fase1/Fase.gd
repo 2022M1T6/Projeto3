@@ -17,7 +17,7 @@ func verifyAndRemoveTree():
 		if GlobalFase1.AxeOk:
 			$TreeAndRocks/Treelog.queue_free()
 			removedTree = true
-		else:
+		elif len(GlobalFase1.axeChoicedParts) >= 1 && !GlobalFase1.AxeOk:
 			if GlobalOptions.isPortuguese:
 				$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
 					{

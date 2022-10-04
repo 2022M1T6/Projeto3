@@ -11,7 +11,8 @@ size = 17
 font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 64
+size = 21
+extra_spacing_char = 1
 font_data = ExtResource( 5 )
 
 [node name="Control" type="Control"]
