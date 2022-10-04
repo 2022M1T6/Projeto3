@@ -356,7 +356,8 @@ func _unhandled_input(event):
 		if enteredSwordsmanArea:
 			sendSwordsmanDialog()
 		elif enteredSwordArea:
-			sendSwordsmanDialogWhenPickupSword()
+			if talkedWithSwordsman:
+				sendSwordsmanDialogWhenPickupSword()
 		elif enteredGalloArea:
 			sendGalloDialog()
 		elif enteredDellsonArea:
