@@ -286,6 +286,8 @@ func _process(delta):
 			$Player/Camera/CanvasLayer/Hint.sendHint("Atravesse até o próximo lado")
 		else:
 			$Player/Camera/CanvasLayer/Hint.sendHint("Go to the other side.")
+			
+	$AudioStreamPlayer.volume_db = GlobalOptions.setMusicSound(-5)
 # Ao entrar na área de ação do Swordsman, ativa o estado de ação do NPC e registra que o jogador está dentro da área
 func _on_Swordsman2_area_entered(area):
 	enteredSwordsmanArea = true

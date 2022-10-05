@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Cenas/Fases/Fase 2/Bridge/Bridge.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Personagens/Jose/Player.tscn" type="PackedScene" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://Public/roadmap.png" type="Texture" id=20]
 [ext_resource path="res://Public/Utilitarios/lightFrame.png" type="Texture" id=21]
 [ext_resource path="res://Public/KeyboardKeys/teclaR.png" type="Texture" id=22]
+[ext_resource path="res://Public/Sounds-effects/birds-19624.mp3" type="AudioStream" id=23]
 
 [sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 33, 16.5 )
@@ -459,6 +460,11 @@ shape = SubResource( 20 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 "anims/New Anim" = SubResource( 21 )
 anims/RESET = SubResource( 22 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 23 )
+volume_db = -5.0
+autoplay = true
 
 [connection signal="area_entered" from="Sword/actionArea" to="." method="_on_actionArea_area_entered"]
 [connection signal="area_exited" from="Sword/actionArea" to="." method="_on_actionArea_area_exited"]

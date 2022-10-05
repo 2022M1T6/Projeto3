@@ -24,3 +24,6 @@ func _ready():
 		$VBoxContainer/BotaoOpcoes/Label.text = 'Options'
 		$VBoxContainer/BotaoSair/Label.text = 'Quit'
 		
+func _process(delta):
+	$AudioStreamPlayer2D.volume_db = GlobalOptions.setMusicSound(-5)
+		

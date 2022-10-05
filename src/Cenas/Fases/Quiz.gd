@@ -1,12 +1,18 @@
 extends Control
 
-var respostas = [["É a organização de uma equipe que busca definir os principais objetivos da empresa que deve ser alcançado em uma data específica", "É o que a empresa quer se tornar curto prazo", "É uma declaração de intenção indicando o que equipe não quer se tornar", "É uma declaração de intenção indicando o que uma equipe quer se tornar que oriente iniciativas de transformação e defina uma direção para o crescimento futuro"],
-["Planejamento", "Realizar testes", "Interpretação do problema", "Análise de soluções existentes"],['As mais simples/direcionadas','As que contém mais funcionalidades','As mais facilmente compreendidas','As que possuem maior custo benefício'],
+var respostas = [
+["É a organização de uma equipe que busca definir os principais objetivos da empresa que deve ser alcançado em uma data específica", "É o que a empresa quer se tornar curto prazo", "É uma declaração de intenção indicando o que equipe não quer se tornar", "É uma declaração de intenção indicando o que uma equipe quer se tornar que oriente iniciativas de transformação e defina uma direção para o crescimento futuro"],
+["Planejamento", "Realizar testes", "Interpretação do problema", "Análise de soluções existentes"],
+['As mais simples/direcionadas','As que contém mais funcionalidades','As mais facilmente compreendidas','As que possuem maior custo benefício'],
 ['Um machado bonito','Um machado mais eficiente em combate','Um machado mais eficiente em cortar árvores','Um machado que o rei aprove'],
 ['Colocar em prática o que aprendeu','Traçar estratégias e um plano de ação para ajudar na orientação e organização do projeto','Aplicar o que se aprendeu na dimensão visão','Solucionar problemas de maneira eficaz, traçando estratégias a cada passo'],
 ['Adicionar mais funcionalidades não previstas','Procurar mais investidores','Não há necessidade de iteração','Adaptar o plano de ação com base nos resultados até o momento']]
-var perguntas = {"Pergunta 1:\n\nO que é visão?": "D", "Pergunta 2:\n\nQual deve ser a primeira parte no desenvolvimento de uma solução?": "C", "Pergunta 3:\n\nSegundo o lenhador, qual o tipo de ferramenta que trás as melhores soluções?": "A",
-"Pergunta 4:\n\nQual a métrica encontrada na primeira fase para o machado correto?": "C","Pergunta 5:\n\nO que é roadmap?": "B",
+var perguntas = {
+"Pergunta 1:\n\nO que é visão?": "D", 
+"Pergunta 2:\n\nQual deve ser a primeira parte no desenvolvimento de uma solução?": "C", 
+"Pergunta 3:\n\nSegundo o lenhador, qual o tipo de ferramenta que trás as melhores soluções?": "A",
+"Pergunta 4:\n\nQual a métrica encontrada na primeira fase para o machado correto?": "C",
+"Pergunta 5:\n\nO que é roadmap?": "B",
 "Pergunta 6:\n\nQual a importância da iteração no roadmap?":'D'}
 var contador = 0
 var erros = 0
@@ -14,9 +20,13 @@ var acertos = 0
 
 func _ready():
 	if !GlobalOptions.isPortuguese:
-		perguntas = {"Question 1:\n\nWhat is vision?": "D", "Question 2:\n\nWhat is the first part on developing a solution?": "C", "Question 3:\n\nAccording to the lumberjack, what type of tool brings the best solutions?": "A",
-"Question 4:\n\nWhat is the success metric for the axe created in the first level?": "C","Question 5:\n\nWhat is roadmap?": "B",
-"Question 6:\n\nWhat is the importance of iteration on roadmap?":'D'}
+		perguntas = {
+		"Question 1:\n\nWhat is vision?": "D", 
+		"Question 2:\n\nWhat is the first part on developing a solution?": "C", 
+		"Question 3:\n\nAccording to the lumberjack, what type of tool brings the best solutions?": "A",
+		"Question 4:\n\nWhat is the success metric for the axe created in the first level?": "C",
+		"Question 5:\n\nWhat is roadmap?": "B",
+		"Question 6:\n\nWhat is the importance of iteration on roadmap?":'D'}
 		respostas[0][0] = "It's a team's structure that defines the primary objetives of the company for a determined deadline"
 		respostas[0][1] = "It's the company's short term goal"
 		respostas[0][2] = "It's a statement of what the business sought to not become"
@@ -146,5 +156,8 @@ func _on_botaoD_pressed():
 		mudar_pergunta()
 	else:
 		errar()
+		
+func _process(delta):
+	$AudioStreamPlayer2D.volume_db = GlobalOptions.setMusicSound(-5)
 	
 
