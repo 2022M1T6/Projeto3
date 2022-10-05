@@ -5,7 +5,9 @@ var diag1 = false
 
 func _ready():
 	GlobalOptions.setItemsToHideOnDialog([
-		$Player/Camera2D/CanvasLayer/WeaponFrame
+		$Player/Camera2D/CanvasLayer/Hint,
+		$Player/Camera2D/CanvasLayer/WeaponFrame,
+		$Player/Camera2D/CanvasLayer/DimensionFrame
 	])
 	if GlobalOptions.isPortuguese:
 		$Player/Camera2D/CanvasLayer/Hint/HintText.text = 'Avance para a próxima fase'

@@ -1211,8 +1211,6 @@ limit_bottom = 320
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Player/Camera2D"]
 
-[node name="PopupPause" parent="Player/Camera2D/CanvasLayer" instance=ExtResource( 4 )]
-
 [node name="PopupDialog" parent="Player/Camera2D/CanvasLayer" instance=ExtResource( 5 )]
 
 [node name="Hint" parent="Player/Camera2D/CanvasLayer" instance=ExtResource( 6 )]
@@ -1241,6 +1239,10 @@ text = "Visão"
 align = 1
 valign = 1
 autowrap = true
+
+[node name="PopupPause" parent="Player/Camera2D/CanvasLayer" instance=ExtResource( 4 )]
+margin_left = 0.00012207
+margin_right = 0.00012207
 
 [node name="Trees" type="TileMap" parent="."]
 tile_set = ExtResource( 10 )
