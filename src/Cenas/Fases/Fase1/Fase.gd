@@ -36,6 +36,25 @@ func verifyAndRemoveTree():
 						]
 					}
 				])
+		else:
+			if GlobalOptions.isPortuguese:
+				$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
+					{
+						'personagem': 'jose',
+						'falas': [
+							'Ai! Acho que vou precisar de uma ferramenta para ajudar o rei'
+						]
+					}
+				])
+			else:
+				$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
+					{
+						'personagem': 'jose',
+						'falas': [
+							"Ouch! I Think that I'll need a tool to help the king"
+						]
+					}
+				])
 
 # Faz o envio dos diálogos do marketer
 func sendMarketerDialog():

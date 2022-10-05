@@ -9,10 +9,12 @@ var dellsonDialog = false
 
 # Ao sair da primeira área do game, muda o texto da hint
 func _on_TurorialArea1_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
-	if GlobalOptions.isPortuguese:
-		$Player/Camera2D/CanvasLayer/Hint.sendHint('Procure e vá até Dellson')
-	else:
-		$Player/Camera2D/CanvasLayer/Hint.sendHint('Go after Dellson')
+	if !dellsonDialog:
+		if GlobalOptions.isPortuguese:
+			$Player/Camera2D/CanvasLayer/Hint.sendHint('Procure e vá até Dellson')
+		else:
+			$Player/Camera2D/CanvasLayer/Hint.sendHint('Go after Dellson')
+	
 
 
 # Ao entrar na área, muda a cena

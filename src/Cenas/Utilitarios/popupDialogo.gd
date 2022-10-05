@@ -35,7 +35,45 @@ func getDialogSpriteFilePath():
 	else:
 		return "res://Public/Characters/fabiProfile.png"
 
-
+func getName():
+	if GlobalOptions.isPortuguese:
+		if currentDialog["personagem"] == 'dellson':
+			return "Dellson"
+		elif currentDialog["personagem"] == 'jose':
+			return "José"
+		elif currentDialog["personagem"] == 'blacksmith':
+			return "Ferreiro"
+		elif currentDialog["personagem"] == 'king':
+			return "Rei Ginaldo"
+		elif currentDialog["personagem"] == 'lumberjack':
+			return "Lenhador"
+		elif currentDialog["personagem"] == 'marketer':
+			return "Feirante"
+		elif currentDialog["personagem"] == 'swordsman':
+			return "Espadachim"
+		elif currentDialog["personagem"] == 'gallo':
+			return "Gallo"
+		else:
+			return "Fabi"
+	else:
+		if currentDialog["personagem"] == 'dellson':
+			return "Dellson"
+		elif currentDialog["personagem"] == 'jose':
+			return "John"
+		elif currentDialog["personagem"] == 'blacksmith':
+			return "Blacksmith"
+		elif currentDialog["personagem"] == 'king':
+			return "King Prince"
+		elif currentDialog["personagem"] == 'lumberjack':
+			return "Lumberjack"
+		elif currentDialog["personagem"] == 'marketer':
+			return "Marketer"
+		elif currentDialog["personagem"] == 'swordsman':
+			return "Swordsman"
+		elif currentDialog["personagem"] == 'gallo':
+			return "Gallo"
+		else:
+			return "Fabi"
 		
 # Função que envia um diálogo
 func sendDialog(dialog):
