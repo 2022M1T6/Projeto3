@@ -1,8 +1,11 @@
 extends Node2D
 
 func _ready():
+	$AnimationPlayer.play("gallo")
 	$AudioStreamPlayer2D.volume_db = GlobalOptions.setMusicSound(-10)
 	if GlobalOptions.isPortuguese:
+		$TextureButton/Label.text = "Voltar ao\nmenu inicial"
+		$Agradecimento.text = 'Obrigado por jogar!!!'
 		$Camera2D/CanvasLayer/PopupDialog.sendDialog([
 			{
 				"personagem": "dellson",
@@ -15,6 +18,8 @@ func _ready():
 			}
 		])
 	else:
+		$TextureButton/Label.text = "Return to\nmain menu"
+		$Agradecimento.text = 'Thanks for playing!!!'
 		$Camera2D/CanvasLayer/PopupDialog.sendDialog([
 			{
 				"personagem": "dellson",
@@ -28,6 +33,15 @@ func _ready():
 		])
 
 func _process(delta):
-	$Nomes.rect_position.y -= 1
-	$Logo.position.y -= 1
+	if $Nomes.rect_position.y > -3100:
+		$Nomes.rect_position.y -= 1
+		$Logo.position.y -= 1
+	elif $Nomes.rect_position.y == -3100:
+		$AnimationPlayer.play("Fade")
+		$Nomes.rect_position.y -= 1
+		
 	$AudioStreamPlayer2D.volume_db = GlobalOptions.setMusicSound(-10)
+
+
+func _on_TextureButton_pressed():
+	get_tree().change_scene("res://Cenas/Menus/MenuPrincipal.tscn")
