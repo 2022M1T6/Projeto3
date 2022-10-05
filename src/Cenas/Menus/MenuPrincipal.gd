@@ -14,6 +14,7 @@ func _on_BotaoSair_pressed():
 
 # Troca os textos de acordo com a linguagem
 func _ready():
+	$AudioStreamPlayer2D.play()
 	if GlobalOptions.isPortuguese:
 		$VBoxContainer/BotaoNovoJogo/Label.text = 'Novo Jogo'
 		$VBoxContainer/BotaoOpcoes/Label.text = 'Opções'
