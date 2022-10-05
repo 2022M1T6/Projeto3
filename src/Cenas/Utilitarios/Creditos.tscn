@@ -90,3 +90,14 @@ limit_bottom = 600
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
 
 [node name="PopupDialog" parent="Camera2D/CanvasLayer" instance=ExtResource( 5 )]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_top = 566.0
+margin_right = 1023.0
+margin_bottom = 600.0
+color = Color( 0.4, 0.223529, 0.192157, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+margin_right = 1024.0
+margin_bottom = 35.0
+color = Color( 0.45098, 0.25098, 0.215686, 1 )
