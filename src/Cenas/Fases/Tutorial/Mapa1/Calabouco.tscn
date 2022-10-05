@@ -82,6 +82,7 @@ format = 1
 tile_data = PoolIntArray( 720924, 0, 0, 720927, 1, 0 )
 
 [node name="BackgroundTutorial1" type="Sprite" parent="."]
+visible = false
 position = Vector2( 320, 240 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 1 )
@@ -122,7 +123,7 @@ shape = SubResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 69, 86 )
-moveSpeed = 5
+moveSpeed = 6
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2( 34.1214, 4.97744 )

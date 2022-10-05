@@ -287,6 +287,7 @@ shape = SubResource( 12 )
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 67, 361 )
 collision_mask = 255
+moveSpeed = 6
 
 [node name="Camera" type="Camera2D" parent="Player"]
 position = Vector2( -73.9836, -2.95698 )
@@ -378,7 +379,6 @@ margin_bottom = -24.0
 [node name="Hint" parent="Player/Camera/CanvasLayer" instance=ExtResource( 10 )]
 
 [node name="PopupPause" parent="Player/Camera/CanvasLayer" instance=ExtResource( 11 )]
-visible = false
 
 [node name="DimensionFrame" type="TextureRect" parent="Player/Camera/CanvasLayer"]
 anchor_left = 1.0
