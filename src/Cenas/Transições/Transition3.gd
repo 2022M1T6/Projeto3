@@ -64,7 +64,7 @@ func _on_Area2D_area_shape_entered(area_rid, area, area_shape_index, local_shape
 				"falas": [
 					"Hey mate, are you alright?",
 					"Now I must congrat you for successfully finishing level 2, I kown it probably wasn't an easy task for there were some obstacles to get here but they served as a lesson.",
-					"I hope you've understood that making a previous script is always useful for achieving your objectives, mesmo que ocorram empecilhos. Even if there were obstacles that made the need to change the guide, it helped you organize and plan ahead.",
+					"I hope you've understood that making a previous script is always useful for achieving your objective. Even if there were obstacles that made the need to change the guide, it helped you organize and plan ahead.",
 					"What I just sumarized for you, in product model, is called 'Roadmap'."
 				]
 			}
