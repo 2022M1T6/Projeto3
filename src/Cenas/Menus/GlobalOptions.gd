@@ -27,7 +27,7 @@ func showHudItems():
 		if itemsToHideDialog[i] && is_instance_valid(itemsToHideDialog[i]['item']) && itemsToHideDialog[i]['alreadyVisible']:
 			itemsToHideDialog[i]['item'].show()
 
-# Lingua
+# Idioma
 var isPortuguese = true
 
 # Volume

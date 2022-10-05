@@ -37,10 +37,11 @@ func constructBridge():
 	
 	setState(STATES.CONSTRUCTED)
 
+#Função para quando o jogador entra na área input
 func _on_Input_area_entered(area):
 	setState(STATES.ACTION)
 
-
+#Função para quando o jogador sai da área input
 func _on_Input_area_exited(area):
 	setState(STATES.HIDDEN)
 	

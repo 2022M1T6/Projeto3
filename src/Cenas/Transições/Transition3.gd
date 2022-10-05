@@ -9,6 +9,8 @@ func _ready():
 		$Player/Camera2D/CanvasLayer/WeaponFrame,
 		$Player/Camera2D/CanvasLayer/DimensionFrame
 	])
+	
+	#Coloca as hints quando a fase começa e envia os diálogos necessários
 	if GlobalOptions.isPortuguese:
 		$Player/Camera2D/CanvasLayer/Hint/HintText.text = 'Avance para a próxima fase'
 		$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
@@ -43,7 +45,7 @@ func _process(delta):
 	
 	
 
-
+#Envia os diálogos para quando o jogador entra na área "Area2D"
 func _on_Area2D_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	diag1 = true
 	if GlobalOptions.isPortuguese:
@@ -73,10 +75,10 @@ func _on_Area2D_area_shape_entered(area_rid, area, area_shape_index, local_shape
 		])
 	
 
-
+#Mostra novamente a HUD de inventário quando termina os diálogos
 func _on_Area2D_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
 	$Player/Camera2D/CanvasLayer/WeaponFrame.show()
 
-
+#Muda a cena para o quiz
 func _on_Area2D2_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	get_tree().change_scene("res://Cenas/Fases/Quiz.tscn")
