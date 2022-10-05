@@ -213,7 +213,29 @@ func sendSwordsmanDialogWhenPickupSword():
 				]
 			}
 		])
-	
+
+func sendDialogSwordWithoutTalkedWithSwordsman():
+	if GlobalOptions.isPortuguese:
+		$Player/Camera/CanvasLayer/PopupDialog.sendDialog([
+			{
+				"personagem": "jose",
+				"falas": [
+					"Uma espada...",
+					"Acho que alguém pode ter perdido ela"
+				]
+			}
+		])
+	else:
+		$Player/Camera/CanvasLayer/PopupDialog.sendDialog([
+			{
+				"personagem": "jose",
+				"falas": [
+					"A sword...",
+					"Somebody may have lost it"
+				]
+			}
+		])
+		
 # Pega a espada do cenário
 func getSword():
 	if talkedWithSwordsman:
@@ -246,6 +268,7 @@ func _process(delta):
 	GlobalFase2.paralax($Player,$Gallo)
 	GlobalFase2.paralax($Player,$Swordsman)
 	GlobalFase2.paralax($Player,$Sword)
+
 	
 	if enteredDash && GlobalFase2.hasSword:
 		$TeclaE.show()
@@ -299,7 +322,8 @@ func _ready():
 	GlobalOptions.setItemsToHideOnDialog([
 		$Player/Camera/CanvasLayer/Hint,
 		$Player/Camera/CanvasLayer/WeaponFrame,
-		$Player/Camera/CanvasLayer/WoodCountFrame
+		$Player/Camera/CanvasLayer/WoodCountFrame,
+		$Player/Camera/CanvasLayer/DimensionFrame
 	])
 	
 	$Swordsman.setInteraction(1)
@@ -362,6 +386,8 @@ func _unhandled_input(event):
 		elif enteredSwordArea:
 			if talkedWithSwordsman:
 				sendSwordsmanDialogWhenPickupSword()
+			else:
+				sendDialogSwordWithoutTalkedWithSwordsman()
 		elif enteredGalloArea:
 			sendGalloDialog()
 		elif enteredDellsonArea:
@@ -375,7 +401,7 @@ func _unhandled_input(event):
 
 func _on_finalDialog_area_entered(area):
 	GlobalOptions.dimensoes["roadmap"] = true
-	get_tree().change_scene("res://Cenas/Utilitarios/FimDemo.tscn")
+	get_tree().change_scene("res://Cenas/Transições/Transition3.tscn")
 
 func reset():
 	get_tree().reload_current_scene()
