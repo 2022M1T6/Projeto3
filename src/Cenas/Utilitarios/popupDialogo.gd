@@ -110,9 +110,8 @@ func getNextSpeak():
 		currentDialog = dialogs.pop_front()
 		return getNextSpeak()
 	else:
-		var characterName = currentDialog['personagem'][0].to_upper() + currentDialog['personagem'].substr(1,-1)
 		return {
-			'character': characterName,
+			'character': getName(),
 			'speak': currentDialog["falas"].pop_front()
 		}
 

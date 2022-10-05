@@ -45,14 +45,6 @@ text = "Monte sua ferramenta"
 align = 1
 uppercase = true
 
-[node name="Cards" type="ColorRect" parent="Control/ColorRect"]
-self_modulate = Color( 0, 0, 0, 0.160784 )
-anchor_top = 0.247
-anchor_right = 1.0
-anchor_bottom = 0.835
-margin_top = -0.200012
-margin_bottom = -3.05176e-05
-
 [node name="TextureRect" type="TextureRect" parent="Control/ColorRect"]
 anchor_left = 0.844
 anchor_top = 0.308
@@ -64,6 +56,14 @@ margin_right = 80.0
 margin_bottom = -0.200012
 texture = ExtResource( 3 )
 flip_h = true
+
+[node name="Cards" type="ColorRect" parent="Control/ColorRect"]
+self_modulate = Color( 0, 0, 0, 0.160784 )
+anchor_top = 0.247
+anchor_right = 1.0
+anchor_bottom = 0.835
+margin_top = -0.200012
+margin_bottom = -3.05176e-05
 
 [node name="Machado" parent="Control/ColorRect" instance=ExtResource( 4 )]
 anchor_left = 0.846

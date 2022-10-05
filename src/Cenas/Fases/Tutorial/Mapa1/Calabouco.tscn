@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Public/backgroundTutorial1.jpeg" type="Texture" id=1]
 [ext_resource path="res://Cenas/Utilitarios/PopupPause.tscn" type="PackedScene" id=2]
@@ -11,6 +11,10 @@
 [ext_resource path="res://Public/Sounds-effects/CavernSound.wav" type="AudioStream" id=9]
 [ext_resource path="res://Public/Tilesets/mainlevbuild.png" type="Texture" id=10]
 [ext_resource path="res://Cenas/Fases/Tutorial/Mapa1/Calabouco.tres" type="TileSet" id=11]
+[ext_resource path="res://Public/KeyboardKeys/teclaA.png" type="Texture" id=12]
+[ext_resource path="res://Public/KeyboardKeys/teclaD.png" type="Texture" id=13]
+[ext_resource path="res://Public/KeyboardKeys/teclaW.png" type="Texture" id=14]
+[ext_resource path="res://Public/KeyboardKeys/teclaS.png" type="Texture" id=15]
 
 [sub_resource type="ConvexPolygonShape2D" id=54]
 points = PoolVector2Array( 16, 48, 0, 48, 0, 32, 16, 32 )
@@ -142,6 +146,32 @@ editor_draw_limits = true
 editor_draw_drag_margin = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Player/Camera2D"]
+
+[node name="KeyboardKeys" type="ColorRect" parent="Player/Camera2D/CanvasLayer"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 21.0
+margin_top = -126.0
+margin_right = 77.0
+margin_bottom = -91.0
+rect_scale = Vector2( 3, 3 )
+color = Color( 0, 0, 0, 0 )
+
+[node name="AKey" type="Sprite" parent="Player/Camera2D/CanvasLayer/KeyboardKeys"]
+position = Vector2( 11, 26 )
+texture = ExtResource( 12 )
+
+[node name="SKey" type="Sprite" parent="Player/Camera2D/CanvasLayer/KeyboardKeys"]
+position = Vector2( 29, 26 )
+texture = ExtResource( 15 )
+
+[node name="DKey" type="Sprite" parent="Player/Camera2D/CanvasLayer/KeyboardKeys"]
+position = Vector2( 47, 26 )
+texture = ExtResource( 13 )
+
+[node name="WKey" type="Sprite" parent="Player/Camera2D/CanvasLayer/KeyboardKeys"]
+position = Vector2( 25, 8 )
+texture = ExtResource( 14 )
 
 [node name="PopupDialog" parent="Player/Camera2D/CanvasLayer" instance=ExtResource( 5 )]
 

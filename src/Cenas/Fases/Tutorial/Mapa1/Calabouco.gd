@@ -116,7 +116,8 @@ func sendDellsonDialog():
 
 func _ready():
 	GlobalOptions.setItemsToHideOnDialog([
-		$Player/Camera2D/CanvasLayer/Hint
+		$Player/Camera2D/CanvasLayer/Hint,
+		$Player/Camera2D/CanvasLayer/KeyboardKeys
 	])
 	# Define a interação com1
 	$Dellson.setInteraction(1)
