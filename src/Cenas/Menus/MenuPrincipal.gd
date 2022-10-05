@@ -22,3 +22,4 @@ func _ready():
 		$VBoxContainer/BotaoNovoJogo/Label.text = 'New Game'
 		$VBoxContainer/BotaoOpcoes/Label.text = 'Options'
 		$VBoxContainer/BotaoSair/Label.text = 'Quit'
+		

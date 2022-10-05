@@ -90,4 +90,3 @@ limit_bottom = 600
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
 
 [node name="PopupDialog" parent="Camera2D/CanvasLayer" instance=ExtResource( 5 )]
-visible = false

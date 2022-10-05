@@ -323,9 +323,13 @@ func _ready():
 		$Player/Camera/CanvasLayer/Hint,
 		$Player/Camera/CanvasLayer/WeaponFrame,
 		$Player/Camera/CanvasLayer/WoodCountFrame,
-		$Player/Camera/CanvasLayer/DimensionFrame
+		$Player/Camera/CanvasLayer/DimensionFrame,
+		$Player/Camera/CanvasLayer/ResetFrame
 	])
-	
+	if GlobalOptions.isPortuguese:
+		$Player/Camera/CanvasLayer/ResetFrame/Label.text = 'Reiniciar'
+	else:
+		$Player/Camera/CanvasLayer/ResetFrame/Label.text = 'Reset'
 	$Swordsman.setInteraction(1)
 	if !GlobalFase2.hasReset:
 		if GlobalOptions.isPortuguese:
@@ -438,6 +442,25 @@ func _on_Area2D_area_shape_entered(area_rid, area, area_shape_index, local_shape
 
 func _on_Dash_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	enteredDash = true
+	if !GlobalFase2.hasSword:
+		if GlobalOptions.isPortuguese:
+			$Player/Camera/CanvasLayer/PopupDialog.sendDialog([
+				{
+					"personagem": "dellson",
+					"falas": [
+						"Parece que voçê está esquecendo de alguma coisa...",
+					]
+				}
+			])
+		else:
+			$Player/Camera/CanvasLayer/PopupDialog.sendDialog([
+				{
+					"personagem": "dellson",
+					"falas": [
+						"Looks like you're forgetting something...",
+					]
+				}
+			])
 	
 
 

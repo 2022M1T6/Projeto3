@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Cenas/Fases/Fase 2/Bridge/Bridge.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Personagens/Jose/Player.tscn" type="PackedScene" id=2]
@@ -19,6 +19,9 @@
 [ext_resource path="res://Personagens/Gallo/Gallo.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Public/Utilitarios/Sprite-0001.png" type="Texture" id=18]
 [ext_resource path="res://Public/KeyboardKeys/teclaE.png" type="Texture" id=19]
+[ext_resource path="res://Public/roadmap.png" type="Texture" id=20]
+[ext_resource path="res://Public/Utilitarios/lightFrame.png" type="Texture" id=21]
+[ext_resource path="res://Public/KeyboardKeys/teclaR.png" type="Texture" id=22]
 
 [sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 33, 16.5 )
@@ -31,6 +34,16 @@ extents = Vector2( 21, 20.5 )
 
 [sub_resource type="DynamicFont" id=11]
 size = 61
+font_data = ExtResource( 16 )
+
+[sub_resource type="DynamicFont" id=23]
+outline_size = 1
+outline_color = Color( 0.00392157, 0.00392157, 0.00392157, 1 )
+font_data = ExtResource( 16 )
+
+[sub_resource type="DynamicFont" id=24]
+outline_size = 1
+outline_color = Color( 0.00392157, 0.00392157, 0.00392157, 1 )
 font_data = ExtResource( 16 )
 
 [sub_resource type="RectangleShape2D" id=13]
@@ -262,6 +275,7 @@ shape = SubResource( 12 )
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 67, 361 )
 collision_mask = 255
+moveSpeed = 7
 
 [node name="Camera" type="Camera2D" parent="Player"]
 position = Vector2( -73.9836, -2.95698 )
@@ -272,6 +286,7 @@ limit_top = 119
 limit_right = 1557
 limit_bottom = 1214
 limit_smoothed = true
+offset_h = 0.7
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
@@ -353,6 +368,60 @@ margin_bottom = -24.0
 [node name="Hint" parent="Player/Camera/CanvasLayer" instance=ExtResource( 10 )]
 
 [node name="PopupPause" parent="Player/Camera/CanvasLayer" instance=ExtResource( 11 )]
+
+[node name="DimensionFrame" type="TextureRect" parent="Player/Camera/CanvasLayer"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -97.0001
+margin_top = -13.0
+margin_right = -65.0001
+margin_bottom = 19.0
+rect_scale = Vector2( 2.5, 2.5 )
+texture = ExtResource( 21 )
+
+[node name="Label" type="Label" parent="Player/Camera/CanvasLayer/DimensionFrame"]
+margin_left = -6.39996
+margin_top = 24.8
+margin_right = 38.6
+margin_bottom = 37.8
+custom_fonts/font = SubResource( 23 )
+text = "Roadmap"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Sprite" type="Sprite" parent="Player/Camera/CanvasLayer/DimensionFrame"]
+position = Vector2( 15.9999, 16.2 )
+scale = Vector2( 0.3, 0.341667 )
+texture = ExtResource( 20 )
+
+[node name="ResetFrame" type="TextureRect" parent="Player/Camera/CanvasLayer"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -230.0
+margin_top = 503.0
+margin_right = -120.0
+margin_bottom = 549.0
+rect_scale = Vector2( 2.5, 2.5 )
+texture = ExtResource( 21 )
+expand = true
+
+[node name="Icon" type="Sprite" parent="Player/Camera/CanvasLayer/ResetFrame"]
+position = Vector2( 48.4, 12 )
+scale = Vector2( 0.825, 0.749999 )
+texture = ExtResource( 22 )
+centered = false
+
+[node name="Label" type="Label" parent="Player/Camera/CanvasLayer/ResetFrame"]
+margin_left = 28.0
+margin_top = 22.0
+margin_right = 82.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 24 )
+text = "Reset"
+align = 1
+valign = 1
+autowrap = true
 
 [node name="finalDialog" type="Area2D" parent="."]
 position = Vector2( 1156, 686 )
