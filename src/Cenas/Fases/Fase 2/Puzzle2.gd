@@ -15,7 +15,7 @@ var talkedWithSwordsman = false
 var talkedWithGallo = false
 var change = 0
 
-# Envia os diálogos do swordsman
+# Envia os diálogos do swordsman e informações pertinentes
 func sendSwordsmanDialog():
 	if !talkedWithSwordsman:
 		talkedWithSwordsman = true
@@ -224,6 +224,7 @@ func getSword():
 		else:
 			$Player/Camera/CanvasLayer/Hint.sendHint("Go to the other side.")
 
+# Muda o zoom da câmera
 func changePlayerCamera():
 	if isOnPlayerCamera:
 		camera.zoom = Vector2(1.2,1.2)
@@ -233,9 +234,12 @@ func changePlayerCamera():
 		isOnPlayerCamera = true
 
 func _process(delta):
+	# Coloca na UI o número de madeiras
 	$Player/Camera/CanvasLayer/WoodCountFrame/WoodCountLabel.text = " x " + str(GlobalFase2.wood)
+	#Reinicia a fase em caso de erro
 	if Input.is_action_just_pressed("Reload"):
 		reset()
+	# Usa 
 	for i in range(1,7):
 		GlobalFase2.paralax($Player,get_node('Tree'+str(i)))
 	

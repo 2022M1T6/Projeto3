@@ -134,7 +134,7 @@ func sendMarketerDialog():
 				{
 					'personagem': 'jose',
 					'falas': [
-						"I’m José. It's a pleasure to meet you. But let me ask you something… are you a salesman too?"
+						"I’m John. It's a pleasure to meet you. But let me ask you something… are you a salesman too?"
 					]
 				},
 				{
