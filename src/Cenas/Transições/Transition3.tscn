@@ -55,7 +55,6 @@ editor_draw_drag_margin = true
 [node name="CanvasLayer" type="CanvasLayer" parent="Player/Camera2D"]
 
 [node name="PopupDialog" parent="Player/Camera2D/CanvasLayer" instance=ExtResource( 1 )]
-visible = false
 
 [node name="Hint" parent="Player/Camera2D/CanvasLayer" instance=ExtResource( 2 )]
 visible = true

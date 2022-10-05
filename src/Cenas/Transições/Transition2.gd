@@ -4,6 +4,11 @@ extends Node2D
 var dialog = false
 
 func _ready():
+	GlobalOptions.setItemsToHideOnDialog([
+		$Player/Camera2D/CanvasLayer/Hint,
+		$Player/Camera2D/CanvasLayer/WeaponFrame,
+		$Player/Camera2D/CanvasLayer/DimensionFrame
+	])
 	if GlobalOptions.isPortuguese:
 		$Player/Camera2D/CanvasLayer/Hint.sendHint("Avance para a próxima fase")
 		$Player/Camera2D/CanvasLayer/DimensionFrame/Label.text = 'Visão'
@@ -19,7 +24,6 @@ func _process(delta):
 
 func _on_Area2D_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	dialog = true
-	$Player/Camera2D/CanvasLayer/WeaponFrame.hide()
 	if GlobalOptions.isPortuguese:
 		$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
 			{
