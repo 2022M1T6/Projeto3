@@ -214,7 +214,6 @@ func sendSwordsmanDialogWhenPickupSword():
 			}
 		])
 
-#Envia o diálogo caso o jogador pegue a espada mas não tenha falado com o Swordsman
 func sendDialogSwordWithoutTalkedWithSwordsman():
 	if GlobalOptions.isPortuguese:
 		$Player/Camera/CanvasLayer/PopupDialog.sendDialog([
@@ -270,7 +269,7 @@ func _process(delta):
 	GlobalFase2.paralax($Player,$Swordsman)
 	GlobalFase2.paralax($Player,$Sword)
 
-	#Implementa a função de dash caso o jogador tenha a espada
+	
 	if enteredDash && GlobalFase2.hasSword:
 		$TeclaE.show()
 		if Input.is_action_just_pressed("interact"):
@@ -282,13 +281,13 @@ func _process(delta):
 	else:
 		$TeclaE.hide()
 	
-	#Manda os hints
 	if GlobalFase2.hasSword:
 		if GlobalOptions.isPortuguese:
 			$Player/Camera/CanvasLayer/Hint.sendHint("Atravesse até o próximo lado")
 		else:
 			$Player/Camera/CanvasLayer/Hint.sendHint("Go to the other side.")
 			
+	$AudioStreamPlayer.volume_db = GlobalOptions.setMusicSound(-5)
 # Ao entrar na área de ação do Swordsman, ativa o estado de ação do NPC e registra que o jogador está dentro da área
 func _on_Swordsman2_area_entered(area):
 	enteredSwordsmanArea = true
@@ -334,8 +333,6 @@ func _ready():
 	else:
 		$Player/Camera/CanvasLayer/ResetFrame/Label.text = 'Reset'
 	$Swordsman.setInteraction(1)
-	
-	#Enviando os diálogos de quando o jogo começa
 	if !GlobalFase2.hasReset:
 		if GlobalOptions.isPortuguese:
 			$Player/Camera/CanvasLayer/Hint.sendHint("Colete madeira, construa pontes e atravesse até o outro lado")	
@@ -389,7 +386,6 @@ func _ready():
 			])
 
 func _unhandled_input(event):
-	#Pegando as interações quando apertam "e"
 	if Input.is_action_just_pressed("interact"):
 		if enteredSwordsmanArea:
 			sendSwordsmanDialog()
@@ -403,25 +399,23 @@ func _unhandled_input(event):
 		elif enteredDellsonArea:
 			sendDellsonDialog()
 	
-	#Implementando o zoom out do machado da visão
 	if Input.is_action_just_pressed("V"):
 		changePlayerCamera()
 			
 	return event
 
-#Função para trocar a cena para a próxima fase
+
 func _on_finalDialog_area_entered(area):
 	GlobalOptions.dimensoes["roadmap"] = true
 	get_tree().change_scene("res://Cenas/Transições/Transition3.tscn")
 
-#Função para reiniciar a fase
 func reset():
 	get_tree().reload_current_scene()
 	GlobalFase2.hasReset = true
 	GlobalFase2.wood = 2
 	GlobalFase2.hasSword = false
 
-#Fução que envia os diálogos quando o jogador chega na primeira ilha
+
 func _on_Area2D_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	if !enteredResetDiag:
 		if GlobalOptions.isPortuguese:
@@ -447,7 +441,7 @@ func _on_Area2D_area_shape_entered(area_rid, area, area_shape_index, local_shape
 		enteredResetDiag = true
 
 
-#Função para quando o jogador entra na área de dash
+
 func _on_Dash_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	enteredDash = true
 	if !GlobalFase2.hasSword:
@@ -470,6 +464,7 @@ func _on_Dash_area_shape_entered(area_rid, area, area_shape_index, local_shape_i
 				}
 			])
 	
-#Função para quando o jogador sai da área de dash
+
+
 func _on_Dash_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
 	enteredDash = false

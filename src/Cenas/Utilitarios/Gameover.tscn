@@ -197,7 +197,7 @@ autoplay = "GameOverFade"
 anims/GameOverFade = SubResource( 3 )
 anims/RESET = SubResource( 4 )
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 volume_db = -5.0
 autoplay = true

@@ -19,3 +19,4 @@ func _on_TextureButton_pressed():
 
 func _on_TextureButton2_pressed():
 	get_tree().change_scene("res://Cenas/Menus/MenuPrincipal.tscn")
+

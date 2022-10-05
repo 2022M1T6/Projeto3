@@ -13,6 +13,7 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("interact"):
 		get_tree().change_scene("res://Cenas/Fases/Tutorial/Mapa1/Calabouco.tscn")
-
+	$VideoPlayer.volume_db = GlobalOptions.setMusicSound(0)
+	
 func _on_VideoPlayer_finished():
 	get_tree().change_scene("res://Cenas/Fases/Tutorial/Mapa1/Calabouco.tscn")

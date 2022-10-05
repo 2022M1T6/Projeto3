@@ -30,4 +30,4 @@ func _ready():
 func _process(delta):
 	$Nomes.rect_position.y -= 1
 	$Logo.position.y -= 1
-
+	$AudioStreamPlayer2D.volume_db = GlobalOptions.setMusicSound(-10)
