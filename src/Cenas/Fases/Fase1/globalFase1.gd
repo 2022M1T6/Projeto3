@@ -10,7 +10,7 @@ var choicedCards = []
 # Guarda qual machado o usuário escolheu no último minigame
 var axeChoicedParts = []
 
-# Informações das cartas do minigame
+# Informações das cartas do minigame em português
 var cardsP = [
 	[
 		{
@@ -92,6 +92,7 @@ var cardsP = [
 	]
 ]
 
+#Informações das cartas do minigame em inglês
 var cardsE = [
 	[
 		{

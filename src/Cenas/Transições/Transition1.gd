@@ -7,6 +7,8 @@ func _ready():
 		$Player/Camera2D/CanvasLayer/Hint,
 		$Player/Camera2D/CanvasLayer/DimensionFrame
 	])
+	
+	#Define os hints quando a fase começa
 	if GlobalOptions.isPortuguese:
 		$Player/Camera2D/CanvasLayer/Hint.sendHint("Avance para a próxima fase")
 		$Player/Camera2D/CanvasLayer/DimensionFrame/Label.text = 'Visão'
@@ -20,6 +22,7 @@ func _process(delta):
 		$Area2D.monitorable = false
 		$AudioStreamPlayer2D.volume_db = GlobalOptions.setMusicSound(-5)
 
+#Envia os diálogos para quando o jogador entra na área "Area2D"
 func _on_Area2D_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	dialog = true
 	if GlobalOptions.isPortuguese:
@@ -48,6 +51,6 @@ func _on_Area2D_area_shape_entered(area_rid, area, area_shape_index, local_shape
 		])
 
 
-
+#Muda a cena quando o jogador entra na área "Area2D2"
 func _on_Area2D2_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	get_tree().change_scene("res://Cenas/Fases/Fase1/Fase.tscn")

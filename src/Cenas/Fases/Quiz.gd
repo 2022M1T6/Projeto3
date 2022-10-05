@@ -13,6 +13,8 @@ var erros = 0
 var acertos = 0
 
 func _ready():
+	
+	# Muda o idioma das perguntas e respostas caso o jogo esteja em inglês
 	if !GlobalOptions.isPortuguese:
 		perguntas = {"Question 1:\n\nWhat is vision?": "D", "Question 2:\n\nWhat is the first part on developing a solution?": "C", "Question 3:\n\nAccording to the lumberjack, what type of tool brings the best solutions?": "A",
 "Question 4:\n\nWhat is the success metric for the axe created in the first level?": "C","Question 5:\n\nWhat is roadmap?": "B",
@@ -57,6 +59,8 @@ func _ready():
 	$"CoraçaoQuebrado1".hide()
 	$"CoraçaoQuebrado2".hide()
 	$"CoraçaoQuebrado3".hide()
+	
+	# Envia os diálogos iniciais
 	if GlobalOptions.isPortuguese:
 		$Camera2D/CanvasLayer/PopupDialog.sendDialog([
 			{
@@ -82,7 +86,7 @@ func _ready():
 	
 	$AudioStreamPlayer2D.volume_db = GlobalOptions.setMusicSound(-5)
 	
-
+# Muda a pergunta e as respostas apresentadas
 func mudar_pergunta():
 	contador += 1
 	
@@ -95,6 +99,7 @@ func mudar_pergunta():
 	$botaoC/Label.text = respostas[contador][2]
 	$botaoD/Label.text = respostas[contador][3]
 
+# Perde vida (coração) ao errar
 func errar():
 	erros += 1
 	var string_coracao = "Coracao" + str(erros)
@@ -105,7 +110,7 @@ func errar():
 	if erros >= 3:
 		get_tree().change_scene("res://Cenas/Utilitarios/Gameover.tscn")
 	
-
+# Ganha ponto de acerto ao acertar
 func acertar():
 	acertos += 1
 	$Acertos.text = str(acertos) + "/6"
@@ -113,6 +118,7 @@ func acertar():
 	if acertos >= 6:
 		get_tree().change_scene("res://Cenas/Utilitarios/Creditos.tscn")
 	
+# Função para quando o botão "botaoA" é pressionado
 func _on_botaoA_pressed():
 	if perguntas[$Pergunta.text] == 'A':
 		acertar()
@@ -120,8 +126,7 @@ func _on_botaoA_pressed():
 	else:
 		errar()
 
-
-
+# Função para quando o botão "botaoB" é pressionado
 func _on_botaoB_pressed():
 	if perguntas[$Pergunta.text] == 'B':
 		acertar()
@@ -129,8 +134,7 @@ func _on_botaoB_pressed():
 	else:
 		errar()
 
-
-
+# Função para quando o botão "botaoC" é pressionado
 func _on_botaoC_pressed():
 	if perguntas[$Pergunta.text] == 'C':
 		acertar()
@@ -138,8 +142,7 @@ func _on_botaoC_pressed():
 	else:
 		errar()
 	
-
-
+# Função para quando o botão "botaoD" é pressionado
 func _on_botaoD_pressed():
 	if perguntas[$Pergunta.text] == 'D':
 		acertar()
