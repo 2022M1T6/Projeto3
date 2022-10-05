@@ -4,11 +4,12 @@ extends Node2D
 var dialog = false
 
 func _ready():
-	$Player/Camera2D/CanvasLayer/DimensionFrame/Label.text = "Roadmap"
 	if GlobalOptions.isPortuguese:
 		$Player/Camera2D/CanvasLayer/Hint.sendHint("Avance para a próxima fase")
+		$Player/Camera2D/CanvasLayer/DimensionFrame/Label.text = 'Visão'
 	else:
 		$Player/Camera2D/CanvasLayer/Hint.sendHint("Go to the next level")
+		$Player/Camera2D/CanvasLayer/DimensionFrame/Label.text = 'Vision'
 
 func _process(delta):
 	if dialog:

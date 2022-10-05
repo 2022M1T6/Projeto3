@@ -15,7 +15,7 @@ var talkedWithSwordsman = false
 var talkedWithGallo = false
 var change = 0
 
-# Envia os diálogos do swordsman
+# Envia os diálogos do swordsman e informações pertinentes
 func sendSwordsmanDialog():
 	if !talkedWithSwordsman:
 		talkedWithSwordsman = true
@@ -213,7 +213,29 @@ func sendSwordsmanDialogWhenPickupSword():
 				]
 			}
 		])
-	
+
+func sendDialogSwordWithoutTalkedWithSwordsman():
+	if GlobalOptions.isPortuguese:
+		$Player/Camera/CanvasLayer/PopupDialog.sendDialog([
+			{
+				"personagem": "jose",
+				"falas": [
+					"Uma espada...",
+					"Acho que alguém pode ter perdido ela"
+				]
+			}
+		])
+	else:
+		$Player/Camera/CanvasLayer/PopupDialog.sendDialog([
+			{
+				"personagem": "jose",
+				"falas": [
+					"A sword...",
+					"Somebody may have lost it"
+				]
+			}
+		])
+		
 # Pega a espada do cenário
 func getSword():
 	if talkedWithSwordsman:
@@ -224,6 +246,7 @@ func getSword():
 		else:
 			$Player/Camera/CanvasLayer/Hint.sendHint("Go to the other side.")
 
+# Muda o zoom da câmera
 func changePlayerCamera():
 	if isOnPlayerCamera:
 		camera.zoom = Vector2(1.2,1.2)
@@ -233,9 +256,12 @@ func changePlayerCamera():
 		isOnPlayerCamera = true
 
 func _process(delta):
+	# Coloca na UI o número de madeiras
 	$Player/Camera/CanvasLayer/WoodCountFrame/WoodCountLabel.text = " x " + str(GlobalFase2.wood)
+	#Reinicia a fase em caso de erro
 	if Input.is_action_just_pressed("Reload"):
 		reset()
+	# Usa 
 	for i in range(1,7):
 		GlobalFase2.paralax($Player,get_node('Tree'+str(i)))
 	
@@ -296,7 +322,8 @@ func _ready():
 	GlobalOptions.setItemsToHideOnDialog([
 		$Player/Camera/CanvasLayer/Hint,
 		$Player/Camera/CanvasLayer/WeaponFrame,
-		$Player/Camera/CanvasLayer/WoodCountFrame
+		$Player/Camera/CanvasLayer/WoodCountFrame,
+		$Player/Camera/CanvasLayer/DimensionFrame
 	])
 	
 	$Swordsman.setInteraction(1)
@@ -359,6 +386,8 @@ func _unhandled_input(event):
 		elif enteredSwordArea:
 			if talkedWithSwordsman:
 				sendSwordsmanDialogWhenPickupSword()
+			else:
+				sendDialogSwordWithoutTalkedWithSwordsman()
 		elif enteredGalloArea:
 			sendGalloDialog()
 		elif enteredDellsonArea:
