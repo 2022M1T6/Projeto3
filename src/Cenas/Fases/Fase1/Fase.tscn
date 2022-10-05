@@ -130,6 +130,7 @@ shape = SubResource( 6 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 535, 712 )
+moveSpeed = 6
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2( 0, 10.0001 )

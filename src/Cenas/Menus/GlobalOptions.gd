@@ -7,10 +7,11 @@ var itemsToHideDialog = []
 func setItemsToHideOnDialog(items: Array):
 	itemsToHideDialog = []
 	for i in range(0, len(items)):
-		itemsToHideDialog.append({
-			'item': items[i],
-			'alreadyVisible': items[i].visible
-		})
+		if items[i] && is_instance_valid(items[i]):
+			itemsToHideDialog.append({
+				'item': items[i],
+				'alreadyVisible': items[i].visible
+			})
 	
 # Esconde os itens de HUD da variável global
 func hideHUDItems():

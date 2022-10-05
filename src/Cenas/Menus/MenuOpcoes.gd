@@ -22,6 +22,7 @@ func _on_BotaoVoltarMenuPrincipal_pressed():
 
 # Quando o documento estiver pronto
 func _ready():
+	$AudioStreamPlayer2D.play()
 	SetLanguage()
 	if GlobalOptions.isPortuguese:
 		$TextureRect/Title.text = "Configurações"
