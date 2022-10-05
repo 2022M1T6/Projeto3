@@ -331,7 +331,7 @@ func sendLumberjackDialog():
 					{
 						'personagem': 'jose',
 						'falas': [
-							'Eu caí neste mundo para aprender melhor o modelo de produto, mas o rei está com problemas para chegar ao castelo, por conta destas árvores que estão impedindo o caminho.'
+							'Eu caí neste mundo para aprender melhor o modelo de produto, mas o rei está com problemas para chegar ao castelo, por conta deste tronco que está impedindo o caminho.'
 						]
 					},
 					{
