@@ -242,6 +242,7 @@ func _process(delta):
 	GlobalFase2.paralax($Player,$Gallo)
 	GlobalFase2.paralax($Player,$Swordsman)
 	GlobalFase2.paralax($Player,$Sword)
+
 	
 	if enteredDash && GlobalFase2.hasSword:
 		$TeclaE.show()
@@ -371,7 +372,7 @@ func _unhandled_input(event):
 
 func _on_finalDialog_area_entered(area):
 	GlobalOptions.dimensoes["roadmap"] = true
-	get_tree().change_scene("res://Cenas/Utilitarios/FimDemo.tscn")
+	get_tree().change_scene("res://Cenas/Transições/Transition3.tscn")
 
 func reset():
 	get_tree().reload_current_scene()
