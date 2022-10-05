@@ -262,7 +262,6 @@ shape = SubResource( 12 )
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 67, 361 )
 collision_mask = 255
-moveSpeed = 6
 
 [node name="Camera" type="Camera2D" parent="Player"]
 position = Vector2( -73.9836, -2.95698 )
@@ -354,32 +353,6 @@ margin_bottom = -24.0
 [node name="Hint" parent="Player/Camera/CanvasLayer" instance=ExtResource( 10 )]
 
 [node name="PopupPause" parent="Player/Camera/CanvasLayer" instance=ExtResource( 11 )]
-
-[node name="DimensionFrame" type="TextureRect" parent="Player/Camera/CanvasLayer"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -86.9999
-margin_right = -54.9999
-margin_bottom = 32.0
-rect_scale = Vector2( 2.5, 2.5 )
-texture = ExtResource( 20 )
-
-[node name="Icon" type="Sprite" parent="Player/Camera/CanvasLayer/DimensionFrame"]
-position = Vector2( 6.40009, 9 )
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 21 )
-centered = false
-
-[node name="Label" type="Label" parent="Player/Camera/CanvasLayer/DimensionFrame"]
-margin_left = -1.59982
-margin_top = 23.0
-margin_right = 34.4002
-margin_bottom = 46.0
-custom_fonts/font = SubResource( 23 )
-text = "Roadmap"
-align = 1
-valign = 1
-autowrap = true
 
 [node name="finalDialog" type="Area2D" parent="."]
 position = Vector2( 1156, 686 )
