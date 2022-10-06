@@ -104,10 +104,29 @@ text = "Configurações"
 align = 1
 valign = 1
 
-[node name="BotaoSair" type="TextureButton" parent="VBoxContainer"]
+[node name="BotaoPrologo" type="TextureButton" parent="VBoxContainer"]
 margin_top = 40.0
 margin_right = 48.0
 margin_bottom = 56.0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="VBoxContainer/BotaoPrologo"]
+margin_left = 4.0
+margin_top = 3.0
+margin_right = 106.0
+margin_bottom = 21.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 2 )
+text = "Prólogo"
+align = 1
+valign = 1
+
+[node name="BotaoSair" type="TextureButton" parent="VBoxContainer"]
+margin_top = 60.0
+margin_right = 48.0
+margin_bottom = 76.0
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 5 )
 texture_hover = ExtResource( 5 )
@@ -133,4 +152,5 @@ autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/BotaoNovoJogo" to="." method="_on_BotaoNovoJogo_pressed"]
 [connection signal="pressed" from="VBoxContainer/BotaoOpcoes" to="." method="_on_BotaoOpcoes_pressed"]
+[connection signal="pressed" from="VBoxContainer/BotaoPrologo" to="." method="_on_BotaoPrologo_pressed"]
 [connection signal="pressed" from="VBoxContainer/BotaoSair" to="." method="_on_BotaoSair_pressed"]
