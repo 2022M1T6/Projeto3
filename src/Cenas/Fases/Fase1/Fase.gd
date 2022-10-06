@@ -17,8 +17,7 @@ func verifyAndRemoveTree():
 		if GlobalFase1.AxeOk:
 			$TreeAndRocks/Treelog.queue_free()
 			removedTree = true
-		else: 
-			$Player/Camera2D/CanvasLayer/WeaponFrame.hide()
+		elif len(GlobalFase1.axeChoicedParts) >= 1 && !GlobalFase1.AxeOk:
 			if GlobalOptions.isPortuguese:
 				$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
 					{
@@ -34,6 +33,25 @@ func verifyAndRemoveTree():
 						'personagem': 'dellson',
 						'falas': [
 							"Hmm... looks like this axe won't do for the job. Try getting more info with the villagers and build another axe!"
+						]
+					}
+				])
+		else:
+			if GlobalOptions.isPortuguese:
+				$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
+					{
+						'personagem': 'jose',
+						'falas': [
+							'Ai! Acho que vou precisar de uma ferramenta para ajudar o rei'
+						]
+					}
+				])
+			else:
+				$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
+					{
+						'personagem': 'jose',
+						'falas': [
+							"Ouch! I Think that I'll need a tool to help the king"
 						]
 					}
 				])
@@ -116,7 +134,7 @@ func sendMarketerDialog():
 				{
 					'personagem': 'jose',
 					'falas': [
-						"I’m José. It's a pleasure to meet you. But let me ask you something… are you a salesman too?"
+						"I’m John. It's a pleasure to meet you. But let me ask you something… are you a salesman too?"
 					]
 				},
 				{
@@ -313,7 +331,7 @@ func sendLumberjackDialog():
 					{
 						'personagem': 'jose',
 						'falas': [
-							'Eu caí neste mundo para aprender melhor o modelo de produto, mas o rei está com problemas para chegar ao castelo, por conta destas árvores que estão impedindo o caminho.'
+							'Eu caí neste mundo para aprender melhor o modelo de produto, mas o rei está com problemas para chegar ao castelo, por conta deste tronco que está impedindo o caminho.'
 						]
 					},
 					{
@@ -531,9 +549,6 @@ func _on_TreeArea2D_area_exited(area):
 		enteredTreeArea = false
 		$TreeAndRocks/Treelog/TreelogSelected.hide()
 		
-	if !$Player/Camera2D/CanvasLayer/WeaponFrame.visible:
-		$Player/Camera2D/CanvasLayer/WeaponFrame.show()
-		
 # Função que ativa o estado de ação do lumberjack quando o player entra na área
 func _on_Lumberjack_area_entered(area):
 	$Lumberjack.setState(1)
@@ -543,7 +558,6 @@ func _on_Lumberjack_area_entered(area):
 func _on_Lumberjack_area_exited(area):
 	$Lumberjack.setState(0)
 	enteredLumberjackArea = false
-	$Player/Camera2D/CanvasLayer/WeaponFrame.show()
 
 # Função que ativa o estado de ação do king quando o player entra na área
 func _on_King_area_entered(area):
@@ -554,7 +568,6 @@ func _on_King_area_entered(area):
 func _on_King_area_exited(area):
 	$King.setState(0)
 	enteredKingArea = false
-	$Player/Camera2D/CanvasLayer/WeaponFrame.show()
 
 # Função que ativa o estado de ação do blacksmith quando o player entra na área
 func _on_Blacksmith_area_entered(area):
@@ -564,7 +577,6 @@ func _on_Blacksmith_area_entered(area):
 func _on_Blacksmith_area_exited(area):
 	$Blacksmith.setState(0)
 	enteredBlacksmithArea = false
-	$Player/Camera2D/CanvasLayer/WeaponFrame.show()
 
 # Função que ativa o stado de ação do marketer quando o player entra na área
 func _on_Marketer_area_entered(area):
@@ -575,12 +587,11 @@ func _on_Marketer_area_entered(area):
 func _on_Marketer_area_exited(area):
 	$Marketer.setState(0)
 	enteredMarketerArea = false
-	$Player/Camera2D/CanvasLayer/WeaponFrame.show()
 
 # Função que muda o player de cena quando entra na área 2D depois de encerrar o minigame
 func _on_Area2D_area_entered(area):
 	GlobalOptions.dimensoes["vision"] = true
-	get_tree().change_scene("res://Cenas/Utilitarios/FimDemo.tscn")
+	get_tree().change_scene("res://Cenas/Transições/Transition2.tscn")
 
 # Função que prepara o ambiente depois que o jogador vence o minigame
 func hitTheAxe():
@@ -607,7 +618,6 @@ func hitTheAxe():
 				]
 			}
 		])
-	$Player/Camera2D/CanvasLayer/WeaponFrame.hide()
 	
 # Função que mostra o frame de arma com o machado montado pelo jogador
 func showAxeFrame():
@@ -622,29 +632,26 @@ func showAxeFrame():
 
 # Função que mostra o frame de arma e desativa a área 2D se o usuário acertar o machado depois de sair da área 2D do minigame
 func _on_MinigameArea2D_area_exited(area):
-	$Player/Camera2D/CanvasLayer/Hint.show()
 	showAxeFrame()
 	
 	if(GlobalFase1.AxeOk):
 		$Blacksmith/MinigameArea2D.queue_free()
-		
-	
 
 # Função que executa a chamada do minigame da fase 1
 func _on_MinigameArea2D_area_entered(area):
 	if !GlobalFase1.AxeOk:
-		$Player/Camera2D/CanvasLayer/Hint.hide()
-		$Player/Camera2D/CanvasLayer/WeaponFrame.hide()
 		$Player.setWeapon(1)
-		GlobalFase1.axeChoicedParts = []
-		get_tree().paused = true
-		$Player/Camera2D/CanvasLayer/PopupMinigame.show()
-		$Player/Camera2D/CanvasLayer/PopupMinigame/Control.show()
+		$Player/Camera2D/CanvasLayer/PopupMinigame.sendMinigame()
 		$Player.setMoveDirection(Vector2(0,0))
 	
 # Setup da fase
 func _ready():
-	$Player/Camera2D/CanvasLayer/PopupMinigame.hide()
+	GlobalOptions.setItemsToHideOnDialog([
+		$Player/Camera2D/CanvasLayer/Hint,
+		$Player/Camera2D/CanvasLayer/WeaponFrame,
+		$Player/Camera2D/CanvasLayer/DimensionFrame
+	])
+	
 	$TreeAndRocks/TreeArea2D.monitoring = false
 	if GlobalOptions.isPortuguese:
 		$Player/Camera2D/CanvasLayer/Hint.sendHint("Fale com os residentes da vila")
@@ -661,16 +668,12 @@ func _ready():
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("interact"):
 		if enteredMarketerArea:
-			$Player/Camera2D/CanvasLayer/WeaponFrame.hide()
 			sendMarketerDialog()
 		elif enteredKingArea:
-			$Player/Camera2D/CanvasLayer/WeaponFrame.hide()
 			sendKingDialog()
 		elif enteredLumberjackArea:
-			$Player/Camera2D/CanvasLayer/WeaponFrame.hide()
 			sendLumberjackDialog()
 		elif enteredBlacksmithArea:
-			$Player/Camera2D/CanvasLayer/WeaponFrame.hide()
 			sendBlacksmithDialog()
 			
 	verifyAndRemoveTree()
@@ -681,6 +684,7 @@ func _process(delta):
 	GlobalFase2.paralax($Player,$Blacksmith)
 	GlobalFase2.paralax($Player,$Marketer)
 	GlobalFase2.paralax($Player,$King)
+	$VillageSound.volume_db = GlobalOptions.setMusicSound(5)
 	
 	if(!endGameSetedUp && GlobalFase1.AxeOk):
 		hitTheAxe()

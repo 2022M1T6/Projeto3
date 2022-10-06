@@ -14,11 +14,16 @@ func _on_BotaoSair_pressed():
 
 # Troca os textos de acordo com a linguagem
 func _ready():
+	$AudioStreamPlayer2D.play()
 	if GlobalOptions.isPortuguese:
-		$BotaoNovoJogo.text = '__Novo Jogo__'
-		$BotaoOpcoes.text = '__Opções__'
-		$BotaoSair.text = '__Sair__'
+		$VBoxContainer/BotaoNovoJogo/Label.text = 'Novo Jogo'
+		$VBoxContainer/BotaoOpcoes/Label.text = 'Opções'
+		$VBoxContainer/BotaoSair/Label.text = 'Sair'
 	else:
-		$BotaoNovoJogo.text = '__New Game__'
-		$BotaoOpcoes.text = '__Options__'
-		$BotaoSair.text = '__Quit__'
+		$VBoxContainer/BotaoNovoJogo/Label.text = 'New Game'
+		$VBoxContainer/BotaoOpcoes/Label.text = 'Options'
+		$VBoxContainer/BotaoSair/Label.text = 'Quit'
+		
+func _process(delta):
+	$AudioStreamPlayer2D.volume_db = GlobalOptions.setMusicSound(-5)
+		

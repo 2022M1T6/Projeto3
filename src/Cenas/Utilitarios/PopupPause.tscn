@@ -167,7 +167,6 @@ font_data = ExtResource( 8 )
 
 [node name="PopupPause" type="Popup"]
 pause_mode = 2
-visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
@@ -337,8 +336,8 @@ anchor_right = 0.791
 anchor_bottom = 0.132
 margin_left = 0.0159912
 margin_top = -0.199997
-margin_right = 39.0
-margin_bottom = 35.8
+margin_right = 12.016
+margin_bottom = 19.8
 __meta__ = {
 "_edit_group_": true
 }
@@ -354,8 +353,8 @@ rect_scale = Vector2( 2.5, 2.5 )
 texture = ExtResource( 7 )
 
 [node name="Roadmap" type="Sprite" parent="roadmap/TextureRect"]
-position = Vector2( 7.59961, 9.20007 )
-scale = Vector2( 0.0273334, 0.0306383 )
+position = Vector2( 6.39954, 8.80008 )
+scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 3 )
 centered = false
 
@@ -373,7 +372,6 @@ align = 1
 autowrap = true
 
 [node name="Settings" type="Popup" parent="."]
-visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 6 )

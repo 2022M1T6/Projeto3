@@ -1,7 +1,7 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Personagens/Jose/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Public/WhatsApp Image 2022-08-24 at 20.44.49.jpeg" type="Texture" id=2]
+[ext_resource path="res://Cenas/Fases/Tutorial/Mapa1/Calabouco.tres" type="TileSet" id=2]
 [ext_resource path="res://Cenas/Utilitarios/popupDialogo.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Public/bonecoTeste.png" type="Texture" id=4]
 [ext_resource path="res://Cenas/Utilitarios/PopupPause.tscn" type="PackedScene" id=5]
@@ -10,12 +10,7 @@
 [ext_resource path="res://Cenas/Utilitarios/Hint/Hint.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Public/KeyboardKeys/teclaP.png" type="Texture" id=9]
 [ext_resource path="res://Public/Sounds-effects/CavernSound.wav" type="AudioStream" id=10]
-
-[sub_resource type="CircleShape2D" id=1]
-radius = 22.3607
-
-[sub_resource type="CircleShape2D" id=2]
-radius = 20.9308
+[ext_resource path="res://Public/Tilesets/Calabouco.tres" type="TileSet" id=12]
 
 [sub_resource type="CapsuleShape2D" id=3]
 radius = 32.8646
@@ -25,60 +20,37 @@ height = 38.0933
 radius = 38.0
 height = 44.0
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=50]
 extents = Vector2( 52.5, 53 )
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 69.5, 27 )
+extents = Vector2( 24.5, 27 )
 
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 70, 80 )
+[sub_resource type="RectangleShape2D" id=51]
+extents = Vector2( 19.5, 27 )
 
-[sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 105, 4.75 )
+[sub_resource type="RectangleShape2D" id=52]
+extents = Vector2( 24.5, 2.375 )
 
-[node name="Node2D2" type="Node2D"]
+[node name="Node2D3" type="Node2D"]
 script = ExtResource( 6 )
 
-[node name="background" type="Sprite" parent="."]
-position = Vector2( 642.5, 359.5 )
-scale = Vector2( 2.71875, 2.28437 )
-texture = ExtResource( 2 )
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 12 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 196608, 2, 0, 196610, 2, 0, 196612, 2, 0, 196613, 2, 0, 262146, 2, 0, 262148, 2, 0, 262149, 2, 0, 327680, 2, 0, 327687, 2, 0, 327689, 2, 0, 327690, 2, 0, 327692, 0, 0, 393218, 0, 0, 393236, 1, 0, 393240, 1, 0, 393244, 2, 0, 458752, 2, 0, 458762, 2, 0, 524316, 2, 0, 589824, 2, 0, 589834, 2, 0, 655380, 1, 0, 655384, 1, 0, 655386, 1, 0, 720896, 2, 0, 720906, 2, 0, 851979, 1, 0, 851983, 1, 0, 851986, 1, 0, 851990, 1, 0, 851994, 1, 0, 1048576, 1, 0, 1048579, 1, 0, 1048582, 1, 0, 1048585, 1, 0, 1048588, 1, 0, 1048591, 1, 0, 1048594, 1, 0, 1048597, 1, 0, 1048600, 1, 0, 1048602, 1, 0 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2( -5, 421 )
-scale = Vector2( 1.1, 1.05 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PoolVector2Array( -4, 0, 470.909, -3.05176e-05, 471.818, 168.571, 442.727, 167.619, 445.455, 153.333, 261.818, 154.286, 263.636, 173.333, 204.545, 173.333, 204.545, 158.095, 27.2727, 159.048, 28.1818, 180, 0, 180.952 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PoolVector2Array( 1, 0, -0.909091, 288.571, 1181.82, 291.429, 1174, -302, 1136, -302, 1137, -204, 1023, -203, 1023, -324, 894.545, -322.857, 894.545, -205.714, 787, -205, 758, -208, 703, -210, 697, -203, 675, -204, 666, -217, 588, -218, 580, -205, 555, -204, 546, -223, 544, -205, 474, -205, 471, -218, 307, -218, 307, -207, 261, -208, 257, -271, 244, -270, 244, -285, 244, -298, -1, -298, -2, 56, -98, 54, -92, -446, 1229, -446, 1229, -192.515, 1229, 324, -27, 325 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 15, -89 )
-shape = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 10, -217.143 )
-shape = SubResource( 2 )
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="TileMap2" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
+show_collision = true
+format = 1
+tile_data = PoolIntArray( -262137, 9, 0, -262125, 10, 0, -131072, 45, 0, -131071, 45, 0, -131069, 45, 0, -131067, 45, 0, -131064, 8, 0, -131063, 45, 0, -131061, 8, 0, -131059, 45, 0, -131058, 8, 0, -131056, 45, 0, -131054, 45, 0, -65519, 45, 0, -65516, 45, 0, -65514, 8, 0, -65512, 45, 0, -65511, 45, 0, -65510, 8, 0, -65509, 45, 0, -65508, 45, 0, 0, 18, 0, 3, 15, 0, 22, 4, 0, 65543, 38, 0, 65544, 34, 0, 65546, 34, 0, 65548, 34, 0, 65550, 34, 0, 65552, 34, 0, 65553, 34, 0, 65555, 40, 0, 65556, 3, 0, 65563, 3, 0, 65565, 2, 0, 131079, 5, 0, 131082, 16, 0, 131085, 16, 0, 131089, 17, 0, 196608, 51, 0, 196611, 51, 0, 196612, 51, 0, 327687, 50, 0, 327690, 31, 0, 327693, 31, 0, 327696, 31, 0, 327699, 13, 0, 458751, 44, 0, 393216, 48, 0, 393217, 48, 0, 393218, 48, 0, 393235, 12, 0, 393236, 50, 0, 393242, 50, 0, 393243, 50, 0, 393246, 48, 0, 458752, 48, 0, 458753, 48, 0, 458754, 48, 0, 458782, 48, 0, 524288, 48, 0, 524289, 48, 0, 524290, 48, 0, 524318, 48, 0, 589824, 48, 0, 589825, 48, 0, 589826, 48, 0, 589854, 48, 0, 720895, 45, 0, 655360, 48, 0, 655361, 48, 0, 655362, 48, 0, 655390, 48, 0, 786431, 45, 0, 720896, 48, 0, 720897, 48, 0, 720898, 48, 0, 720926, 48, 0, 786432, 19, 0, 786434, 20, 0, 786437, 20, 0, 786441, 21, 0, 786450, 24, 0, 786453, 30, 0, 786456, 30, 0, 786459, 27, 0, 786462, 48, 0, 851998, 48, 0, 983039, 48, 0, 917515, 6, 0, 917534, 48, 0, 1048575, 48, 0, 983058, 26, 0, 983061, 32, 0, 983064, 32, 0, 983067, 29, 0, 983070, 48, 0, 1114111, 48, 0, 1048576, 50, 0, 1048578, 50, 0, 1048581, 50, 0, 1048584, 50, 0, 1048587, 11, 0, 1048594, 26, 0, 1048603, 29, 0, 1048606, 48, 0, 1179647, 48, 0, 1114130, 25, 0, 1114133, 32, 0, 1114136, 32, 0, 1114139, 28, 0, 1114142, 48, 0, 1245183, 48, 0, 1179678, 48, 0, 1310719, 48, 0, 1245205, 31, 0, 1245208, 31, 0, 1245214, 48, 0, 1376255, 48, 0, 1310720, 48, 0, 1310721, 48, 0, 1310722, 48, 0, 1310723, 48, 0, 1310724, 48, 0, 1310725, 48, 0, 1310726, 48, 0, 1310727, 48, 0, 1310728, 48, 0, 1310729, 48, 0, 1310730, 48, 0, 1310731, 48, 0, 1310732, 48, 0, 1310733, 48, 0, 1310734, 48, 0, 1310735, 48, 0, 1310736, 48, 0, 1310737, 48, 0, 1310738, 48, 0, 1310739, 48, 0, 1310740, 48, 0, 1310741, 48, 0, 1310742, 48, 0, 1310743, 48, 0, 1310744, 48, 0, 1310745, 48, 0, 1310746, 48, 0, 1310747, 48, 0, 1310748, 48, 0, 1310749, 48, 0, 1310750, 48, 0 )
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+position = Vector2( -21, -42 )
+scale = Vector2( 0.3, 0.3 )
 
 [node name="Hurtbox" type="Area2D" parent="KinematicBody2D"]
 rotation = -0.000448217
@@ -86,24 +58,24 @@ collision_layer = 32768
 collision_mask = 32768
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D/Hurtbox"]
-position = Vector2( 202, 321 )
+position = Vector2( 369.876, 597.075 )
 shape = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="KinematicBody2D"]
-position = Vector2( 195, 317 )
+position = Vector2( 363, 593 )
 scale = Vector2( 0.284848, 0.22439 )
 texture = ExtResource( 4 )
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
-position = Vector2( 200, 322 )
+position = Vector2( 368, 598 )
 shape = SubResource( 4 )
 
 [node name="Label" type="Label" parent="KinematicBody2D"]
-margin_left = 151.0
-margin_top = 240.0
-margin_right = 235.0
-margin_bottom = 278.0
+margin_left = 319.0
+margin_top = 516.0
+margin_right = 403.0
+margin_bottom = 554.0
 rect_scale = Vector2( 1.3, 1.3 )
 align = 1
 valign = 1
@@ -111,55 +83,52 @@ uppercase = true
 
 [node name="TeclaP" type="Sprite" parent="KinematicBody2D"]
 visible = false
-position = Vector2( 167, 279 )
+position = Vector2( 336.667, 526.667 )
+scale = Vector2( 2, 2 )
 texture = ExtResource( 9 )
 
 [node name="actionArea" type="Area2D" parent="KinematicBody2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D/actionArea"]
-position = Vector2( 206.5, 325 )
-shape = SubResource( 8 )
+position = Vector2( 372, 596 )
+shape = SubResource( 50 )
 
 [node name="Area2D" type="Area2D" parent="."]
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 1049, 127 )
+position = Vector2( 391.5, 59 )
 shape = SubResource( 5 )
 
 [node name="Area2D2" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
-position = Vector2( 70, 622 )
-shape = SubResource( 6 )
+position = Vector2( 33, 293 )
+shape = SubResource( 51 )
 
 [node name="Area2D3" type="Area2D" parent="."]
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]
-position = Vector2( 1059, 205.25 )
-shape = SubResource( 7 )
+position = Vector2( 391.5, 89.625 )
+shape = SubResource( 52 )
 
 [node name="Dellson" parent="." instance=ExtResource( 7 )]
-position = Vector2( 677, 195 )
-scale = Vector2( 3, 3 )
-
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Dellson"]
-polygon = PoolVector2Array( -17.3333, 34.6667, 21, 34, 11, -11.6667, -11.3333, -12 )
+position = Vector2( 255, 72 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 70, 622 )
-scale = Vector2( 4, 4 )
-moveSpeed = 15
+position = Vector2( 32, 289 )
+moveSpeed = 6
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2( -9.64743, -51.0311 )
+position = Vector2( 0, 2 )
 scale = Vector2( 0.739097, 1.02406 )
-rotating = true
-limit_left = 4
+current = true
+zoom = Vector2( 0.35, 0.35 )
+limit_left = 0
 limit_top = 0
-limit_right = 1100
-limit_bottom = 700
+limit_right = 480
+limit_bottom = 320
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 drag_margin_left = 0.4
@@ -174,9 +143,8 @@ editor_draw_drag_margin = true
 [node name="Hint" parent="Player/Camera2D/CanvasLayer" instance=ExtResource( 8 )]
 
 [node name="PopupPause" parent="Player/Camera2D/CanvasLayer" instance=ExtResource( 5 )]
-visible = false
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
 stream = ExtResource( 10 )
 volume_db = -20.0

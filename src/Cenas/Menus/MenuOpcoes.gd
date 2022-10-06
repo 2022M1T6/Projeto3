@@ -22,6 +22,7 @@ func _on_BotaoVoltarMenuPrincipal_pressed():
 
 # Quando o documento estiver pronto
 func _ready():
+	$AudioStreamPlayer2D.play()
 	SetLanguage()
 	if GlobalOptions.isPortuguese:
 		$TextureRect/Title.text = "Configurações"
@@ -51,3 +52,4 @@ func _process(delta):
 	GlobalOptions.masterVolume = $TextureRect/ContainerOpcoes/RangeMaster.value
 	GlobalOptions.musicVolume = $TextureRect/ContainerOpcoes/RangeMusic.value
 	GlobalOptions.sfxVolume = $TextureRect/ContainerOpcoes/RangeSFX.value
+	$AudioStreamPlayer2D.volume_db = GlobalOptions.setMusicSound(0)

@@ -7,10 +7,10 @@ var dano = 20
 
 # Prepara o audio do game e dispara o primeiro diálogo
 func _ready():
-	$Player/PunchSound.volume_db = GlobalOptions.setSFXSound(float($Player/PunchSound.volume_db))
-	$Player/RunningSound.volume_db = GlobalOptions.setSFXSound(float($Player/RunningSound.volume_db))
-	$Player/WalkingSound.volume_db = GlobalOptions.setSFXSound(float($Player/WalkingSound.volume_db))
-	$AudioStreamPlayer2D.volume_db = GlobalOptions.setMusicSound(float($AudioStreamPlayer2D.volume_db))
+	GlobalOptions.setItemsToHideOnDialog([
+		$Player/Camera2D/CanvasLayer/Hint
+	])
+	
 	if GlobalOptions.isPortuguese:
 		$Player/Camera2D/CanvasLayer/PopupDialog.sendDialog([
 				{
@@ -82,8 +82,7 @@ func _on_Hurtbox_area_entered(area):
 # Teletransporta o player para a primeira fase
 func _on_Area2D_area_entered(area):
 	if currentHP <= 0:
-		GlobalOptions.fase = 1
-		get_tree().change_scene("res://Cenas/Fases/Fase1/Fase.tscn")
+		get_tree().change_scene("res://Cenas/Transições/Transition1.tscn")
 		
 
 # Ao sair da primeira área, seta a hint
@@ -137,3 +136,6 @@ func _on_actionArea_area_entered(area):
 # Esconde a tecla de ataque ao sair da área do Dummy
 func _on_actionArea_area_exited(area):
 	$KinematicBody2D/TeclaP.visible = false
+	
+func _process(delta):
+	$AudioStreamPlayer2D.volume_db = GlobalOptions.setMusicSound(-20)

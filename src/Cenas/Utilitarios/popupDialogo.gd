@@ -1,16 +1,18 @@
 extends PopupDialog
 
 onready var dialogBoxLabel = $DialogBox/Label
-var startedDialog = false
+export (bool) var startedDialog = false
 var canGoToNextLine = false
 var canCompleteLine = false
+var diag
 
 var dialogs = []
 var currentDialog = {"personagem": "", "falas": []}
 
 
-func _ready():
-	$AudioStreamPlayer2D.volume_db = GlobalOptions.setSFXSound(float($AudioStreamPlayer2D.volume_db))
+func _process(delta):
+	$AudioStreamPlayer2D.volume_db = GlobalOptions.setSFXSound(15)
+	 
 	
 # Função que estabelece qual sprite usar quando estiver na fala
 func getDialogSpriteFilePath():
@@ -26,9 +28,53 @@ func getDialogSpriteFilePath():
 		return "res://Public/Characters/lumberjackProfile.png"
 	elif currentDialog["personagem"] == 'marketer':
 		return "res://Public/Characters/marketerProfile.png"
+	elif currentDialog["personagem"] == 'swordsman':
+		return "res://Public/Characters/swordsmanProfile.png"
+	elif currentDialog["personagem"] == 'gallo':
+		return "res://Public/Characters/galloProfile.png"
 	else:
 		return "res://Public/Characters/fabiProfile.png"
 
+func getName():
+	if GlobalOptions.isPortuguese:
+		if currentDialog["personagem"] == 'dellson':
+			return "Dellson"
+		elif currentDialog["personagem"] == 'jose':
+			return "José"
+		elif currentDialog["personagem"] == 'blacksmith':
+			return "Ferreiro"
+		elif currentDialog["personagem"] == 'king':
+			return "Rei Ginaldo"
+		elif currentDialog["personagem"] == 'lumberjack':
+			return "Lenhador"
+		elif currentDialog["personagem"] == 'marketer':
+			return "Feirante"
+		elif currentDialog["personagem"] == 'swordsman':
+			return "Espadachim"
+		elif currentDialog["personagem"] == 'gallo':
+			return "Gallo"
+		else:
+			return "Fabi"
+	else:
+		if currentDialog["personagem"] == 'dellson':
+			return "Dellson"
+		elif currentDialog["personagem"] == 'jose':
+			return "John"
+		elif currentDialog["personagem"] == 'blacksmith':
+			return "Blacksmith"
+		elif currentDialog["personagem"] == 'king':
+			return "King Prince"
+		elif currentDialog["personagem"] == 'lumberjack':
+			return "Lumberjack"
+		elif currentDialog["personagem"] == 'marketer':
+			return "Marketer"
+		elif currentDialog["personagem"] == 'swordsman':
+			return "Swordsman"
+		elif currentDialog["personagem"] == 'gallo':
+			return "Gallo"
+		else:
+			return "Fabi"
+		
 # Função que envia um diálogo
 func sendDialog(dialog):
 	if startedDialog:
@@ -37,6 +83,7 @@ func sendDialog(dialog):
 	addDialog(dialog)
 	startedDialog = true
 	showNextMessageOnList()
+	GlobalOptions.hideHUDItems()
 	get_tree().paused = true
 	
 # Função que adiciona um array de diálogo para a lista
@@ -52,6 +99,7 @@ func killDialog():
 	startedDialog = false
 	hide()
 	get_tree().paused = false
+	GlobalOptions.showHudItems()
 
 # Função que pega a próxima linha de diálogo
 func getNextSpeak():
@@ -62,7 +110,10 @@ func getNextSpeak():
 		currentDialog = dialogs.pop_front()
 		return getNextSpeak()
 	else:
-		return currentDialog["falas"].pop_front()
+		return {
+			'character': getName(),
+			'speak': currentDialog["falas"].pop_front()
+		}
 
 # Função que insere o texto na label e deixa-o invisível
 func setText(text):
@@ -70,16 +121,19 @@ func setText(text):
 	dialogBoxLabel.text = text
 	canGoToNextLine = false
 
+func setCharacterName(text):
+	$DialogBox/CharacterName.text = text
 
 # Função que mostra a próxima mensagem do array de diálogos
 func showNextMessageOnList() -> void:
-	var text = getNextSpeak()
+	var speak = getNextSpeak()
 	
-	if !text:
+	if !speak:
 		killDialog()
 		return
 		
-	setText(text)
+	setText(speak['speak'])
+	setCharacterName(speak['character'])
 
 	# Verifica se a foto da caixa de diálogo está condizente com o personagem e troca caso necessário
 	$DialogSprite.texture = load(getDialogSpriteFilePath())

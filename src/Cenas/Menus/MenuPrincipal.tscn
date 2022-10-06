@@ -1,19 +1,36 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Cenas/Menus/MenuPrincipal.gd" type="Script" id=1]
-[ext_resource path="res://Public/backgroundMenuSprite1.jpeg" type="Texture" id=2]
-[ext_resource path="res://Public/backgroundMenuSprite3.jpeg" type="Texture" id=3]
-[ext_resource path="res://Public/backgroundMenuSprite2.jpeg" type="Texture" id=4]
+[ext_resource path="res://Public/newBackground2.png" type="Texture" id=2]
+[ext_resource path="res://Public/newBackground1.png" type="Texture" id=3]
+[ext_resource path="res://Public/Utilitarios/botaoMenuPrincipal.png" type="Texture" id=4]
+[ext_resource path="res://Public/Utilitarios/botaoMenuPrincipalPressed.png" type="Texture" id=5]
+[ext_resource path="res://Public/Fonts/Kenney Pixel.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Public/logo.png" type="Texture" id=7]
+[ext_resource path="res://Public/Sounds-effects/menuMusic.sir.wav" type="AudioStream" id=8]
 
 [sub_resource type="AnimatedTexture" id=1]
-flags = 4
 frames = 3
-frame_0/texture = ExtResource( 2 )
+frame_0/texture = ExtResource( 3 )
 frame_0/delay_sec = 1.0
-frame_1/texture = ExtResource( 4 )
+frame_1/texture = ExtResource( 2 )
 frame_1/delay_sec = 1.0
-frame_2/texture = ExtResource( 3 )
-frame_2/delay_sec = 1.0
+frame_2/delay_sec = 0.0
+
+[sub_resource type="DynamicFont" id=2]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=3]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=4]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 6 )
 
 [node name="MenuPrincipal" type="Control"]
 anchor_right = 1.0
@@ -23,47 +40,97 @@ margin_right = 2.0
 script = ExtResource( 1 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = -0.08
+anchor_top = -0.076
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 14.92
+margin_top = -4.4
+margin_right = 62.0
+margin_bottom = 50.0
 texture = SubResource( 1 )
 expand = true
 
-[node name="BotaoNovoJogo" type="Button" parent="."]
-anchor_left = 0.386
-anchor_top = 0.207
-anchor_right = 0.386
-anchor_bottom = 0.207
-margin_left = -69.264
-margin_top = -30.2
-margin_right = 68.736
-margin_bottom = 29.8
-text = "__Novo Jogo__"
-flat = true
+[node name="ColorRect" type="ColorRect" parent="TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -41.0
+margin_top = 9.0
+margin_right = 3.0
+margin_bottom = 9.0
+color = Color( 0, 0, 0, 0.486275 )
 
-[node name="BotaoOpcoes" type="Button" parent="."]
-anchor_left = 0.386
-anchor_top = 0.307
-anchor_right = 0.386
-anchor_bottom = 0.307
-margin_left = -69.288
-margin_top = -10.2
-margin_right = 68.712
-margin_bottom = 9.79999
-text = "__ Opcoes __"
-flat = true
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 395.0
+margin_top = 177.0
+margin_right = 443.0
+margin_bottom = 233.0
+rect_scale = Vector2( 5, 5 )
 
-[node name="BotaoSair" type="Button" parent="."]
-anchor_left = 0.386
-anchor_top = 0.407
-anchor_right = 0.386
-anchor_bottom = 0.407
-margin_left = -69.312
-margin_top = -9.80002
-margin_right = 68.688
-margin_bottom = 10.2
-text = "__ Sair __"
-flat = true
+[node name="BotaoNovoJogo" type="TextureButton" parent="VBoxContainer"]
+margin_right = 48.0
+margin_bottom = 16.0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 5 )
 
-[connection signal="pressed" from="BotaoNovoJogo" to="." method="_on_BotaoNovoJogo_pressed"]
-[connection signal="pressed" from="BotaoOpcoes" to="." method="_on_BotaoOpcoes_pressed"]
-[connection signal="pressed" from="BotaoSair" to="." method="_on_BotaoSair_pressed"]
+[node name="Label" type="Label" parent="VBoxContainer/BotaoNovoJogo"]
+margin_left = 4.0
+margin_top = 3.0
+margin_right = 106.0
+margin_bottom = 21.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 2 )
+text = "Novo Jogo"
+align = 1
+valign = 1
+
+[node name="BotaoOpcoes" type="TextureButton" parent="VBoxContainer"]
+margin_top = 20.0
+margin_right = 48.0
+margin_bottom = 36.0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="VBoxContainer/BotaoOpcoes"]
+margin_left = 4.00001
+margin_top = 2.4
+margin_right = 103.0
+margin_bottom = 24.4
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 3 )
+text = "Configurações"
+align = 1
+valign = 1
+
+[node name="BotaoSair" type="TextureButton" parent="VBoxContainer"]
+margin_top = 40.0
+margin_right = 48.0
+margin_bottom = 56.0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="VBoxContainer/BotaoSair"]
+margin_left = 4.0
+margin_top = 2.0
+margin_right = 104.0
+margin_bottom = 24.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 4 )
+text = "Sair"
+align = 1
+valign = 1
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 509, 61 )
+texture = ExtResource( 7 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+autoplay = true
+
+[connection signal="pressed" from="VBoxContainer/BotaoNovoJogo" to="." method="_on_BotaoNovoJogo_pressed"]
+[connection signal="pressed" from="VBoxContainer/BotaoOpcoes" to="." method="_on_BotaoOpcoes_pressed"]
+[connection signal="pressed" from="VBoxContainer/BotaoSair" to="." method="_on_BotaoSair_pressed"]

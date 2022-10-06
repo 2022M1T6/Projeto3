@@ -1,11 +1,12 @@
 extends Node
-# CÓDIGO EM PRODUÇÃO - NÃO PLANEJAMOS ENTREGAR NA SPRINT 4.
-# ESSE CÓDIGO AINDA NÃO FOI FINALIZADO, PORTANTO AINDA IRÁ SER COMPLETO E REFATORADO
 var wood = 2
 var hasSword= false
+var hasReset = false
 
+#função que ajeita a posição do sprite para emular profundidade 3D
 func paralax(a,b):
-	if a.position.y <= b.position.y:
-		b.z_index = 1
-	else:
-		b.z_index = 0
+	if a && b:
+		if a.position.y <= b.position.y:
+			b.z_index = 1
+		else:
+			b.z_index = 0

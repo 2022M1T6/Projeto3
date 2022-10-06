@@ -3,11 +3,13 @@ extends Node2D
 var first = false
 # Vai para a próxima área
 func _on_Area2D_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
-	GlobalOptions.fase = 0.3
 	get_tree().change_scene("res://Cenas/Fases/Tutorial/Mapa3/Combate.tscn")
 
 # Seta a fala ao entrar no mapa
 func _ready():
+	GlobalOptions.setItemsToHideOnDialog([
+		$Player/Camera2D/CanvasLayer/Hint
+	])
 	$Player/PunchSound.volume_db = GlobalOptions.setSFXSound(float($Player/PunchSound.volume_db))
 	$Player/RunningSound.volume_db = GlobalOptions.setSFXSound(float($Player/RunningSound.volume_db))
 	$Player/WalkingSound.volume_db = GlobalOptions.setSFXSound(float($Player/WalkingSound.volume_db))
@@ -39,7 +41,7 @@ func _on_TutorialMapa2Fala1_area_shape_exited(area_rid, area, area_shape_index, 
 	else:
 		$Player/Camera2D/CanvasLayer/Hint.sendHint('Travese the labyrinth')
 
-
+# Envia os diálogos para quando o jogador entra na área "TutorialMapa2Fala2"
 func _on_TutorialMapa2Fala2_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	$TutorialMapa2Fala2.queue_free()
 	if GlobalOptions.isPortuguese:

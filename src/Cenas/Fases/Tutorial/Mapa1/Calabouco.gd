@@ -9,21 +9,22 @@ var dellsonDialog = false
 
 # Ao sair da primeira área do game, muda o texto da hint
 func _on_TurorialArea1_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
-	if GlobalOptions.isPortuguese:
-		$Player/Camera2D/CanvasLayer/Hint.sendHint('Procure e vá até Dellson')
-	else:
-		$Player/Camera2D/CanvasLayer/Hint.sendHint('Go after Dellson')
+	if !dellsonDialog:
+		if GlobalOptions.isPortuguese:
+			$Player/Camera2D/CanvasLayer/Hint.sendHint('Procure e vá até Dellson')
+		else:
+			$Player/Camera2D/CanvasLayer/Hint.sendHint('Go after Dellson')
+	
 
 
 # Ao entrar na área, muda a cena
 func _on_Area2D_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
-	GlobalOptions.fase = 0.2
-	get_tree().change_scene("res://Cenas/Fases/Tutorial/Mapa2/Labirinto.tscn")
+	if dellsonDialog:
+		get_tree().change_scene("res://Cenas/Fases/Tutorial/Mapa2/Labirinto.tscn")
 
 # Ao entrar na área do Dellson, muda o estado dele e esconde a hint
 func _on_Area2DDellson_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	$Dellson.setState(1)
-	$Player/Camera2D/CanvasLayer/Hint.hideHint()
 	onDellsonArea = true
 
 # Ao sair da área do Dellson, muda o estado dele para o padrão e muda o texto da hint
@@ -114,13 +115,10 @@ func sendDellsonDialog():
 
 
 func _ready():
-
-	# Altera as informações de som	
-	$AudioStreamPlayer2D.volume_db = GlobalOptions.setMusicSound(float($AudioStreamPlayer2D.volume_db))
-	$Player/PunchSound.volume_db = GlobalOptions.setSFXSound(float($Player/PunchSound.volume_db))
-	$Player/RunningSound.volume_db = GlobalOptions.setSFXSound(float($Player/RunningSound.volume_db))
-	$Player/WalkingSound.volume_db = GlobalOptions.setSFXSound(float($Player/WalkingSound.volume_db))
-	
+	GlobalOptions.setItemsToHideOnDialog([
+		$Player/Camera2D/CanvasLayer/Hint,
+		$Player/Camera2D/CanvasLayer/KeyboardKeys
+	])
 	# Define a interação com1
 	$Dellson.setInteraction(1)
 	
@@ -194,7 +192,6 @@ func _ready():
 					]
 				}
 		])
-	$Player/Camera2D/CanvasLayer/Hint.hideHint()
 
 
 # Verifica os inputs do teclado
@@ -205,3 +202,7 @@ func _unhandled_input(event):
 
 func _process(delta):
 	GlobalFase2.paralax($Player,$Dellson)
+	$AudioStreamPlayer2D.volume_db = GlobalOptions.setMusicSound(-20)
+
+func _on_Area2D_area_entered(area):
+	pass # Replace with function body.

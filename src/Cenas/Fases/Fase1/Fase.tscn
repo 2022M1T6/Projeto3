@@ -38,6 +38,8 @@ extents = Vector2( 32, 6 )
 extents = Vector2( 25, 19.5 )
 
 [sub_resource type="DynamicFont" id=13]
+outline_size = 1
+outline_color = Color( 0.00392157, 0.00392157, 0.00392157, 1 )
 font_data = ExtResource( 20 )
 
 [sub_resource type="RectangleShape2D" id=3]
@@ -46,7 +48,7 @@ extents = Vector2( 16, 72 )
 [sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 21.5, 40 )
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D2" type="Node2D"]
 position = Vector2( 0, -3 )
 script = ExtResource( 3 )
 
@@ -128,7 +130,7 @@ shape = SubResource( 6 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 535, 712 )
-scale = Vector2( 1, 1 )
+moveSpeed = 6
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2( 0, 10.0001 )
@@ -204,7 +206,6 @@ valign = 1
 autowrap = true
 
 [node name="PopupPause" parent="Player/Camera2D/CanvasLayer" instance=ExtResource( 15 )]
-visible = false
 
 [node name="TreeAndRocks" type="TileMap" parent="."]
 position = Vector2( 0, -1 )
@@ -244,10 +245,12 @@ position = Vector2( 0, -12 )
 polygon = PoolVector2Array( 672, 170, 957, 171, 955, 91, 905, 91, 865, 97, 703, 93, 680, -42, 590, -24, 587, 47, 485, 50, 477, -41, 381, -41, 370, 66, 415, 99, 431, 201, 498, 258, 492, 753, 582, 753, 583, 829, 485, 828, -62, 820, -58, -187, 1351, -185, 1345, 830, 583, 828, 583, 588.24, 583, 247 )
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 800, 119 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
-position = Vector2( 798, 119 )
 shape = SubResource( 11 )
 
 [node name="VillageSound" type="AudioStreamPlayer" parent="."]

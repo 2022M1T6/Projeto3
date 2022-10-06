@@ -12,6 +12,6 @@ func _ready():
 		yield(get_tree().create_timer(0.005), "timeout")
 	
 	# Redireciona para a tela principal
-	get_tree().change_scene("res://Cenas/Fases/Tutorial/Mapa1/Calabouco.tscn")
+	get_tree().change_scene("res://Cenas/Utilitarios/Cutscene.tscn")
 
 	

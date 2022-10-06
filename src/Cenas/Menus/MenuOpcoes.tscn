@@ -1,17 +1,19 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Cenas/Menus/MenuOpcoes.gd" type="Script" id=1]
 [ext_resource path="res://Public/Tela-de-pausa.png" type="Texture" id=2]
 [ext_resource path="res://Public/Utilitarios/botaoOpcao.png" type="Texture" id=3]
 [ext_resource path="res://Public/Utilitarios/botaoOpcaoSelecionado.png" type="Texture" id=4]
 [ext_resource path="res://Public/Fonts/Kenney Pixel.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Public/Sounds-effects/menuSettings.l1t.wav" type="AudioStream" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 17
 font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 64
+size = 21
+extra_spacing_char = 1
 font_data = ExtResource( 5 )
 
 [node name="Control" type="Control"]
@@ -130,5 +132,9 @@ text = "Configurações"
 align = 1
 valign = 1
 autowrap = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
 
 [connection signal="pressed" from="TextureRect/BotaoVoltarMenuPrincipal" to="." method="_on_BotaoVoltarMenuPrincipal_pressed"]

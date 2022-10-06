@@ -17,11 +17,13 @@ config/icon="res://Public/Characters/playerProfile.png"
 [autoload]
 
 GlobalFase1="*res://Cenas/Fases/Fase1/globalFase1.gd"
-GlobalFase2="*res://Cenas/Fases/Fase 2/GlobalFase2.gd"
 GlobalOptions="*res://Cenas/Menus/GlobalOptions.gd"
+GlobalFase2="*res://Cenas/Fases/Fase 2/GlobalFase2.gd"
 
 [display]
 
+window/size/fullscreen=true
+window/stretch/mode="2d"
 GlobalFase1="*res://Cenas/Fases/Fase1/globalFase1.gd"
 
 [editor_plugins]
@@ -91,6 +93,16 @@ death={
 attack={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":80,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+V={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":86,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+Reload={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 
