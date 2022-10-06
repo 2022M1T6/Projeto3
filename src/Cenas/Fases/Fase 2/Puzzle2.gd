@@ -1,6 +1,11 @@
 extends Node2D
+# Adiciona a câmera a uma variável
 onready var camera = $Player/Camera
+
+# Guarda se o usuário está na câmera normal
 var isOnPlayerCamera = true
+
+# Variáveis de área de ação
 var enteredSwordsmanArea = false
 var enteredGalloArea = false
 var enteredSwordArea = false
@@ -8,12 +13,16 @@ var enteredDellsonArea = false
 var enteredResetDiag = false
 var enteredDash = false
 
+# Variaveis de diálogo
 var onSword = false
 var onSwordsman = false
 var talkedSwords = false
 var talkedWithSwordsman = false
 var talkedWithGallo = false
 var change = 0
+
+# Guarda a referência das árvores da cena
+var trees = []
 
 # Envia os diálogos do swordsman e informações pertinentes
 func sendSwordsmanDialog():
@@ -261,13 +270,19 @@ func _process(delta):
 	#Reinicia a fase em caso de erro
 	if Input.is_action_just_pressed("Reload"):
 		reset()
-	# Usa 
-	for i in range(1,7):
-		GlobalFase2.paralax($Player,get_node('Tree'+str(i)))
+	# Paralax
+	for i in range(0, len(trees)):
+		if is_instance_valid(trees[i]):
+			GlobalFase2.paralax($Player,trees[i])
 	
-	GlobalFase2.paralax($Player,$Gallo)
-	GlobalFase2.paralax($Player,$Swordsman)
-	GlobalFase2.paralax($Player,$Sword)
+	if is_instance_valid($Gallo):
+		GlobalFase2.paralax($Player,$Gallo)
+	
+	if is_instance_valid($Swordsman):
+		GlobalFase2.paralax($Player,$Swordsman)
+		
+	if is_instance_valid($Sword):
+		GlobalFase2.paralax($Player,$Sword)
 
 	
 	if enteredDash && GlobalFase2.hasSword:
@@ -321,6 +336,14 @@ func _on_GalloArea_area_exited(area):
 	$Gallo.setState(0)
 
 func _ready():
+	trees = [
+		$Tree1,
+		$Tree2,
+		$Tree3,
+		$Tree4,
+		$Tree5,
+		$Tree6
+	]
 	GlobalOptions.setItemsToHideOnDialog([
 		$Player/Camera/CanvasLayer/Hint,
 		$Player/Camera/CanvasLayer/WeaponFrame,
