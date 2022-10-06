@@ -67,7 +67,7 @@ Para abrir este projeto você necessita das seguintes ferramentas:
 ## 🗃 Histórico de lançamentos
 
 * 0.4 - 23/09/2022
-    * MUDANÇA: Nova versão do código para entrega da sprint 4
+    * MUDANÇA: Nova versão do código para entrega da sprint 5
 
 ## 📋 Licença/License
 
