@@ -66,14 +66,64 @@ Para abrir este projeto você necessita das seguintes ferramentas:
 
 ## 🗃 Histórico de lançamentos
 
-* 0.4 - 23/09/2022
-    * MUDANÇA: Nova versão do código para entrega da sprint 5
+* 0.' - 06/10/2022
+    * Lançamento: versão 1.0
 
 ## 📋 Licença/License
 
-<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/Spidus/Teste_Final_1">MODELO GIT INTELI</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://www.yggbrasil.com.br/vr">INTELI, VICTOR BRUNO ALEXANDER ROSETTI DE QUIROZ</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Attribution 4.0 International<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p>
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licença Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/InteractiveResource" property="dct:title" rel="dct:type">Insidell</span> de <a xmlns:cc="http://creativecommons.org/ns#" href="https://2022m1t6.github.io/Projeto3/" property="cc:attributionName" rel="cc:attributionURL">Bruno Wasserstein, Felipe Gutierres Zillo, Gabriel Gallo M. Coutinho, Joao Victor Cavalcante Montagna, Rafael Mateus Zimmer Techio, Renan Ribeiro da Silva, Yago Phellipe Matos Lopes, Dell e Inteli - Instituto de Tecnologia e Liderança</a> está licenciado com uma Licença <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons - Atribuição 4.0 Internacional</a>.<br />Baseado no trabalho disponível em <a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/2022M1T6/Projeto3" rel="dct:source">https://github.com/2022M1T6/Projeto3</a>.<br />Podem estar disponíveis autorizações adicionais às concedidas no âmbito desta licença em <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/2022M1T6/Projeto3#readme" rel="cc:morePermissions">https://github.com/2022M1T6/Projeto3#readme</a>.
 
 ## 🎓 Referências
 
-Aqui estão as referências usadas no projeto.
-1. <https://creativecommons.org/share-your-work/>
+Diário popular. Mercado de games: a maior indústria do entretenimento cresce a cada ano. Disponível em: https://www.diariopopular.com.br/tecnologia/mercado-de-games-a-maior-industria-do-entretenimento-cresce-a-cada-ano-167994/. Acesso em: 10 de agosto de 2022.
+
+TudoCelular. Forbes indica que a indústria dos games pode valer até US$ 200 bi até 2023. Disponível em: https://www.tudocelular.com/mercado/noticias/n184496/industria-dos-games-200-bilhoes-2023.html. Acesso em: 10 de agosto de 2022.
+
+Convergência Digital. Indústria de games já é maior que mercados de música e filmes somados. Disponível em: https://www.convergenciadigital.com.br/Negocios/Industria-de-games-ja-e-maior-que-mercados-de-filmes-e-musica-somados-56827.html?UserActiveTemplate=mobile%2Csite. Acesso em: 10 de agosto de 2022.
+
+TechReviews. Notebook Dell: Conheça o melhor modelo de (08/22). Disponível em: https://www.techreviews.com.br/notebook-dell-melhores-modelos/. Acesso em: 9 de agosto de 2022.
+
+Clube do Hardware. Quais os contra e pós dos notebooks Dell? Disponível em: https://www.clubedohardware.com.br/forums/topic/515204-quais-os-contras-e-pr%C3%B3s-sobre-os-notebooks-dell/. Acesso em: 09 de agosto de 2022.
+
+Folha de São Paulo. Brasil tem a 4 maior inflação entre principais economias; veja ranking. Disponível em: https://www1.folha.uol.com.br/mercado/2022/08/inflacao-no-brasil-esta-entre-as-mais-altas-do-mundo.shtml. Acesso em: 09 de agosto de 2022.
+
+Exame. Brasil tem a 4 maior inflação entre os países do g-20. Disponível em: https://exame.com/economia/brasil-tem-a-quarta-maior-inflacao-entre-os-paises-do-g-20/. Acesso em: 9 de agosto de 2022.
+
+ Méliuz blog. Qual a melhor marca de notebook de 2022? Comparativo com as mais famosas do Brasil. Disponível em: https://www.meliuz.com.br/blog/qual-a-melhor-marca-de-notebook/. Acesso em: 9 de agosto de 2022.
+
+Promobit. 10 melhores marcas de notebook no Brasil: Confira as principais opções. Disponível em: https://www.promobit.com.br/blog/melhores-marcas-de-notebook/. Acesso em 9 de agosto de 2022.
+
+Forbes. 2022 promissor mercado de games ultrapassará US$ 200 em 2023. Disponível em https://forbes.com.br/forbes-tech/2022/01/com-2022-decisivo-mercado-de-games-ultrapassara-us-200-bi-ate-2023/. Acesso em: 9 de agosto de 2022. 
+
+Veja. A evolução do Brasil no mercado de games. Disponível em: https://veja.abril.com.br/tecnologia/a-evolucao-do-brasil-no-mercado-de-games/. Acesso em: 9 de agosto de 2022.
+
+https://br.freepik.com/vetores-gratis/pagina-inicial-do-desenho-do-processo-criativo-projeto-de-arte_21267049.htm#page=7&query=desenho%20escritorio&position=33&from_view=keyword Acesso em: 3 de outubro de 2022
+. 
+https://br.freepik.com/vetores-gratis/departamento-de-policia-ou-escritorio-de-agencia-de-detetives_32432926.htm#page=7&query=desenho%20escritorio&position=30&from_view=keyword Acesso em: 3 de outubro de 2022
+
+https://br.freepik.com/vetores-gratis/designer-de-interiores-desenhar-em-tablet-digital-no-escritorio_26986775.htm#page=7&query=desenho%20escritorio&position=21&from_view=keyword Acesso em: 3 de outubro de 2022
+
+https://br.freepik.com/vetores-gratis/escritorio-plano-de-fundo-para-videoconferencia_9746611.htm#page=9&query=desenho%20escritorio&position=14&from_view=keyword Acesso em: 3 de outubro de 2022
+
+https://br.freepik.com/vetores-gratis/visualizacao-noturna-interna-de-coworking-ou-home-office_20872495.htm#page=14&query=desenho%20escritorio&position=38&from_view=keyword Acesso em: 3 de outubro de 2022
+
+https://br.freepik.com/vetores-gratis/homem-trabalha-ate-tarde-ate-a-noite-no-escritorio_23313908.htm#page=14&query=desenho%20escritorio&position=27&from_view=keyword Acesso em: 3 de outubro de 2022
+
+https://br.freepik.com/vetores-gratis/interior-da-sala-de-cctv-de-controle-de-seguranca-dos-desenhos-animados-com-monitores-de-exibicao_26195118.htm#page=23&query=desenho%20escritorio&position=13&from_view=keyword Acesso em: 3 de outubro de 2022
+
+https://br.freepik.com/vetores-gratis/menina-com-tablet-digital-trabalhando-em-escritorio-de-coworking_21184596.htm#page=23&query=desenho%20escritorio&position=48&from_view=keyword Acesso em: 3 de outubro de 2022
+
+https://br.freepik.com/vetores-gratis/banner-do-empresario-com-lider-na-sala-de-conferencias_18482041.htm#page=27&query=desenho%20escritorio&position=1&from_view=keyword Acesso em: 3 de outubro de 2022
+
+https://www.freepik.com/free-vector/people-work-office-concept-teamwork-modern-workspace-creative-staff-vector-cartoon-illustration-team-job-with-man-with-laptop-employees-talk-together_21087518.htm#page=2&query=homem%20desenho&position=10&from_view=search&track=sph Acesso em: 3 de outubro de 2022
+
+https://www.youtube.com/watch?v=BEXL80LS0-I&t=6677s Acesso em: 20 de setembro de 2022
+
+https://pixabay.com/music/synthwave-black-knight-121105/ Acesso em: 4 de outubro de 2022
+https://pixabay.com/music/synthwave-arcade-night-121103/ Acesso em: 4 de outubro de 2022
+https://szadiart.itch.io/rogue-fantasy-castle Acesso em: 22 de setembro de 2022
+https://opengameart.org/content/the-field-of-the-floating-islands Acesso em: 16 de setembro de 2022
+https://pixabay.com/pt/music/synthwave-computer-love-121106/ Acesso em: 4 de outubro de 2022
+https://pixabay.com/pt/music/titulo-principal-battle-of-the-dragons-8037/ Acesso em: 4 de outubro de 2022
+https://pixabay.com/music/modern-classical-tense-sad-piano-111679/ Acesso em: 4 de outubro de 2022
+
