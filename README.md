@@ -8,30 +8,30 @@
 
 ## Apex Devs
 
-## Integrantes: <a href="https://www.linkedin.com/in/bruno-wasserstein-04b6b1209/">Bruno Wasserstein</a>, <a href="https://www.linkedin.com/in/felipe-zillo-72b367247/">Felipe Zillo</a>, <a href="https://www.linkedin.com/in/gabriel-gallo-m-coutinho-443809232/">Gabriel Gallo</a>, <a href="https://www.linkedin.com/in/joao-victor-montagna-4bb3a4247/">João Montagna</a>, <a href="https://www.linkedin.com/in/rafael-mateus-zimmer-techio-6679091a0/">Rafael Techio</a>, <a href="https://www.linkedin.com/in/renan-ribeiro-31a205247/">Renan Ribeiro</a>, <a href="https://www.linkedin.com/in/yago-phellipe-777247247/">Yago Matos</a>
+## Integrantes:
+- <a href="https://www.linkedin.com/in/bruno-wasserstein-04b6b1209/">Bruno Wasserstein</a>
+- <a href="https://www.linkedin.com/in/felipe-zillo-72b367247/">Felipe Zillo</a>
+- <a href="https://www.linkedin.com/in/gabriel-gallo-m-coutinho-443809232/">Gabriel Gallo</a>
+- <a href="https://www.linkedin.com/in/joao-victor-montagna-4bb3a4247/">João Montagna</a>
+- <a href="https://www.linkedin.com/in/rafael-mateus-zimmer-techio-6679091a0/">Rafael Techio</a>
+- <a href="https://www.linkedin.com/in/renan-ribeiro-31a205247/">Renan Ribeiro</a>
+- <a href="https://www.linkedin.com/in/yago-phellipe-777247247/">Yago Matos</a>
 
 ## Descrição
 
 📜 Insidell é um jogo 2D isométrico do gênero puzzle que tem como objetivo principal ensinar os conceitos fundamentais das dimensões do modelo de produto de forma divertida e intuitiva.
-<br><br>
-<p align="center">
-<img src="https://github.com/2022M1T6/Projeto3/blob/main/src/Public/Characters/playerProfile.png?raw=true" alt="Insidell" border="0">
-</p>
-
-
+<br>
 💡 Através da história vivenciada por José, um engenheiro de software que embarca em uma aventura dentro de um treinamento imersivo da Dell, vários conceitos das dimensões do modelo de produtos são ensinados e validados.
 
 ## 🛠 Estrutura de pastas
 
--Raiz<br>
-|<br>
 |-->docs<br>
 |-->documentos<br>
   &emsp;|-->antigos<br>
-  &emsp;|GDD.docx ou Documentação.docx<br>
+  &emsp;|T6_G3_V1_Game_Design_Document.docx<br>
+  &emsp;|T6_G3_V1_Game_Design_Document.pdf<br>
 |-->executáveis<br>
   &emsp;|-->windows<br>
-  &emsp;|-->android<br>
   &emsp;|-->HTML<br>
 |-->imagens<br>
 |-->src<br>
@@ -39,40 +39,28 @@
 
 ## 🛠 Instalação
 
-<b>Android:</b>
-
-Faça o Download do JOGO.apk no seu celular.
-Execute o APK e siga as instruções de seu telefone.
-
 <b>Windows:</b>
-
-Não há instalação! Apenas executável!
+Não há instalação! Apenas executável!<br>
 Encontre o JOGO.exe na pasta executáveis e execute-o como qualquer outro programa.
 
 <b>HTML:</b>
-
-Não há instalação!
+Não há instalação!<br>
 Encontre o index.html na pasta executáveis e execute-o como uma página WEB (através de algum browser).
 
 ## 💻 Configuração para Desenvolvimento
 
-1 - Faça o download do GODOT e deste repositório.
-2 - Abra o GODOT, ao ser prontificado clique em IMPORTAR.
-3 - Selecione a pasta onde descompactou este repositório.
+1 - Faça o download do GODOT e deste repositório.<br>
+2 - Abra o GODOT, ao ser prontificado clique em IMPORTAR.<br>
+3 - Selecione a pasta onde descompactou este repositório.<br>
 
-Para abrir este projeto você necessita das seguintes ferramentas:
+Para abrir este projeto você necessita das seguintes ferramentas:<br>
 
 -<a href="https://godotengine.org/download">GODOT</a>
 
-## 🗃 Histórico de lançamentos
-
-* 0.' - 06/10/2022
-    * Lançamento: versão 1.0
-
 ## 📋 Licença/License
 
-<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licença Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/InteractiveResource" property="dct:title" rel="dct:type">Insidell</span> de <a xmlns:cc="http://creativecommons.org/ns#" href="https://2022m1t6.github.io/Projeto3/" property="cc:attributionName" rel="cc:attributionURL">Bruno Wasserstein, Felipe Gutierres Zillo, Gabriel Gallo M. Coutinho, Joao Victor Cavalcante Montagna, Rafael Mateus Zimmer Techio, Renan Ribeiro da Silva, Yago Phellipe Matos Lopes, Dell e Inteli - Instituto de Tecnologia e Liderança</a> está licenciado com uma Licença <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons - Atribuição 4.0 Internacional</a>.<br />Baseado no trabalho disponível em <a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/2022M1T6/Projeto3" rel="dct:source">https://github.com/2022M1T6/Projeto3</a>.<br />Podem estar disponíveis autorizações adicionais às concedidas no âmbito desta licença em <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/2022M1T6/Projeto3#readme" rel="cc:morePermissions">https://github.com/2022M1T6/Projeto3#readme</a>.
-
+<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"> <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1">
+<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/2022M1T6-Inteli/Apex-Devs">Apex-Devs</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/InteliProjects">Inteli, <a href="https://www.linkedin.com/in/bruno-wasserstein-04b6b1209/">Bruno Wasserstein</a>, <a href="https://www.linkedin.com/in/felipe-zillo-72b367247/">Felipe Zillo</a>, <a href="https://www.linkedin.com/in/gabriel-gallo-m-coutinho-443809232/">Gabriel Gallo</a>, <a href="https://www.linkedin.com/in/joao-victor-montagna-4bb3a4247/">João Montagna</a>, <a href="https://www.linkedin.com/in/rafael-mateus-zimmer-techio-6679091a0/">Rafael Techio</a>, <a href="https://www.linkedin.com/in/renan-ribeiro-31a205247/">Renan Ribeiro</a>, <a href="https://www.linkedin.com/in/yago-phellipe-777247247/">Yago Matos</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Attribution 4.0 International</a>.</p>
 ## 🎓 Referências
 
 Diário popular. Mercado de games: a maior indústria do entretenimento cresce a cada ano. Disponível em: https://www.diariopopular.com.br/tecnologia/mercado-de-games-a-maior-industria-do-entretenimento-cresce-a-cada-ano-167994/. Acesso em: 10 de agosto de 2022.
