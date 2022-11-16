@@ -37,7 +37,11 @@
 |-->src<br>
 |readme.md<br>
 
-## 🛠 Instalação
+## 🎮 Jogue agora
+
+Para acessar o jogo diretamente do seu navegador entre no seguinte link: [Game Insidell]( https://2022m1t6-inteli.github.io/Apex-Devs)
+
+## 📁 Estrutura de pastas
 
 <b>Windows:</b>
 Não há instalação! Apenas executável!<br>
