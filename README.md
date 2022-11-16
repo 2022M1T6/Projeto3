@@ -23,7 +23,11 @@
 <br>
 💡 Através da história vivenciada por José, um engenheiro de software que embarca em uma aventura dentro de um treinamento imersivo da Dell, vários conceitos das dimensões do modelo de produtos são ensinados e validados.
 
-## 🛠 Estrutura de pastas
+## 🎮 Jogue agora
+
+Para acessar o jogo diretamente do seu navegador entre no seguinte link: [Game Insidell]( https://2022m1t6-inteli.github.io/Apex-Devs)
+
+## 📁 Estrutura de pastas
 
 |-->docs<br>
 |-->documentos<br>
@@ -37,11 +41,7 @@
 |-->src<br>
 |readme.md<br>
 
-## 🎮 Jogue agora
-
-Para acessar o jogo diretamente do seu navegador entre no seguinte link: [Game Insidell]( https://2022m1t6-inteli.github.io/Apex-Devs)
-
-## 📁 Estrutura de pastas
+## 🛠 Instalação
 
 <b>Windows:</b>
 Não há instalação! Apenas executável!<br>
